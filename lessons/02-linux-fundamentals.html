@@ -245,47 +245,150 @@
     </div>
   </div>
 
-  <!-- === KONFIGURACJA === -->
-  <div class="card full">
+  <!-- === UFW FIREWALL === -->
+  <div class="card">
     <div class="card-header">
-      <div class="dot" style="background:var(--accent5)"></div>
-      <span class="card-title" style="color:var(--accent5)">Instalacja i podstawowa konfiguracja</span>
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">UFW &mdash; firewall</span>
     </div>
     <div class="card-body">
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px">
-        <div>
-          <div class="section-label">Aktualizacja systemu</div>
-          <div class="example-block">
-            <div class="ex-cmd">sudo apt <span class="h">update</span> &nbsp;<span class="ex-comment"># listy pakietow</span></div>
-            <div class="ex-cmd">sudo apt <span class="h">upgrade</span> &nbsp;<span class="ex-comment"># aktualizacja</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="section-label">Niezbedne narzedzia</div>
-          <div class="example-block">
-            <div class="ex-cmd">sudo apt install <span class="h">build-essential</span> <span class="v">git curl wget</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="section-label">Siec</div>
-          <div class="example-block purple">
-            <div class="ex-cmd">sudo netplan <span class="h">apply</span></div>
-          </div>
-        </div>
-        <div>
-          <div class="section-label">Firewall (UFW)</div>
-          <div class="example-block orange">
-            <div class="ex-cmd">sudo ufw <span class="h">enable</span></div>
-            <div class="ex-cmd">sudo ufw allow <span class="v">ssh</span></div>
-          </div>
-        </div>
+      <div class="section-label">Wlaczanie / wylaczanie</div>
+      <div class="example-block orange">
+        <div class="ex-cmd">sudo ufw <span class="h">enable</span> <span class="ex-comment"># wlacz firewall</span></div>
+        <div class="ex-cmd">sudo ufw <span class="h">disable</span> <span class="ex-comment"># wylacz firewall</span></div>
+        <div class="ex-cmd">sudo ufw <span class="h">status</span> <span class="ex-comment"># aktualny stan</span></div>
+        <div class="ex-cmd">sudo ufw status <span class="v">numbered</span> <span class="ex-comment"># z numerami regul (ID)</span></div>
+        <div class="ex-cmd">sudo ufw status <span class="v">verbose</span> <span class="ex-comment"># szczegolowy</span></div>
       </div>
-      <div class="infobox" style="margin-top:12px">
-        <div class="concept-text">Metody instalacji: <b>WSL</b> (Windows), <b>VirtualBox</b> / VMware, <b>dual boot</b>, <b>cloud VM</b> (AWS, Azure, DigitalOcean)</div>
+
+      <div class="section-label" style="margin-top:10px">Dodawanie regul (allow)</div>
+      <div class="example-block green">
+        <div class="ex-comment"># Zezwol na port</div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">80</span> <span class="ex-comment"># HTTP</span></div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">443</span> <span class="ex-comment"># HTTPS</span></div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">22</span> <span class="ex-comment"># SSH</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Po nazwie serwisu</div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">ssh</span></div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">'Nginx Full'</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Konkretny protokol</div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">80/tcp</span></div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">53/udp</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Zakres portow</div>
+        <div class="ex-cmd">sudo ufw allow <span class="h">8000:8100/tcp</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Z konkretnego IP</div>
+        <div class="ex-cmd">sudo ufw allow from <span class="v">192.168.1.100</span></div>
+        <div class="ex-cmd">sudo ufw allow from <span class="v">192.168.1.0/24</span> to any port <span class="h">22</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">Blokowanie (deny)</div>
+      <div class="example-block orange">
+        <div class="ex-cmd">sudo ufw <span class="h">deny</span> <span class="v">3306</span> <span class="ex-comment"># zablokuj MySQL</span></div>
+        <div class="ex-cmd">sudo ufw deny from <span class="v">10.0.0.50</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">Usuwanie regul</div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Po numerze (najpierw: ufw status numbered)</div>
+        <div class="ex-cmd">sudo ufw <span class="h">delete</span> <span class="v">3</span> <span class="ex-comment"># usun regule nr 3</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Po tresci reguly</div>
+        <div class="ex-cmd">sudo ufw delete allow <span class="v">80</span></div>
+        <div class="ex-cmd">sudo ufw delete deny <span class="v">3306</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">Reset i domyslne</div>
+      <div class="example-block orange">
+        <div class="ex-cmd">sudo ufw <span class="h">reset</span> <span class="ex-comment"># usun wszystkie reguly</span></div>
+        <div class="ex-cmd">sudo ufw default <span class="h">deny incoming</span></div>
+        <div class="ex-cmd">sudo ufw default <span class="h">allow outgoing</span></div>
+      </div>
+
+      <div class="infobox" style="margin-top:10px">
+        <div class="concept-text">Typowy setup: <code>default deny incoming</code> + <code>default allow outgoing</code> + allow tylko potrzebne porty (22, 80, 443)</div>
       </div>
     </div>
   </div>
 
+  <!-- === NIEZBEDNE NARZEDZIA === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Niezbedne narzedzia</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block">
+        <div class="ex-comment"># Kompilatory i naglowki</div>
+        <div class="ex-cmd">sudo apt install <span class="h">build-essential</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Kontrola wersji</div>
+        <div class="ex-cmd">sudo apt install <span class="h">git</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Pobieranie plikow</div>
+        <div class="ex-cmd">sudo apt install <span class="h">curl wget</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Edytory tekstu</div>
+        <div class="ex-cmd">sudo apt install <span class="h">vim nano</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Narzedzia sieciowe</div>
+        <div class="ex-cmd">sudo apt install <span class="h">net-tools htop tree</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === NETPLAN === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">Netplan &mdash; konfiguracja sieci</span>
+    </div>
+    <div class="card-body">
+      <div class="section-label">Komendy</div>
+      <div class="example-block purple">
+        <div class="ex-cmd">sudo netplan <span class="h">apply</span> <span class="ex-comment"># zastosuj konfiguracje</span></div>
+        <div class="ex-cmd">sudo netplan <span class="h">try</span> <span class="ex-comment"># testuj (rollback po 120s)</span></div>
+        <div class="ex-cmd">sudo netplan <span class="h">get</span> <span class="ex-comment"># podglad konfiguracji</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">DHCP &mdash; /etc/netplan/*.yaml</div>
+      <div class="example-block">
+        <div class="ex-cmd"><span class="h">network:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;<span class="v">ethernets:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">eth0:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dhcp4: <span class="h">true</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">Statyczne IP</div>
+      <div class="example-block">
+        <div class="ex-cmd"><span class="h">network:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;<span class="v">ethernets:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;<span class="f">eth0:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addresses: [<span class="h">192.168.1.10/24</span>]</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;routes:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- to: <span class="v">default</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;via: <span class="v">192.168.1.1</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nameservers:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;addresses: [<span class="v">8.8.8.8, 1.1.1.1</span>]</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="color:var(--muted);font-size:11px;margin-top:16px;padding:0 4px">
+  Metody instalacji Linux: <b>WSL</b> (Windows) &middot; <b>VirtualBox</b> / VMware &middot; <b>Dual boot</b> &middot; <b>Cloud VM</b> (AWS, Azure, DigitalOcean)
 </div>
 
 <!-- Navigation -->
