@@ -1,0 +1,107 @@
+import { usePageTitle } from '../../hooks/usePageTitle'
+import PageHeader from '../../components/PageHeader'
+import Card from '../../components/Card'
+import Concept from '../../components/Concept'
+import ExampleBlock, { Cmd, Comment, H, V, F } from '../../components/ExampleBlock'
+import Row from '../../components/Row'
+import Divider from '../../components/Divider'
+import InfoBox from '../../components/InfoBox'
+import SectionLabel from '../../components/SectionLabel'
+import LessonNav from '../../components/LessonNav'
+
+export default function Lesson01() {
+  return (
+    <div>
+      <PageHeader title="01 — Wprowadzenie do DevOps" subtitle="DevOps · konteneryzacja · Kubernetes · Linux · Docker · Git · CI/CD" />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+
+        <Card title="Czym jest DevOps?" full>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <Concept title="Development + Operations">DevOps laczy zespoly programistyczne (Dev) i operacyjne (Ops) — likwiduje bariery miedzy pisaniem kodu a jego wdrazaniem.</Concept>
+            <Concept title="Infrastructure as Code (IaC)" color="var(--c-green)">Cala infrastruktura zarzadzana kodem — mozna ja wersjonowac, testowac i odtwarzac. Terraform, Ansible, Pulumi.</Concept>
+            <Concept title="CI/CD Pipeline" color="var(--c-yellow)">Continuous Integration / Continuous Delivery — automatyczne budowanie, testowanie i wdrazanie kodu.</Concept>
+            <Concept title="Mikrouslugi" color="var(--c-purple)">Zamiast monolitu — wiele malych serwisow komunikujacych sie przez API.</Concept>
+          </div>
+        </Card>
+
+        <Card title="Wirtualizacja vs Konteneryzacja" color="var(--c-purple)">
+          <Concept title="Maszyna wirtualna (VM)" color="var(--c-purple)">Pelna kopia OS na hypervisorze. Ciezka (GB), wolny start. VMware, VirtualBox, Hyper-V.</Concept>
+          <Concept title="Kontener (Docker)" color="var(--c-green)">Wspoldzieli jadro hosta, izoluje procesy. Lekki (MB), start w sekundach. Docker, Podman.</Concept>
+          <InfoBox>VM = izolacja na poziomie <b>hardware</b>. Kontener = izolacja na poziomie <b>procesu</b>.</InfoBox>
+        </Card>
+
+        <Card title="Kubernetes (K8s) — orkiestracja" color="var(--c-yellow)">
+          <p className="text-[#8892aa] text-xs mb-2.5">Zarzadza klastrem kontenerow — deployment, skalowanie, restart, load balancing.</p>
+          <Row code="Pod" codeVariant="yellow">Najmniejsza jednostka — jeden lub wiecej kontenerow</Row>
+          <Row code="Service" codeVariant="yellow">Stabilny endpoint sieciowy do grupy Podow</Row>
+          <Row code="Deployment" codeVariant="yellow">Deklaratywny opis stanu — ile replik, jaki obraz</Row>
+          <Row code="Namespace" codeVariant="yellow">Logiczna separacja zasobow w klastrze</Row>
+          <Divider />
+          <p className="text-[var(--c-muted)] text-[11px]">Certyfikacja: CKA (Certified Kubernetes Administrator)</p>
+        </Card>
+
+        <Card title="Docker — podstawy">
+          <p className="text-[var(--c-muted)] text-xs mb-2.5">Enkapsulacja aplikacji w kontenerze — izolacja procesow od systemu hosta.</p>
+          <ExampleBlock><Comment># Testowe uruchomienie kontenera</Comment><Cmd>docker <H>run</H> <V>hello-world</V></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Uruchomienie z interaktywnym shellem</Comment><Cmd>docker run <H>-it</H> <V>ubuntu</V> <F>/bin/bash</F></Cmd></ExampleBlock>
+          <ExampleBlock variant="green"><Comment># Lista uruchomionych kontenerow</Comment><Cmd>docker <H>ps</H></Cmd></ExampleBlock>
+          <ExampleBlock variant="green"><Comment># Lista WSZYSTKICH kontenerow (takze zatrzymanych)</Comment><Cmd>docker ps <H>-a</H></Cmd></ExampleBlock>
+          <ExampleBlock variant="orange"><Comment># Zatrzymanie kontenera</Comment><Cmd>docker <H>stop</H> <V>&lt;container_id&gt;</V></Cmd></ExampleBlock>
+        </Card>
+
+        <Card title="Git — kontrola wersji" color="var(--c-green)">
+          <SectionLabel>Konfiguracja globalna</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>git config --global <H>user.name</H> <V>"Twoja Nazwa"</V></Cmd>
+            <Cmd>git config --global <H>user.email</H> <V>"email@example.com"</V></Cmd>
+          </ExampleBlock>
+          <SectionLabel className="mt-2.5">Podstawowe komendy</SectionLabel>
+          <ExampleBlock><Comment># Inicjalizacja repozytorium</Comment><Cmd>git <H>init</H></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Stan repo (skrocony format)</Comment><Cmd>git <H>status</H> <V>-s</V></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Dodaj + commit</Comment><Cmd>git <H>add</H> . && git <H>commit</H> -m <V>"opis"</V></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Wypchnij na remote</Comment><Cmd>git <H>push</H> origin main</Cmd></ExampleBlock>
+        </Card>
+
+        <Card title="APT — menedzer pakietow" color="var(--c-orange)">
+          <p className="text-[#8892aa] text-xs mb-2.5">Menedzer pakietow Debian/Ubuntu. Wymaga sudo.</p>
+          <ExampleBlock variant="orange"><Comment># Pobierz najnowsze listy pakietow</Comment><Cmd>sudo apt <H>update</H></Cmd></ExampleBlock>
+          <ExampleBlock variant="orange"><Comment># Zainstaluj aktualizacje pakietow</Comment><Cmd>sudo apt <H>upgrade</H></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Instalacja</Comment><Cmd>sudo apt <H>install</H> <V>nazwa_pakietu</V></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Usun pakiet (zachowaj konfiguracje)</Comment><Cmd>sudo apt <H>remove</H> <V>nazwa_pakietu</V></Cmd></ExampleBlock>
+          <ExampleBlock><Comment># Usun pakiet + konfiguracje</Comment><Cmd>sudo apt <H>purge</H> <V>nazwa_pakietu</V></Cmd></ExampleBlock>
+          <ExampleBlock variant="green"><Comment># Wyszukaj pakiet</Comment><Cmd>apt <H>search</H> <V>slowo_kluczowe</V></Cmd></ExampleBlock>
+          <Divider />
+          <Row code="--help" codeVariant="orange">Pomoc — skladnia i opcje kazdej komendy</Row>
+        </Card>
+
+        <Card title="GitHub Actions — CI/CD" color="var(--c-yellow)">
+          <p className="text-[#8892aa] text-xs mb-2.5">Automatyzacja build/test/deploy w repo GitHub.</p>
+          <ExampleBlock variant="yellow">
+            <Comment># .github/workflows/build.yml</Comment>
+            <Cmd>name: <V>Build</V></Cmd>
+            <Cmd>on: <H>push</H></Cmd>
+            <Cmd>jobs:</Cmd>
+            <Cmd>&nbsp;&nbsp;build:</Cmd>
+            <Cmd>&nbsp;&nbsp;&nbsp;&nbsp;runs-on: <V>ubuntu-latest</V></Cmd>
+            <Cmd>&nbsp;&nbsp;&nbsp;&nbsp;steps:</Cmd>
+            <Cmd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: <H>actions/checkout@v4</H></Cmd>
+            <Cmd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: <V>echo "Hello CI!"</V></Cmd>
+          </ExampleBlock>
+          <InfoBox>Triggery: <b>push</b>, <b>pull_request</b>, <b>schedule</b>, <b>manual dispatch</b>.</InfoBox>
+        </Card>
+
+        <Card title="Monitoring i logi" color="var(--c-green)">
+          <Row code="Grafana" codeVariant="green">Dashboardy do wizualizacji metryk — CPU, RAM, ruch sieciowy</Row>
+          <Row code="Prometheus" codeVariant="green">Zbieranie i przechowywanie metryk (time series DB)</Row>
+          <Row code="ELK Stack" codeVariant="green">Elasticsearch + Logstash + Kibana — centralne logowanie</Row>
+          <Divider />
+          <p className="text-[var(--c-muted)] text-[11px]">Monitoring srodowisk produkcyjnych to kluczowy element pracy DevOps — pozwala reagowac na problemy zanim zauwazyja je uzytkownicy.</p>
+        </Card>
+
+      </div>
+
+      <LessonNav next={{ to: '/lessons/02', label: '02 — Systemy operacyjne' }} />
+    </div>
+  )
+}

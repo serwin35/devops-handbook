@@ -3,103 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="DevOps Learning Hub — interaktywne notatki, cheatsheets i reference boards">
+<meta name="theme-color" content="#0d1117">
 <title>DevOps Learning Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<script>
+  // GitHub Pages SPA redirect — handles direct URL access and page refreshes
+  (function(){
+    var redir = sessionStorage.getItem('spa-redirect');
+    if (redir) { sessionStorage.removeItem('spa-redirect'); history.replaceState(null, '', redir); }
+  })();
+</script>
 </head>
 <body>
-
-<h1>DevOps Learning Hub</h1>
-<p class="subtitle">Kurs DevOps &mdash; interaktywne notatki, cheatsheets i reference boards</p>
-
-<!-- Overall progress -->
-<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
-  <span style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px">Postep kursu</span>
-  <span style="color:var(--accent5);font-size:12px;font-weight:700" data-progress-label="overall">0%</span>
-</div>
-<div class="progress-wrap">
-  <div class="progress-bar" data-progress-bar="overall" style="width:0%"></div>
-</div>
-
-<!-- Lessons -->
-<div style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Lekcje</div>
-
-<div class="grid" style="margin-bottom:32px">
-
-  <a href="lessons/01-intro-devops.html" class="lesson-card" style="border-left:3px solid var(--accent)">
-    <div class="lesson-num" style="color:var(--accent)">01</div>
-    <div class="lesson-title">Wprowadzenie do DevOps</div>
-    <div class="lesson-desc">
-      DevOps, konteneryzacja, Kubernetes, Linux, Docker, Git, GitHub Actions, CI/CD, pakiety APT
-    </div>
-    <div class="lesson-topics">
-      <span class="topic-tag">DevOps</span>
-      <span class="topic-tag">Docker</span>
-      <span class="topic-tag">Kubernetes</span>
-      <span class="topic-tag">Git</span>
-      <span class="topic-tag">CI/CD</span>
-      <span class="topic-tag">APT</span>
-    </div>
-  </a>
-
-  <a href="lessons/02-linux-fundamentals.html" class="lesson-card" style="border-left:3px solid var(--accent4)">
-    <div class="lesson-num" style="color:var(--accent4)">02</div>
-    <div class="lesson-title">Systemy operacyjne i Linux</div>
-    <div class="lesson-desc">
-      Historia Unix/Linux, jadro systemu, system plikow, LVM, dystrybucje, zarzadzanie uzytkownikami, prawa dostepu
-    </div>
-    <div class="lesson-topics">
-      <span class="topic-tag">Unix</span>
-      <span class="topic-tag">Kernel</span>
-      <span class="topic-tag">Filesystem</span>
-      <span class="topic-tag">LVM</span>
-      <span class="topic-tag">Permissions</span>
-      <span class="topic-tag">Users</span>
-    </div>
-  </a>
-
-  <div class="lesson-card" style="border-left:3px solid var(--dim);opacity:0.4;cursor:default">
-    <div class="lesson-num" style="color:var(--dim)">03</div>
-    <div class="lesson-title" style="color:var(--muted)">Kolejna lekcja...</div>
-    <div class="lesson-desc">Wkrotce &mdash; w miare postepu kursu</div>
-  </div>
-
-</div>
-
-<!-- Cheatsheets -->
-<div style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Cheatsheets &amp; Reference Boards</div>
-
-<div class="cheatsheet-grid">
-  <a href="cheatsheets/linux-permissions.html" class="cheatsheet-link">
-    <span class="cheatsheet-icon" style="color:var(--accent3)">&#9881;</span>
-    <div>
-      <div style="font-weight:700">Linux Permissions</div>
-      <div style="color:var(--muted);font-size:10px">chmod, chown, users, groups</div>
-    </div>
-  </a>
-  <a href="cheatsheets/filesystem-hierarchy.html" class="cheatsheet-link">
-    <span class="cheatsheet-icon" style="color:var(--accent5)">&#128193;</span>
-    <div>
-      <div style="font-weight:700">Filesystem Hierarchy</div>
-      <div style="color:var(--muted);font-size:10px">/, /etc, /var, /home...</div>
-    </div>
-  </a>
-  <a href="cheatsheets/docker-basics.html" class="cheatsheet-link">
-    <span class="cheatsheet-icon" style="color:var(--accent)">&#128051;</span>
-    <div>
-      <div style="font-weight:700">Docker Basics</div>
-      <div style="color:var(--muted);font-size:10px">run, build, compose, volumes, networks</div>
-    </div>
-  </a>
-  <a href="cheatsheets/git-commands.html" class="cheatsheet-link">
-    <span class="cheatsheet-icon" style="color:var(--accent3)">&#9432;</span>
-    <div>
-      <div style="font-weight:700">Git Commands</div>
-      <div style="color:var(--muted);font-size:10px">branch, merge, remote, stash, reset</div>
-    </div>
-  </a>
-</div>
-
-<script src="js/progress.js"></script>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

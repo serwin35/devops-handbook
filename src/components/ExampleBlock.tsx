@@ -1,0 +1,60 @@
+import { useRef, useState } from 'react'
+
+const borderColors = {
+  default: 'border-l-[var(--c-accent)]',
+  green: 'border-l-[var(--c-green)]',
+  orange: 'border-l-[var(--c-orange)]',
+  purple: 'border-l-[var(--c-purple)]',
+  yellow: 'border-l-[var(--c-yellow)]',
+}
+
+export default function ExampleBlock({ variant = 'default', children }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [copied, setCopied] = useState(false)
+
+  function handleCopy() {
+    if (!ref.current) return
+    const text = ref.current.innerText
+      .split('\n')
+      .filter(line => !line.startsWith('#'))
+      .join('\n')
+      .trim()
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  return (
+    <div className={`relative group bg-[#0d1117] border border-[var(--c-border)] border-l-[3px] ${borderColors[variant]} rounded-r-md px-3 py-2 mb-2 text-xs`}>
+      <button
+        onClick={handleCopy}
+        className="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] px-1.5 py-0.5 rounded bg-[var(--c-surface2)] border border-[var(--c-border)] text-[var(--c-muted)] hover:text-[var(--c-text)] hover:border-[var(--c-accent)]"
+      >
+        {copied ? 'Skopiowano!' : 'Kopiuj'}
+      </button>
+      <div ref={ref}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+export function Cmd({ children }) {
+  return <div className="text-[var(--c-text)]">{children}</div>
+}
+
+export function Comment({ children }) {
+  return <div className="text-[var(--c-muted)]">{children}</div>
+}
+
+export function H({ children }) {
+  return <span className="text-[var(--c-green)]">{children}</span>
+}
+
+export function V({ children }) {
+  return <span className="text-[var(--c-yellow)]">{children}</span>
+}
+
+export function F({ children }) {
+  return <span className="text-[var(--c-orange)]">{children}</span>
+}
