@@ -4,10 +4,25 @@ const colors = {
   orange: { text: 'var(--c-orange)', border: 'rgba(255,107,53,0.15)' },
   purple: { text: 'var(--c-purple)', border: 'rgba(199,125,255,0.15)' },
   yellow: { text: 'var(--c-yellow)', border: 'rgba(255,190,11,0.15)' },
+};
+
+export type CodeTagVariant =
+  | 'default'
+  | 'green'
+  | 'orange'
+  | 'purple'
+  | 'yellow';
+
+interface CodeTagProps {
+  variant?: CodeTagVariant;
+  children: React.ReactNode;
 }
 
-export default function CodeTag({ variant = 'default', children }) {
-  const c = colors[variant]
+export default function CodeTag({
+  variant = 'default',
+  children,
+}: CodeTagProps) {
+  const c = colors[variant];
   return (
     <code
       className="font-mono bg-[var(--c-dim)] px-1.5 py-0.5 rounded text-xs whitespace-nowrap border"
@@ -15,5 +30,5 @@ export default function CodeTag({ variant = 'default', children }) {
     >
       {children}
     </code>
-  )
+  );
 }

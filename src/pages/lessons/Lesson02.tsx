@@ -496,7 +496,10 @@ export default function Lesson02() {
         VMware · <b>Dual boot</b> · <b>Cloud VM</b> (AWS, Azure, DigitalOcean)
       </p>
 
-      <LessonNav prev={{ to: '/lessons/01', label: '01 — Intro DevOps' }} />
+      <LessonNav
+        prev={{ to: '/lessons/01', label: '01 — Intro DevOps' }}
+        next={{ to: '/lessons/03', label: '03 — Docker w praktyce' }}
+      />
     </div>
   );
 }
