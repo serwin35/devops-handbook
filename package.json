@@ -1,5 +1,5 @@
 {
-  "name": "devops-hub",
+  "name": "devops-handbook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -36,10 +36,5 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
       "prettier --write"
     ]
-  },
-    "husky": {
-        "hooks": {
-        "pre-commit": "lint-staged"
-        }
-    }
+  }
 }
