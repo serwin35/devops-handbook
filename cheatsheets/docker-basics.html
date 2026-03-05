@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docker Basics — Cheatsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">&larr; DevOps Hub</a>
+  <div class="topnav-links">
+    <a href="../lessons/01-intro-devops.html">Lekcja 01</a>
+    <a href="git-commands.html">Git</a>
+    <a href="linux-permissions.html">Permissions</a>
+  </div>
+</nav>
+
+<h1 style="color:var(--accent)">Docker Basics</h1>
+<p class="subtitle">Kontenery &middot; obrazy &middot; wolumeny &middot; sieci &middot; Dockerfile &middot; compose</p>
+
+<div class="grid">
+
+  <!-- === KONCEPCJA === -->
+  <div class="card full">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Docker &mdash; jak to dziala?</span>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px">
+        <div class="concept" style="border-left:3px solid var(--accent)">
+          <div class="concept-title">Image (Obraz)</div>
+          <div class="concept-text">Szablon tylko-do-odczytu. Zawiera OS, zaleznosci, kod aplikacji. Budowany z Dockerfile.</div>
+        </div>
+        <div class="concept" style="border-left:3px solid var(--accent3)">
+          <div class="concept-title" style="color:var(--accent3)">Container (Kontener)</div>
+          <div class="concept-text">Uruchomiona instancja obrazu. Izolowany proces z wlasnym FS, siecia, PID. Lekki i efemeryczny.</div>
+        </div>
+        <div class="concept" style="border-left:3px solid var(--accent4)">
+          <div class="concept-title" style="color:var(--accent4)">Volume (Wolumin)</div>
+          <div class="concept-text">Trwale dane poza kontenerem. Przezywa restart i usuwanie kontenerow.</div>
+        </div>
+        <div class="concept" style="border-left:3px solid var(--accent5)">
+          <div class="concept-title" style="color:var(--accent5)">Network (Siec)</div>
+          <div class="concept-text">Kontenery komunikuja sie przez wirtualne sieci. Domyslnie bridge, mozna tworzyc wlasne.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === KONTENERY === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">Kontenery &mdash; uruchamianie</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block green">
+        <div class="ex-comment"># Uruchom kontener</div>
+        <div class="ex-cmd">docker <span class="h">run</span> <span class="v">nginx</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Interaktywny shell w kontenerze</div>
+        <div class="ex-cmd">docker run <span class="h">-it</span> <span class="v">ubuntu</span> <span class="f">/bin/bash</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># W tle + port mapping + nazwa</div>
+        <div class="ex-cmd">docker run <span class="h">-d</span> <span class="v">-p 8080:80</span> <span class="f">--name moj-nginx</span> nginx</div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Ze zmiennymi srodowiskowymi</div>
+        <div class="ex-cmd">docker run <span class="h">-e</span> <span class="v">MYSQL_ROOT_PASSWORD=secret</span> mysql</div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Z woluminem</div>
+        <div class="ex-cmd">docker run <span class="h">-v</span> <span class="v">./dane:/app/data</span> myapp</div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code class="green">-d</code><div class="desc">detached &mdash; w tle</div></div>
+      <div class="flag-row"><code class="green">-it</code><div class="desc">interaktywny terminal</div></div>
+      <div class="flag-row"><code class="green">-p 8080:80</code><div class="desc">port hosta:port kontenera</div></div>
+      <div class="flag-row"><code class="green">--name</code><div class="desc">nadaj nazwe kontenerowi</div></div>
+      <div class="flag-row"><code class="green">-e KEY=VAL</code><div class="desc">zmienna srodowiskowa</div></div>
+      <div class="flag-row"><code class="green">-v src:dst</code><div class="desc">bind mount / wolumin</div></div>
+      <div class="flag-row"><code class="green">--rm</code><div class="desc">usun kontener po zakonczeniu</div></div>
+      <div class="flag-row"><code class="green">--restart always</code><div class="desc">auto-restart po crashu/reboot</div></div>
+    </div>
+  </div>
+
+  <!-- === ZARZADZANIE KONTENERAMI === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Zarzadzanie kontenerami</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block">
+        <div class="ex-comment"># Lista uruchomionych</div>
+        <div class="ex-cmd">docker <span class="h">ps</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Lista WSZYSTKICH (tez zatrzymanych)</div>
+        <div class="ex-cmd">docker ps <span class="h">-a</span></div>
+      </div>
+      <div class="example-block yellow">
+        <div class="ex-comment"># Zatrzymaj / uruchom / restart</div>
+        <div class="ex-cmd">docker <span class="h">stop</span> <span class="v">moj-nginx</span></div>
+        <div class="ex-cmd">docker <span class="h">start</span> <span class="v">moj-nginx</span></div>
+        <div class="ex-cmd">docker <span class="h">restart</span> <span class="v">moj-nginx</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Usun kontener</div>
+        <div class="ex-cmd">docker <span class="h">rm</span> <span class="v">moj-nginx</span></div>
+        <div class="ex-cmd">docker rm <span class="h">-f</span> moj-nginx <span class="ex-comment"># force (dzialajacy)</span></div>
+      </div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-comment"># Logi kontenera</div>
+        <div class="ex-cmd">docker <span class="h">logs</span> <span class="v">moj-nginx</span></div>
+        <div class="ex-cmd">docker logs <span class="h">-f</span> moj-nginx <span class="ex-comment"># follow (na zywo)</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Wejdz do dzialajacego kontenera</div>
+        <div class="ex-cmd">docker <span class="h">exec -it</span> <span class="v">moj-nginx</span> <span class="f">/bin/bash</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Statystyki zuzycia zasobow</div>
+        <div class="ex-cmd">docker <span class="h">stats</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Szczegoly kontenera (IP, mounts, env...)</div>
+        <div class="ex-cmd">docker <span class="h">inspect</span> <span class="v">moj-nginx</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === OBRAZY === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">Obrazy (Images)</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block purple">
+        <div class="ex-comment"># Pobierz obraz z Docker Hub</div>
+        <div class="ex-cmd">docker <span class="h">pull</span> <span class="v">nginx:alpine</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Lista lokalnych obrazow</div>
+        <div class="ex-cmd">docker <span class="h">images</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Zbuduj obraz z Dockerfile</div>
+        <div class="ex-cmd">docker <span class="h">build</span> <span class="v">-t myapp:1.0</span> <span class="f">.</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Tagowanie obrazu</div>
+        <div class="ex-cmd">docker <span class="h">tag</span> <span class="v">myapp:1.0</span> <span class="f">user/myapp:latest</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Wypchnij na Docker Hub</div>
+        <div class="ex-cmd">docker <span class="h">push</span> <span class="v">user/myapp:latest</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Usun obraz</div>
+        <div class="ex-cmd">docker <span class="h">rmi</span> <span class="v">nginx:alpine</span></div>
+      </div>
+      <hr class="divider">
+      <div class="infobox">
+        <div class="concept-text"><code class="purple">nginx:alpine</code> &mdash; <b>nazwa:tag</b>. Brak tagu = <code>:latest</code>. Alpine = minimalna wersja (~5MB).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === DOCKERFILE === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Dockerfile</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Przepis na budowanie obrazu &mdash; warstwa po warstwie.</div>
+      <div class="example-block yellow">
+        <div class="ex-comment"># Przykladowy Dockerfile</div>
+        <div class="ex-cmd"><span class="h">FROM</span> <span class="v">node:20-alpine</span></div>
+        <div class="ex-cmd"><span class="h">WORKDIR</span> <span class="v">/app</span></div>
+        <div class="ex-cmd"><span class="h">COPY</span> package*.json <span class="v">./</span></div>
+        <div class="ex-cmd"><span class="h">RUN</span> npm ci --production</div>
+        <div class="ex-cmd"><span class="h">COPY</span> . <span class="v">.</span></div>
+        <div class="ex-cmd"><span class="h">EXPOSE</span> <span class="v">3000</span></div>
+        <div class="ex-cmd"><span class="h">CMD</span> [<span class="v">"node"</span>, <span class="v">"server.js"</span>]</div>
+      </div>
+      <hr class="divider">
+      <div class="row"><code class="yellow">FROM</code><div class="desc">Obraz bazowy &mdash; zawsze pierwsza instrukcja</div></div>
+      <div class="row"><code class="yellow">WORKDIR</code><div class="desc">Katalog roboczy w kontenerze</div></div>
+      <div class="row"><code class="yellow">COPY</code><div class="desc">Kopiuj pliki z hosta do obrazu</div></div>
+      <div class="row"><code class="yellow">RUN</code><div class="desc">Wykonaj komende podczas buildu</div></div>
+      <div class="row"><code class="yellow">EXPOSE</code><div class="desc">Dokumentuj port (nie otwiera go!)</div></div>
+      <div class="row"><code class="yellow">CMD</code><div class="desc">Domyslna komenda przy starcie kontenera</div></div>
+      <div class="row"><code class="yellow">ENV</code><div class="desc">Zmienna srodowiskowa</div></div>
+      <div class="row"><code class="yellow">ARG</code><div class="desc">Argument build-time (nie widoczny w runtime)</div></div>
+      <div class="row"><code class="yellow">ENTRYPOINT</code><div class="desc">Niezmienny punkt wejscia (CMD jako argumenty)</div></div>
+    </div>
+  </div>
+
+  <!-- === VOLUMES === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">Woluminy (Volumes)</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Dane w kontenerze sa efemeryczne &mdash; woluminy je utrwalaja.</div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Utworz named volume</div>
+        <div class="ex-cmd">docker volume <span class="h">create</span> <span class="v">app-data</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># Uzyj named volume</div>
+        <div class="ex-cmd">docker run <span class="h">-v</span> <span class="v">app-data:/app/data</span> myapp</div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Bind mount (katalog hosta)</div>
+        <div class="ex-cmd">docker run <span class="h">-v</span> <span class="v">$(pwd)/src:/app/src</span> myapp</div>
+      </div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-cmd">docker volume <span class="h">ls</span> <span class="ex-comment"># lista woluminow</span></div>
+        <div class="ex-cmd">docker volume <span class="h">inspect</span> app-data</div>
+        <div class="ex-cmd">docker volume <span class="h">rm</span> app-data</div>
+        <div class="ex-cmd">docker volume <span class="h">prune</span> <span class="ex-comment"># usun nieuzywane</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === SIECI === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">Sieci (Networks)</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block orange">
+        <div class="ex-comment"># Utworz siec</div>
+        <div class="ex-cmd">docker network <span class="h">create</span> <span class="v">my-net</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Uruchom kontener w sieci</div>
+        <div class="ex-cmd">docker run <span class="h">--network</span> <span class="v">my-net</span> --name api myapp</div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Kontenery w tej samej sieci widza sie po nazwie</div>
+        <div class="ex-cmd">curl <span class="h">http://api:3000</span> <span class="ex-comment"># z innego kontenera w my-net</span></div>
+      </div>
+      <hr class="divider">
+      <div class="row"><code class="orange">bridge</code><div class="desc">Domyslna &mdash; izolowana siec na hoscie</div></div>
+      <div class="row"><code class="orange">host</code><div class="desc">Kontener uzywa sieci hosta bezposrednio</div></div>
+      <div class="row"><code class="orange">none</code><div class="desc">Brak sieci</div></div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-cmd">docker network <span class="h">ls</span></div>
+        <div class="ex-cmd">docker network <span class="h">inspect</span> my-net</div>
+        <div class="ex-cmd">docker network <span class="h">rm</span> my-net</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === DOCKER COMPOSE === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">Docker Compose</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Wiele kontenerow zdefiniowanych w jednym pliku YAML.</div>
+      <div class="example-block green">
+        <div class="ex-comment"># docker-compose.yml</div>
+        <div class="ex-cmd"><span class="h">services:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;<span class="v">web:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;build: <span class="f">.</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;ports:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="v">"8080:3000"</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;depends_on:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="f">db</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;<span class="v">db:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;image: <span class="f">postgres:16</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;environment:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;POSTGRES_PASSWORD: <span class="v">secret</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;volumes:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="v">db-data:/var/lib/postgresql/data</span></div>
+        <div class="ex-cmd"><span class="h">volumes:</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;<span class="v">db-data:</span></div>
+      </div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-cmd">docker compose <span class="h">up -d</span> <span class="ex-comment"># start w tle</span></div>
+        <div class="ex-cmd">docker compose <span class="h">down</span> <span class="ex-comment"># stop + usun kontenery</span></div>
+        <div class="ex-cmd">docker compose <span class="h">logs -f</span> <span class="ex-comment"># logi na zywo</span></div>
+        <div class="ex-cmd">docker compose <span class="h">ps</span> <span class="ex-comment"># status serwisow</span></div>
+        <div class="ex-cmd">docker compose <span class="h">build</span> <span class="ex-comment"># przebuduj obrazy</span></div>
+        <div class="ex-cmd">docker compose <span class="h">exec</span> web bash <span class="ex-comment"># shell w serwisie</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === SPRZATANIE === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">Sprzatanie</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block orange">
+        <div class="ex-comment"># Usun WSZYSTKO nieuzywane (kontenery, obrazy, sieci, cache)</div>
+        <div class="ex-cmd">docker <span class="h">system prune -a</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Usun zatrzymane kontenery</div>
+        <div class="ex-cmd">docker <span class="h">container prune</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Usun nieuzywane obrazy</div>
+        <div class="ex-cmd">docker <span class="h">image prune -a</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Ile miejsca zajmuje Docker</div>
+        <div class="ex-cmd">docker <span class="h">system df</span></div>
+      </div>
+      <div class="infobox warn">
+        <div class="concept-text"><code class="orange">prune -a</code> usuwa WSZYSTKIE nieuzywane zasoby &mdash; uzywaj ostroznie na produkcji!</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="lesson-nav">
+  <a href="git-commands.html" class="nav-btn">&larr; Git Commands</a>
+  <a href="../index.html" class="nav-btn">Dashboard &rarr;</a>
+</div>
+
+<script src="../js/progress.js"></script>
+</body>
+</html>

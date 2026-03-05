@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01 — Wprowadzenie do DevOps</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">&larr; DevOps Hub</a>
+  <div class="topnav-links">
+    <a href="../cheatsheets/linux-permissions.html">Permissions Cheatsheet</a>
+    <a href="02-linux-fundamentals.html">Nastepna lekcja &rarr;</a>
+  </div>
+</nav>
+
+<h1 style="color:var(--accent)">01 &mdash; Wprowadzenie do DevOps</h1>
+<p class="subtitle">DevOps &middot; konteneryzacja &middot; Kubernetes &middot; Linux &middot; Docker &middot; Git &middot; CI/CD</p>
+
+<div class="grid">
+
+  <!-- === CO TO DEVOPS === -->
+  <div class="card full">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Czym jest DevOps?</span>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">
+        <div class="concept">
+          <div class="concept-title">Development + Operations</div>
+          <div class="concept-text">DevOps laczy zespoly programistyczne (Dev) i operacyjne (Ops) &mdash; likwiduje bariery miedzy pisaniem kodu a jego wdrazaniem na produkcje.</div>
+        </div>
+        <div class="concept">
+          <div class="concept-title">Infrastructure as Code (IaC)</div>
+          <div class="concept-text">Cala infrastruktura zarzadzana jest kodem &mdash; mozna ja wersjonowac, testowac i automatycznie odtwarzac. Narzedzia: Terraform, Ansible, Pulumi.</div>
+        </div>
+        <div class="concept">
+          <div class="concept-title">CI/CD Pipeline</div>
+          <div class="concept-text">Continuous Integration / Continuous Delivery &mdash; automatyczne budowanie, testowanie i wdrazanie kodu. Zmniejsza failure rate po deployach.</div>
+        </div>
+        <div class="concept">
+          <div class="concept-title">Mikrouslugi</div>
+          <div class="concept-text">Zamiast jednej wielkiej aplikacji (monolit) &mdash; wiele malych, niezaleznych serwisow komunikujacych sie przez API.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === WIRTUALIZACJA vs KONTENERYZACJA === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">Wirtualizacja vs Konteneryzacja</span>
+    </div>
+    <div class="card-body">
+      <div class="concept" style="border-left:3px solid var(--accent4)">
+        <div class="concept-title" style="color:var(--accent4)">Maszyna wirtualna (VM)</div>
+        <div class="concept-text">
+          Pelna kopia systemu operacyjnego na hypervisorze<br>
+          Ciezka (GB), wolny start, pelna izolacja<br>
+          Narzedzia: VMware, VirtualBox, Hyper-V
+        </div>
+      </div>
+      <div class="concept" style="border-left:3px solid var(--accent3)">
+        <div class="concept-title" style="color:var(--accent3)">Kontener (Docker)</div>
+        <div class="concept-text">
+          Wspoldzieli jadro hosta, izoluje procesy<br>
+          Lekki (MB), start w sekundach, mniej overhead<br>
+          Narzedzia: Docker, Podman, containerd
+        </div>
+      </div>
+      <div class="infobox" style="margin-top:10px">
+        <div class="concept-text">VM = izolacja na poziomie <b>hardware</b><br>Kontener = izolacja na poziomie <b>procesu</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === KUBERNETES === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Kubernetes (K8s) &mdash; orkiestracja</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Zarzadza klastrem kontenerow &mdash; automatyczny deployment, skalowanie, restart, load balancing.</div>
+      <div class="row"><code class="yellow">Pod</code><div class="desc">Najmniejsza jednostka &mdash; jeden lub wiecej kontenerow</div></div>
+      <div class="row"><code class="yellow">Service</code><div class="desc">Stabilny endpoint sieciowy do grupy Podow</div></div>
+      <div class="row"><code class="yellow">Deployment</code><div class="desc">Deklaratywny opis stanu &mdash; ile replik, jaki obraz</div></div>
+      <div class="row"><code class="yellow">Namespace</code><div class="desc">Logiczna separacja zasobow w klastrze</div></div>
+      <hr class="divider">
+      <div class="note">Certyfikacja: CKA (Certified Kubernetes Administrator)</div>
+    </div>
+  </div>
+
+  <!-- === DOCKER === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Docker &mdash; podstawy</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Enkapsulacja aplikacji w kontenerze &mdash; izolacja procesow od systemu hosta.</div>
+      <div class="example-block">
+        <div class="ex-comment"># Testowe uruchomienie kontenera</div>
+        <div class="ex-cmd">docker <span class="h">run</span> <span class="v">hello-world</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Uruchomienie z interaktywnym shellem</div>
+        <div class="ex-cmd">docker run <span class="h">-it</span> <span class="v">ubuntu</span> <span class="f">/bin/bash</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Lista uruchomionych kontenerow</div>
+        <div class="ex-cmd">docker <span class="h">ps</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Lista WSZYSTKICH kontenerow (takze zatrzymanych)</div>
+        <div class="ex-cmd">docker ps <span class="h">-a</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Zatrzymanie kontenera</div>
+        <div class="ex-cmd">docker <span class="h">stop</span> <span class="v">&lt;container_id&gt;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === GIT === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">Git &mdash; kontrola wersji</span>
+    </div>
+    <div class="card-body">
+      <div class="section-label">Konfiguracja globalna</div>
+      <div class="example-block green">
+        <div class="ex-cmd">git config --global <span class="h">user.name</span> <span class="v">"Twoja Nazwa"</span></div>
+        <div class="ex-cmd">git config --global <span class="h">user.email</span> <span class="v">"email@example.com"</span></div>
+      </div>
+
+      <div class="section-label" style="margin-top:10px">Podstawowe komendy</div>
+      <div class="example-block">
+        <div class="ex-comment"># Inicjalizacja repozytorium</div>
+        <div class="ex-cmd">git <span class="h">init</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Stan repo (skrocony format)</div>
+        <div class="ex-cmd">git <span class="h">status</span> <span class="v">-s</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Dodaj + commit</div>
+        <div class="ex-cmd">git <span class="h">add</span> . && git <span class="h">commit</span> -m <span class="v">"opis zmian"</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Wypchnij na remote</div>
+        <div class="ex-cmd">git <span class="h">push</span> origin main</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === APT === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">APT &mdash; menedzer pakietow</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Menedzer pakietow dla dystrybucji Debian/Ubuntu. Wymaga uprawnien root (sudo).</div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Pobierz najnowsze listy pakietow</div>
+        <div class="ex-cmd">sudo apt <span class="h">update</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># Zainstaluj aktualizacje pakietow</div>
+        <div class="ex-cmd">sudo apt <span class="h">upgrade</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Instalacja pakietu</div>
+        <div class="ex-cmd">sudo apt <span class="h">install</span> <span class="v">nazwa_pakietu</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Usun pakiet (zachowaj konfiguracje)</div>
+        <div class="ex-cmd">sudo apt <span class="h">remove</span> <span class="v">nazwa_pakietu</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># Usun pakiet + konfiguracje</div>
+        <div class="ex-cmd">sudo apt <span class="h">purge</span> <span class="v">nazwa_pakietu</span></div>
+      </div>
+      <div class="example-block green">
+        <div class="ex-comment"># Wyszukaj pakiet</div>
+        <div class="ex-cmd">apt <span class="h">search</span> <span class="v">slowo_kluczowe</span></div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code class="orange">--help</code><div class="desc">Pomoc &mdash; skladnia i opcje kazdej komendy</div></div>
+    </div>
+  </div>
+
+  <!-- === GITHUB ACTIONS === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">GitHub Actions &mdash; CI/CD</span>
+    </div>
+    <div class="card-body">
+      <div class="concept-text" style="margin-bottom:10px">Automatyzacja procesow build/test/deploy bezposrednio w repo na GitHub.</div>
+      <div class="example-block yellow">
+        <div class="ex-comment"># .github/workflows/build.yml</div>
+        <div class="ex-cmd">name: <span class="v">Build</span></div>
+        <div class="ex-cmd">on: <span class="h">push</span></div>
+        <div class="ex-cmd">jobs:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;build:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;runs-on: <span class="v">ubuntu-latest</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;steps:</div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- uses: <span class="h">actions/checkout@v4</span></div>
+        <div class="ex-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- run: <span class="v">echo "Hello CI!"</span></div>
+      </div>
+      <div class="infobox">
+        <div class="concept-text">Workflow uruchamia sie na <b>push</b>, <b>pull_request</b>, <b>schedule</b> lub <b>manual dispatch</b>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === MONITORING === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">Monitoring i logi</span>
+    </div>
+    <div class="card-body">
+      <div class="row"><code class="green">Grafana</code><div class="desc">Dashboardy do wizualizacji metryk &mdash; CPU, RAM, ruch sieciowy, custom metrics</div></div>
+      <div class="row"><code class="green">Prometheus</code><div class="desc">Zbieranie i przechowywanie metryk (time series database)</div></div>
+      <div class="row"><code class="green">ELK Stack</code><div class="desc">Elasticsearch + Logstash + Kibana &mdash; centralne logowanie i analiza</div></div>
+      <hr class="divider">
+      <div class="concept-text">Monitoring srodowisk produkcyjnych to kluczowy element pracy DevOps &mdash; pozwala reagowac na problemy zanim zauwazyja je uzytkownicy.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="lesson-nav">
+  <span class="nav-btn disabled">&larr; Poprzednia</span>
+  <a href="02-linux-fundamentals.html" class="nav-btn">02 &mdash; Systemy operacyjne &rarr;</a>
+</div>
+
+<script src="../js/progress.js"></script>
+</body>
+</html>

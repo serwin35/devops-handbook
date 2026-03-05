@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux Permissions — Cheatsheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* Permissions-specific styles */
+  .octal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .octal-cell {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+  .octal-num { font-size: 20px; font-weight: 800; color: var(--accent5); display: block; line-height: 1; margin-bottom: 4px; }
+  .octal-bits { font-size: 10px; color: var(--muted); display: block; margin-bottom: 2px; }
+  .octal-perm { font-size: 11px; color: var(--text); display: block; }
+
+  .perm-strip {
+    display: flex; align-items: center; gap: 2px;
+    font-size: 14px; font-weight: 700;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
+    padding: 8px 12px; margin-bottom: 10px; letter-spacing: 1px;
+  }
+  .perm-seg { display: flex; gap: 1px; }
+  .perm-char { width: 18px; text-align: center; border-radius: 3px; padding: 1px 0; }
+  .r { color: #ff6b35; } .w { color: #ffbe0b; } .x { color: #7fff6b; } .dash { color: var(--muted); }
+  .perm-type { color: var(--accent4); }
+  .perm-sep { color: var(--border); margin: 0 4px; font-size: 18px; font-weight: 300; }
+  .perm-label { font-size: 10px; color: var(--muted); text-align: center; margin-top: 2px; }
+  .perm-block { display: inline-flex; flex-direction: column; align-items: center; }
+
+  .builder {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px; margin-bottom: 10px;
+  }
+  .builder-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .perm-bits { display: flex; gap: 3px; }
+  .bit {
+    width: 26px; height: 26px; border-radius: 4px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; cursor: pointer; user-select: none;
+    transition: all 0.15s; background: var(--bg); color: var(--muted);
+  }
+  .bit.on-r { background: rgba(255,107,53,0.15); color: #ff6b35; border-color: rgba(255,107,53,0.3); }
+  .bit.on-w { background: rgba(255,190,11,0.15); color: #ffbe0b; border-color: rgba(255,190,11,0.3); }
+  .bit.on-x { background: rgba(127,255,107,0.15); color: #7fff6b; border-color: rgba(127,255,107,0.3); }
+  .bit:hover { border-color: var(--muted); }
+  .builder-result {
+    display: flex; align-items: center; gap: 16px;
+    background: #0d1117; border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; font-size: 13px;
+  }
+  .result-oct { font-size: 24px; font-weight: 800; color: var(--accent5); }
+  .result-sym { color: var(--text); letter-spacing: 2px; font-size: 15px; }
+  .result-cmd { color: var(--muted); font-size: 11px; }
+  .builder-who { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">&larr; DevOps Hub</a>
+  <div class="topnav-links">
+    <a href="../lessons/02-linux-fundamentals.html">Lekcja 02</a>
+    <a href="filesystem-hierarchy.html">Filesystem</a>
+  </div>
+</nav>
+
+<h1>Linux Permissions</h1>
+<p class="subtitle">chmod &middot; chown &middot; users &middot; groups &mdash; kompletny reference board</p>
+
+<div class="grid">
+
+  <!-- === ANATOMIA UPRAWNIEN === -->
+  <div class="card full">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Anatomia uprawnien &mdash; co oznacza kazdy znak</span>
+    </div>
+    <div class="card-body">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        <div>
+          <div class="perm-strip">
+            <div class="perm-block">
+              <div class="perm-seg"><span class="perm-char perm-type">-</span></div>
+              <div class="perm-label">typ</div>
+            </div>
+            <span class="perm-sep">|</span>
+            <div class="perm-block">
+              <div class="perm-seg"><span class="perm-char r">r</span><span class="perm-char w">w</span><span class="perm-char x">x</span></div>
+              <div class="perm-label">owner (u)</div>
+            </div>
+            <span class="perm-sep">|</span>
+            <div class="perm-block">
+              <div class="perm-seg"><span class="perm-char r">r</span><span class="perm-char dash">-</span><span class="perm-char x">x</span></div>
+              <div class="perm-label">group (g)</div>
+            </div>
+            <span class="perm-sep">|</span>
+            <div class="perm-block">
+              <div class="perm-seg"><span class="perm-char r">r</span><span class="perm-char dash">-</span><span class="perm-char dash">-</span></div>
+              <div class="perm-label">other (o)</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:4px">
+            <div><span class="perm-char perm-type" style="font-size:13px">-</span> = plik &nbsp; <span class="perm-char perm-type" style="font-size:13px">d</span> = katalog &nbsp; <span class="perm-char perm-type" style="font-size:13px">l</span> = symlink</div>
+            <div style="color:var(--muted);font-size:11px">powyzej: -rwxr-xr--  = oktalnie <span style="color:var(--accent5)">754</span></div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:220px">
+          <div class="who-row"><span class="who-badge who-u">u</span><span class="badge-label"><b>user / owner</b> &mdash; wlasciciel pliku</span></div>
+          <div class="who-row"><span class="who-badge who-g">g</span><span class="badge-label"><b>group</b> &mdash; grupa przypisana do pliku</span></div>
+          <div class="who-row"><span class="who-badge who-o">o</span><span class="badge-label"><b>others</b> &mdash; wszyscy pozostali</span></div>
+          <div class="who-row"><span class="who-badge who-a">a</span><span class="badge-label"><b>all</b> &mdash; skrot na u+g+o</span></div>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <div class="row"><code class="orange">r</code><div><div class="desc"><b>read</b> &mdash; czytanie pliku / listowanie katalogu</div><div class="note">wartosc oktalna: 4</div></div></div>
+          <div class="row"><code class="yellow">w</code><div><div class="desc"><b>write</b> &mdash; zapis, modyfikacja, usuwanie</div><div class="note">wartosc oktalna: 2</div></div></div>
+          <div class="row"><code class="green">x</code><div><div class="desc"><b>execute</b> &mdash; uruchamianie / cd do katalogu</div><div class="note">wartosc oktalna: 1</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === KALKULATOR === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Interaktywny kalkulator chmod</span>
+    </div>
+    <div class="card-body">
+      <div class="builder">
+        <div class="builder-row">
+          <div>
+            <div class="builder-who" style="color:var(--accent)">Owner (u)</div>
+            <div class="perm-bits">
+              <div class="bit on-r" data-who="u" data-perm="r" onclick="toggleBit(this)">r</div>
+              <div class="bit on-w" data-who="u" data-perm="w" onclick="toggleBit(this)">w</div>
+              <div class="bit" data-who="u" data-perm="x" onclick="toggleBit(this)">x</div>
+            </div>
+          </div>
+        </div>
+        <div class="builder-row">
+          <div>
+            <div class="builder-who" style="color:var(--accent4)">Group (g)</div>
+            <div class="perm-bits">
+              <div class="bit on-r" data-who="g" data-perm="r" onclick="toggleBit(this)">r</div>
+              <div class="bit" data-who="g" data-perm="w" onclick="toggleBit(this)">w</div>
+              <div class="bit" data-who="g" data-perm="x" onclick="toggleBit(this)">x</div>
+            </div>
+          </div>
+        </div>
+        <div class="builder-row">
+          <div>
+            <div class="builder-who" style="color:var(--accent5)">Others (o)</div>
+            <div class="perm-bits">
+              <div class="bit on-r" data-who="o" data-perm="r" onclick="toggleBit(this)">r</div>
+              <div class="bit" data-who="o" data-perm="w" onclick="toggleBit(this)">w</div>
+              <div class="bit" data-who="o" data-perm="x" onclick="toggleBit(this)">x</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="builder-result" id="result">
+        <span class="result-oct" id="res-oct">644</span>
+        <span class="result-sym" id="res-sym">rw-r--r--</span>
+        <span class="result-cmd" id="res-cmd">chmod 644 plik</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- === OCTAL TABLE === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Tabela oktalna</span>
+    </div>
+    <div class="card-body">
+      <div class="octal-grid">
+        <div class="octal-cell"><span class="octal-num">0</span><span class="octal-bits">000</span><span class="octal-perm">---</span></div>
+        <div class="octal-cell"><span class="octal-num">1</span><span class="octal-bits">001</span><span class="octal-perm">--x</span></div>
+        <div class="octal-cell"><span class="octal-num">2</span><span class="octal-bits">010</span><span class="octal-perm">-w-</span></div>
+        <div class="octal-cell"><span class="octal-num">3</span><span class="octal-bits">011</span><span class="octal-perm">-wx</span></div>
+        <div class="octal-cell"><span class="octal-num">4</span><span class="octal-bits">100</span><span class="octal-perm">r--</span></div>
+        <div class="octal-cell"><span class="octal-num">5</span><span class="octal-bits">101</span><span class="octal-perm">r-x</span></div>
+        <div class="octal-cell"><span class="octal-num">6</span><span class="octal-bits">110</span><span class="octal-perm">rw-</span></div>
+        <div class="octal-cell"><span class="octal-num" style="color:var(--accent3)">7</span><span class="octal-bits">111</span><span class="octal-perm" style="color:var(--accent3)">rwx</span></div>
+      </div>
+      <hr class="divider">
+      <div class="row"><code class="yellow">644</code><div class="desc">rw-r--r-- typowy plik</div></div>
+      <div class="row"><code class="yellow">755</code><div class="desc">rwxr-xr-x typowy katalog / skrypt</div></div>
+      <div class="row"><code class="yellow">600</code><div class="desc">rw------- prywatny klucz SSH</div></div>
+      <div class="row"><code class="yellow">777</code><div class="desc">rwxrwxrwx <span class="tag tag-danger">NIEBEZPIECZNE</span></div></div>
+      <div class="row"><code class="yellow">400</code><div class="desc">r-------- tylko odczyt, np. ~/.ssh/id_rsa</div></div>
+      <div class="row"><code class="yellow">664</code><div class="desc">rw-rw-r-- pliki grup deweloperskich</div></div>
+    </div>
+  </div>
+
+  <!-- === CHMOD SYMBOLICZNY === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">chmod &mdash; tryb symboliczny</span>
+    </div>
+    <div class="card-body">
+      <div style="margin-bottom:10px;color:var(--muted);font-size:11px">Skladnia: chmod [kto][operator][uprawnienie] plik</div>
+      <div style="margin-bottom:8px">
+        <div style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Operatory</div>
+        <div class="flag-row"><code class="green">+</code><div class="desc"><span class="tag tag-add">dodaj</span> dodaje uprawnienie bez ruszania reszty</div></div>
+        <div class="flag-row"><code class="orange">-</code><div class="desc"><span class="tag tag-del">usun</span> usuwa uprawnienie bez ruszania reszty</div></div>
+        <div class="flag-row"><code>=</code><div class="desc"><span class="tag tag-set">ustaw</span> zastepuje uprawnienia DOKLADNIE podanymi</div></div>
+      </div>
+      <hr class="divider">
+      <div class="example-block green">
+        <div class="ex-comment"># dodaj execute dla wlasciciela</div>
+        <div class="ex-cmd">chmod <span class="h">u+x</span> skrypt.sh</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># usun write dla grupy i innych</div>
+        <div class="ex-cmd">chmod <span class="h">go-w</span> plik.txt</div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># ustaw dokladnie rw-r--r--</div>
+        <div class="ex-cmd">chmod <span class="h">u=rw,g=r,o=r</span> plik.txt</div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># dodaj execute dla wszystkich (a = u+g+o)</div>
+        <div class="ex-cmd">chmod <span class="h">a+x</span> skrypt.sh</div>
+      </div>
+      <div class="example-block yellow">
+        <div class="ex-comment"># rekurencyjnie na caly katalog</div>
+        <div class="ex-cmd">chmod <span class="h">-R</span> <span class="v">755</span> <span class="f">/var/www/html</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === CHOWN === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">chown &mdash; zmiana wlasciciela</span>
+    </div>
+    <div class="card-body">
+      <div style="margin-bottom:8px;color:var(--muted);font-size:11px">Skladnia: chown [opcje] uzytkownik[:grupa] plik/katalog</div>
+      <div class="example-block purple">
+        <div class="ex-comment"># zmien wlasciciela na www-data</div>
+        <div class="ex-cmd">chown <span class="h">www-data</span> plik.php</div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># zmien wlasciciela i grupe</div>
+        <div class="ex-cmd">chown <span class="h">serwin</span><span class="v">:developers</span> projekt/</div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># zmien tylko grupe</div>
+        <div class="ex-cmd">chown <span class="v">:docker</span> /var/run/docker.sock</div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># rekurencyjnie</div>
+        <div class="ex-cmd">chown <span class="h">-R</span> <span class="v">serwin:serwin</span> <span class="f">~/projekty/</span></div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code class="purple">-R</code><div class="desc">rekurencyjnie &mdash; cale drzewo katalogow</div></div>
+      <div class="flag-row"><code class="purple">-v</code><div class="desc">verbose &mdash; wyswietla kazda zmiane</div></div>
+      <div class="flag-row"><code class="purple">--reference=plik</code><div class="desc">kopiuje wlasnosc z innego pliku</div></div>
+    </div>
+  </div>
+
+  <!-- === CHGRP === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">chgrp &mdash; zmiana grupy</span>
+    </div>
+    <div class="card-body">
+      <div style="margin-bottom:8px;color:var(--muted);font-size:11px">Dedykowane narzedzie do zmiany grupy pliku/katalogu</div>
+      <div class="example-block orange">
+        <div class="ex-comment"># zmien grupe pliku</div>
+        <div class="ex-cmd">chgrp <span class="h">docker</span> /var/run/docker.sock</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># rekurencyjnie</div>
+        <div class="ex-cmd">chgrp <span class="h">-R</span> <span class="v">www-data</span> <span class="f">/var/www/</span></div>
+      </div>
+      <hr class="divider">
+      <div style="color:var(--muted);font-size:11px;margin-bottom:6px">chgrp to skrot dla chown :grupa</div>
+      <div class="infobox">
+        <div style="color:var(--accent);font-size:11px;margin-bottom:4px">Sprawdzenie uprawnien</div>
+        <div class="ex-cmd"><span class="h">ls -la</span> plik.txt</div>
+        <div class="ex-cmd"><span class="h">stat</span> plik.txt</div>
+        <div class="ex-cmd"><span class="h">getfacl</span> plik.txt <span class="ex-comment"># rozszerzone ACL</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === USER MANAGEMENT === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">useradd / adduser</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block">
+        <div class="ex-comment"># adduser = interaktywny</div>
+        <div class="ex-cmd">adduser <span class="h">serwin</span></div>
+      </div>
+      <div class="example-block">
+        <div class="ex-comment"># useradd = niskopoziomowy</div>
+        <div class="ex-cmd">useradd <span class="h">-m</span> <span class="v">-s /bin/bash</span> <span class="f">-G sudo,docker</span> serwin</div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code>-m</code><div class="desc">utworz katalog domowy</div></div>
+      <div class="flag-row"><code>-s /bin/bash</code><div class="desc">shell logowania</div></div>
+      <div class="flag-row"><code>-G grp1,grp2</code><div class="desc">dodatkowe grupy</div></div>
+      <div class="flag-row"><code>-g grupa</code><div class="desc">glowna grupa (primary)</div></div>
+      <div class="flag-row"><code>-u 1500</code><div class="desc">reczne UID</div></div>
+      <div class="flag-row"><code>-d /custom/home</code><div class="desc">niestandardowy home</div></div>
+      <div class="flag-row"><code>-r</code><div class="desc">system account</div></div>
+    </div>
+  </div>
+
+  <!-- === USERMOD === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">usermod &mdash; modyfikacja usera</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block green">
+        <div class="ex-comment"># dodaj do grupy (zachowaj stare)</div>
+        <div class="ex-cmd">usermod <span class="h">-aG</span> <span class="v">docker</span> <span class="f">serwin</span></div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># UWAGA: -G bez -a ZASTEPUJE grupy!</div>
+        <div class="ex-cmd">usermod <span class="h">-G</span> docker serwin <span class="ex-comment"># niebezpieczne</span></div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code class="green">-aG grp</code><div class="desc"><span class="tag tag-add">dodaj</span> ZAWSZE uzywaj -a przy -G</div></div>
+      <div class="flag-row"><code>-l nowa</code><div class="desc">zmien login</div></div>
+      <div class="flag-row"><code>-d /nowy -m</code><div class="desc">zmien i przenies home</div></div>
+      <div class="flag-row"><code>-s /bin/zsh</code><div class="desc">zmien shell</div></div>
+      <div class="flag-row"><code>-L</code><div class="desc">zablokuj konto</div></div>
+      <div class="flag-row"><code>-U</code><div class="desc">odblokuj konto</div></div>
+    </div>
+  </div>
+
+  <!-- === GROUPS === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent4)"></div>
+      <span class="card-title" style="color:var(--accent4)">groupadd / groupmod / groupdel</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block purple">
+        <div class="ex-comment"># utworz grupe</div>
+        <div class="ex-cmd">groupadd <span class="h">developers</span></div>
+      </div>
+      <div class="example-block purple">
+        <div class="ex-comment"># zmien nazwe grupy</div>
+        <div class="ex-cmd">groupmod <span class="h">-n</span> newname oldname</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># usun grupe</div>
+        <div class="ex-cmd">groupdel <span class="h">developers</span></div>
+      </div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-comment"># usun/dodaj usera z/do grupy</div>
+        <div class="ex-cmd">gpasswd <span class="h">-d</span> <span class="v">serwin</span> <span class="f">docker</span> <span class="ex-comment"># usun</span></div>
+        <div class="ex-cmd">gpasswd <span class="h">-a</span> <span class="v">serwin</span> <span class="f">docker</span> <span class="ex-comment"># dodaj</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === USERDEL / PASSWD / SU === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">userdel &middot; passwd &middot; su &middot; sudo</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block orange">
+        <div class="ex-cmd">userdel <span class="h">serwin</span> <span class="ex-comment"># zachowaj home</span></div>
+        <div class="ex-cmd">userdel <span class="h">-r</span> serwin <span class="ex-comment"># usun z home</span></div>
+      </div>
+      <hr class="divider">
+      <div class="example-block">
+        <div class="ex-cmd">passwd <span class="h">serwin</span> <span class="ex-comment"># zmien haslo</span></div>
+        <div class="ex-cmd">passwd <span class="h">-l</span> serwin <span class="ex-comment"># zablokuj</span></div>
+        <div class="ex-cmd">passwd <span class="h">-e</span> serwin <span class="ex-comment"># wymus zmiane</span></div>
+      </div>
+      <hr class="divider">
+      <div class="flag-row"><code>su - user</code><div class="desc">przelacz na konto usera</div></div>
+      <div class="flag-row"><code>sudo -u user cmd</code><div class="desc">wykonaj jako inny user</div></div>
+      <div class="flag-row"><code>sudo -i</code><div class="desc">interaktywna powloka roota</div></div>
+      <div class="flag-row"><code>sudo -l</code><div class="desc">lista uprawnien sudo</div></div>
+    </div>
+  </div>
+
+  <!-- === DIAGNOSTYKA === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent5)"></div>
+      <span class="card-title" style="color:var(--accent5)">Diagnostyka i podglad</span>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="section-label">Uzytkownicy</div>
+          <div class="flag-row"><code>id</code><div class="desc">uid/gid/grupy</div></div>
+          <div class="flag-row"><code>whoami</code><div class="desc">aktualny user</div></div>
+          <div class="flag-row"><code>who</code><div class="desc">zalogowani</div></div>
+          <div class="flag-row"><code>groups user</code><div class="desc">grupy usera</div></div>
+          <div class="flag-row"><code>cat /etc/passwd</code><div class="desc">lista userow</div></div>
+        </div>
+        <div>
+          <div class="section-label">Grupy i pliki</div>
+          <div class="flag-row"><code>cat /etc/group</code><div class="desc">lista grup</div></div>
+          <div class="flag-row"><code>getent group</code><div class="desc">grupy (+ LDAP)</div></div>
+          <div class="flag-row"><code>ls -la</code><div class="desc">uprawnienia plikow</div></div>
+          <div class="flag-row"><code>stat plik</code><div class="desc">pelne metadane</div></div>
+          <div class="flag-row"><code>find / -user u</code><div class="desc">pliki usera</div></div>
+        </div>
+      </div>
+      <div class="infobox" style="margin-top:8px">
+        <div style="color:var(--accent5);font-size:11px;margin-bottom:6px">Po dodaniu usera do grupy:</div>
+        <div class="ex-cmd">newgrp <span class="h">docker</span> <span class="ex-comment"># aktywuj w biezacej sesji</span></div>
+        <div style="color:var(--muted);font-size:11px;margin-top:4px">&mdash; lub wyloguj/zaloguj sie ponownie</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === SPECIAL BITS === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent3)"></div>
+      <span class="card-title" style="color:var(--accent3)">Specjalne bity &mdash; setuid, setgid, sticky</span>
+    </div>
+    <div class="card-body">
+      <div class="row"><code class="orange">setuid</code><div><div class="desc">Wykonuje plik jako <b>wlasciciel</b>. <code>s</code> w pozycji x ownera.</div></div></div>
+      <div class="example-block orange">
+        <div class="ex-cmd">chmod <span class="h">u+s</span> plik <span class="ex-comment"># lub chmod 4755 plik</span></div>
+      </div>
+      <div class="row"><code class="purple">setgid</code><div><div class="desc">Na katalogu: nowe pliki dziedzicza grupe katalogu. <code>s</code> w pozycji x grupy.</div></div></div>
+      <div class="example-block purple">
+        <div class="ex-cmd">chmod <span class="h">g+s</span> katalog/ <span class="ex-comment"># lub chmod 2755</span></div>
+      </div>
+      <div class="row"><code class="green">sticky</code><div><div class="desc">Tylko wlasciciel/root moze usunac plik. <code>t</code> w pozycji x other. np. <code>/tmp</code></div></div></div>
+      <div class="example-block green">
+        <div class="ex-cmd">chmod <span class="h">+t</span> /shared/ <span class="ex-comment"># lub chmod 1777</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === SUDOERS === -->
+  <div class="card">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent2)"></div>
+      <span class="card-title" style="color:var(--accent2)">sudo i sudoers</span>
+    </div>
+    <div class="card-body">
+      <div class="example-block orange">
+        <div class="ex-comment"># Debian/Ubuntu</div>
+        <div class="ex-cmd">usermod <span class="h">-aG sudo</span> serwin</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># RHEL/CentOS/Fedora</div>
+        <div class="ex-cmd">usermod <span class="h">-aG wheel</span> serwin</div>
+      </div>
+      <hr class="divider">
+      <div style="color:var(--muted);font-size:11px;margin-bottom:6px">Edytuj TYLKO przez: <code>visudo</code></div>
+      <div class="example-block orange">
+        <div class="ex-comment"># pelny sudo</div>
+        <div class="ex-cmd"><span class="h">serwin</span> ALL=(ALL:ALL) ALL</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># sudo bez hasla</div>
+        <div class="ex-cmd"><span class="h">serwin</span> ALL=(ALL) <span class="v">NOPASSWD:</span> ALL</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># tylko wybrane komendy</div>
+        <div class="ex-cmd"><span class="h">serwin</span> ALL=(ALL) /usr/bin/systemctl, /usr/bin/apt</div>
+      </div>
+      <div class="example-block orange">
+        <div class="ex-comment"># dla grupy (znak %)</div>
+        <div class="ex-cmd"><span class="h">%developers</span> ALL=(ALL) NOPASSWD: /usr/bin/docker</div>
+      </div>
+      <div class="infobox">
+        <div style="color:var(--accent);font-size:11px;margin-bottom:4px">Pliki drop-in (bezpieczniejsze)</div>
+        <div class="ex-cmd">visudo <span class="h">-f</span> /etc/sudoers.d/serwin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === WZORCE === -->
+  <div class="card full">
+    <div class="card-header">
+      <div class="dot" style="background:var(--accent)"></div>
+      <span class="card-title">Wzorce &mdash; realne scenariusze</span>
+    </div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px">
+        <div>
+          <div class="section-label">Serwer WWW</div>
+          <div class="example-block">
+            <div class="ex-cmd">chown -R www-data:www-data /var/www/html</div>
+            <div class="ex-cmd">chmod -R 755 /var/www/html</div>
+            <div class="ex-cmd">usermod -aG www-data serwin</div>
+            <div class="ex-cmd">chmod g+s /var/www/html</div>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">SSH Keys</div>
+          <div class="example-block green">
+            <div class="ex-cmd">chmod 700 ~/.ssh</div>
+            <div class="ex-cmd">chmod 600 ~/.ssh/id_rsa</div>
+            <div class="ex-cmd">chmod 644 ~/.ssh/id_rsa.pub</div>
+            <div class="ex-cmd">chmod 600 ~/.ssh/authorized_keys</div>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Docker bez sudo</div>
+          <div class="example-block purple">
+            <div class="ex-cmd">usermod -aG docker serwin</div>
+            <div class="ex-cmd">newgrp docker</div>
+            <div class="ex-cmd">docker ps</div>
+          </div>
+        </div>
+        <div>
+          <div class="section-label">Katalog wspoldzielony</div>
+          <div class="example-block yellow">
+            <div class="ex-cmd">mkdir /shared/team</div>
+            <div class="ex-cmd">chown root:developers /shared/team</div>
+            <div class="ex-cmd">chmod 2770 /shared/team</div>
+            <div class="ex-comment"># 2=setgid, 7=rwx owner, 7=rwx group, 0=--- other</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="lesson-nav">
+  <a href="../index.html" class="nav-btn">&larr; Dashboard</a>
+  <a href="filesystem-hierarchy.html" class="nav-btn">Filesystem Hierarchy &rarr;</a>
+</div>
+
+<script>
+function calcPermissions() {
+  const bits = document.querySelectorAll('.bit');
+  let u=0, g=0, o=0;
+  bits.forEach(b => {
+    if (!b.className.includes('on-')) return;
+    const who = b.dataset.who;
+    const p = b.dataset.perm;
+    const val = p==='r'?4:p==='w'?2:1;
+    if (who==='u') u+=val;
+    else if (who==='g') g+=val;
+    else o+=val;
+  });
+  function toSym(n) {
+    return (n&4?'r':'-')+(n&2?'w':'-')+(n&1?'x':'-');
+  }
+  const oct = `${u}${g}${o}`;
+  const sym = toSym(u)+toSym(g)+toSym(o);
+  document.getElementById('res-oct').textContent = oct;
+  document.getElementById('res-sym').textContent = sym;
+  document.getElementById('res-cmd').textContent = `chmod ${oct} plik`;
+}
+
+function toggleBit(el) {
+  const p = el.dataset.perm;
+  const cls = `on-${p}`;
+  el.classList.toggle(cls);
+  calcPermissions();
+}
+
+calcPermissions();
+</script>
+<script src="../js/progress.js"></script>
+</body>
+</html>
