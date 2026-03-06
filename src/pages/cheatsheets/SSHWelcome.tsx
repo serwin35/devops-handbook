@@ -145,7 +145,7 @@ export default function SSHWelcome() {
             <Cmd># Kolory</Cmd>
             <Cmd>GREEN='\033[0;32m'</Cmd>
             <Cmd>NC='\033[0m'</Cmd>
-            <Cmd></Cmd>
+            <Cmd> </Cmd>
             <Cmd>
               echo -e "{' ${GREEN} '}--- SYSTEM STATUS ---{' ${NC} '}"
             </Cmd>
@@ -228,14 +228,14 @@ export default function SSHWelcome() {
               </p>
               <ExampleBlock variant="default">
                 <Cmd>#!/bin/bash</Cmd>
-                <Cmd></Cmd>
+                <Cmd> </Cmd>
                 <Comment># Kolory ANSI</Comment>
                 <Cmd>CYAN='\033[0;36m'</Cmd>
                 <Cmd>GOLD='\033[0;33m'</Cmd>
                 <Cmd>
                   NC='\033[0m' <Comment># No Color</Comment>
                 </Cmd>
-                <Cmd></Cmd>
+                <Cmd> </Cmd>
                 <Cmd>echo -e "{'${CYAN}'}"</Cmd>
                 <Cmd>cat {'<<'} "EOF"</Cmd>
                 <Cmd>
@@ -266,7 +266,7 @@ export default function SSHWelcome() {
                 <Cmd>{'                       /_/'}</Cmd>
                 <Cmd>EOF</Cmd>
                 <Cmd>echo -e "{'${NC}'}"</Cmd>
-                <Cmd></Cmd>
+                <Cmd> </Cmd>
                 <Comment># Dodatkowe info w stylu dashboardu</Comment>
                 <Cmd>
                   echo -e "{'${GOLD}'}--- SYSTEM STATUS ---{'${NC}'}"
