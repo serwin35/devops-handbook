@@ -12,6 +12,8 @@ const breadcrumbNames: Record<string, string> = {
   git: 'Git Commands',
   networking: 'Networking',
   systemd: 'Systemd',
+  'ssh-welcome': 'SSH Welcome',
+  'linux-basics': 'Linux Basics',
   search: 'Szukaj',
 };
 
@@ -36,13 +38,13 @@ export default function Layout() {
             Szukaj
           </Link>
           <Link
-            to="/lessons/01"
+            to="/lessons"
             className={`hover:text-[var(--c-accent)] transition-colors ${pathname.startsWith('/lessons') ? 'text-[var(--c-accent)]' : 'text-[var(--c-muted)]'}`}
           >
             Lekcje
           </Link>
           <Link
-            to="/cheatsheets/permissions"
+            to="/cheatsheets"
             className={`hover:text-[var(--c-accent)] transition-colors ${pathname.startsWith('/cheatsheets') ? 'text-[var(--c-accent)]' : 'text-[var(--c-muted)]'}`}
           >
             Cheatsheets

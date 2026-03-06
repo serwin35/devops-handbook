@@ -16,15 +16,184 @@ import Concept from '../../components/Concept';
 import LessonNav from '../../components/LessonNav';
 
 export default function Filesystem() {
+  usePageTitle('Filesystem Hierarchy');
   return (
     <div>
       <PageHeader
         title="Filesystem Hierarchy"
-        subtitle="Struktura katalogow Linux — FHS"
+        subtitle="Struktura katalogow Linux — FHS, operacje na plikach i katalogach"
         color="var(--c-yellow)"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <Card title="Listowanie plikow (ls)" color="var(--c-accent)">
+          <ExampleBlock>
+            <Comment># Podstawowe listowanie</Comment>
+            <Cmd>ls</Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Szczegolowa lista z uprawnieniami</Comment>
+            <Cmd>
+              ls <H>-l</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Pokaz ukryte pliki</Comment>
+            <Cmd>
+              ls <H>-a</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Szczegoly + ukryte + human-readable</Comment>
+            <Cmd>
+              ls <H>-lah</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Sortuj po dacie modyfikacji</Comment>
+            <Cmd>
+              ls <H>-lt</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Rekurencyjne listowanie</Comment>
+            <Cmd>
+              ls <H>-R</H> <F>/etc/nginx/</F>
+            </Cmd>
+          </ExampleBlock>
+        </Card>
+
+        <Card
+          title="Czytanie plikow (cat / head / tail)"
+          color="var(--c-purple)"
+        >
+          <ExampleBlock variant="purple">
+            <Comment># Wyswietl zawartosc pliku</Comment>
+            <Cmd>
+              cat <V>/etc/hostname</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Z numerami linii</Comment>
+            <Cmd>
+              cat <H>-n</H> <V>/etc/passwd</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Polacz kilka plikow</Comment>
+            <Cmd>
+              cat <V>plik1.txt plik2.txt</V> {'>'} <F>wynik.txt</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <ExampleBlock variant="purple">
+            <Comment># Pierwsze 20 linii</Comment>
+            <Cmd>
+              head <H>-n 20</H> <V>/var/log/syslog</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Ostatnie 50 linii</Comment>
+            <Cmd>
+              tail <H>-n 50</H> <V>/var/log/syslog</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Sledz logi na zywo</Comment>
+            <Cmd>
+              tail <H>-f</H> <V>/var/log/syslog</V>
+            </Cmd>
+          </ExampleBlock>
+        </Card>
+
+        <Card title="Tworzenie katalogow (mkdir)" color="var(--c-yellow)">
+          <ExampleBlock variant="yellow">
+            <Comment># Utworz katalog</Comment>
+            <Cmd>
+              mkdir <V>nowy_katalog</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Utworz zagniezdzone katalogi</Comment>
+            <Cmd>
+              mkdir <H>-p</H> <V>projekt/src/components</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Utworz z konkretnymi uprawnieniami</Comment>
+            <Cmd>
+              mkdir <H>-m 755</H> <V>/var/www/app</V>
+            </Cmd>
+          </ExampleBlock>
+        </Card>
+
+        <Card title="Usuwanie (rm / rmdir)" color="var(--c-orange)">
+          <ExampleBlock variant="orange">
+            <Comment># Usun plik</Comment>
+            <Cmd>
+              rm <V>plik.txt</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Usun z potwierdzeniem</Comment>
+            <Cmd>
+              rm <H>-i</H> <V>wazny_plik.txt</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Usun pusty katalog</Comment>
+            <Cmd>
+              rmdir <V>pusty_katalog</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Usun katalog z zawartoscia</Comment>
+            <Cmd>
+              rm <H>-r</H> <V>katalog/</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Force + recursive (UWAGA!)</Comment>
+            <Cmd>
+              rm <H>-rf</H> <V>katalog/</V>
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox warn>
+            <b>rm -rf</b> jest nieodwracalne! Zawsze sprawdz sciezke przed
+            wykonaniem. Nigdy nie uzywaj na <code>/</code>.
+          </InfoBox>
+        </Card>
+
+        <Card
+          title="Kopiowanie i przenoszenie (cp / mv)"
+          color="var(--c-green)"
+        >
+          <ExampleBlock variant="green">
+            <Comment># Kopiuj plik</Comment>
+            <Cmd>
+              cp <V>plik.txt</V> <F>kopia.txt</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Kopiuj katalog rekurencyjnie</Comment>
+            <Cmd>
+              cp <H>-r</H> <V>katalog/</V> <F>backup/</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Przenies / zmien nazwe</Comment>
+            <Cmd>
+              mv <V>stary.txt</V> <F>nowy.txt</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Przenies do katalogu</Comment>
+            <Cmd>
+              mv <V>plik.txt</V> <F>/home/serwin/backup/</F>
+            </Cmd>
+          </ExampleBlock>
+        </Card>
+
         <Card title="Kluczowe pliki w /etc">
           <Row code="/etc/passwd">
             Lista uzytkownikow — login, UID, GID, shell

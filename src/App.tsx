@@ -14,6 +14,9 @@ const GitCommands = lazy(() => import('./pages/cheatsheets/GitCommands'));
 const Networking = lazy(() => import('./pages/cheatsheets/Networking'));
 const Systemd = lazy(() => import('./pages/cheatsheets/Systemd'));
 const SSHWelcome = lazy(() => import('./pages/cheatsheets/SSHWelcome'));
+const LinuxBasics = lazy(() => import('./pages/cheatsheets/LinuxBasics'));
+const LessonsList = lazy(() => import('./pages/LessonsList'));
+const CheatsheetsList = lazy(() => import('./pages/CheatsheetsList'));
 const Search = lazy(() => import('./pages/Search'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -35,9 +38,12 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Dashboard />} />
+            <Route path="lessons" element={<LessonsList />} />
             <Route path="lessons/01" element={<Lesson01 />} />
             <Route path="lessons/02" element={<Lesson02 />} />
             <Route path="lessons/03" element={<Lesson03 />} />
+            <Route path="cheatsheets" element={<CheatsheetsList />} />
+            <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
             <Route path="cheatsheets/filesystem" element={<Filesystem />} />
             <Route path="cheatsheets/docker" element={<DockerBasics />} />

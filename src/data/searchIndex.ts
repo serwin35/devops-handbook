@@ -1,5 +1,155 @@
 // All searchable commands/concepts for the search page
 export const searchIndex = [
+  // Linux Basics — Navigation
+  {
+    cmd: 'pwd',
+    desc: 'Wyswietl biezacy katalog roboczy',
+    tags: ['basics', 'navigation', 'pwd'],
+    page: '/cheatsheets/linux-basics',
+  },
+  {
+    cmd: 'cd /var/log',
+    desc: 'Przejdz do katalogu',
+    tags: ['basics', 'navigation', 'cd'],
+    page: '/cheatsheets/linux-basics',
+  },
+  {
+    cmd: 'cd ..',
+    desc: 'Przejdz katalog wyzej',
+    tags: ['basics', 'navigation', 'cd'],
+    page: '/cheatsheets/linux-basics',
+  },
+  {
+    cmd: 'cd ~',
+    desc: 'Przejdz do katalogu domowego',
+    tags: ['basics', 'navigation', 'cd', 'home'],
+    page: '/cheatsheets/linux-basics',
+  },
+
+  // Filesystem — ls
+  {
+    cmd: 'ls',
+    desc: 'Listuj pliki w katalogu',
+    tags: ['filesystem', 'ls', 'list'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'ls -l',
+    desc: 'Szczegolowa lista z uprawnieniami',
+    tags: ['filesystem', 'ls', 'list', 'permissions'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'ls -a',
+    desc: 'Pokaz ukryte pliki',
+    tags: ['filesystem', 'ls', 'hidden'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'ls -lah',
+    desc: 'Szczegoly + ukryte + human-readable',
+    tags: ['filesystem', 'ls', 'list'],
+    page: '/cheatsheets/filesystem',
+  },
+
+  // Linux Basics — touch
+  {
+    cmd: 'touch plik.txt',
+    desc: 'Utworz pusty plik',
+    tags: ['basics', 'touch', 'create', 'file'],
+    page: '/cheatsheets/linux-basics',
+  },
+
+  // Filesystem — mkdir
+  {
+    cmd: 'mkdir nowy_katalog',
+    desc: 'Utworz katalog',
+    tags: ['filesystem', 'mkdir', 'create', 'directory'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'mkdir -p projekt/src/components',
+    desc: 'Utworz zagniezdzone katalogi',
+    tags: ['filesystem', 'mkdir', 'recursive', 'directory'],
+    page: '/cheatsheets/filesystem',
+  },
+
+  // Filesystem — rm
+  {
+    cmd: 'rm plik.txt',
+    desc: 'Usun plik',
+    tags: ['filesystem', 'rm', 'remove', 'delete'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'rm -r katalog/',
+    desc: 'Usun katalog z zawartoscia',
+    tags: ['filesystem', 'rm', 'remove', 'recursive'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'rm -rf katalog/',
+    desc: 'Force usun katalog (UWAGA!)',
+    tags: ['filesystem', 'rm', 'remove', 'force', 'danger'],
+    page: '/cheatsheets/filesystem',
+  },
+
+  // Filesystem — cat
+  {
+    cmd: 'cat /etc/hostname',
+    desc: 'Wyswietl zawartosc pliku',
+    tags: ['filesystem', 'cat', 'read', 'file'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'cat -n /etc/passwd',
+    desc: 'Wyswietl plik z numerami linii',
+    tags: ['filesystem', 'cat', 'read', 'lines'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'tail -f /var/log/syslog',
+    desc: 'Sledz logi na zywo',
+    tags: ['filesystem', 'tail', 'logs', 'follow'],
+    page: '/cheatsheets/filesystem',
+  },
+
+  // Linux Basics — nano
+  {
+    cmd: 'nano plik.txt',
+    desc: 'Otworz plik w edytorze nano',
+    tags: ['basics', 'nano', 'editor', 'edit'],
+    page: '/cheatsheets/linux-basics',
+  },
+
+  // Linux Basics — vim
+  {
+    cmd: 'vim plik.txt',
+    desc: 'Otworz plik w edytorze vim',
+    tags: ['basics', 'vim', 'editor', 'edit'],
+    page: '/cheatsheets/linux-basics',
+  },
+
+  // Filesystem — cp, mv
+  {
+    cmd: 'cp plik.txt kopia.txt',
+    desc: 'Kopiuj plik',
+    tags: ['filesystem', 'cp', 'copy'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'cp -r katalog/ backup/',
+    desc: 'Kopiuj katalog rekurencyjnie',
+    tags: ['filesystem', 'cp', 'copy', 'recursive'],
+    page: '/cheatsheets/filesystem',
+  },
+  {
+    cmd: 'mv stary.txt nowy.txt',
+    desc: 'Przenies / zmien nazwe pliku',
+    tags: ['filesystem', 'mv', 'move', 'rename'],
+    page: '/cheatsheets/filesystem',
+  },
+
   // Permissions
   {
     cmd: 'chmod u+x skrypt.sh',
