@@ -34,7 +34,7 @@ export default function ExampleBlock({
 
   return (
     <div
-      className={`relative group bg-[#0d1117] border border-[var(--c-border)] border-l-[3px] ${borderColors[variant]} rounded-r-md px-3 py-2 mb-2 text-xs`}
+      className={`relative group bg-[#0d1117] border border-[var(--c-border)] border-l-[3px] ${borderColors[variant]} rounded-r-md px-3 py-2 mb-2 text-xs whitespace-pre`}
     >
       <button
         onClick={handleCopy}

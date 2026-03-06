@@ -13,6 +13,7 @@ const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
 const GitCommands = lazy(() => import('./pages/cheatsheets/GitCommands'));
 const Networking = lazy(() => import('./pages/cheatsheets/Networking'));
 const Systemd = lazy(() => import('./pages/cheatsheets/Systemd'));
+const SSHWelcome = lazy(() => import('./pages/cheatsheets/SSHWelcome'));
 const Search = lazy(() => import('./pages/Search'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="cheatsheets/git" element={<GitCommands />} />
             <Route path="cheatsheets/networking" element={<Networking />} />
             <Route path="cheatsheets/systemd" element={<Systemd />} />
+            <Route path="cheatsheets/ssh-welcome" element={<SSHWelcome />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>
