@@ -81,7 +81,7 @@ export default function Dashboard() {
   return (
     <div>
       <PageHeader
-        title="DevOps Learning Hub"
+        title="DevOps Learning Handbook"
         subtitle="Kurs DevOps — interaktywne notatki, cheatsheets i reference boards"
       />
 

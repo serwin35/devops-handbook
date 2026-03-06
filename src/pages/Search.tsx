@@ -36,6 +36,9 @@ export default function Search() {
     '/cheatsheets/git': 'Git',
     '/lessons/01': 'Lekcja 01',
     '/lessons/02': 'Lekcja 02',
+    '/cheatsheets/ssh-welcome': 'SSH Welcome',
+    '/cheatsheets/systemd': 'Systemd',
+    '/cheatsheets/networking': 'Networking',
   };
 
   return (
@@ -116,6 +119,7 @@ export default function Search() {
               'apt',
               'htop',
               'netplan',
+              'ssh',
             ].map((tag) => (
               <button
                 key={tag}
