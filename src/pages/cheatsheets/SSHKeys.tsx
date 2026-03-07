@@ -49,9 +49,7 @@ export default function SSHKeys() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <Row code="-t" codeVariant="accent">
-            typ klucza (ed25519, rsa, ecdsa)
-          </Row>
+          <Row code="-t">typ klucza (ed25519, rsa, ecdsa)</Row>
           <Row code="-b">dlugosc w bitach (RSA: 4096)</Row>
           <Row code="-C">komentarz (email/nazwa)</Row>
           <Row code="-f">sciezka do pliku klucza</Row>
