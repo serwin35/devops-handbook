@@ -99,7 +99,7 @@ export default function BashScripting() {
               echo <V>$IMIE</V>
             </Cmd>
             <Cmd>
-              echo <V>"${IMIE}"</V>{' '}
+              echo <V>{'\"${IMIE}\"'}</V>{' '}
               <span className="text-[var(--c-muted)]">
                 # bezpieczniejszy zapis
               </span>
@@ -543,10 +543,8 @@ export default function BashScripting() {
                 <Cmd>{'  '}rm -f /tmp/tymczasowy.$$</Cmd>
                 <Cmd>{'  '}echo "Sprzatanie gotowe"</Cmd>
                 <Cmd>{'}'}</Cmd>
-                <Cmd></Cmd>
                 <Comment># zarejestruj dla EXIT i SIGINT</Comment>
                 <Cmd>trap cleanup EXIT INT TERM</Cmd>
-                <Cmd></Cmd>
                 <Comment># reszta skryptu...</Comment>
                 <Cmd>touch /tmp/tymczasowy.$$</Cmd>
               </ExampleBlock>
