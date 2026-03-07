@@ -1,3 +1,4 @@
+import { usePageTitle } from '../../hooks/usePageTitle';
 import PageHeader from '../../components/PageHeader';
 import Card from '../../components/Card';
 import ExampleBlock, {
@@ -11,6 +12,7 @@ import InfoBox from '../../components/InfoBox';
 import LessonNav from '../../components/LessonNav';
 
 export default function SSHWelcome() {
+  usePageTitle('SSH Welcome');
   return (
     <div>
       <PageHeader

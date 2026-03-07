@@ -16,6 +16,10 @@ const breadcrumbNames: Record<string, string> = {
   'ssh-keys': 'SSH Keys',
   'ssh-welcome': 'SSH Welcome',
   'linux-basics': 'Linux Basics',
+  editors: 'Edytory Tekstu',
+  'bash-scripting': 'Bash Scripting',
+  'package-management': 'Package Management',
+  'cron-jobs': 'Cron Jobs',
   search: 'Szukaj',
 };
 

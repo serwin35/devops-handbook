@@ -10,7 +10,7 @@ export const cheatsheets: CheatsheetItem[] = [
   {
     icon: '\uD83D\uDDA5',
     title: 'Linux Basics',
-    desc: 'cd, pwd, touch, nano, vim',
+    desc: 'cd, pwd, ls, touch, mkdir, cp, rm, grep, find',
     color: 'var(--c-green)',
     to: '/cheatsheets/linux-basics',
   },
@@ -69,5 +69,33 @@ export const cheatsheets: CheatsheetItem[] = [
     desc: 'MOTD, ASCII Art, dynamic info',
     color: 'var(--c-accent)',
     to: '/cheatsheets/ssh-welcome',
+  },
+  {
+    icon: '\u270F\uFE0F',
+    title: 'Edytory Tekstu',
+    desc: 'vim, nano, sed, awk',
+    color: 'var(--c-purple)',
+    to: '/cheatsheets/editors',
+  },
+  {
+    icon: '\uD83D\uDCE6',
+    title: 'Package Management',
+    desc: 'apt, yum, dnf, snap, flatpak',
+    color: 'var(--c-orange)',
+    to: '/cheatsheets/package-management',
+  },
+  {
+    icon: '\uD83D\uDCDC',
+    title: 'Bash Scripting',
+    desc: 'zmienne, petle, warunki, funkcje',
+    color: 'var(--c-green)',
+    to: '/cheatsheets/bash-scripting',
+  },
+  {
+    icon: '\u23F0',
+    title: 'Cron Jobs',
+    desc: 'crontab, systemd timers, at, anacron',
+    color: 'var(--c-yellow)',
+    to: '/cheatsheets/cron-jobs',
   },
 ];

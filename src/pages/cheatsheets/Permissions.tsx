@@ -97,6 +97,7 @@ function ChmodCalculator() {
 }
 
 export default function Permissions() {
+  usePageTitle('Linux Permissions');
   return (
     <div>
       <PageHeader

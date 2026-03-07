@@ -16,6 +16,12 @@ const Systemd = lazy(() => import('./pages/cheatsheets/Systemd'));
 const SSHWelcome = lazy(() => import('./pages/cheatsheets/SSHWelcome'));
 const SSHKeys = lazy(() => import('./pages/cheatsheets/SSHKeys'));
 const LinuxBasics = lazy(() => import('./pages/cheatsheets/LinuxBasics'));
+const Editors = lazy(() => import('./pages/cheatsheets/Editors'));
+const BashScripting = lazy(() => import('./pages/cheatsheets/BashScripting'));
+const PackageManagement = lazy(
+  () => import('./pages/cheatsheets/PackageManagement'),
+);
+const CronJobs = lazy(() => import('./pages/cheatsheets/CronJobs'));
 const LessonsList = lazy(() => import('./pages/LessonsList'));
 const CheatsheetsList = lazy(() => import('./pages/CheatsheetsList'));
 const Search = lazy(() => import('./pages/Search'));
@@ -53,6 +59,16 @@ export default function App() {
             <Route path="cheatsheets/systemd" element={<Systemd />} />
             <Route path="cheatsheets/ssh-welcome" element={<SSHWelcome />} />
             <Route path="cheatsheets/ssh-keys" element={<SSHKeys />} />
+            <Route path="cheatsheets/editors" element={<Editors />} />
+            <Route
+              path="cheatsheets/bash-scripting"
+              element={<BashScripting />}
+            />
+            <Route
+              path="cheatsheets/package-management"
+              element={<PackageManagement />}
+            />
+            <Route path="cheatsheets/cron-jobs" element={<CronJobs />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>

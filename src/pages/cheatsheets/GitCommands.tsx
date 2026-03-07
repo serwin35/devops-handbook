@@ -16,6 +16,7 @@ import SectionLabel from '../../components/SectionLabel';
 import LessonNav from '../../components/LessonNav';
 
 export default function GitCommands() {
+  usePageTitle('Git Commands');
   return (
     <div>
       <PageHeader
