@@ -14,6 +14,7 @@ const GitCommands = lazy(() => import('./pages/cheatsheets/GitCommands'));
 const Networking = lazy(() => import('./pages/cheatsheets/Networking'));
 const Systemd = lazy(() => import('./pages/cheatsheets/Systemd'));
 const SSHWelcome = lazy(() => import('./pages/cheatsheets/SSHWelcome'));
+const SSHKeys = lazy(() => import('./pages/cheatsheets/SSHKeys'));
 const LinuxBasics = lazy(() => import('./pages/cheatsheets/LinuxBasics'));
 const LessonsList = lazy(() => import('./pages/LessonsList'));
 const CheatsheetsList = lazy(() => import('./pages/CheatsheetsList'));
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="cheatsheets/networking" element={<Networking />} />
             <Route path="cheatsheets/systemd" element={<Systemd />} />
             <Route path="cheatsheets/ssh-welcome" element={<SSHWelcome />} />
+            <Route path="cheatsheets/ssh-keys" element={<SSHKeys />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>

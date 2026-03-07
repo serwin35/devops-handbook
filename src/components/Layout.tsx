@@ -12,6 +12,7 @@ const breadcrumbNames: Record<string, string> = {
   git: 'Git Commands',
   networking: 'Networking',
   systemd: 'Systemd',
+  'ssh-keys': 'SSH Keys',
   'ssh-welcome': 'SSH Welcome',
   'linux-basics': 'Linux Basics',
   search: 'Szukaj',

@@ -57,6 +57,13 @@ export const cheatsheets: CheatsheetItem[] = [
     to: '/cheatsheets/systemd',
   },
   {
+    icon: '\uD83D\uDD11',
+    title: 'SSH Keys',
+    desc: 'ssh-keygen, ssh-copy-id, authorized_keys, agent',
+    color: 'var(--c-accent)',
+    to: '/cheatsheets/ssh-keys',
+  },
+  {
     icon: '\uD83D\uDCBB',
     title: 'SSH Welcome',
     desc: 'MOTD, ASCII Art, dynamic info',
