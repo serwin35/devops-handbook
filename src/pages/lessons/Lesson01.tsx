@@ -64,7 +64,7 @@ export default function Lesson01() {
         </Card>
 
         <Card title="Kubernetes (K8s) — orkiestracja" color="var(--c-yellow)">
-          <p className="text-[#8892aa] text-xs mb-2.5">
+          <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Zarzadza klastrem kontenerow — deployment, skalowanie, restart, load
             balancing.
           </p>
@@ -163,7 +163,7 @@ export default function Lesson01() {
         </Card>
 
         <Card title="APT — menedzer pakietow" color="var(--c-orange)">
-          <p className="text-[#8892aa] text-xs mb-2.5">
+          <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Menedzer pakietow Debian/Ubuntu. Wymaga sudo.
           </p>
           <ExampleBlock variant="orange">
@@ -209,7 +209,7 @@ export default function Lesson01() {
         </Card>
 
         <Card title="GitHub Actions — CI/CD" color="var(--c-yellow)">
-          <p className="text-[#8892aa] text-xs mb-2.5">
+          <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Automatyzacja build/test/deploy w repo GitHub.
           </p>
           <ExampleBlock variant="yellow">

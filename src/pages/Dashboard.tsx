@@ -40,7 +40,14 @@ export default function Dashboard() {
             <span className="text-[var(--c-muted)] ml-2">({percent}%)</span>
           </span>
         </div>
-        <div className="w-full h-2 rounded-full bg-[var(--c-surface2)] overflow-hidden">
+        <div
+          className="w-full h-2 rounded-full bg-[var(--c-surface2)] overflow-hidden"
+          role="progressbar"
+          aria-valuenow={percent}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`Postep nauki: ${percent}%`}
+        >
           <div
             className="h-full rounded-full bg-[var(--c-green)] transition-all duration-500"
             style={{ width: `${percent}%` }}
@@ -65,7 +72,7 @@ export default function Dashboard() {
       <div className="text-[var(--c-muted)] text-[11px] uppercase tracking-widest mb-3">
         Lekcje
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
         {lessons.map((l) => {
           const id = toProgressId(l);
           return (
@@ -77,7 +84,7 @@ export default function Dashboard() {
               <button
                 onClick={() => toggle(id)}
                 className={`absolute top-3 right-3 w-5 h-5 rounded border text-[10px] flex items-center justify-center transition-colors ${isCompleted(id) ? 'bg-[var(--c-green)] border-[var(--c-green)] text-black' : 'border-[var(--c-border)] text-[var(--c-muted)] hover:border-[var(--c-accent)]'}`}
-                title={
+                aria-label={
                   isCompleted(id)
                     ? 'Oznacz jako nieukonczone'
                     : 'Oznacz jako ukonczone'
@@ -130,7 +137,7 @@ export default function Dashboard() {
       <div className="text-[var(--c-muted)] text-[11px] uppercase tracking-widest mb-3">
         Cheatsheets &amp; Reference Boards
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {cheatsheets.map((c) => {
           const id = toProgressId(c);
           return (
@@ -159,7 +166,7 @@ export default function Dashboard() {
                 <button
                   onClick={() => toggle(`${id}:done`)}
                   className={`w-6 h-6 rounded flex items-center justify-center text-[11px] transition-colors ${isCompleted(`${id}:done`) ? 'bg-[rgba(127,255,107,0.15)] text-[var(--c-green)]' : 'text-[var(--c-dim)] hover:text-[var(--c-muted)]'}`}
-                  title={
+                  aria-label={
                     isCompleted(`${id}:done`)
                       ? 'Przeczytane'
                       : 'Oznacz jako przeczytane'
@@ -170,7 +177,7 @@ export default function Dashboard() {
                 <button
                   onClick={() => toggle(`${id}:star`)}
                   className={`w-6 h-6 rounded flex items-center justify-center text-[11px] transition-colors ${isCompleted(`${id}:star`) ? 'bg-[rgba(255,190,11,0.15)] text-[var(--c-yellow)]' : 'text-[var(--c-dim)] hover:text-[var(--c-muted)]'}`}
-                  title={
+                  aria-label={
                     isCompleted(`${id}:star`)
                       ? 'Ulubione'
                       : 'Dodaj do ulubionych'
@@ -181,7 +188,7 @@ export default function Dashboard() {
                 <button
                   onClick={() => toggle(`${id}:bulb`)}
                   className={`w-6 h-6 rounded flex items-center justify-center text-[11px] transition-colors ${isCompleted(`${id}:bulb`) ? 'bg-[rgba(255,107,53,0.15)] text-[var(--c-orange)]' : 'text-[var(--c-dim)] hover:text-[var(--c-muted)]'}`}
-                  title={
+                  aria-label={
                     isCompleted(`${id}:bulb`)
                       ? 'Do powtorzenia'
                       : 'Oznacz do powtorzenia'

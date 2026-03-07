@@ -31,7 +31,7 @@ export default function Networking() {
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Warstwy komunikacji sieciowej — od fizycznej do aplikacji.
           </p>
-          <pre className="text-xs leading-7 bg-[#0d1117] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre mb-2.5">
+          <pre className="text-xs leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre mb-2.5">
             {`OSI              TCP/IP           Przyklad
 ─────────────────────────────────────────────
 7. Aplikacji     Aplikacji        HTTP, DNS, SSH
@@ -115,9 +115,8 @@ export default function Networking() {
             <Cmd>
               curl <H>-o /dev/null -s -w</H>{' '}
               <V>
-                "%{'{'}
-                {'{'}time_total{'}'}
-                {'{}'}"
+                {'"'}%{'{time_total}'}
+                {'"'}
               </V>{' '}
               <F>https://example.com</F>
             </Cmd>

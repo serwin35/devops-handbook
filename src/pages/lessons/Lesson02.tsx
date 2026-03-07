@@ -121,7 +121,7 @@ export default function Lesson02() {
         </Card>
 
         <Card title="System plikow — hierarchia" color="var(--c-yellow)">
-          <pre className="text-xs leading-7 bg-[#0d1117] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre">
+          <pre className="text-xs leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre">
             {`/                  Root
 ├── /bin           Podstawowe binaria
 ├── /etc           Konfiguracja systemowa

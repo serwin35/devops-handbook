@@ -19,7 +19,9 @@ export default function Concept({
           {title}
         </div>
       )}
-      <div className="text-[#8892aa] text-xs leading-relaxed">{children}</div>
+      <div className="text-[var(--c-muted)] text-xs leading-relaxed">
+        {children}
+      </div>
     </div>
   );
 }

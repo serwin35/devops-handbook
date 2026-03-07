@@ -309,7 +309,7 @@ export default function Filesystem() {
         </Card>
 
         <Card title="LVM — Logical Volume Management" color="var(--c-orange)">
-          <pre className="text-xs leading-7 bg-[#0d1117] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre mb-2.5">
+          <pre className="text-xs leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre mb-2.5">
             {`Dysk fizyczny
   /dev/sdb1          → Physical Volume (PV)
     data_vg          → Volume Group (VG)
@@ -380,7 +380,7 @@ export default function Filesystem() {
         </Card>
 
         <Card title="Pelna struktura" color="var(--c-yellow)" full>
-          <pre className="text-[13px] leading-7 bg-[#0d1117] border border-[var(--c-border)] rounded-md p-4 overflow-x-auto whitespace-pre">
+          <pre className="text-[13px] leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-4 overflow-x-auto whitespace-pre">
             <span className="text-[var(--c-accent)] font-bold">/</span>{' '}
             <span className="text-[var(--c-muted)]">
               Root — poczatek calego systemu plikow

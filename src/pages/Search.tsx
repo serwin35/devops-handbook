@@ -39,6 +39,8 @@ export default function Search() {
     '/cheatsheets/ssh-welcome': 'SSH Welcome',
     '/cheatsheets/systemd': 'Systemd',
     '/cheatsheets/networking': 'Networking',
+    '/cheatsheets/ssh-keys': 'SSH Keys',
+    '/cheatsheets/linux-basics': 'Linux Basics',
   };
 
   return (
@@ -60,7 +62,7 @@ export default function Search() {
       </div>
 
       {query.length >= 2 && (
-        <div className="text-[var(--c-muted)] text-xs mb-4">
+        <div className="text-[var(--c-muted)] text-xs mb-4" aria-live="polite">
           {results.length} {results.length === 1 ? 'wynik' : 'wynikow'} dla
           &quot;{query}&quot;
         </div>

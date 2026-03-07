@@ -34,11 +34,12 @@ export default function ExampleBlock({
 
   return (
     <div
-      className={`relative group bg-[#0d1117] border border-[var(--c-border)] border-l-[3px] ${borderColors[variant]} rounded-r-md px-3 py-2 mb-2 text-xs whitespace-pre`}
+      className={`relative group bg-[var(--c-code-bg)] border border-[var(--c-border)] border-l-[3px] ${borderColors[variant]} rounded-r-md px-3 py-2 mb-2 text-xs whitespace-pre overflow-x-auto`}
     >
       <button
         onClick={handleCopy}
-        className="absolute top-1.5 right-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] px-1.5 py-0.5 rounded bg-[var(--c-surface2)] border border-[var(--c-border)] text-[var(--c-muted)] hover:text-[var(--c-text)] hover:border-[var(--c-accent)]"
+        aria-label={copied ? 'Skopiowano' : 'Kopiuj do schowka'}
+        className="absolute top-1.5 right-1.5 opacity-30 hover:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity text-[10px] px-1.5 py-0.5 rounded bg-[var(--c-surface2)] border border-[var(--c-border)] text-[var(--c-muted)] hover:text-[var(--c-text)] hover:border-[var(--c-accent)]"
       >
         {copied ? 'Skopiowano!' : 'Kopiuj'}
       </button>

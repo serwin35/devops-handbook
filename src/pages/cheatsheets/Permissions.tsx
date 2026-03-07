@@ -83,7 +83,7 @@ function ChmodCalculator() {
           </div>
         ))}
       </div>
-      <div className="flex items-center gap-4 bg-[#0d1117] border border-[var(--c-border)] rounded-md px-3 py-2">
+      <div className="flex items-center gap-4 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md px-3 py-2">
         <span className="text-2xl font-extrabold text-[var(--c-yellow)]">
           {oct}
         </span>

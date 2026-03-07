@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --c-bg: #0a0c10;
@@ -11,24 +11,48 @@
   --c-purple: #c77dff;
   --c-yellow: #ffbe0b;
   --c-text: #e8eaf0;
-  --c-muted: #5a6278;
+  --c-muted: #7c8599;
   --c-dim: #2a3045;
   --c-danger: #ff6b6b;
+  --c-code-bg: #0d1117;
 }
 
 body {
   background: var(--c-bg);
   color: var(--c-text);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   min-height: 100vh;
   background-image:
-    radial-gradient(ellipse at 10% 0%, rgba(0,229,255,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 90% 100%, rgba(199,125,255,0.04) 0%, transparent 50%);
+    radial-gradient(
+      ellipse at 10% 0%,
+      rgba(0, 229, 255, 0.04) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 90% 100%,
+      rgba(199, 125, 255, 0.04) 0%,
+      transparent 50%
+    );
 }
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--c-bg); }
-::-webkit-scrollbar-thumb { background: var(--c-dim); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--c-muted); }
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-muted);
+}
