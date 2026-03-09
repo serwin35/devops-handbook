@@ -26,8 +26,8 @@ export const lessons: LessonItem[] = [
   },
   {
     num: '03',
-    title: 'Wiersz polecen i Bash',
-    desc: 'Shell, potoki, zmienne srodowiskowe, PATH, export, menedzer pakietow APT/DNF',
+    title: 'Wiersz poleceń i Bash',
+    desc: 'Shell, potoki, zmienne środowiskowe, PATH, export, menedżer pakietów APT/DNF',
     color: 'var(--c-orange)',
     tags: ['Bash', 'Shell', 'Pipes', 'PATH', 'APT', 'DNF', 'Zmienne'],
     to: '/lessons/03',
