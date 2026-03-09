@@ -66,7 +66,7 @@ export default function SSHKeys() {
 
         <Card title="ssh-copy-id — kopiowanie klucza" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Najszybszy sposob na dodanie klucza publicznego do zdalnego serwera
+            Najszybszy sposób na dodanie klucza publicznego do zdalnego serwera
           </p>
           <ExampleBlock variant="green">
             <Comment># domyślny klucz</Comment>
