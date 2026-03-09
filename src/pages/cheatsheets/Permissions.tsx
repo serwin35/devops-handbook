@@ -445,6 +445,7 @@ export default function Permissions() {
           <SectionLabel className="mt-1.5">Grupy i pliki</SectionLabel>
           <Row code="cat /etc/group">lista grup</Row>
           <Row code="getent group">grupy (+ LDAP)</Row>
+          <Row code="getent group developers">userzy w grupie</Row>
           <Row code="ls -la">uprawnienia plikow</Row>
           <Row code="stat plik">pelne metadane</Row>
           <Row code="find / -user u">pliki usera</Row>
