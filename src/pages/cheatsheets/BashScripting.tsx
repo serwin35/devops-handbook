@@ -523,7 +523,7 @@ export default function BashScripting() {
             <div>
               <SectionLabel>Czytanie pliku linia po linii</SectionLabel>
               <ExampleBlock variant="yellow">
-                <Comment># bezpieczny sposob</Comment>
+                <Comment># bezpieczny sposób</Comment>
                 <Cmd>while IFS= read -r linia; do</Cmd>
                 <Cmd>{'  '}echo "Linia: $linia"</Cmd>
                 <Cmd>done &lt; plik.txt</Cmd>
