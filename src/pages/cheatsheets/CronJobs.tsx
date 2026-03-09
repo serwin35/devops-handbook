@@ -32,7 +32,7 @@ export default function CronJobs() {
             Każdy wpis w crontabie sklada sie z 5 pól czasowych i komendy.
           </p>
           <ExampleBlock variant="yellow">
-            <Comment># minuta godzina dzien miesiąc dzien-tyg komenda</Comment>
+            <Comment># minuta godzina dzień miesiąc dzień-tyg komenda</Comment>
             <Cmd>
               <H>*</H>
               {'       '}
@@ -54,13 +54,13 @@ export default function CronJobs() {
           <Row code="godzina" codeVariant="yellow">
             0–23 — godzina wykonania
           </Row>
-          <Row code="dzien-m" codeVariant="yellow">
-            1–31 — dzien miesiąca
+          <Row code="dzień-m" codeVariant="yellow">
+            1–31 — dzień miesiąca
           </Row>
           <Row code="miesiąc" codeVariant="yellow">
             1–12 (lub jan–dec)
           </Row>
-          <Row code="dzien-t" codeVariant="yellow">
+          <Row code="dzień-t" codeVariant="yellow">
             0–7 (0 i 7 = niedziela, lub sun–sat)
           </Row>
           <Divider />
@@ -84,11 +84,11 @@ export default function CronJobs() {
           <InfoBox>
             Pole{' '}
             <code className="text-xs text-[var(--c-yellow)]">
-              dzien-tygodnia
+              dzień-tygodnia
             </code>{' '}
             i{' '}
             <code className="text-xs text-[var(--c-yellow)]">
-              dzien-miesiąca
+              dzień-miesiąca
             </code>{' '}
             sa łączone operatorem OR — wystarczy ze jedno pasuje.
           </InfoBox>
@@ -192,7 +192,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Pierwszy dzien miesiąca o północy</Comment>
+            <Comment># Pierwszy dzień miesiąca o północy</Comment>
             <Cmd>
               <H>0</H> <H>0</H> <H>1</H> <V>*</V> <V>*</V> <F>/skrypt.sh</F>
             </Cmd>
@@ -243,7 +243,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Co miesiąc — pierwszy dzien (0 0 1 * *)</Comment>
+            <Comment># Co miesiąc — pierwszy dzień (0 0 1 * *)</Comment>
             <Cmd>
               <H>@monthly</H> <F>/skrypt.sh</F>
             </Cmd>
@@ -328,7 +328,7 @@ export default function CronJobs() {
           <SectionLabel className="mt-1.5">OnCalendar — przykłady</SectionLabel>
           <Row code="daily">Codziennie o północy</Row>
           <Row code="weekly">Co tydzień (poniedziałek 00:00)</Row>
-          <Row code="monthly">Co miesiąc (1. dzien 00:00)</Row>
+          <Row code="monthly">Co miesiąc (1. dzień 00:00)</Row>
           <Row code="*-*-* 03:30:00">Codziennie o 3:30</Row>
           <Row code="Mon *-*-* 09:00:00">Poniedziałki o 9:00</Row>
           <Row code="*:0/15">Co 15 minut</Row>
@@ -356,7 +356,7 @@ export default function CronJobs() {
             <code className="text-xs text-[var(--c-green)]">
               Persistent=true
             </code>{' '}
-            — jeśli system byl wyłączony w momencie planowanego uruchomienia,
+            — jeśli system był wyłączony w momencie planowanego uruchomienia,
             zadanie wykona sie przy następnym starcie.
           </InfoBox>
         </Card>
