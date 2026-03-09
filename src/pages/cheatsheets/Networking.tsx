@@ -144,7 +144,7 @@ export default function Networking() {
           </ExampleBlock>
           <InfoBox>
             <b>ping</b> używa ICMP — niektórzy hostowie blokują ICMP. Brak
-            odpowiedzi =/= host nie dziala.
+            odpowiedzi =/= host nie działa.
           </InfoBox>
         </Card>
 
