@@ -371,7 +371,7 @@ export default function Systemd() {
           <SectionLabel className="mt-1.5">OnCalendar — przykłady</SectionLabel>
           <Row code="*-*-* 02:00:00">Codziennie o 2:00</Row>
           <Row code="Mon *-*-* 09:00:00">Poniedziałki o 9:00</Row>
-          <Row code="*-*-01 00:00:00">Pierwszy dzien miesiąca</Row>
+          <Row code="*-*-01 00:00:00">Pierwszy dzień miesiąca</Row>
           <Row code="hourly">Co godzinę</Row>
           <Row code="daily">Codziennie</Row>
           <Row code="weekly">Co tydzień</Row>
@@ -392,7 +392,7 @@ export default function Systemd() {
             <code className="text-xs text-[var(--c-yellow)]">
               Persistent=true
             </code>{' '}
-            — jeśli system byl wyłączony w czasie uruchomienia, zadanie wykona
+            — jeśli system był wyłączony w czasie uruchomienia, zadanie wykona
             sie po starcie.
           </InfoBox>
         </Card>
