@@ -259,7 +259,7 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Zamiana tekstu</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Zamien pierwsze wystąpienie w linii</Comment>
+            <Comment># Zamień pierwsze wystąpienie w linii</Comment>
             <Cmd>
               <H>:s/</H>
               <V>stary</V>
@@ -269,7 +269,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Zamien wszystkie w linii</Comment>
+            <Comment># Zamień wszystkie w linii</Comment>
             <Cmd>
               <H>:s/</H>
               <V>stary</V>
@@ -279,7 +279,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Zamien wszystkie w pliku</Comment>
+            <Comment># Zamień wszystkie w pliku</Comment>
             <Cmd>
               <H>:%s/</H>
               <V>stary</V>
@@ -411,7 +411,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zamien tekst (Search & Replace)</Comment>
+            <Comment># Zamień tekst (Search & Replace)</Comment>
             <Cmd>
               <H>Ctrl+\</H>{' '}
               <span className="text-[var(--c-muted)]">
@@ -447,7 +447,7 @@ export default function Editors() {
           </p>
           <SectionLabel>Zamiana tekstu (s///)</SectionLabel>
           <ExampleBlock variant="orange">
-            <Comment># Zamien pierwsze wystąpienie w linii</Comment>
+            <Comment># Zamień pierwsze wystąpienie w linii</Comment>
             <Cmd>
               sed <H>'s/</H>
               <V>stary</V>
@@ -457,7 +457,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zamien wszystkie wystąpienia (/g)</Comment>
+            <Comment># Zamień wszystkie wystąpienia (/g)</Comment>
             <Cmd>
               sed <H>'s/</H>
               <V>stary</V>
@@ -508,7 +508,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Zamien tylko w liniach 1-3</Comment>
+            <Comment># Zamień tylko w liniach 1-3</Comment>
             <Cmd>
               sed <V>'1,3s/foo/bar/g'</V> <F>plik.txt</F>
             </Cmd>
