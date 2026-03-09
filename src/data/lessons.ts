@@ -34,7 +34,7 @@ export const lessons: LessonItem[] = [
   },
   {
     num: '04',
-    title: 'Wkrotce...',
+    title: 'Wkrótce...',
     desc: 'Ta lekcja jest w trakcie przygotowania',
     color: 'var(--c-yellow)',
     tags: [],
