@@ -19,7 +19,7 @@ export const lessons: LessonItem[] = [
   {
     num: '02',
     title: 'Systemy operacyjne i Linux',
-    desc: 'Historia Unix/Linux, jadro systemu, system plikow, LVM, dystrybucje, uzytkownicy, uprawnienia, UFW, Netplan',
+    desc: 'Historia Unix/Linux, jądro systemu, system plików, LVM, dystrybucje, użytkownicy, uprawnienia, UFW, Netplan',
     color: 'var(--c-purple)',
     tags: ['Unix', 'Kernel', 'Filesystem', 'LVM', 'Permissions', 'UFW'],
     to: '/lessons/02',
