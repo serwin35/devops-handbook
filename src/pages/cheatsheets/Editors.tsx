@@ -574,6 +574,14 @@ export default function Editors() {
               awk <V>{"'$3 > 100 {print $0}'"}</V> <F>plik.txt</F>
             </Cmd>
           </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment>{'# Listuj uzytkownikow (UID 1000-65533)'}</Comment>
+            <Cmd>
+              awk <H>-F</H>
+              <V>:</V> <V>{"'$3 >= 1000 && $3 < 65534 {print $1, $3, $6}'"}</V>{' '}
+              <F>/etc/passwd</F>
+            </Cmd>
+          </ExampleBlock>
           <Divider />
           <SectionLabel className="mt-1.5">BEGIN i END</SectionLabel>
           <ExampleBlock variant="purple">
