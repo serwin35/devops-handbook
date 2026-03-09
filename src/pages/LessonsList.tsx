@@ -19,6 +19,30 @@ export default function LessonsList() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {lessons.map((l) => {
           const id = toProgressId(l);
+
+          if (l.disabled) {
+            return (
+              <div
+                key={l.num}
+                className="bg-[var(--c-surface)] border border-[var(--c-dim)] rounded-xl p-5 opacity-40 cursor-not-allowed"
+                style={{
+                  borderLeftWidth: '3px',
+                  borderLeftColor: 'var(--c-dim)',
+                }}
+              >
+                <div className="font-['Syne'] text-4xl font-extrabold leading-none mb-2 text-[var(--c-dim)]">
+                  {l.num}
+                </div>
+                <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
+                  {l.title}
+                </div>
+                <div className="text-[var(--c-muted)] text-[11px]">
+                  {l.desc}
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div
               key={l.num}
