@@ -192,6 +192,18 @@ export default function Filesystem() {
               mv <V>plik.txt</V> <F>/home/serwin/backup/</F>
             </Cmd>
           </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Przenies folder (z zawartoscia)</Comment>
+            <Cmd>
+              mv <V>src/</V> <F>/home/serwin/backup/</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Zmien nazwe folderu</Comment>
+            <Cmd>
+              mv <V>old-dir/</V> <F>new-dir/</F>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
         <Card title="Kluczowe pliki w /etc">
