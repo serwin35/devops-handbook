@@ -448,6 +448,7 @@ export default function Permissions() {
           <Row code="getent group developers">userzy w grupie</Row>
           <Row code="ls -la">uprawnienia plikow</Row>
           <Row code="stat plik">pelne metadane</Row>
+          <Row code="stat -c '%a %n' app">chmod liczbowo</Row>
           <Row code="find / -user u">pliki usera</Row>
           <InfoBox>
             Po dodaniu usera do grupy:{' '}
