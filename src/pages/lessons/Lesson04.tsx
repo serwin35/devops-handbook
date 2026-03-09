@@ -10,20 +10,20 @@ export default function Lesson04() {
     <div>
       <PageHeader
         title="Lekcja 04"
-        subtitle="Wkrotce..."
+        subtitle="Wkrótce..."
         color="var(--c-yellow)"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         <Card title="W przygotowaniu">
           <p className="text-[var(--c-muted)] text-sm">
-            Ta lekcja jest w trakcie przygotowania. Wracaj wkrotce!
+            Ta lekcja jest w trakcie przygotowania. Wracaj wkrótce!
           </p>
         </Card>
       </div>
 
       <LessonNav
-        prev={{ to: '/lessons/03', label: '03 — Wiersz polecen i Bash' }}
+        prev={{ to: '/lessons/03', label: '03 — Wiersz poleceń i Bash' }}
       />
     </div>
   );
