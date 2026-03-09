@@ -13,7 +13,9 @@ export default function Dashboard() {
   usePageTitle('');
   const { isCompleted, toggle } = useProgress();
 
-  const lessonIds = lessons.map((l) => toProgressId(l));
+  const lessonIds = lessons
+    .filter((l) => !l.disabled)
+    .map((l) => toProgressId(l));
   const completedCount = lessonIds.filter((id) => isCompleted(id)).length;
   const totalCount = lessonIds.length;
   const percent =
@@ -75,6 +77,30 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
         {lessons.map((l) => {
           const id = toProgressId(l);
+
+          if (l.disabled) {
+            return (
+              <div
+                key={l.num}
+                className="bg-[var(--c-surface)] border border-[var(--c-dim)] rounded-xl p-5 opacity-40 cursor-not-allowed"
+                style={{
+                  borderLeftWidth: '3px',
+                  borderLeftColor: 'var(--c-dim)',
+                }}
+              >
+                <div className="font-['Syne'] text-4xl font-extrabold leading-none mb-2 text-[var(--c-dim)]">
+                  {l.num}
+                </div>
+                <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
+                  {l.title}
+                </div>
+                <div className="text-[var(--c-muted)] text-[11px]">
+                  {l.desc}
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div
               key={l.num}
@@ -119,18 +145,6 @@ export default function Dashboard() {
             </div>
           );
         })}
-        <div
-          className="bg-[var(--c-surface)] border border-[var(--c-dim)] rounded-xl p-5 opacity-40"
-          style={{ borderLeftWidth: '3px', borderLeftColor: 'var(--c-dim)' }}
-        >
-          <div className="font-['Syne'] text-4xl font-extrabold leading-none mb-2 text-[var(--c-dim)]">
-            05
-          </div>
-          <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
-            Kolejna lekcja...
-          </div>
-          <div className="text-[var(--c-muted)] text-[11px]">Wkrótce</div>
-        </div>
       </div>
 
       {/* Cheatsheets */}
