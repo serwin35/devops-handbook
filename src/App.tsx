@@ -26,6 +26,7 @@ const CronJobs = lazy(() => import('./pages/cheatsheets/CronJobs'));
 const LessonsList = lazy(() => import('./pages/LessonsList'));
 const CheatsheetsList = lazy(() => import('./pages/CheatsheetsList'));
 const Search = lazy(() => import('./pages/Search'));
+const Homework03 = lazy(() => import('./pages/homework/Homework03'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -71,6 +72,7 @@ export default function App() {
               element={<PackageManagement />}
             />
             <Route path="cheatsheets/cron-jobs" element={<CronJobs />} />
+            <Route path="homework/03" element={<Homework03 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>
