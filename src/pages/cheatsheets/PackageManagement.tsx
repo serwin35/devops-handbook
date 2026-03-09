@@ -283,7 +283,7 @@ export default function PackageManagement() {
 
         <Card title="Snap" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Snap to format pakietów od Canonical — dziala na Debianie, Ubuntu i
+            Snap to format pakietów od Canonical — działa na Debianie, Ubuntu i
             innych dystrybucjach.
           </p>
           <ExampleBlock variant="green">
@@ -497,7 +497,7 @@ export default function PackageManagement() {
                 Snap
               </p>
               <p className="text-[var(--c-muted)] text-xs leading-5">
-                Pakiety z bundlowanymi zależności — dziala na wielu
+                Pakiety z bundlowanymi zależności — działa na wielu
                 dystrybucjach. Auto-aktualizacje. Sandbox. Dedykowany dla
                 Ubuntu/Canonical.
               </p>
@@ -571,7 +571,7 @@ export default function PackageManagement() {
                 </tr>
                 <tr>
                   <td className="py-1.5 pr-4 text-[var(--c-muted)]">
-                    Usuniecie
+                    Usunięcie
                   </td>
                   <td className="py-1.5 pr-4 font-mono text-[var(--c-fg)]">
                     apt remove
