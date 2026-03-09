@@ -124,7 +124,7 @@ export default function Dashboard() {
           style={{ borderLeftWidth: '3px', borderLeftColor: 'var(--c-dim)' }}
         >
           <div className="font-['Syne'] text-4xl font-extrabold leading-none mb-2 text-[var(--c-dim)]">
-            03
+            05
           </div>
           <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
             Kolejna lekcja...
