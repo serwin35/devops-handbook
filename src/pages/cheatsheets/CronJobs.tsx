@@ -192,7 +192,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Pierwszy dzien miesiąca o polnocy</Comment>
+            <Comment># Pierwszy dzien miesiąca o północy</Comment>
             <Cmd>
               <H>0</H> <H>0</H> <H>1</H> <V>*</V> <V>*</V> <F>/skrypt.sh</F>
             </Cmd>
@@ -211,7 +211,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Co roku — 1 stycznia o polnocy</Comment>
+            <Comment># Co roku — 1 stycznia o północy</Comment>
             <Cmd>
               <H>0</H> <H>0</H> <H>1</H> <H>1</H> <V>*</V> <F>/skrypt.sh</F>
             </Cmd>
@@ -237,7 +237,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Co tydzień — niedziela o polnocy (0 0 * * 0)</Comment>
+            <Comment># Co tydzień — niedziela o północy (0 0 * * 0)</Comment>
             <Cmd>
               <H>@weekly</H> <F>/skrypt.sh</F>
             </Cmd>
@@ -326,7 +326,7 @@ export default function CronJobs() {
           </ExampleBlock>
           <Divider />
           <SectionLabel className="mt-1.5">OnCalendar — przykłady</SectionLabel>
-          <Row code="daily">Codziennie o polnocy</Row>
+          <Row code="daily">Codziennie o północy</Row>
           <Row code="weekly">Co tydzień (poniedziałek 00:00)</Row>
           <Row code="monthly">Co miesiąc (1. dzien 00:00)</Row>
           <Row code="*-*-* 03:30:00">Codziennie o 3:30</Row>
@@ -403,7 +403,7 @@ export default function CronJobs() {
           <Divider />
           <SectionLabel className="mt-1.5">Zarządzanie kolejka at</SectionLabel>
           <ExampleBlock variant="orange">
-            <Comment># Wyświetl kolejke zadan at</Comment>
+            <Comment># Wyświetl kolejkę zadań at</Comment>
             <Cmd>
               <H>atq</H>
             </Cmd>
@@ -484,7 +484,7 @@ export default function CronJobs() {
             <div>
               <SectionLabel>MAILTO i PATH w crontabie</SectionLabel>
               <ExampleBlock variant="orange">
-                <Comment># Ustaw adres email dla powiadomien</Comment>
+                <Comment># Ustaw adres email dla powiadomień</Comment>
                 <Cmd>
                   <H>MAILTO</H>=<V>admin@example.com</V>
                 </Cmd>
@@ -521,7 +521,7 @@ export default function CronJobs() {
               <SectionLabel>Lock files — zapobieganie duplikatom</SectionLabel>
               <ExampleBlock variant="purple">
                 <Comment>
-                  # Uzyj flock aby zapobiec rownoczesnemu uruchomieniu
+                  # Użyj flock aby zapobiec równoczesnemu uruchomieniu
                 </Comment>
                 <Cmd>
                   <H>* * * * *</H> <F>/usr/bin/flock</F> <H>-n</H>{' '}
@@ -564,8 +564,8 @@ export default function CronJobs() {
                 <code className="text-xs text-[var(--c-purple)]">
                   /etc/cron.d/
                 </code>{' '}
-                dla zadan systemowych — latwiej zarządzać przez pakiety i
-                kontrole wersji.
+                dla zadań systemowych — łatwiej zarządzać przez pakiety i
+                kontrolę wersji.
               </InfoBox>
             </div>
           </div>

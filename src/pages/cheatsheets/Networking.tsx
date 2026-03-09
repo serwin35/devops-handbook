@@ -143,7 +143,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            <b>ping</b> uzywa ICMP — niektorzy hostowie blokuja ICMP. Brak
+            <b>ping</b> używa ICMP — niektórzy hostowie blokują ICMP. Brak
             odpowiedzi =/= host nie dziala.
           </InfoBox>
         </Card>
@@ -156,7 +156,7 @@ export default function Networking() {
               ip <H>addr</H> show
             </Cmd>
             <Cmd>
-              ip <H>a</H> <span className="text-[var(--c-muted)]"># skrot</span>
+              ip <H>a</H> <span className="text-[var(--c-muted)]"># skrót</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
@@ -177,7 +177,7 @@ export default function Networking() {
               ip <H>route</H> show
             </Cmd>
             <Cmd>
-              ip <H>r</H> <span className="text-[var(--c-muted)]"># skrot</span>
+              ip <H>r</H> <span className="text-[var(--c-muted)]"># skrót</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
@@ -206,7 +206,7 @@ export default function Networking() {
             Lokalne mapowanie nazw (nadpisuje DNS)
           </Row>
           <Row code="/etc/nsswitch.conf" codeVariant="orange">
-            Kolejnosc rozwiazywania nazw
+            Kolejność rozwiazywania nazw
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Narzędzia DNS</SectionLabel>
@@ -235,7 +235,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Uzyj konkretnego serwera DNS</Comment>
+            <Comment># Użyj konkretnego serwera DNS</Comment>
             <Cmd>
               dig <V>example.com</V> <H>@8.8.8.8</H>
             </Cmd>
@@ -253,7 +253,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Kolejnosc resolwingu: <b>/etc/hosts</b> → <b>DNS cache</b> →{' '}
+            Kolejność resolwingu: <b>/etc/hosts</b> → <b>DNS cache</b> →{' '}
             <b>/etc/resolv.conf</b> (serwer DNS).
           </InfoBox>
         </Card>
@@ -321,13 +321,13 @@ export default function Networking() {
             Filtrowanie pakietów w jądrze Linux. 3 główne łańcuchy.
           </p>
           <Concept title="INPUT" color="var(--c-orange)">
-            Pakiety przychodzace DO hosta.
+            Pakiety przychodzące DO hosta.
           </Concept>
           <Concept title="OUTPUT" color="var(--c-green)">
-            Pakiety wychodzace Z hosta.
+            Pakiety wychodzące Z hosta.
           </Concept>
           <Concept title="FORWARD" color="var(--c-purple)">
-            Pakiety przechodzace PRZEZ hosta (routing).
+            Pakiety przechodzące PRZEZ hosta (routing).
           </Concept>
           <Divider />
           <ExampleBlock variant="orange">
@@ -337,13 +337,13 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zezwol na SSH (port 22)</Comment>
+            <Comment># Zezwól na SSH (port 22)</Comment>
             <Cmd>
               iptables <H>-A INPUT</H> <V>-p tcp --dport 22</V> <F>-j ACCEPT</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zezwol na HTTP/HTTPS</Comment>
+            <Comment># Zezwól na HTTP/HTTPS</Comment>
             <Cmd>
               iptables -A INPUT <V>-p tcp --dport 80</V> -j ACCEPT
             </Cmd>
@@ -358,7 +358,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Zezwol na nawiazane połączenia</Comment>
+            <Comment># Zezwól na nawiązane połączenia</Comment>
             <Cmd>
               iptables -A INPUT <H>-m state --state ESTABLISHED,RELATED</H> -j
               ACCEPT
@@ -371,8 +371,8 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <InfoBox warn>
-            Kolejnosc reguł ma znaczenie! Pierwsza pasująca reguła wygrywa.
-            Zawsze zezwol na SSH <b>przed</b> DROP.
+            Kolejność reguł ma znaczenie! Pierwsza pasująca reguła wygrywa.
+            Zawsze zezwól na SSH <b>przed</b> DROP.
           </InfoBox>
         </Card>
 
@@ -388,7 +388,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Filtruj po hoscie</Comment>
+            <Comment># Filtruj po hoście</Comment>
             <Cmd>
               tcpdump <H>-i eth0</H> host <V>192.168.1.1</V>
             </Cmd>

@@ -252,7 +252,7 @@ export default function Editors() {
             <Cmd>
               <H>ZZ</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # skrot: zapisz i wyjdź
+                # skrót: zapisz i wyjdź
               </span>
             </Cmd>
           </ExampleBlock>
@@ -307,7 +307,7 @@ export default function Editors() {
             ukryj numery linii
           </Row>
           <Row code=":set paste" codeVariant="orange">
-            tryb wklejania (wylacza auto-indent)
+            tryb wklejania (wyłącza auto-indent)
           </Row>
           <Row code=":syntax on" codeVariant="orange">
             podświetlanie składni

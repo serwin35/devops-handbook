@@ -101,7 +101,7 @@ export default function Lesson03() {
           <ExampleBlock variant="purple">
             <Comment># Zmienna lokalna</Comment>
             <Cmd>
-              <V>POZDROWIENIE</V>=<F>"Witaj w swiecie DevOps!"</F>
+              <V>POZDROWIENIE</V>=<F>"Witaj w świecie DevOps!"</F>
             </Cmd>
             <Cmd>
               echo <V>$POZDROWIENIE</V>
@@ -112,7 +112,7 @@ export default function Lesson03() {
             <Cmd>
               echo <V>$USER</V>{' '}
               <span className="text-[var(--c-muted)]">
-                # aktualny uzytkownik
+                # aktualny użytkownik
               </span>
             </Cmd>
             <Cmd>
@@ -121,12 +121,12 @@ export default function Lesson03() {
             </Cmd>
             <Cmd>
               echo <V>$SHELL</V>{' '}
-              <span className="text-[var(--c-muted)]"># uzywana powloka</span>
+              <span className="text-[var(--c-muted)]"># używana powłoka</span>
             </Cmd>
             <Cmd>
               echo <V>$PATH</V>{' '}
               <span className="text-[var(--c-muted)]">
-                # sciezki do programow
+                # ścieżki do programów
               </span>
             </Cmd>
           </ExampleBlock>
@@ -137,17 +137,17 @@ export default function Lesson03() {
           color="var(--c-accent)"
         >
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Lista katalogow oddzielonych dwukropkami, w ktorych powloka szuka
-            plikow wykonywalnych.
+            Lista katalogów oddzielonych dwukropkami, w których powłoka szuka
+            plików wykonywalnych.
           </p>
           <ExampleBlock>
-            <Comment># Wyswietl PATH</Comment>
+            <Comment># Wyświetl PATH</Comment>
             <Cmd>
               echo <V>$PATH</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wynik (przykladowy)</Comment>
+            <Comment># Wynik (przykładowy)</Comment>
             <Cmd>
               <span className="text-[var(--c-muted)] text-[10px]">
                 /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -155,44 +155,44 @@ export default function Lesson03() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Gdy wpisujesz <code className="text-xs">grep</code>, powloka
+            Gdy wpisujesz <code className="text-xs">grep</code>, powłoka
             sprawdza po kolei:{' '}
             <code className="text-xs">/usr/local/bin/grep</code>
             {' → '}
-            <code className="text-xs">/usr/bin/grep</code> {' → '} ...az
+            <code className="text-xs">/usr/bin/grep</code> {' → '} ...aż
             znajdzie.
           </InfoBox>
         </Card>
 
         <Card
-          title="export — zmienne dla procesow potomnych"
+          title="export — zmienne dla procesów potomnych"
           color="var(--c-orange)"
         >
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Zmienna lokalna jest widoczna tylko w biezacej sesji. Aby byla
-            dostepna dla programow uruchamianych z tej powloki, nalezy ja
-            wyeksportowac.
+            Zmienna lokalna jest widoczna tylko w bieżącej sesji. Aby była
+            dostępna dla programów uruchamianych z tej powłoki, należy ją
+            wyeksportować.
           </p>
           <ExampleBlock variant="orange">
-            <Comment># Eksportuj zmienna</Comment>
+            <Comment># Eksportuj zmienną</Comment>
             <Cmd>
               export <V>POZDROWIENIE</V>=<F>"Witaj!"</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Stala zmienna (po restarcie terminala)</Comment>
+            <Comment># Stała zmienna (po restarcie terminala)</Comment>
             <Cmd>
               echo <F>'export STATUS="aktywny"'</F> {'>> '} <H>~/.bashrc</H>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
             Zmienne w <code className="text-xs">~/.bashrc</code> lub{' '}
-            <code className="text-xs">~/.profile</code> sa ladowane przy kazdym
+            <code className="text-xs">~/.profile</code> są ładowane przy każdym
             otwarciu terminala.
           </InfoBox>
         </Card>
 
-        <Card title="Menedzer pakietow" color="var(--c-green)" full>
+        <Card title="Menedżer pakietów" color="var(--c-green)" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Concept title="APT (Debian / Ubuntu)" color="var(--c-green)">
               <code>apt</code> — Advanced Package Tool. Standard w dystrybucjach
@@ -205,15 +205,15 @@ export default function Lesson03() {
           </div>
           <Divider />
           <p className="text-[var(--c-muted)] text-xs mb-2 mt-2">
-            Automatyzuje instalacje, aktualizacje, usuwanie i rozwiazywanie
-            zaleznosci.
+            Automatyzuje instalację, aktualizację, usuwanie i rozwiązywanie
+            zależności.
           </p>
         </Card>
 
         <Card title="APT — podstawowe operacje" color="var(--c-green)">
           <ExampleBlock variant="green">
             <Comment>
-              # Aktualizuj liste pakietow (zawsze przed install!)
+              # Aktualizuj listę pakietów (zawsze przed install!)
             </Comment>
             <Cmd>
               sudo apt <H>update</H>
@@ -242,29 +242,29 @@ export default function Lesson03() {
               to="/cheatsheets/package-management"
               className="text-[11px] text-[var(--c-accent)] hover:text-[var(--c-green)]"
             >
-              Pelny cheatsheet &rarr;
+              Pełny cheatsheet &rarr;
             </Link>
           </div>
         </Card>
 
         <Card title="Potoki w praktyce — zaawansowane" color="var(--c-yellow)">
-          <SectionLabel>Filtrowanie logow UFW</SectionLabel>
+          <SectionLabel>Filtrowanie logów UFW</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Policz zablokowane polaczenia</Comment>
+            <Comment># Policz zablokowane połączenia</Comment>
             <Cmd>
               cat <F>/var/log/ufw.log</F> {' | '} grep <V>"BLOCK"</V> {' | '} wc{' '}
               <H>-l</H>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-2">Zliczanie plikow conf</SectionLabel>
+          <SectionLabel className="mt-2">Zliczanie plików conf</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Ile plikow z "conf" w /etc?</Comment>
+            <Comment># Ile plików z "conf" w /etc?</Comment>
             <Cmd>
               ls <F>/etc</F> {' | '} grep <V>"conf"</V> {' | '} wc <H>-l</H>
             </Cmd>
           </ExampleBlock>
           <SectionLabel className="mt-2">
-            Top 5 uzytkownikow wg procesow
+            Top 5 użytkowników wg procesów
           </SectionLabel>
           <ExampleBlock variant="yellow">
             <Cmd>
@@ -280,19 +280,19 @@ export default function Lesson03() {
 
         <Card title="AI w terminalu" color="var(--c-accent)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Asystenci AI (ChatGPT, Gemini, Copilot) pomagaja w pracy z CLI:
+            Asystenci AI (ChatGPT, Gemini, Copilot) pomagają w pracy z CLI:
           </p>
           <Row code="Generowanie">
-            "Napisz polecenie ktore znajdzie pliki {'>'} 100MB w /var/log"
+            "Napisz polecenie które znajdzie pliki {'>'} 100MB w /var/log"
           </Row>
-          <Row code="Tlumaczenie">
-            Wklej skomplikowane polecenie i popros o wyjasnienie krok po kroku
+          <Row code="Tłumaczenie">
+            Wklej skomplikowane polecenie i poproś o wyjaśnienie krok po kroku
           </Row>
           <Row code="Debugowanie">
-            Wklej skrypt ktory nie dziala — AI znajdzie blad
+            Wklej skrypt który nie działa — AI znajdzie błąd
           </Row>
           <InfoBox>
-            AI nie zastapi zrozumienia — zawsze weryfikuj sugerowane polecenia
+            AI nie zastąpi zrozumienia — zawsze weryfikuj sugerowane polecenia
             przed uruchomieniem na produkcji!
           </InfoBox>
         </Card>
@@ -300,7 +300,7 @@ export default function Lesson03() {
 
       <LessonNav
         prev={{ to: '/lessons/02', label: '02 — Systemy operacyjne i Linux' }}
-        next={{ to: '/lessons/04', label: '04 — Wkrotce...' }}
+        next={{ to: '/lessons/04', label: '04 — Wkrótce...' }}
       />
     </div>
   );

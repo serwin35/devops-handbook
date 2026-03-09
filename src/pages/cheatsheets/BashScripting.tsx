@@ -226,7 +226,7 @@ export default function BashScripting() {
           <Divider />
           <SectionLabel>while i until</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># while — dopoki warunek prawdziwy</Comment>
+            <Comment># while — dopóki warunek prawdziwy</Comment>
             <Cmd>
               <H>while</H> [[ <V>$n</V> -lt 5 ]]; <H>do</H>
             </Cmd>
@@ -236,7 +236,7 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># until — dopoki warunek fałszywy</Comment>
+            <Comment># until — dopóki warunek fałszywy</Comment>
             <Cmd>
               <H>until</H> [[ <V>$n</V> -ge 5 ]]; <H>do</H>
             </Cmd>
@@ -561,7 +561,7 @@ export default function BashScripting() {
               <ExampleBlock variant="orange">
                 <Comment># metoda 2: whoami</Comment>
                 <Cmd>if [[ $(whoami) != "root" ]]; then</Cmd>
-                <Cmd>{'  '}echo "Brak uprawnien" &gt;&amp;2</Cmd>
+                <Cmd>{'  '}echo "Brak uprawnień" &gt;&amp;2</Cmd>
                 <Cmd>{'  '}exit 1</Cmd>
                 <Cmd>fi</Cmd>
               </ExampleBlock>

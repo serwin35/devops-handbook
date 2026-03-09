@@ -287,7 +287,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Roznice</Comment>
+            <Comment># Różnice</Comment>
             <Cmd>
               git <H>diff</H>{' '}
               <span className="text-[var(--c-muted)]"># unstaged zmiany</span>

@@ -285,7 +285,7 @@ export default function DockerBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Uzyj named volume</Comment>
+            <Comment># Użyj named volume</Comment>
             <Cmd>
               docker run <H>-v</H> <V>app-data:/app/data</V> myapp
             </Cmd>
@@ -339,10 +339,10 @@ export default function DockerBasics() {
           </ExampleBlock>
           <Divider />
           <Row code="bridge" codeVariant="orange">
-            Domyślna — izolowana siec na hoscie
+            Domyślna — izolowana siec na hoście
           </Row>
           <Row code="host" codeVariant="orange">
-            Kontener uzywa sieci hosta bezpośrednio
+            Kontener używa sieci hosta bezpośrednio
           </Row>
           <Row code="none" codeVariant="orange">
             Brak sieci

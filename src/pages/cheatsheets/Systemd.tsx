@@ -246,7 +246,7 @@ export default function Systemd() {
           <Divider />
           <SectionLabel className="mt-1.5">Sekcje</SectionLabel>
           <Row code="[Unit]" codeVariant="yellow">
-            Opis, zależności, kolejnosc uruchamiania
+            Opis, zależności, kolejność uruchamiania
           </Row>
           <Row code="[Service]" codeVariant="yellow">
             Typ, użytkownik, komenda, restart
@@ -271,7 +271,7 @@ export default function Systemd() {
             Socket — aktywacja usługi przy połączeniu. Np. SSH on-demand.
           </Concept>
           <Concept title=".timer" color="var(--c-yellow)">
-            Timer — harmonogram zadan (alternatywa dla cron). Uruchamia
+            Timer — harmonogram zadań (alternatywa dla cron). Uruchamia
             powiązany .service.
           </Concept>
           <Concept title=".mount" color="var(--c-orange)">

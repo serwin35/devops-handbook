@@ -179,7 +179,7 @@ export default function SSHKeys() {
             </span>
             <br />
             <code className="text-xs">Permission denied (publickey)</code> —
-            czesto wynik zlych uprawnien, nie zlego klucza!
+            często wynik złych uprawnień, nie złego klucza!
           </InfoBox>
         </Card>
 
@@ -218,7 +218,7 @@ export default function SSHKeys() {
             <code className="text-xs">
               ssh-add --apple-use-keychain ~/.ssh/id_ed25519
             </code>{' '}
-            — zapamietuje passphrase w Keychain
+            — zapamiętuje passphrase w Keychain
           </InfoBox>
         </Card>
 
@@ -371,7 +371,7 @@ export default function SSHKeys() {
             sprawdź chmod 600/700
           </Row>
           <Row code="Too many auth" codeVariant="orange">
-            uzyj <code className="text-xs">-i klucz</code> lub config
+            użyj <code className="text-xs">-i klucz</code> lub config
           </Row>
           <Row code="Host key changed" codeVariant="orange">
             <code className="text-xs">ssh-keygen -R host</code>
