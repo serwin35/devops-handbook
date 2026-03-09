@@ -22,7 +22,7 @@ export default function Networking() {
     <div>
       <PageHeader
         title="Networking"
-        subtitle="TCP/IP · DNS · porty · diagnostyka · narzedzia sieciowe"
+        subtitle="TCP/IP · DNS · porty · diagnostyka · narzędzia sieciowe"
         color="var(--c-orange)"
       />
 
@@ -32,19 +32,19 @@ export default function Networking() {
             Warstwy komunikacji sieciowej — od fizycznej do aplikacji.
           </p>
           <pre className="text-xs leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre mb-2.5">
-            {`OSI              TCP/IP           Przyklad
+            {`OSI              TCP/IP           Przykład
 ─────────────────────────────────────────────
 7. Aplikacji     Aplikacji        HTTP, DNS, SSH
 6. Prezentacji   ↑                SSL/TLS, JPEG
 5. Sesji         ↑                Sockety
 4. Transportowa  Transportowa     TCP, UDP
 3. Sieciowa      Internetowa      IP, ICMP, ARP
-2. Lacza danych  Dostepu do       Ethernet, Wi-Fi
-1. Fizyczna      sieci            Kable, sygnaly`}
+2. Łącza danych  Dostępu do       Ethernet, Wi-Fi
+1. Fizyczna      sieci            Kable, sygnały`}
           </pre>
           <InfoBox>
-            <b>TCP</b> = polaczeniowy, niezawodny (HTTP, SSH). <b>UDP</b> =
-            bezpolaczeniowy, szybki (DNS, VoIP, gaming).
+            <b>TCP</b> = połączeniowy, niezawodny (HTTP, SSH). <b>UDP</b> =
+            bezpołączeniowy, szybki (DNS, VoIP, gaming).
           </InfoBox>
         </Card>
 
@@ -53,7 +53,7 @@ export default function Networking() {
             Porty 0-1023 = well-known (wymagaja root). 1024-65535 = dynamiczne.
           </p>
           <Row code="22" codeVariant="yellow">
-            SSH — bezpieczny zdalny dostep
+            SSH — bezpieczny zdalny dostęp
           </Row>
           <Row code="80" codeVariant="yellow">
             HTTP — ruch webowy (nieszyfrowany)
@@ -62,10 +62,10 @@ export default function Networking() {
             HTTPS — ruch webowy (TLS/SSL)
           </Row>
           <Row code="53" codeVariant="yellow">
-            DNS — rozwiazywanie nazw domen
+            DNS — rozwiązywanie nazw domen
           </Row>
           <Row code="25" codeVariant="yellow">
-            SMTP — wysylanie poczty
+            SMTP — wysyłanie poczty
           </Row>
           <Row code="587" codeVariant="yellow">
             SMTP (submission) — z uwierzytelnianiem
@@ -77,7 +77,7 @@ export default function Networking() {
             POP3 — odbieranie poczty (/ z TLS)
           </Row>
           <Row code="21" codeVariant="yellow">
-            FTP — transfer plikow
+            FTP — transfer plików
           </Row>
           <Row code="3306" codeVariant="yellow">
             MySQL / MariaDB
@@ -95,13 +95,13 @@ export default function Networking() {
 
         <Card title="Diagnostyka sieci" color="var(--c-green)">
           <ExampleBlock variant="green">
-            <Comment># Sprawdz polaczenie z hostem (ICMP)</Comment>
+            <Comment># Sprawdz połączenie z hostem (ICMP)</Comment>
             <Cmd>
               ping <H>-c 4</H> <V>google.com</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Sledzenie trasy pakietow</Comment>
+            <Comment># Śledzenie trasy pakietów</Comment>
             <Cmd>
               traceroute <V>google.com</V>
             </Cmd>
@@ -122,7 +122,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Pobierz naglowki HTTP</Comment>
+            <Comment># Pobierz nagłówki HTTP</Comment>
             <Cmd>
               curl <H>-I</H> <V>https://example.com</V>
             </Cmd>
@@ -149,9 +149,9 @@ export default function Networking() {
         </Card>
 
         <Card title="Konfiguracja IP" color="var(--c-purple)">
-          <SectionLabel>Podglad interfejsow</SectionLabel>
+          <SectionLabel>Podgląd interfejsow</SectionLabel>
           <ExampleBlock variant="purple">
-            <Comment># Pokaz adresy IP</Comment>
+            <Comment># Pokaż adresy IP</Comment>
             <Cmd>
               ip <H>addr</H> show
             </Cmd>
@@ -172,7 +172,7 @@ export default function Networking() {
           <Divider />
           <SectionLabel className="mt-1.5">Routing</SectionLabel>
           <ExampleBlock variant="purple">
-            <Comment># Pokaz tablice routingu</Comment>
+            <Comment># Pokaż tablice routingu</Comment>
             <Cmd>
               ip <H>route</H> show
             </Cmd>
@@ -181,7 +181,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Domyslna brama</Comment>
+            <Comment># Domyślna brama</Comment>
             <Cmd>
               ip route | grep <H>default</H>
             </Cmd>
@@ -189,7 +189,7 @@ export default function Networking() {
           <Divider />
           <SectionLabel className="mt-1.5">Hostname</SectionLabel>
           <ExampleBlock>
-            <Comment># Pokaz/ustaw nazwe hosta</Comment>
+            <Comment># Pokaż/ustaw nazwe hosta</Comment>
             <Cmd>hostname</Cmd>
             <Cmd>
               hostnamectl <H>set-hostname</H> <V>web-server-01</V>
@@ -209,9 +209,9 @@ export default function Networking() {
             Kolejnosc rozwiazywania nazw
           </Row>
           <Divider />
-          <SectionLabel className="mt-1.5">Narzedzia DNS</SectionLabel>
+          <SectionLabel className="mt-1.5">Narzędzia DNS</SectionLabel>
           <ExampleBlock variant="orange">
-            <Comment># Zapytanie DNS (szczegolowe)</Comment>
+            <Comment># Zapytanie DNS (szczegółowe)</Comment>
             <Cmd>
               dig <V>example.com</V>
             </Cmd>
@@ -264,19 +264,19 @@ export default function Networking() {
             <code className="text-xs">netstat</code>. Szybszy i nowszy.
           </p>
           <ExampleBlock variant="green">
-            <Comment># Pokaz nasluchujace porty TCP</Comment>
+            <Comment># Pokaż nasłuchujące porty TCP</Comment>
             <Cmd>
               ss <H>-tlnp</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Pokaz nasluchujace porty UDP</Comment>
+            <Comment># Pokaż nasłuchujące porty UDP</Comment>
             <Cmd>
               ss <H>-ulnp</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Wszystkie polaczenia TCP</Comment>
+            <Comment># Wszystkie połączenia TCP</Comment>
             <Cmd>
               ss <H>-tanp</H>
             </Cmd>
@@ -295,16 +295,16 @@ export default function Networking() {
             UDP
           </Row>
           <Row code="-l" codeVariant="green">
-            tylko nasluchujace (listening)
+            tylko nasłuchujące (listening)
           </Row>
           <Row code="-n" codeVariant="green">
             numery portow (bez resolwowania nazw)
           </Row>
           <Row code="-p" codeVariant="green">
-            pokaz proces (PID/nazwa)
+            pokaż proces (PID/nazwa)
           </Row>
           <Row code="-a" codeVariant="green">
-            wszystkie polaczenia
+            wszystkie połączenia
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">netstat (starszy)</SectionLabel>
@@ -318,7 +318,7 @@ export default function Networking() {
 
         <Card title="iptables — firewall" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Filtrowanie pakietow w jadrze Linux. 3 glowne lancuchy.
+            Filtrowanie pakietów w jądrze Linux. 3 główne łańcuchy.
           </p>
           <Concept title="INPUT" color="var(--c-orange)">
             Pakiety przychodzace DO hosta.
@@ -331,7 +331,7 @@ export default function Networking() {
           </Concept>
           <Divider />
           <ExampleBlock variant="orange">
-            <Comment># Pokaz aktualne reguly</Comment>
+            <Comment># Pokaż aktualne reguły</Comment>
             <Cmd>
               iptables <H>-L -n -v</H>
             </Cmd>
@@ -352,33 +352,33 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Zablokuj caly ruch przychodzacy (domyslnie)</Comment>
+            <Comment># Zablokuj cały ruch przychodzacy (domyślnie)</Comment>
             <Cmd>
               iptables <H>-P INPUT DROP</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Zezwol na nawiazane polaczenia</Comment>
+            <Comment># Zezwol na nawiazane połączenia</Comment>
             <Cmd>
               iptables -A INPUT <H>-m state --state ESTABLISHED,RELATED</H> -j
               ACCEPT
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Zapisz reguly (Debian/Ubuntu)</Comment>
+            <Comment># Zapisz reguły (Debian/Ubuntu)</Comment>
             <Cmd>
               iptables-save {' > '} <F>/etc/iptables/rules.v4</F>
             </Cmd>
           </ExampleBlock>
           <InfoBox warn>
-            Kolejnosc regul ma znaczenie! Pierwsza pasujaca regula wygrywa.
+            Kolejnosc reguł ma znaczenie! Pierwsza pasująca reguła wygrywa.
             Zawsze zezwol na SSH <b>przed</b> DROP.
           </InfoBox>
         </Card>
 
         <Card title="tcpdump / Wireshark" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Przechwytywanie i analiza pakietow sieciowych.
+            Przechwytywanie i analiza pakietów sieciowych.
           </p>
           <SectionLabel>tcpdump (CLI)</SectionLabel>
           <ExampleBlock variant="purple">
@@ -418,7 +418,7 @@ export default function Networking() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Pokaz zawartosc pakietow (ASCII)</Comment>
+            <Comment># Pokaż zawartość pakietów (ASCII)</Comment>
             <Cmd>
               tcpdump <H>-A -i eth0</H> port <V>80</V>
             </Cmd>
@@ -426,7 +426,7 @@ export default function Networking() {
           <Divider />
           <SectionLabel className="mt-1.5">Wireshark</SectionLabel>
           <InfoBox>
-            Wireshark = GUI do analizy pakietow. Otwiera pliki{' '}
+            Wireshark = GUI do analizy pakietów. Otwiera pliki{' '}
             <code className="text-xs">.pcap</code> z tcpdump. Filtry:{' '}
             <code className="text-xs">http</code>,{' '}
             <code className="text-xs">tcp.port == 443</code>,{' '}

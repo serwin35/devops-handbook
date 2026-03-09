@@ -44,35 +44,35 @@ export default function Lesson02() {
 
         <Card title="System operacyjny — co robi?">
           <Row code="1">Zarządzanie zasobami sprzętowymi (CPU, RAM, dysk)</Row>
-          <Row code="2">Interfejs uzytkownika (terminal, GUI)</Row>
+          <Row code="2">Interfejs użytkownika (terminal, GUI)</Row>
           <Row code="3">Uruchamianie i zarządzanie procesami</Row>
           <Row code="4">Bezpieczeństwo i kontrola dostępu</Row>
           <Divider />
           <SectionLabel className="mt-2">Kluczowe komponenty</SectionLabel>
-          <Concept title="Jadro (Kernel)">
+          <Concept title="Jądro (Kernel)">
             Centralny element OS. Działa w uprzywilejowanym trybie procesora.
-            Planowanie procesów, zarządzanie pamiecią, system plików.
+            Planowanie procesów, zarządzanie pamięcią, system plików.
           </Concept>
           <Concept title="Biblioteki systemowe">
             API: fork(), open(), read(), write(). Interfejs między aplikacjami a
             jądrem.
           </Concept>
-          <Concept title="Narzedzia systemowe">
+          <Concept title="Narzędzia systemowe">
             ps, top, free, df, du — podstawowe narzędzia do monitorowania i
             zarządzania.
           </Concept>
         </Card>
 
         <Card title="Kernel space vs User space" color="var(--c-yellow)">
-          <Concept title="Przestrzen jadra" color="var(--c-orange)">
+          <Concept title="Przestrzeń jądra" color="var(--c-orange)">
             Pełny dostęp do sprzętu. Operacje uprzywilejowane.
           </Concept>
-          <Concept title="Przestrzen uzytkownika" color="var(--c-green)">
-            Ograniczony dostęp. Izolacja procesów. Tu działaja aplikacje.
+          <Concept title="Przestrzeń użytkownika" color="var(--c-green)">
+            Ograniczony dostęp. Izolacja procesów. Tu działają aplikacje.
           </Concept>
           <Divider />
           <SectionLabel className="mt-2">
-            Wywolania systemowe (syscalls)
+            Wywołania systemowe (syscalls)
           </SectionLabel>
           <p className="text-[var(--c-muted)] text-[11px] mb-2">
             Kontrolowany interfejs między user space a kernel:
@@ -97,7 +97,7 @@ export default function Lesson02() {
             Stabilność, długie cykle wsparcia, wolne oprogramowanie
           </Row>
           <Row code="Ubuntu">
-            Regularne aktualizacje, szerokie wsparcie, duża spoleczność
+            Regularne aktualizacje, szerokie wsparcie, duża społeczność
           </Row>
           <Row code="Linux Mint">
             Dla końcowego użytkownika, zgodny z Ubuntu
@@ -120,15 +120,15 @@ export default function Lesson02() {
           </InfoBox>
         </Card>
 
-        <Card title="System plikow — hierarchia" color="var(--c-yellow)">
+        <Card title="System plików — hierarchia" color="var(--c-yellow)">
           <pre className="text-xs leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre">
             {`/                  Root
 ├── /bin           Podstawowe binaria
 ├── /etc           Konfiguracja systemowa
 ├── /home          Katalogi domowe
-├── /proc          Wirtualny FS procesow
+├── /proc          Wirtualny FS procesów
 ├── /tmp           Pliki tymczasowe
-├── /usr           Programy uzytkownika
+├── /usr           Programy użytkownika
 └── /var           Dane zmienne (logi, bazy)`}
           </pre>
           <div className="text-center mt-2">
@@ -136,7 +136,7 @@ export default function Lesson02() {
               to="/cheatsheets/filesystem"
               className="text-[11px] text-[var(--c-accent)] hover:text-[var(--c-green)]"
             >
-              Pelny cheatsheet &rarr;
+              Pełny cheatsheet &rarr;
             </Link>
           </div>
         </Card>
@@ -144,7 +144,7 @@ export default function Lesson02() {
         <Card title="LVM — Logical Volume Management" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Elastyczna warstwa abstrakcji nad fizycznymi dyskami. Pozwala
-            dynamicznie zmieniac rozmiar, laczyc dyski, tworzyc snapshoty.
+            dynamicznie zmieniać rozmiar, łączyć dyski, tworzyć snapshoty.
           </p>
           <Row code="PV" codeVariant="orange">
             <b>Physical Volume</b> — fizyczny dysk/partycja
@@ -175,14 +175,14 @@ export default function Lesson02() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Zalety: dynamiczna zmiana rozmiaru, laczenie dyskow, snapshoty,
+            Zalety: dynamiczna zmiana rozmiaru, łączenie dysków, snapshoty,
             migracja danych online
           </InfoBox>
         </Card>
 
-        <Card title="Uzytkownicy, grupy, uprawnienia">
+        <Card title="Użytkownicy, grupy, uprawnienia">
           <ExampleBlock>
-            <Comment># Utworz uzytkownika</Comment>
+            <Comment># Utwórz użytkownika</Comment>
             <Cmd>
               sudo useradd <H>-m -s /bin/bash</H> <V>developer</V>
             </Cmd>
@@ -201,7 +201,7 @@ export default function Lesson02() {
             rwxr-xr-x — pliki wykonywalne, katalogi
           </Row>
           <Row code="644" codeVariant="yellow">
-            rw-r--r-- — zwykle pliki
+            rw-r--r-- — zwykłe pliki
           </Row>
           <Row code="600" codeVariant="yellow">
             rw------- — klucze SSH
@@ -211,7 +211,7 @@ export default function Lesson02() {
               to="/cheatsheets/permissions"
               className="text-[11px] text-[var(--c-accent)] hover:text-[var(--c-green)]"
             >
-              Pelny cheatsheet &rarr;
+              Pełny cheatsheet &rarr;
             </Link>
           </div>
         </Card>
@@ -222,7 +222,7 @@ export default function Lesson02() {
             <Cmd>
               top <H>-b -n 1</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # jednokrotny snapshot procesow
+                # jednokrotny snapshot procesów
               </span>
             </Cmd>
             <Cmd>
@@ -239,9 +239,9 @@ export default function Lesson02() {
             <code className="text-[var(--c-green)] text-xs">htop</code> — lepszy
             top. Instalacja:{' '}
             <code className="text-xs">sudo apt install htop</code>. Kolorowe
-            drzewo procesow, filtrowanie, kill bezposrednio z UI.
+            drzewo procesów, filtrowanie, kill bezpośrednio z UI.
           </InfoBox>
-          <SectionLabel className="mt-2.5">Pamiec</SectionLabel>
+          <SectionLabel className="mt-2.5">Pamięć</SectionLabel>
           <ExampleBlock variant="green">
             <Cmd>
               free <H>-h</H>
@@ -251,7 +251,7 @@ export default function Lesson02() {
               <span className="text-[var(--c-muted)]"># co 1 sekunde</span>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-2.5">Dysk i siec</SectionLabel>
+          <SectionLabel className="mt-2.5">Dysk i sieć</SectionLabel>
           <ExampleBlock variant="green">
             <Cmd>
               df <H>-h</H>{' '}
@@ -259,7 +259,7 @@ export default function Lesson02() {
             </Cmd>
             <Cmd>
               du <H>-sh</H> <F>/*</F>{' '}
-              <span className="text-[var(--c-muted)]"># rozmiar katalogow</span>
+              <span className="text-[var(--c-muted)]"># rozmiar katalogów</span>
             </Cmd>
             <Cmd>
               netstat <H>-tuln</H>{' '}
@@ -269,15 +269,15 @@ export default function Lesson02() {
         </Card>
 
         <Card title="UFW — firewall" color="var(--c-orange)">
-          <SectionLabel>Wlaczanie / wylaczanie</SectionLabel>
+          <SectionLabel>Włączanie / wyłączanie</SectionLabel>
           <ExampleBlock variant="orange">
             <Cmd>
               sudo ufw <H>enable</H>{' '}
-              <span className="text-[var(--c-muted)]"># wlacz firewall</span>
+              <span className="text-[var(--c-muted)]"># włącz firewall</span>
             </Cmd>
             <Cmd>
               sudo ufw <H>disable</H>{' '}
-              <span className="text-[var(--c-muted)]"># wylacz firewall</span>
+              <span className="text-[var(--c-muted)]"># wyłącz firewall</span>
             </Cmd>
             <Cmd>
               sudo ufw <H>status</H>{' '}
@@ -286,17 +286,17 @@ export default function Lesson02() {
             <Cmd>
               sudo ufw <H>status numbered</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # z numerami regul (ID)
+                # z numerami reguł (ID)
               </span>
             </Cmd>
             <Cmd>
               sudo ufw <H>status verbose</H>{' '}
-              <span className="text-[var(--c-muted)]"># szczegolowy</span>
+              <span className="text-[var(--c-muted)]"># szczegółowy</span>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-2">Dodawanie regul (allow)</SectionLabel>
+          <SectionLabel className="mt-2">Dodawanie reguł (allow)</SectionLabel>
           <ExampleBlock variant="green">
-            <Comment># Zezwol na port</Comment>
+            <Comment># Zezwól na port</Comment>
             <Cmd>
               sudo ufw allow <H>80</H>{' '}
               <span className="text-[var(--c-muted)]"># HTTP</span>
@@ -320,7 +320,7 @@ export default function Lesson02() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Konkretny protokol</Comment>
+            <Comment># Konkretny protokół</Comment>
             <Cmd>
               sudo ufw allow <H>80/tcp</H>
             </Cmd>
@@ -329,7 +329,7 @@ export default function Lesson02() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Zakres portow</Comment>
+            <Comment># Zakres portów</Comment>
             <Cmd>
               sudo ufw allow <H>8000:8100/tcp</H>
             </Cmd>
@@ -353,11 +353,11 @@ export default function Lesson02() {
               sudo ufw deny from <V>10.0.0.50</V>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-2">Usuwanie regul</SectionLabel>
+          <SectionLabel className="mt-2">Usuwanie reguł</SectionLabel>
           <ExampleBlock variant="orange">
             <Cmd>
               sudo ufw delete <V>3</V>{' '}
-              <span className="text-[var(--c-muted)]"># usun regule nr 3</span>
+              <span className="text-[var(--c-muted)]"># usuń regułę nr 3</span>
             </Cmd>
             <Cmd>
               sudo ufw delete allow <V>80</V>
@@ -366,12 +366,12 @@ export default function Lesson02() {
               sudo ufw delete deny <V>3306</V>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-2">Reset i domyslne</SectionLabel>
+          <SectionLabel className="mt-2">Reset i domyślne</SectionLabel>
           <ExampleBlock variant="orange">
             <Cmd>
               sudo ufw <H>reset</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # usun wszystkie reguly
+                # usuń wszystkie reguły
               </span>
             </Cmd>
             <Cmd>
@@ -392,7 +392,7 @@ export default function Lesson02() {
             <Cmd>
               sudo netplan <H>apply</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # zastosuj konfiguracje
+                # zastosuj konfigurację
               </span>
             </Cmd>
             <Cmd>
@@ -404,7 +404,7 @@ export default function Lesson02() {
             <Cmd>
               sudo netplan <H>get</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # podglad konfiguracji
+                # podgląd konfiguracji
               </span>
             </Cmd>
           </ExampleBlock>
@@ -457,9 +457,9 @@ export default function Lesson02() {
           </ExampleBlock>
         </Card>
 
-        <Card title="Niezbedne narzedzia" color="var(--c-yellow)">
+        <Card title="Niezbędne narzędzia" color="var(--c-yellow)">
           <ExampleBlock>
-            <Comment># Kompilatory i naglowki</Comment>
+            <Comment># Kompilatory i nagłówki</Comment>
             <Cmd>
               sudo apt install <H>build-essential</H>
             </Cmd>
@@ -471,7 +471,7 @@ export default function Lesson02() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Pobieranie plikow</Comment>
+            <Comment># Pobieranie plików</Comment>
             <Cmd>
               sudo apt install <H>curl wget</H>
             </Cmd>
@@ -483,7 +483,7 @@ export default function Lesson02() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Narzedzia sieciowe</Comment>
+            <Comment># Narzędzia sieciowe</Comment>
             <Cmd>
               sudo apt install <H>net-tools htop tree</H>
             </Cmd>
@@ -498,7 +498,7 @@ export default function Lesson02() {
 
       <LessonNav
         prev={{ to: '/lessons/01', label: '01 — Intro DevOps' }}
-        next={{ to: '/lessons/03', label: '03 — Docker w praktyce' }}
+        next={{ to: '/lessons/03', label: '03 — Wiersz poleceń i Bash' }}
       />
     </div>
   );

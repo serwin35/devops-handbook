@@ -28,20 +28,20 @@ export default function DockerBasics() {
         <Card title="Docker — jak to dziala?" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <Concept title="Image (Obraz)">
-              Szablon tylko-do-odczytu. Zawiera OS, zaleznosci, kod aplikacji.
+              Szablon tylko-do-odczytu. Zawiera OS, zależności, kod aplikacji.
               Budowany z Dockerfile.
             </Concept>
             <Concept title="Container" color="var(--c-green)">
-              Uruchomiona instancja obrazu. Izolowany proces z wlasnym FS,
+              Uruchomiona instancja obrazu. Izolowany proces z własnym FS,
               siecia, PID. Lekki i efemeryczny.
             </Concept>
             <Concept title="Volume" color="var(--c-purple)">
-              Trwale dane poza kontenerem. Przezywa restart i usuwanie
-              kontenerow.
+              Trwale dane poza kontenerem. Przeżywa restart i usuwanie
+              kontenerów.
             </Concept>
             <Concept title="Network" color="var(--c-yellow)">
-              Kontenery komunikuja sie przez wirtualne sieci. Domyslnie bridge,
-              mozna tworzyc wlasne.
+              Kontenery komunikują sie przez wirtualne sieci. Domyślnie bridge,
+              można tworzyc własne.
             </Concept>
           </div>
         </Card>
@@ -67,7 +67,7 @@ export default function DockerBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Ze zmiennymi srodowiskowymi</Comment>
+            <Comment># Ze zmiennymi środowiskowymi</Comment>
             <Cmd>
               docker run <H>-e</H> <V>MYSQL_ROOT_PASSWORD=secret</V> mysql
             </Cmd>
@@ -92,20 +92,20 @@ export default function DockerBasics() {
             nadaj nazwe kontenerowi
           </Row>
           <Row code="-e KEY=VAL" codeVariant="green">
-            zmienna srodowiskowa
+            zmienna środowiskowa
           </Row>
           <Row code="-v src:dst" codeVariant="green">
             bind mount / wolumin
           </Row>
           <Row code="--rm" codeVariant="green">
-            usun kontener po zakonczeniu
+            usuń kontener po zakończeniu
           </Row>
           <Row code="--restart always" codeVariant="green">
             auto-restart po crashu/reboot
           </Row>
         </Card>
 
-        <Card title="Zarzadzanie kontenerami">
+        <Card title="Zarządzanie kontenerami">
           <ExampleBlock>
             <Comment># Lista uruchomionych</Comment>
             <Cmd>
@@ -131,14 +131,14 @@ export default function DockerBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun kontener</Comment>
+            <Comment># Usuń kontener</Comment>
             <Cmd>
               docker <H>rm</H> <V>moj-nginx</V>
             </Cmd>
             <Cmd>
               docker rm <H>-f</H> moj-nginx{' '}
               <span className="text-[var(--c-muted)]">
-                # force (dzialajacy)
+                # force (działający)
               </span>
             </Cmd>
           </ExampleBlock>
@@ -154,19 +154,19 @@ export default function DockerBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Wejdz do dzialajacego kontenera</Comment>
+            <Comment># Wejdz do działającego kontenera</Comment>
             <Cmd>
               docker <H>exec -it</H> <V>moj-nginx</V> <F>/bin/bash</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Statystyki zuzycia zasobow</Comment>
+            <Comment># Statystyki zużycia zasobów</Comment>
             <Cmd>
               docker <H>stats</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Szczegoly kontenera (IP, mounts, env...)</Comment>
+            <Comment># Szczegóły kontenera (IP, mounts, env...)</Comment>
             <Cmd>
               docker <H>inspect</H> <V>moj-nginx</V>
             </Cmd>
@@ -205,7 +205,7 @@ export default function DockerBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun obraz</Comment>
+            <Comment># Usuń obraz</Comment>
             <Cmd>
               docker <H>rmi</H> <V>nginx:alpine</V>
             </Cmd>
@@ -221,7 +221,7 @@ export default function DockerBasics() {
             Przepis na budowanie obrazu — warstwa po warstwie.
           </p>
           <ExampleBlock variant="yellow">
-            <Comment># Przykladowy Dockerfile</Comment>
+            <Comment># Przykładowy Dockerfile</Comment>
             <Cmd>
               <H>FROM</H> <V>node:20-alpine</V>
             </Cmd>
@@ -246,7 +246,7 @@ export default function DockerBasics() {
           </ExampleBlock>
           <Divider />
           <Row code="FROM" codeVariant="yellow">
-            Obraz bazowy — zawsze pierwsza instrukcja
+            Obraz bazowy — zawsze pierwszą instrukcja
           </Row>
           <Row code="WORKDIR" codeVariant="yellow">
             Katalog roboczy w kontenerze
@@ -255,31 +255,31 @@ export default function DockerBasics() {
             Kopiuj pliki z hosta do obrazu
           </Row>
           <Row code="RUN" codeVariant="yellow">
-            Wykonaj komende podczas buildu
+            Wykonaj komendę podczas buildu
           </Row>
           <Row code="EXPOSE" codeVariant="yellow">
             Dokumentuj port (nie otwiera go!)
           </Row>
           <Row code="CMD" codeVariant="yellow">
-            Domyslna komenda przy starcie kontenera
+            Domyślna komenda przy starcie kontenera
           </Row>
           <Row code="ENV" codeVariant="yellow">
-            Zmienna srodowiskowa
+            Zmienna środowiskowa
           </Row>
           <Row code="ARG" codeVariant="yellow">
             Argument build-time (nie widoczny w runtime)
           </Row>
           <Row code="ENTRYPOINT" codeVariant="yellow">
-            Niezmienny punkt wejscia (CMD jako argumenty)
+            Niezmienny punkt wejścia (CMD jako argumenty)
           </Row>
         </Card>
 
         <Card title="Woluminy (Volumes)" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Dane w kontenerze sa efemeryczne — woluminy je utrwalaja.
+            Dane w kontenerze sa efemeryczne — woluminy je utrwalają.
           </p>
           <ExampleBlock variant="purple">
-            <Comment># Utworz named volume</Comment>
+            <Comment># Utwórz named volume</Comment>
             <Cmd>
               docker volume <H>create</H> <V>app-data</V>
             </Cmd>
@@ -300,7 +300,7 @@ export default function DockerBasics() {
           <ExampleBlock>
             <Cmd>
               docker volume <H>ls</H>{' '}
-              <span className="text-[var(--c-muted)]"># lista woluminow</span>
+              <span className="text-[var(--c-muted)]"># lista woluminów</span>
             </Cmd>
             <Cmd>
               docker volume <H>inspect</H> app-data
@@ -310,14 +310,14 @@ export default function DockerBasics() {
             </Cmd>
             <Cmd>
               docker volume <H>prune</H>{' '}
-              <span className="text-[var(--c-muted)]"># usun nieuzywane</span>
+              <span className="text-[var(--c-muted)]"># usuń nieużywane</span>
             </Cmd>
           </ExampleBlock>
         </Card>
 
         <Card title="Sieci (Networks)" color="var(--c-orange)">
           <ExampleBlock variant="orange">
-            <Comment># Utworz siec</Comment>
+            <Comment># Utwórz siec</Comment>
             <Cmd>
               docker network <H>create</H> <V>my-net</V>
             </Cmd>
@@ -339,10 +339,10 @@ export default function DockerBasics() {
           </ExampleBlock>
           <Divider />
           <Row code="bridge" codeVariant="orange">
-            Domyslna — izolowana siec na hoscie
+            Domyślna — izolowana siec na hoscie
           </Row>
           <Row code="host" codeVariant="orange">
-            Kontener uzywa sieci hosta bezposrednio
+            Kontener uzywa sieci hosta bezpośrednio
           </Row>
           <Row code="none" codeVariant="orange">
             Brak sieci
@@ -363,7 +363,7 @@ export default function DockerBasics() {
 
         <Card title="Docker Compose" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Wiele kontenerow zdefiniowanych w jednym pliku YAML.
+            Wiele kontenerów zdefiniowanych w jednym pliku YAML.
           </p>
           <ExampleBlock variant="green">
             <Comment># docker-compose.yml</Comment>
@@ -413,7 +413,7 @@ export default function DockerBasics() {
             <Cmd>
               docker compose <H>down</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # stop + usun kontenery
+                # stop + usuń kontenery
               </span>
             </Cmd>
             <Cmd>
@@ -422,7 +422,7 @@ export default function DockerBasics() {
             </Cmd>
             <Cmd>
               docker compose <H>ps</H>{' '}
-              <span className="text-[var(--c-muted)]"># status serwisow</span>
+              <span className="text-[var(--c-muted)]"># status serwisów</span>
             </Cmd>
             <Cmd>
               docker compose <H>build</H>{' '}
@@ -435,23 +435,23 @@ export default function DockerBasics() {
           </ExampleBlock>
         </Card>
 
-        <Card title="Sprzatanie" color="var(--c-orange)">
+        <Card title="Sprzątanie" color="var(--c-orange)">
           <ExampleBlock variant="orange">
             <Comment>
-              # Usun WSZYSTKO nieuzywane (kontenery, obrazy, sieci, cache)
+              # Usuń WSZYSTKO nieużywane (kontenery, obrazy, sieci, cache)
             </Comment>
             <Cmd>
               docker <H>system prune -a</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun zatrzymane kontenery</Comment>
+            <Comment># Usuń zatrzymane kontenery</Comment>
             <Cmd>
               docker <H>container prune</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun nieuzywane obrazy</Comment>
+            <Comment># Usuń nieużywane obrazy</Comment>
             <Cmd>
               docker <H>image prune -a</H>
             </Cmd>
@@ -464,7 +464,7 @@ export default function DockerBasics() {
           </ExampleBlock>
           <InfoBox warn>
             <code className="text-xs text-[var(--c-orange)]">prune -a</code>{' '}
-            usuwa WSZYSTKIE nieuzywane zasoby — uzywaj ostroznie na produkcji!
+            usuwa WSZYSTKIE nieużywane zasoby — używaj ostrożnie na produkcji!
           </InfoBox>
         </Card>
       </div>

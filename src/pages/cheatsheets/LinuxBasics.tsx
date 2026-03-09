@@ -20,7 +20,7 @@ export default function LinuxBasics() {
     <div>
       <PageHeader
         title="Linux Basic Commands"
-        subtitle="Nawigacja · pliki · katalogi · wyswietlanie · pomoc"
+        subtitle="Nawigacja · pliki · katalogi · wyświetlanie · pomoc"
         color="var(--c-green)"
       />
 
@@ -31,13 +31,13 @@ export default function LinuxBasics() {
             <Cmd>pwd</Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Przejdz do katalogu</Comment>
+            <Comment># Przejdź do katalogu</Comment>
             <Cmd>
               cd <V>/var/log</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Katalog wyzej</Comment>
+            <Comment># Katalog wyżej</Comment>
             <Cmd>cd ..</Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
@@ -50,16 +50,16 @@ export default function LinuxBasics() {
           </ExampleBlock>
         </Card>
 
-        <Card title="Tworzenie plikow i katalogow" color="var(--c-yellow)">
+        <Card title="Tworzenie plików i katalogów" color="var(--c-yellow)">
           <SectionLabel>touch — pliki</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz pusty plik</Comment>
+            <Comment># Utwórz pusty plik</Comment>
             <Cmd>
               touch <V>plik.txt</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz wiele plikow naraz</Comment>
+            <Comment># Utwórz wiele plików naraz</Comment>
             <Cmd>
               touch <V>index.html style.css app.js</V>
             </Cmd>
@@ -67,26 +67,26 @@ export default function LinuxBasics() {
           <Divider />
           <SectionLabel>mkdir — katalogi</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz katalog</Comment>
+            <Comment># Utwórz katalog</Comment>
             <Cmd>
               mkdir <V>projekty</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz zagniezdzone katalogi</Comment>
+            <Comment># Utwórz zagnieżdżone katalogi</Comment>
             <Cmd>
               mkdir <H>-p</H> <V>projekty/frontend/src</V>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            <b>touch</b> tworzy plik jesli nie istnieje, a jesli istnieje —
-            aktualizuje jego timestamp. <b>mkdir -p</b> tworzy cala sciezke.
+            <b>touch</b> tworzy plik jeśli nie istnieje, a jeśli istnieje —
+            aktualizuje jego timestamp. <b>mkdir -p</b> tworzy cała ścieżkę.
           </InfoBox>
         </Card>
 
-        <Card title="Wyswietlanie zawartosci" color="var(--c-purple)">
+        <Card title="Wyświetlanie zawartości" color="var(--c-purple)">
           <ExampleBlock variant="purple">
-            <Comment># Caly plik</Comment>
+            <Comment># Cały plik</Comment>
             <Cmd>
               cat <V>plik.txt</V>
             </Cmd>
@@ -101,7 +101,7 @@ export default function LinuxBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Sledzenie pliku na zywo (logi)</Comment>
+            <Comment># Śledzenie pliku na zywo (logi)</Comment>
             <Cmd>
               tail <H>-f</H> <F>/var/log/syslog</F>
             </Cmd>
@@ -113,11 +113,11 @@ export default function LinuxBasics() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <Row code="cat">wyswietl caly plik</Row>
+          <Row code="cat">wyświetl cały plik</Row>
           <Row code="head -n N">pierwsze N linii</Row>
           <Row code="tail -n N">ostatnie N linii</Row>
-          <Row code="tail -f">sledzenie na zywo</Row>
-          <Row code="less">przeglad z przewijaniem (q = wyjscie)</Row>
+          <Row code="tail -f">śledzenie na zywo</Row>
+          <Row code="less">przeglad z przewijaniem (q = wyjście)</Row>
           <Row code="wc -l">policz linie w pliku</Row>
         </Card>
 
@@ -127,7 +127,7 @@ export default function LinuxBasics() {
             <Cmd>ls</Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Szczegolowe (uprawnienia, rozmiar, data)</Comment>
+            <Comment># Szczegółowe (uprawnienia, rozmiar, data)</Comment>
             <Cmd>
               ls <H>-la</H>
             </Cmd>
@@ -146,10 +146,10 @@ export default function LinuxBasics() {
           </ExampleBlock>
           <Divider />
           <Row code="-a" codeVariant="green">
-            pokaz ukryte pliki (. i ..)
+            pokaż ukryte pliki (. i ..)
           </Row>
           <Row code="-l" codeVariant="green">
-            format szczegolowy
+            format szczegółowy
           </Row>
           <Row code="-h" codeVariant="green">
             czytelne rozmiary
@@ -191,32 +191,32 @@ export default function LinuxBasics() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            <b>mv</b> sluzy zarowno do przenoszenia jak i zmiany nazwy.
+            <b>mv</b> służy zarówno do przenoszenia jak i zmiany nazwy.
           </InfoBox>
         </Card>
 
         <Card title="Usuwanie" color="var(--c-orange)">
           <ExampleBlock variant="orange">
-            <Comment># Usun plik</Comment>
+            <Comment># Usuń plik</Comment>
             <Cmd>
               rm <V>plik.txt</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun katalog (rekurencyjnie)</Comment>
+            <Comment># Usuń katalog (rekurencyjnie)</Comment>
             <Cmd>
               rm <H>-r</H> <V>katalog/</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun pusty katalog</Comment>
+            <Comment># Usuń pusty katalog</Comment>
             <Cmd>
               rmdir <V>pusty_katalog/</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <Row code="rm -i" codeVariant="orange">
-            pytaj przed usunieciem
+            pytaj przed usunięciem
           </Row>
           <Row code="rm -f" codeVariant="orange">
             wymuszaj bez pytania
@@ -226,12 +226,12 @@ export default function LinuxBasics() {
           </Row>
           <InfoBox warn>
             <code className="text-xs text-[var(--c-danger)]">rm -rf /</code> —
-            NIGDY nie uruchamiaj! Usuwa caly system. Nie ma kosza w terminalu!
+            NIGDY nie uruchamiaj! Usuwa cały system. Nie ma kosza w terminalu!
           </InfoBox>
         </Card>
 
         <Card title="Wyszukiwanie" color="var(--c-purple)">
-          <SectionLabel>find — szukaj plikow</SectionLabel>
+          <SectionLabel>find — szukaj plików</SectionLabel>
           <ExampleBlock variant="purple">
             <Comment># Szukaj po nazwie</Comment>
             <Cmd>
@@ -239,13 +239,13 @@ export default function LinuxBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Szukaj katalogow</Comment>
+            <Comment># Szukaj katalogów</Comment>
             <Cmd>
               find <F>.</F> <H>-type d</H> <V>-name "src"</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel>grep — szukaj w tresci</SectionLabel>
+          <SectionLabel>grep — szukaj w treści</SectionLabel>
           <ExampleBlock variant="purple">
             <Comment># Szukaj tekstu w pliku</Comment>
             <Cmd>
@@ -263,13 +263,13 @@ export default function LinuxBasics() {
             rekurencyjnie
           </Row>
           <Row code="-i" codeVariant="purple">
-            ignoruj wielkosc liter
+            ignoruj wielkość liter
           </Row>
           <Row code="-n" codeVariant="purple">
-            pokaz numery linii
+            pokaż numery linii
           </Row>
           <Row code="-c" codeVariant="purple">
-            policz wystapienia
+            policz wystąpienia
           </Row>
           <Row code="which cmd" codeVariant="purple">
             gdzie jest program
@@ -284,7 +284,7 @@ export default function LinuxBasics() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Krotki opis</Comment>
+            <Comment># Krótki opis</Comment>
             <Cmd>
               whatis <V>chmod</V>
             </Cmd>
@@ -303,7 +303,7 @@ export default function LinuxBasics() {
           </ExampleBlock>
           <Divider />
           <Row code="man" codeVariant="yellow">
-            pelna dokumentacja
+            pełna dokumentacja
           </Row>
           <Row code="--help" codeVariant="yellow">
             szybki reference
@@ -318,8 +318,8 @@ export default function LinuxBasics() {
             historia komend
           </Row>
           <InfoBox>
-            <b>Tab</b> = autouzupelnianie. <b>Ctrl+R</b> = szukaj w historii.
-            <b>Ctrl+C</b> = przerwij komende.
+            <b>Tab</b> = autouzupełnianie. <b>Ctrl+R</b> = szukaj w historii.
+            <b>Ctrl+C</b> = przerwij komendę.
           </InfoBox>
         </Card>
 
@@ -328,17 +328,17 @@ export default function LinuxBasics() {
             <div>
               <SectionLabel>Skroty klawiszowe</SectionLabel>
               <ExampleBlock variant="green">
-                <Cmd>Tab # autouzupelnianie</Cmd>
+                <Cmd>Tab # autouzupełnianie</Cmd>
                 <Cmd>Ctrl+C # przerwij</Cmd>
                 <Cmd>Ctrl+R # szukaj w historii</Cmd>
-                <Cmd>Ctrl+L # wyczysc ekran</Cmd>
-                <Cmd>Ctrl+A/E # poczatek/koniec linii</Cmd>
+                <Cmd>Ctrl+L # wyczyść ekran</Cmd>
+                <Cmd>Ctrl+A/E # początek/koniec linii</Cmd>
               </ExampleBlock>
             </div>
             <div>
               <SectionLabel>Aliasy</SectionLabel>
               <ExampleBlock variant="yellow">
-                <Comment># Utworz alias</Comment>
+                <Comment># Utwórz alias</Comment>
                 <Cmd>alias ll='ls -la'</Cmd>
                 <Cmd>alias ..='cd ..'</Cmd>
                 <Comment># Zapisz na stale w ~/.bashrc</Comment>
@@ -353,10 +353,10 @@ export default function LinuxBasics() {
               </ExampleBlock>
             </div>
             <div>
-              <SectionLabel>Laczenie komend</SectionLabel>
+              <SectionLabel>Łączenie komend</SectionLabel>
               <ExampleBlock variant="orange">
-                <Cmd>cmd1 && cmd2 # cmd2 jesli cmd1 OK</Cmd>
-                <Cmd>cmd1 || cmd2 # cmd2 jesli cmd1 fail</Cmd>
+                <Cmd>cmd1 && cmd2 # cmd2 jeśli cmd1 OK</Cmd>
+                <Cmd>cmd1 || cmd2 # cmd2 jeśli cmd1 fail</Cmd>
                 <Cmd>cmd1 ; cmd2 # zawsze oba</Cmd>
                 <Cmd>cmd1 | cmd2 # pipe</Cmd>
               </ExampleBlock>

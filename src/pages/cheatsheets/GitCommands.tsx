@@ -26,7 +26,7 @@ export default function GitCommands() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <Card title="Git — przeplyw pracy" full>
+        <Card title="Git — przepływ pracy" full>
           <pre className="text-center text-[13px] leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3 overflow-x-auto whitespace-pre">
             <span className="text-[var(--c-muted)]">Working Dir</span> —
             <span className="text-[var(--c-accent)] font-bold"> git add </span>
@@ -43,7 +43,7 @@ export default function GitCommands() {
 
         <Card title="Konfiguracja">
           <ExampleBlock>
-            <Comment># Ustawienia globalne (dla calego systemu)</Comment>
+            <Comment># Ustawienia globalne (dla całego systemu)</Comment>
             <Cmd>
               git config --global <H>user.name</H> <V>"Imie Nazwisko"</V>
             </Cmd>
@@ -52,19 +52,19 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Domyslna galaz</Comment>
+            <Comment># Domyślna gałąź</Comment>
             <Cmd>
               git config --global <H>init.defaultBranch</H> <V>main</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Sprawdz aktualna konfiguracje</Comment>
+            <Comment># Sprawdz aktualną konfigurację</Comment>
             <Cmd>
               git config <H>--list</H>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Konfiguracja: <code className="text-xs">--global</code> = caly user,{' '}
+            Konfiguracja: <code className="text-xs">--global</code> = cały user,{' '}
             <code className="text-xs">--local</code> = tylko to repo (nadpisuje
             global).
           </InfoBox>
@@ -78,7 +78,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Klonuj istniejace repo</Comment>
+            <Comment># Klonuj istniejące repo</Comment>
             <Cmd>
               git <H>clone</H> <V>https://github.com/user/repo.git</V>
             </Cmd>
@@ -90,7 +90,7 @@ export default function GitCommands() {
             </Cmd>
             <Cmd>
               git status <V>-s</V>{' '}
-              <span className="text-[var(--c-muted)]"># skrocony format</span>
+              <span className="text-[var(--c-muted)]"># skrócony format</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
@@ -124,9 +124,9 @@ export default function GitCommands() {
           </ExampleBlock>
         </Card>
 
-        <Card title="Branche (galezie)" color="var(--c-purple)">
+        <Card title="Branche (gałęzie)" color="var(--c-purple)">
           <ExampleBlock variant="purple">
-            <Comment># Lista galezi</Comment>
+            <Comment># Lista gałęzi</Comment>
             <Cmd>
               git <H>branch</H>{' '}
               <span className="text-[var(--c-muted)]"># lokalne</span>
@@ -139,13 +139,13 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Utworz nowa galaz</Comment>
+            <Comment># Utwórz nowa gałąź</Comment>
             <Cmd>
               git branch <H>feature/login</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Przelacz sie na galaz</Comment>
+            <Comment># Przełącz sie na gałąź</Comment>
             <Cmd>
               git <H>checkout</H> <V>feature/login</V>
             </Cmd>
@@ -155,7 +155,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Utworz i przelacz (jednoczesnie)</Comment>
+            <Comment># Utwórz i przełącz (jednocześnie)</Comment>
             <Cmd>
               git checkout <H>-b</H> <V>feature/login</V>
             </Cmd>
@@ -164,7 +164,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun galaz</Comment>
+            <Comment># Usuń gałąź</Comment>
             <Cmd>
               git branch <H>-d</H> feature/login{' '}
               <span className="text-[var(--c-muted)]"># safe (merged)</span>
@@ -178,7 +178,7 @@ export default function GitCommands() {
 
         <Card title="Merge i Rebase" color="var(--c-yellow)">
           <ExampleBlock variant="yellow">
-            <Comment># Merge galezi do main</Comment>
+            <Comment># Merge gałęzi do main</Comment>
             <Cmd>
               git checkout <V>main</V>
             </Cmd>
@@ -196,12 +196,12 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <Concept title="Merge vs Rebase" color="var(--c-yellow)">
-            <b>Merge</b> — tworzy merge commit, zachowuje historie.{' '}
-            <b>Rebase</b> — przepisuje historie, czystsza linia commitow.
-            Zasada: <b>nie rebase'uj publicznych galezi!</b>
+            <b>Merge</b> — tworzy merge commit, zachowuje historię.{' '}
+            <b>Rebase</b> — przepisuje historię, czystsza linia commitów.
+            Zasada: <b>nie rebase'uj publicznych gałęzi!</b>
           </Concept>
           <ExampleBlock variant="orange">
-            <Comment># Konflikty merge — po rozwiazaniu:</Comment>
+            <Comment># Konflikty merge — po rozwiązaniu:</Comment>
             <Cmd>
               git add <V>.</V>
             </Cmd>
@@ -260,7 +260,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wypchnij nowa galaz</Comment>
+            <Comment># Wypchnij nowa gałąź</Comment>
             <Cmd>
               git push <H>-u</H> origin <V>feature/login</V>
             </Cmd>
@@ -269,7 +269,7 @@ export default function GitCommands() {
 
         <Card title="Historia i diff" color="var(--c-yellow)">
           <ExampleBlock variant="yellow">
-            <Comment># Log commitow</Comment>
+            <Comment># Log commitów</Comment>
             <Cmd>
               git <H>log</H>
             </Cmd>
@@ -300,17 +300,17 @@ export default function GitCommands() {
             </Cmd>
             <Cmd>
               git diff <V>main..feature</V>{' '}
-              <span className="text-[var(--c-muted)]"># miedzy branchami</span>
+              <span className="text-[var(--c-muted)]"># między branchami</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Kto zmienil ktora linijke</Comment>
+            <Comment># Kto zmienił którą linijkę</Comment>
             <Cmd>
               git <H>blame</H> <V>plik.txt</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Szczegoly commitu</Comment>
+            <Comment># Szczegóły commitu</Comment>
             <Cmd>
               git <H>show</H> <V>abc1234</V>
             </Cmd>
@@ -331,19 +331,19 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Popraw ostatni commit (tresc/pliki)</Comment>
+            <Comment># Popraw ostatni commit (treść/pliki)</Comment>
             <Cmd>
               git commit <H>--amend</H> <V>-m "poprawiony opis"</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Cofnij commit (tworzac nowy — bezpieczne)</Comment>
+            <Comment># Cofnij commit (tworząc nowy — bezpieczne)</Comment>
             <Cmd>
               git <H>revert</H> <V>abc1234</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Reset (niebezpieczne — zmienia historie!)</Comment>
+            <Comment># Reset (niebezpieczne — zmienia historię!)</Comment>
             <Cmd>
               git reset <V>--soft</V> HEAD~1{' '}
               <span className="text-[var(--c-muted)]">
@@ -363,14 +363,14 @@ export default function GitCommands() {
           </ExampleBlock>
           <InfoBox warn>
             <code className="text-xs text-[var(--c-orange)]">reset --hard</code>{' '}
-            traci dane! Uzywaj <code className="text-xs">revert</code> na
+            traci dane! Używaj <code className="text-xs">revert</code> na
             publicznych branchach.
           </InfoBox>
         </Card>
 
         <Card title="Stash — schowek" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Tymczasowo odloz zmiany na bok (np. zeby przelaczac branche).
+            Tymczasowo odłóż zmiany na bok (np. żeby przełączać branche).
           </p>
           <ExampleBlock variant="purple">
             <Comment># Schowaj zmiany</Comment>
@@ -386,7 +386,7 @@ export default function GitCommands() {
             <Cmd>
               git stash <H>pop</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # przywroc + usun ze stash
+                # przywroc + usuń ze stash
               </span>
             </Cmd>
             <Cmd>
@@ -399,15 +399,15 @@ export default function GitCommands() {
           <ExampleBlock>
             <Cmd>
               git stash <H>list</H>{' '}
-              <span className="text-[var(--c-muted)]"># lista schowkow</span>
+              <span className="text-[var(--c-muted)]"># lista schowków</span>
             </Cmd>
             <Cmd>
               git stash <H>drop</H>{' '}
-              <span className="text-[var(--c-muted)]"># usun ostatni</span>
+              <span className="text-[var(--c-muted)]"># usuń ostatni</span>
             </Cmd>
             <Cmd>
               git stash <H>clear</H>{' '}
-              <span className="text-[var(--c-muted)]"># usun wszystkie</span>
+              <span className="text-[var(--c-muted)]"># usuń wszystkie</span>
             </Cmd>
           </ExampleBlock>
         </Card>
@@ -441,7 +441,7 @@ export default function GitCommands() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Juz sledzony? <code className="text-xs">git rm --cached plik</code>
+            Juz śledzony? <code className="text-xs">git rm --cached plik</code>
           </InfoBox>
         </Card>
       </div>

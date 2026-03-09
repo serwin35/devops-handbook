@@ -55,7 +55,7 @@ export default function Search() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Wpisz komende, np. chmod, docker run, git stash..."
+          placeholder="Wpisz komendę, np. chmod, docker run, git stash..."
           autoFocus
           className="w-full bg-[var(--c-surface)] border border-[var(--c-border)] rounded-lg px-4 py-3 text-sm text-[var(--c-text)] placeholder-[var(--c-muted)] focus:outline-none focus:border-[var(--c-accent)] transition-colors"
         />
@@ -63,7 +63,7 @@ export default function Search() {
 
       {query.length >= 2 && (
         <div className="text-[var(--c-muted)] text-xs mb-4" aria-live="polite">
-          {results.length} {results.length === 1 ? 'wynik' : 'wynikow'} dla
+          {results.length} {results.length === 1 ? 'wynik' : 'wyników'} dla
           &quot;{query}&quot;
         </div>
       )}
@@ -102,14 +102,14 @@ export default function Search() {
 
       {query.length >= 2 && results.length === 0 && (
         <div className="text-center py-12 text-[var(--c-muted)] text-sm">
-          Brak wynikow. Sprobuj innej frazy.
+          Brak wyników. Spróbuj innej frazy.
         </div>
       )}
 
       {query.length < 2 && (
         <div className="text-center py-12">
           <div className="text-[var(--c-muted)] text-sm mb-4">
-            Wpisz min. 2 znaki aby wyszukac
+            Wpisz min. 2 znaki aby wyszukać
           </div>
           <div className="flex flex-wrap justify-center gap-2">
             {[

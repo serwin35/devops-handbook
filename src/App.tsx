@@ -7,6 +7,7 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Lesson01 = lazy(() => import('./pages/lessons/Lesson01'));
 const Lesson02 = lazy(() => import('./pages/lessons/Lesson02'));
 const Lesson03 = lazy(() => import('./pages/lessons/Lesson03'));
+const Lesson04 = lazy(() => import('./pages/lessons/Lesson04'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -49,6 +50,7 @@ export default function App() {
             <Route path="lessons/01" element={<Lesson01 />} />
             <Route path="lessons/02" element={<Lesson02 />} />
             <Route path="lessons/03" element={<Lesson03 />} />
+            <Route path="lessons/04" element={<Lesson04 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />

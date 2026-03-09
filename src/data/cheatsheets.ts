@@ -87,7 +87,7 @@ export const cheatsheets: CheatsheetItem[] = [
   {
     icon: '\uD83D\uDCDC',
     title: 'Bash Scripting',
-    desc: 'zmienne, petle, warunki, funkcje',
+    desc: 'zmienne, pętle, warunki, funkcje',
     color: 'var(--c-green)',
     to: '/cheatsheets/bash-scripting',
   },

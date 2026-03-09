@@ -22,83 +22,83 @@ export default function Systemd() {
     <div>
       <PageHeader
         title="Systemd"
-        subtitle="Zarzadzanie uslugami · jednostki · logi · timery · targety"
+        subtitle="Zarządzanie usługami · jednostki · logi · timery · targety"
         color="var(--c-green)"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <Card title="systemctl — zarzadzanie uslugami" color="var(--c-green)">
+        <Card title="systemctl — zarządzanie usługami" color="var(--c-green)">
           <ExampleBlock variant="green">
-            <Comment># Uruchom usluge</Comment>
+            <Comment># Uruchom usługę</Comment>
             <Cmd>
               systemctl <H>start</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Zatrzymaj usluge</Comment>
+            <Comment># Zatrzymaj usługę</Comment>
             <Cmd>
               systemctl <H>stop</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Zrestartuj usluge (stop + start)</Comment>
+            <Comment># Zrestartuj usługę (stop + start)</Comment>
             <Cmd>
               systemctl <H>restart</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Przeladuj konfiguracje (bez restartu)</Comment>
+            <Comment># Przeładuj konfigurację (bez restartu)</Comment>
             <Cmd>
               systemctl <H>reload</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <ExampleBlock>
-            <Comment># Wlacz autostart przy bootowaniu</Comment>
+            <Comment># Włącz autostart przy bootowaniu</Comment>
             <Cmd>
               systemctl <H>enable</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wylacz autostart</Comment>
+            <Comment># Wyłącz autostart</Comment>
             <Cmd>
               systemctl <H>disable</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wlacz + uruchom od razu</Comment>
+            <Comment># Włącz + uruchom od razu</Comment>
             <Cmd>
               systemctl <H>enable --now</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="purple">
-            <Comment># Sprawdz status uslugi</Comment>
+            <Comment># Sprawdz status usługi</Comment>
             <Cmd>
               systemctl <H>status</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Czy usluga dziala?</Comment>
+            <Comment># Czy usługa dziala?</Comment>
             <Cmd>
               systemctl <H>is-active</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Czy usluga jest wlaczona na starcie?</Comment>
+            <Comment># Czy usługa jest włączona na starcie?</Comment>
             <Cmd>
               systemctl <H>is-enabled</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="yellow">
-            <Comment># Przeladuj pliki unitow po zmianach</Comment>
+            <Comment># Przeładuj pliki unitów po zmianach</Comment>
             <Cmd>
               systemctl <H>daemon-reload</H>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Po kazdej edycji pliku{' '}
+            Po każdej edycji pliku{' '}
             <code className="text-xs text-[var(--c-yellow)]">.service</code>{' '}
             trzeba wykonac{' '}
             <code className="text-xs text-[var(--c-yellow)]">
@@ -114,19 +114,19 @@ export default function Systemd() {
             <Cmd>journalctl</Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Logi konkretnej uslugi</Comment>
+            <Comment># Logi konkretnej usługi</Comment>
             <Cmd>
               journalctl <H>-u</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Sledz logi na zywo (jak tail -f)</Comment>
+            <Comment># Śledź logi na zywo (jak tail -f)</Comment>
             <Cmd>
               journalctl <H>-f</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Sledz logi konkretnej uslugi na zywo</Comment>
+            <Comment># Śledź logi konkretnej usługi na zywo</Comment>
             <Cmd>
               journalctl <H>-u</H> <V>nginx</V> <H>-f</H>
             </Cmd>
@@ -155,17 +155,17 @@ export default function Systemd() {
             <Comment># Filtruj po priorytecie (0=emerg ... 7=debug)</Comment>
             <Cmd>
               journalctl <H>-p</H> <V>err</V>{' '}
-              <span className="text-[var(--c-muted)]"># bledy i wyzej</span>
+              <span className="text-[var(--c-muted)]"># błędy i wyżej</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Logi z biezacego bootu</Comment>
+            <Comment># Logi z bieżącego bootu</Comment>
             <Cmd>
               journalctl <H>-b</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Bez pagera — caly output na raz</Comment>
+            <Comment># Bez pagera — cały output na raz</Comment>
             <Cmd>
               journalctl <H>--no-pager</H>
             </Cmd>
@@ -191,7 +191,7 @@ export default function Systemd() {
 
         <Card title="Unit files — pliki .service" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Pliki unitow definiuja uslugi w systemd. Lokalizacja:{' '}
+            Pliki unitów definiują usługi w systemd. Lokalizacja:{' '}
             <code className="text-xs text-[var(--c-yellow)]">
               /etc/systemd/system/
             </code>
@@ -246,48 +246,48 @@ export default function Systemd() {
           <Divider />
           <SectionLabel className="mt-1.5">Sekcje</SectionLabel>
           <Row code="[Unit]" codeVariant="yellow">
-            Opis, zaleznosci, kolejnosc uruchamiania
+            Opis, zależności, kolejnosc uruchamiania
           </Row>
           <Row code="[Service]" codeVariant="yellow">
-            Typ, uzytkownik, komenda, restart
+            Typ, użytkownik, komenda, restart
           </Row>
           <Row code="[Install]" codeVariant="yellow">
-            Kiedy usluga ma byc wlaczona (target)
+            Kiedy usługa ma być włączona (target)
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Restart policies</SectionLabel>
-          <Row code="no">Nie restartuj (domyslne)</Row>
-          <Row code="on-failure">Restartuj tylko po bledzie (exit != 0)</Row>
+          <Row code="no">Nie restartuj (domyślne)</Row>
+          <Row code="on-failure">Restartuj tylko po błędzie (exit != 0)</Row>
           <Row code="always">Restartuj zawsze</Row>
           <Row code="on-abnormal">Restartuj po sygnale, timeout, watchdog</Row>
         </Card>
 
-        <Card title="Typy unitow" color="var(--c-orange)">
+        <Card title="Typy unitów" color="var(--c-orange)">
           <Concept title=".service" color="var(--c-green)">
-            Usluga — proces dzialajacy w tle (daemon). Najczesciej uzywany typ
+            Usługa — proces działający w tle (daemon). Najczęściej uzywany typ
             unitu.
           </Concept>
           <Concept title=".socket" color="var(--c-purple)">
-            Socket — aktywacja uslugi przy polaczeniu. Np. SSH on-demand.
+            Socket — aktywacja usługi przy połączeniu. Np. SSH on-demand.
           </Concept>
           <Concept title=".timer" color="var(--c-yellow)">
             Timer — harmonogram zadan (alternatywa dla cron). Uruchamia
-            powiazany .service.
+            powiązany .service.
           </Concept>
           <Concept title=".mount" color="var(--c-orange)">
-            Mount — montowanie systemow plikow. Odpowiednik wpisow w /etc/fstab.
+            Mount — montowanie systemów plików. Odpowiednik wpisow w /etc/fstab.
           </Concept>
           <Concept title=".target" color="var(--c-accent)">
-            Target — grupa unitow. Odpowiednik runleveli (multi-user,
+            Target — grupa unitów. Odpowiednik runleveli (multi-user,
             graphical).
           </Concept>
           <Concept title=".path">
-            Path — monitorowanie sciezek w FS. Uruchamia usluge przy zmianie
+            Path — monitorowanie sciezek w FS. Uruchamia usługę przy zmianie
             pliku.
           </Concept>
           <Divider />
           <ExampleBlock>
-            <Comment># Lista wszystkich unitow danego typu</Comment>
+            <Comment># Lista wszystkich unitów danego typu</Comment>
             <Cmd>
               systemctl list-units <H>--type=service</H>
             </Cmd>
@@ -299,7 +299,7 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista wszystkich zainstalowanych unitow</Comment>
+            <Comment># Lista wszystkich zainstalowanych unitów</Comment>
             <Cmd>
               systemctl <H>list-unit-files</H>
             </Cmd>
@@ -308,7 +308,7 @@ export default function Systemd() {
 
         <Card title="Timery — alternatywa dla cron" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Timer + powiazany service = zaplanowane zadanie.
+            Timer + powiązany service = zaplanowane zadanie.
           </p>
           <SectionLabel>Plik timera</SectionLabel>
           <ExampleBlock variant="yellow">
@@ -347,7 +347,7 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">Powiazany service</SectionLabel>
+          <SectionLabel className="mt-1.5">Powiązany service</SectionLabel>
           <ExampleBlock variant="green">
             <Comment># /etc/systemd/system/backup.service</Comment>
             <Cmd>
@@ -368,13 +368,13 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">OnCalendar — przyklady</SectionLabel>
+          <SectionLabel className="mt-1.5">OnCalendar — przykłady</SectionLabel>
           <Row code="*-*-* 02:00:00">Codziennie o 2:00</Row>
-          <Row code="Mon *-*-* 09:00:00">Poniedzialki o 9:00</Row>
-          <Row code="*-*-01 00:00:00">Pierwszy dzien miesiaca</Row>
-          <Row code="hourly">Co godzine</Row>
+          <Row code="Mon *-*-* 09:00:00">Poniedziałki o 9:00</Row>
+          <Row code="*-*-01 00:00:00">Pierwszy dzien miesiąca</Row>
+          <Row code="hourly">Co godzinę</Row>
           <Row code="daily">Codziennie</Row>
-          <Row code="weekly">Co tydzien</Row>
+          <Row code="weekly">Co tydzień</Row>
           <Divider />
           <ExampleBlock>
             <Comment># Aktywuj timer</Comment>
@@ -392,17 +392,17 @@ export default function Systemd() {
             <code className="text-xs text-[var(--c-yellow)]">
               Persistent=true
             </code>{' '}
-            — jesli system byl wylaczony w czasie uruchomienia, zadanie wykona
+            — jeśli system byl wyłączony w czasie uruchomienia, zadanie wykona
             sie po starcie.
           </InfoBox>
         </Card>
 
         <Card title="Targety (runlevele)" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Targety grupuja unity i definiuja stan systemu.
+            Targety grupuja unity i definiują stan systemu.
           </p>
           <Row code="poweroff.target" codeVariant="purple">
-            Wylaczenie systemu (runlevel 0)
+            Wyłączenie systemu (runlevel 0)
           </Row>
           <Row code="rescue.target" codeVariant="purple">
             Tryb awaryjny — single user (runlevel 1)
@@ -418,32 +418,32 @@ export default function Systemd() {
           </Row>
           <Divider />
           <ExampleBlock variant="purple">
-            <Comment># Sprawdz domyslny target</Comment>
+            <Comment># Sprawdz domyślny target</Comment>
             <Cmd>
               systemctl <H>get-default</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Ustaw domyslny target</Comment>
+            <Comment># Ustaw domyślny target</Comment>
             <Cmd>
               systemctl <H>set-default</H> <V>multi-user.target</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Przelacz na inny target (natychmiast)</Comment>
+            <Comment># Przełącz na inny target (natychmiast)</Comment>
             <Cmd>
               systemctl <H>isolate</H> <V>rescue.target</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <ExampleBlock>
-            <Comment># Lista unitow w targecie</Comment>
+            <Comment># Lista unitów w targecie</Comment>
             <Cmd>
               systemctl list-dependencies <V>multi-user.target</V>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Serwery produkcyjne zazwyczaj uzywaja{' '}
+            Serwery produkcyjne zazwyczaj używają{' '}
             <code className="text-xs text-[var(--c-purple)]">
               multi-user.target
             </code>{' '}
@@ -453,25 +453,25 @@ export default function Systemd() {
 
         <Card title="Debugowanie" color="var(--c-orange)">
           <ExampleBlock variant="orange">
-            <Comment># Lista unitow z bledami</Comment>
+            <Comment># Lista unitów z błędami</Comment>
             <Cmd>
               systemctl <H>list-units --failed</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Pokaz zawartosc pliku unitu</Comment>
+            <Comment># Pokaż zawartość pliku unitu</Comment>
             <Cmd>
               systemctl <H>cat</H> <V>nginx.service</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Pokaz wszystkie wlasciwosci unitu</Comment>
+            <Comment># Pokaż wszystkie właściwości unitu</Comment>
             <Cmd>
               systemctl <H>show</H> <V>nginx.service</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Pokaz konkretna wlasciwosc</Comment>
+            <Comment># Pokaż konkretna właściwość</Comment>
             <Cmd>
               systemctl show <V>nginx</V> <H>-p</H> <V>ActiveState</V>
             </Cmd>
@@ -484,13 +484,13 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Drzewo zaleznosci</Comment>
+            <Comment># Drzewo zależności</Comment>
             <Cmd>
               systemctl <H>list-dependencies</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Czas bootowania — co trwalo najdluzej</Comment>
+            <Comment># Czas bootowania — co trwało najdłużej</Comment>
             <Cmd>systemd-analyze</Cmd>
             <Cmd>
               systemd-analyze <H>blame</H>
@@ -507,14 +507,14 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Sprawdz skladnie pliku unitu</Comment>
+            <Comment># Sprawdz składnię pliku unitu</Comment>
             <Cmd>
               systemd-analyze <H>verify</H>{' '}
               <F>/etc/systemd/system/myapp.service</F>
             </Cmd>
           </ExampleBlock>
           <InfoBox warn>
-            Jesli usluga nie startuje, zawsze sprawdz logi:{' '}
+            Jeśli usługa nie startuje, zawsze sprawdź logi:{' '}
             <code className="text-xs text-[var(--c-orange)]">
               journalctl -u nazwa -n 50 --no-pager
             </code>
@@ -556,7 +556,7 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Sesje uzytkownikow</Comment>
+            <Comment># Sesje użytkowników</Comment>
             <Cmd>
               <H>loginctl</H>
             </Cmd>

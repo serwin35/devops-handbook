@@ -21,7 +21,7 @@ export default function SSHKeys() {
     <div>
       <PageHeader
         title="SSH Keys"
-        subtitle="ssh-keygen · ssh-copy-id · authorized_keys · agent — zarzadzanie kluczami SSH"
+        subtitle="ssh-keygen · ssh-copy-id · authorized_keys · agent — zarządzanie kluczami SSH"
         color="var(--c-accent)"
       />
 
@@ -31,7 +31,7 @@ export default function SSHKeys() {
             ssh-keygen generuje pare kluczy: prywatny + publiczny (.pub)
           </p>
           <ExampleBlock>
-            <Comment># domyslny klucz Ed25519 (zalecany)</Comment>
+            <Comment># domyślny klucz Ed25519 (zalecany)</Comment>
             <Cmd>
               ssh-keygen <H>-t ed25519</H> <V>-C "serwin@devops"</V>
             </Cmd>
@@ -50,16 +50,16 @@ export default function SSHKeys() {
           </ExampleBlock>
           <Divider />
           <Row code="-t">typ klucza (ed25519, rsa, ecdsa)</Row>
-          <Row code="-b">dlugosc w bitach (RSA: 4096)</Row>
+          <Row code="-b">długość w bitach (RSA: 4096)</Row>
           <Row code="-C">komentarz (email/nazwa)</Row>
-          <Row code="-f">sciezka do pliku klucza</Row>
+          <Row code="-f">ścieżka do pliku klucza</Row>
           <Row code="-N ''">puste passphrase (bez pytania)</Row>
           <InfoBox>
             <span className="text-[var(--c-accent)] text-[11px]">
               Ed25519 vs RSA
             </span>
             <br />
-            Ed25519 jest krotszy, szybszy i bezpieczniejszy. Uzywaj RSA tylko
+            Ed25519 jest krótszy, szybszy i bezpieczniejszy. Używaj RSA tylko
             gdy serwer nie wspiera Ed25519.
           </InfoBox>
         </Card>
@@ -69,7 +69,7 @@ export default function SSHKeys() {
             Najszybszy sposob na dodanie klucza publicznego do zdalnego serwera
           </p>
           <ExampleBlock variant="green">
-            <Comment># domyslny klucz</Comment>
+            <Comment># domyślny klucz</Comment>
             <Cmd>
               ssh-copy-id <H>user@serwer</H>
             </Cmd>
@@ -91,14 +91,14 @@ export default function SSHKeys() {
           <p className="text-[var(--c-muted)] text-[11px]">
             ssh-copy-id automatycznie: dodaje klucz do{' '}
             <code className="text-xs">~/.ssh/authorized_keys</code>, tworzy{' '}
-            <code className="text-xs">~/.ssh</code> jesli nie istnieje, ustawia
+            <code className="text-xs">~/.ssh</code> jeśli nie istnieje, ustawia
             odpowiednie uprawnienia
           </p>
         </Card>
 
-        <Card title="Reczne dodawanie klucza (echo)" color="var(--c-yellow)">
+        <Card title="Ręczne dodawanie klucza (echo)" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Gdy ssh-copy-id nie jest dostepny lub jestes juz zalogowany na
+            Gdy ssh-copy-id nie jest dostępny lub jesteś już zalogowany na
             serwerze
           </p>
           <SectionLabel>Z lokalnej maszyny (pipe)</SectionLabel>
@@ -109,9 +109,9 @@ export default function SSHKeys() {
               <V>"mkdir -p ~/.ssh && cat &gt;&gt; ~/.ssh/authorized_keys"</V>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel>Juz zalogowany na serwerze</SectionLabel>
+          <SectionLabel>Już zalogowany na serwerze</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># utworz katalog .ssh</Comment>
+            <Comment># utwórz katalog .ssh</Comment>
             <Cmd>
               mkdir <H>-p</H> <F>~/.ssh</F>
             </Cmd>
@@ -124,7 +124,7 @@ export default function SSHKeys() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># UWAGA: &gt; nadpisuje! Uzywaj &gt;&gt; (dopisz)</Comment>
+            <Comment># UWAGA: &gt; nadpisuje! Używaj &gt;&gt; (dopisz)</Comment>
             <Cmd>
               echo <V>"klucz"</V> <H>&gt;</H> ~/.ssh/authorized_keys{' '}
               <span className="text-[var(--c-danger)]">NADPISZE!</span>
@@ -134,16 +134,16 @@ export default function SSHKeys() {
 
         <Card title="Uprawnienia SSH" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Bledne uprawnienia = SSH odmowi polaczenia!
+            Błędne uprawnienia = SSH odmowi połączenia!
           </p>
           <ExampleBlock variant="orange">
-            <Comment># katalog .ssh — tylko wlasciciel</Comment>
+            <Comment># katalog .ssh — tylko właściciel</Comment>
             <Cmd>
               chmod <H>700</H> <F>~/.ssh</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># klucz prywatny — TYLKO odczyt wlasciciela</Comment>
+            <Comment># klucz prywatny — TYLKO odczyt właściciela</Comment>
             <Cmd>
               chmod <H>600</H> <F>~/.ssh/id_ed25519</F>
             </Cmd>
@@ -175,7 +175,7 @@ export default function SSHKeys() {
           </ExampleBlock>
           <InfoBox>
             <span className="text-[var(--c-danger)] text-[11px]">
-              Typowy blad
+              Typowy błąd
             </span>
             <br />
             <code className="text-xs">Permission denied (publickey)</code> —
@@ -185,8 +185,8 @@ export default function SSHKeys() {
 
         <Card title="SSH Agent" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Agent przechowuje odszyfrowane klucze w pamieci — nie musisz
-            wpisywac passphrase za kazdym razem
+            Agent przechowuje odszyfrowane klucze w pamięci — nie musisz
+            wpisywac passphrase za każdym razem
           </p>
           <ExampleBlock variant="purple">
             <Comment># uruchom agenta</Comment>
@@ -208,8 +208,8 @@ export default function SSHKeys() {
           </ExampleBlock>
           <Divider />
           <Row code="ssh-add -l">lista zaladowanych kluczy</Row>
-          <Row code="ssh-add -D">usun wszystkie klucze z agenta</Row>
-          <Row code="ssh-add -d klucz">usun konkretny klucz</Row>
+          <Row code="ssh-add -D">usuń wszystkie klucze z agenta</Row>
+          <Row code="ssh-add -d klucz">usuń konkretny klucz</Row>
           <InfoBox>
             <span className="text-[var(--c-accent)] text-[11px]">
               macOS Keychain
@@ -224,7 +224,7 @@ export default function SSHKeys() {
 
         <Card title="~/.ssh/config" color="var(--c-accent)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Plik konfiguracyjny SSH — aliasy, domyslne opcje, klucze per host
+            Plik konfiguracyjny SSH — aliasy, domyślne opcje, klucze per host
           </p>
           <ExampleBlock>
             <Comment># ~/.ssh/config</Comment>
@@ -259,7 +259,7 @@ export default function SSHKeys() {
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="purple">
-            <Comment># domyslne ustawienia dla wszystkich hostow</Comment>
+            <Comment># domyślne ustawienia dla wszystkich hostow</Comment>
             <Cmd>
               <H>Host</H> <V>*</V>
             </Cmd>
@@ -280,19 +280,19 @@ export default function SSHKeys() {
 
         <Card title="Zmiana passphrase" color="var(--c-yellow)">
           <ExampleBlock variant="yellow">
-            <Comment># zmien passphrase istniejacego klucza</Comment>
+            <Comment># zmień passphrase istniejacego klucza</Comment>
             <Cmd>
               ssh-keygen <H>-p</H> <V>-f</V> <F>~/.ssh/id_ed25519</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># usun passphrase (niezalecane!)</Comment>
+            <Comment># usuń passphrase (niezalecane!)</Comment>
             <Cmd>
               ssh-keygen <H>-p</H> -f ~/.ssh/id_ed25519 <V>-N ""</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel>Wyswietlanie fingerprint</SectionLabel>
+          <SectionLabel>Wyświetlanie fingerprint</SectionLabel>
           <ExampleBlock>
             <Comment># fingerprint klucza (SHA256)</Comment>
             <Cmd>
@@ -307,7 +307,7 @@ export default function SSHKeys() {
           </ExampleBlock>
         </Card>
 
-        <Card title="authorized_keys — zarzadzanie" color="var(--c-green)">
+        <Card title="authorized_keys — zarządzanie" color="var(--c-green)">
           <SectionLabel>Struktura wpisu</SectionLabel>
           <ExampleBlock variant="green">
             <Comment># typ klucz komentarz</Comment>
@@ -338,7 +338,7 @@ export default function SSHKeys() {
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="orange">
-            <Comment># usun konkretny klucz z authorized_keys</Comment>
+            <Comment># usuń konkretny klucz z authorized_keys</Comment>
             <Cmd>
               sed <H>-i</H> <V>'/komentarz_klucza/d'</V>{' '}
               <F>~/.ssh/authorized_keys</F>
@@ -360,7 +360,7 @@ export default function SSHKeys() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># testuj polaczenie bez logowania</Comment>
+            <Comment># testuj połączenie bez logowania</Comment>
             <Cmd>
               ssh <H>-T</H> git@github.com
             </Cmd>
@@ -368,7 +368,7 @@ export default function SSHKeys() {
           <Divider />
           <SectionLabel>Typowe problemy</SectionLabel>
           <Row code="Permission denied" codeVariant="orange">
-            sprawdz chmod 600/700
+            sprawdź chmod 600/700
           </Row>
           <Row code="Too many auth" codeVariant="orange">
             uzyj <code className="text-xs">-i klucz</code> lub config
@@ -384,7 +384,7 @@ export default function SSHKeys() {
         <Card title="Wzorce — realne scenariusze" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
             <div>
-              <SectionLabel>Nowy serwer — pelny setup</SectionLabel>
+              <SectionLabel>Nowy serwer — pełny setup</SectionLabel>
               <ExampleBlock>
                 <Cmd>ssh-keygen -t ed25519 -C "serwin@dev"</Cmd>
                 <Cmd>ssh-copy-id user@serwer</Cmd>

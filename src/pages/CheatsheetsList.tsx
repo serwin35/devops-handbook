@@ -10,7 +10,7 @@ export default function CheatsheetsList() {
     <div>
       <PageHeader
         title="Cheatsheets & Reference Boards"
-        subtitle="Wszystkie sciagiawki i tablice referencyjne"
+        subtitle="Wszystkie ściągawki i tablice referencyjne"
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

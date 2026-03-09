@@ -30,8 +30,8 @@ export default function LessonsList() {
                 className={`absolute top-3 right-3 w-5 h-5 rounded border text-[10px] flex items-center justify-center transition-colors ${isCompleted(id) ? 'bg-[var(--c-green)] border-[var(--c-green)] text-black' : 'border-[var(--c-border)] text-[var(--c-muted)] hover:border-[var(--c-accent)]'}`}
                 title={
                   isCompleted(id)
-                    ? 'Oznacz jako nieukonczone'
-                    : 'Oznacz jako ukonczone'
+                    ? 'Oznacz jako nieukończone'
+                    : 'Oznacz jako ukończone'
                 }
               >
                 {isCompleted(id) ? '\u2713' : ''}

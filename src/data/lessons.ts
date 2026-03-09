@@ -24,4 +24,20 @@ export const lessons: LessonItem[] = [
     tags: ['Unix', 'Kernel', 'Filesystem', 'LVM', 'Permissions', 'UFW'],
     to: '/lessons/02',
   },
+  {
+    num: '03',
+    title: 'Wiersz polecen i Bash',
+    desc: 'Shell, potoki, zmienne srodowiskowe, PATH, export, menedzer pakietow APT/DNF',
+    color: 'var(--c-orange)',
+    tags: ['Bash', 'Shell', 'Pipes', 'PATH', 'APT', 'DNF', 'Zmienne'],
+    to: '/lessons/03',
+  },
+  {
+    num: '04',
+    title: 'Wkrotce...',
+    desc: 'Ta lekcja jest w trakcie przygotowania',
+    color: 'var(--c-yellow)',
+    tags: [],
+    to: '/lessons/04',
+  },
 ];

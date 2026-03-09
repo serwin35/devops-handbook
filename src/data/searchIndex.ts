@@ -3,25 +3,25 @@ export const searchIndex = [
   // Linux Basics — Navigation
   {
     cmd: 'pwd',
-    desc: 'Wyswietl biezacy katalog roboczy',
+    desc: 'Wyświetl bieżący katalog roboczy',
     tags: ['basics', 'navigation', 'pwd'],
     page: '/cheatsheets/linux-basics',
   },
   {
     cmd: 'cd /var/log',
-    desc: 'Przejdz do katalogu',
+    desc: 'Przejdź do katalogu',
     tags: ['basics', 'navigation', 'cd'],
     page: '/cheatsheets/linux-basics',
   },
   {
     cmd: 'cd ..',
-    desc: 'Przejdz katalog wyzej',
+    desc: 'Przejdź katalog wyżej',
     tags: ['basics', 'navigation', 'cd'],
     page: '/cheatsheets/linux-basics',
   },
   {
     cmd: 'cd ~',
-    desc: 'Przejdz do katalogu domowego',
+    desc: 'Przejdź do katalogu domowego',
     tags: ['basics', 'navigation', 'cd', 'home'],
     page: '/cheatsheets/linux-basics',
   },
@@ -35,19 +35,19 @@ export const searchIndex = [
   },
   {
     cmd: 'ls -l',
-    desc: 'Szczegolowa lista z uprawnieniami',
+    desc: 'Szczegółowa lista z uprawnieniami',
     tags: ['filesystem', 'ls', 'list', 'permissions'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'ls -a',
-    desc: 'Pokaz ukryte pliki',
+    desc: 'Pokaż ukryte pliki',
     tags: ['filesystem', 'ls', 'hidden'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'ls -lah',
-    desc: 'Szczegoly + ukryte + human-readable',
+    desc: 'Szczegóły + ukryte + human-readable',
     tags: ['filesystem', 'ls', 'list'],
     page: '/cheatsheets/filesystem',
   },
@@ -55,7 +55,7 @@ export const searchIndex = [
   // Linux Basics — touch
   {
     cmd: 'touch plik.txt',
-    desc: 'Utworz pusty plik',
+    desc: 'Utwórz pusty plik',
     tags: ['basics', 'touch', 'create', 'file'],
     page: '/cheatsheets/linux-basics',
   },
@@ -63,13 +63,13 @@ export const searchIndex = [
   // Filesystem — mkdir
   {
     cmd: 'mkdir nowy_katalog',
-    desc: 'Utworz katalog',
+    desc: 'Utwórz katalog',
     tags: ['filesystem', 'mkdir', 'create', 'directory'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'mkdir -p projekt/src/components',
-    desc: 'Utworz zagniezdzone katalogi',
+    desc: 'Utwórz zagnieżdżone katalogi',
     tags: ['filesystem', 'mkdir', 'recursive', 'directory'],
     page: '/cheatsheets/filesystem',
   },
@@ -77,19 +77,19 @@ export const searchIndex = [
   // Filesystem — rm
   {
     cmd: 'rm plik.txt',
-    desc: 'Usun plik',
+    desc: 'Usuń plik',
     tags: ['filesystem', 'rm', 'remove', 'delete'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'rm -r katalog/',
-    desc: 'Usun katalog z zawartoscia',
+    desc: 'Usuń katalog z zawartością',
     tags: ['filesystem', 'rm', 'remove', 'recursive'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'rm -rf katalog/',
-    desc: 'Force usun katalog (UWAGA!)',
+    desc: 'Force usuń katalog (UWAGA!)',
     tags: ['filesystem', 'rm', 'remove', 'force', 'danger'],
     page: '/cheatsheets/filesystem',
   },
@@ -97,19 +97,19 @@ export const searchIndex = [
   // Filesystem — cat
   {
     cmd: 'cat /etc/hostname',
-    desc: 'Wyswietl zawartosc pliku',
+    desc: 'Wyświetl zawartość pliku',
     tags: ['filesystem', 'cat', 'read', 'file'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'cat -n /etc/passwd',
-    desc: 'Wyswietl plik z numerami linii',
+    desc: 'Wyświetl plik z numerami linii',
     tags: ['filesystem', 'cat', 'read', 'lines'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'tail -f /var/log/syslog',
-    desc: 'Sledz logi na zywo',
+    desc: 'Śledź logi na żywo',
     tags: ['filesystem', 'tail', 'logs', 'follow'],
     page: '/cheatsheets/filesystem',
   },
@@ -117,7 +117,7 @@ export const searchIndex = [
   // Linux Basics — nano
   {
     cmd: 'nano plik.txt',
-    desc: 'Otworz plik w edytorze nano',
+    desc: 'Otwórz plik w edytorze nano',
     tags: ['basics', 'nano', 'editor', 'edit'],
     page: '/cheatsheets/linux-basics',
   },
@@ -125,7 +125,7 @@ export const searchIndex = [
   // Linux Basics — vim
   {
     cmd: 'vim plik.txt',
-    desc: 'Otworz plik w edytorze vim',
+    desc: 'Otwórz plik w edytorze vim',
     tags: ['basics', 'vim', 'editor', 'edit'],
     page: '/cheatsheets/linux-basics',
   },
@@ -145,7 +145,7 @@ export const searchIndex = [
   },
   {
     cmd: 'mv stary.txt nowy.txt',
-    desc: 'Przenies / zmien nazwe pliku',
+    desc: 'Przenieś / zmień nazwę pliku',
     tags: ['filesystem', 'mv', 'move', 'rename'],
     page: '/cheatsheets/filesystem',
   },
@@ -153,7 +153,7 @@ export const searchIndex = [
   // Permissions
   {
     cmd: 'chmod u+x skrypt.sh',
-    desc: 'Dodaj execute dla wlasciciela',
+    desc: 'Dodaj execute dla właściciela',
     tags: ['permissions', 'chmod'],
     page: '/cheatsheets/permissions',
   },
@@ -177,37 +177,37 @@ export const searchIndex = [
   },
   {
     cmd: 'chmod -R 755 /var/www/html',
-    desc: 'Rekurencyjnie na caly katalog',
+    desc: 'Rekurencyjnie na cały katalog',
     tags: ['permissions', 'chmod', 'recursive'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'chmod g+s katalog/',
-    desc: 'Setgid — nowe pliki dziedzicza grupe',
+    desc: 'Setgid — nowe pliki dziedziczą grupę',
     tags: ['permissions', 'setgid', 'special'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'chmod +t /shared/',
-    desc: 'Sticky bit — tylko wlasciciel moze usunac',
+    desc: 'Sticky bit — tylko właściciel może usunąć',
     tags: ['permissions', 'sticky'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'chown www-data:www-data plik',
-    desc: 'Zmien wlasciciela i grupe',
+    desc: 'Zmień właściciela i grupę',
     tags: ['permissions', 'chown', 'owner'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'chown -R user:group katalog/',
-    desc: 'Rekurencyjna zmiana wlasciciela',
+    desc: 'Rekurencyjna zmiana właściciela',
     tags: ['permissions', 'chown', 'recursive'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'chgrp docker /var/run/docker.sock',
-    desc: 'Zmien grupe pliku',
+    desc: 'Zmień grupę pliku',
     tags: ['permissions', 'chgrp', 'docker'],
     page: '/cheatsheets/permissions',
   },
@@ -215,13 +215,13 @@ export const searchIndex = [
   // Users & Groups
   {
     cmd: 'useradd -m -s /bin/bash user',
-    desc: 'Utworz uzytkownika z home i shell',
+    desc: 'Utwórz użytkownika z home i shell',
     tags: ['users', 'useradd'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'adduser user',
-    desc: 'Interaktywne tworzenie uzytkownika',
+    desc: 'Interaktywne tworzenie użytkownika',
     tags: ['users', 'adduser'],
     page: '/cheatsheets/permissions',
   },
@@ -233,31 +233,31 @@ export const searchIndex = [
   },
   {
     cmd: 'userdel -r user',
-    desc: 'Usun usera wraz z katalogiem domowym',
+    desc: 'Usuń usera wraz z katalogiem domowym',
     tags: ['users', 'userdel'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'passwd user',
-    desc: 'Zmien haslo uzytkownika',
+    desc: 'Zmień hasło użytkownika',
     tags: ['users', 'passwd', 'password'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'groupadd developers',
-    desc: 'Utworz nowa grupe',
+    desc: 'Utwórz nową grupę',
     tags: ['groups', 'groupadd'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'gpasswd -d user group',
-    desc: 'Usun usera z grupy',
+    desc: 'Usuń usera z grupy',
     tags: ['groups', 'gpasswd'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'id',
-    desc: 'Pokaz uid/gid/grupy biezacego usera',
+    desc: 'Pokaż uid/gid/grupy bieżącego usera',
     tags: ['users', 'diagnostics'],
     page: '/cheatsheets/permissions',
   },
@@ -277,13 +277,13 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo -i',
-    desc: 'Interaktywna powloka roota',
+    desc: 'Interaktywna powłoka roota',
     tags: ['sudo', 'root'],
     page: '/cheatsheets/permissions',
   },
   {
     cmd: 'sudo -l',
-    desc: 'Lista uprawnien sudo aktualnego usera',
+    desc: 'Lista uprawnień sudo aktualnego usera',
     tags: ['sudo'],
     page: '/cheatsheets/permissions',
   },
@@ -297,19 +297,19 @@ export const searchIndex = [
   },
   {
     cmd: 'du -sh /var/log/*',
-    desc: 'Rozmiar katalogow',
+    desc: 'Rozmiar katalogów',
     tags: ['filesystem', 'disk', 'size'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'mount | column -t',
-    desc: 'Zamontowane systemy plikow',
+    desc: 'Zamontowane systemy plików',
     tags: ['filesystem', 'mount'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'find /etc -name "*.conf"',
-    desc: 'Znajdz pliki po nazwie',
+    desc: 'Znajdź pliki po nazwie',
     tags: ['filesystem', 'find', 'search'],
     page: '/cheatsheets/filesystem',
   },
@@ -321,7 +321,7 @@ export const searchIndex = [
   },
   {
     cmd: 'lsblk',
-    desc: 'Drzewo blokow (dyski, partycje, LVM)',
+    desc: 'Drzewo bloków (dyski, partycje, LVM)',
     tags: ['filesystem', 'lvm', 'disk'],
     page: '/cheatsheets/filesystem',
   },
@@ -329,19 +329,19 @@ export const searchIndex = [
   // LVM
   {
     cmd: 'pvcreate /dev/sdb1',
-    desc: 'Utworz Physical Volume',
+    desc: 'Utwórz Physical Volume',
     tags: ['lvm', 'pv'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'vgcreate data_vg /dev/sdb1',
-    desc: 'Utworz Volume Group',
+    desc: 'Utwórz Volume Group',
     tags: ['lvm', 'vg'],
     page: '/cheatsheets/filesystem',
   },
   {
     cmd: 'lvcreate -L 100G -n data_lv data_vg',
-    desc: 'Utworz Logical Volume',
+    desc: 'Utwórz Logical Volume',
     tags: ['lvm', 'lv'],
     page: '/cheatsheets/filesystem',
   },
@@ -353,7 +353,7 @@ export const searchIndex = [
   },
   {
     cmd: 'pvs / vgs / lvs',
-    desc: 'Podglad Physical/Volume/Logical Volumes',
+    desc: 'Podgląd Physical/Volume/Logical Volumes',
     tags: ['lvm', 'status'],
     page: '/cheatsheets/filesystem',
   },
@@ -373,13 +373,13 @@ export const searchIndex = [
   },
   {
     cmd: 'docker ps',
-    desc: 'Lista uruchomionych kontenerow',
+    desc: 'Lista uruchomionych kontenerów',
     tags: ['docker', 'container', 'status'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker ps -a',
-    desc: 'Wszystkie kontenery (tez zatrzymane)',
+    desc: 'Wszystkie kontenery (też zatrzymane)',
     tags: ['docker', 'container', 'status'],
     page: '/cheatsheets/docker',
   },
@@ -391,19 +391,19 @@ export const searchIndex = [
   },
   {
     cmd: 'docker rm -f <id>',
-    desc: 'Usun kontener (force)',
+    desc: 'Usuń kontener (force)',
     tags: ['docker', 'container', 'remove'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker logs -f <name>',
-    desc: 'Logi kontenera na zywo',
+    desc: 'Logi kontenera na żywo',
     tags: ['docker', 'logs', 'debug'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker exec -it <name> /bin/bash',
-    desc: 'Wejdz do dzialajacego kontenera',
+    desc: 'Wejdź do działającego kontenera',
     tags: ['docker', 'exec', 'shell'],
     page: '/cheatsheets/docker',
   },
@@ -421,37 +421,37 @@ export const searchIndex = [
   },
   {
     cmd: 'docker images',
-    desc: 'Lista lokalnych obrazow',
+    desc: 'Lista lokalnych obrazów',
     tags: ['docker', 'image', 'list'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker volume create app-data',
-    desc: 'Utworz named volume',
+    desc: 'Utwórz named volume',
     tags: ['docker', 'volume', 'storage'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker network create my-net',
-    desc: 'Utworz siec',
+    desc: 'Utwórz sieć',
     tags: ['docker', 'network'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker compose up -d',
-    desc: 'Start serwisow z docker-compose.yml',
+    desc: 'Start serwisów z docker-compose.yml',
     tags: ['docker', 'compose', 'start'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker compose down',
-    desc: 'Stop + usun kontenery compose',
+    desc: 'Stop + usuń kontenery compose',
     tags: ['docker', 'compose', 'stop'],
     page: '/cheatsheets/docker',
   },
   {
     cmd: 'docker system prune -a',
-    desc: 'Usun wszystko nieuzywane',
+    desc: 'Usuń wszystko nieużywane',
     tags: ['docker', 'cleanup', 'prune'],
     page: '/cheatsheets/docker',
   },
@@ -471,7 +471,7 @@ export const searchIndex = [
   },
   {
     cmd: 'git status -s',
-    desc: 'Skrocony status zmian',
+    desc: 'Skrócony status zmian',
     tags: ['git', 'status'],
     page: '/cheatsheets/git',
   },
@@ -501,31 +501,31 @@ export const searchIndex = [
   },
   {
     cmd: 'git checkout -b feature/login',
-    desc: 'Utworz i przelacz na nowa galaz',
+    desc: 'Utwórz i przełącz na nową gałąź',
     tags: ['git', 'branch', 'checkout'],
     page: '/cheatsheets/git',
   },
   {
     cmd: 'git merge feature/login',
-    desc: 'Merge galezi do aktualnej',
+    desc: 'Merge gałęzi do aktualnej',
     tags: ['git', 'merge', 'branch'],
     page: '/cheatsheets/git',
   },
   {
     cmd: 'git rebase main',
-    desc: 'Przenosl commity na czubek main',
+    desc: 'Przenoś commity na czubek main',
     tags: ['git', 'rebase'],
     page: '/cheatsheets/git',
   },
   {
     cmd: 'git log --oneline --graph --all',
-    desc: 'Drzewko commitow',
+    desc: 'Drzewko commitów',
     tags: ['git', 'log', 'history'],
     page: '/cheatsheets/git',
   },
   {
     cmd: 'git diff --staged',
-    desc: 'Roznice w staging (przed commit)',
+    desc: 'Różnice w staging (przed commit)',
     tags: ['git', 'diff'],
     page: '/cheatsheets/git',
   },
@@ -537,7 +537,7 @@ export const searchIndex = [
   },
   {
     cmd: 'git stash pop',
-    desc: 'Przywroc ze schowka',
+    desc: 'Przywróć ze schowka',
     tags: ['git', 'stash'],
     page: '/cheatsheets/git',
   },
@@ -563,7 +563,7 @@ export const searchIndex = [
   // APT
   {
     cmd: 'sudo apt update',
-    desc: 'Pobierz najnowsze listy pakietow',
+    desc: 'Pobierz najnowsze listy pakietów',
     tags: ['apt', 'packages', 'update'],
     page: '/lessons/01',
   },
@@ -581,13 +581,13 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo apt remove <pakiet>',
-    desc: 'Usun pakiet (zachowaj config)',
+    desc: 'Usuń pakiet (zachowaj config)',
     tags: ['apt', 'packages', 'remove'],
     page: '/lessons/01',
   },
   {
     cmd: 'sudo apt purge <pakiet>',
-    desc: 'Usun pakiet + konfiguracje',
+    desc: 'Usuń pakiet + konfigurację',
     tags: ['apt', 'packages', 'purge'],
     page: '/lessons/01',
   },
@@ -595,25 +595,25 @@ export const searchIndex = [
   // UFW
   {
     cmd: 'sudo ufw enable',
-    desc: 'Wlacz firewall',
+    desc: 'Włącz firewall',
     tags: ['ufw', 'firewall', 'security'],
     page: '/lessons/02',
   },
   {
     cmd: 'sudo ufw status numbered',
-    desc: 'Status z numerami regul (ID)',
+    desc: 'Status z numerami reguł (ID)',
     tags: ['ufw', 'firewall', 'status'],
     page: '/lessons/02',
   },
   {
     cmd: 'sudo ufw allow 80/tcp',
-    desc: 'Zezwol na port 80 TCP (HTTP)',
+    desc: 'Zezwól na port 80 TCP (HTTP)',
     tags: ['ufw', 'firewall', 'allow', 'http'],
     page: '/lessons/02',
   },
   {
     cmd: 'sudo ufw allow 443',
-    desc: 'Zezwol na HTTPS',
+    desc: 'Zezwól na HTTPS',
     tags: ['ufw', 'firewall', 'allow', 'https'],
     page: '/lessons/02',
   },
@@ -625,7 +625,7 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo ufw delete 3',
-    desc: 'Usun regule po numerze ID',
+    desc: 'Usuń regułę po numerze ID',
     tags: ['ufw', 'firewall', 'delete'],
     page: '/lessons/02',
   },
@@ -637,7 +637,7 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo ufw reset',
-    desc: 'Usun wszystkie reguly',
+    desc: 'Usuń wszystkie reguły',
     tags: ['ufw', 'firewall', 'reset'],
     page: '/lessons/02',
   },
@@ -645,13 +645,13 @@ export const searchIndex = [
   // Netplan
   {
     cmd: 'sudo netplan apply',
-    desc: 'Zastosuj konfiguracje sieci',
+    desc: 'Zastosuj konfigurację sieci',
     tags: ['netplan', 'network', 'config'],
     page: '/lessons/02',
   },
   {
     cmd: 'sudo netplan try',
-    desc: 'Testuj konfiguracje (rollback po 120s)',
+    desc: 'Testuj konfigurację (rollback po 120s)',
     tags: ['netplan', 'network', 'test'],
     page: '/lessons/02',
   },
@@ -659,19 +659,19 @@ export const searchIndex = [
   // Monitoring
   {
     cmd: 'htop',
-    desc: 'Interaktywny monitor procesow',
+    desc: 'Interaktywny monitor procesów',
     tags: ['monitoring', 'processes', 'htop'],
     page: '/lessons/02',
   },
   {
     cmd: 'top -b -n 1',
-    desc: 'Jednokrotny snapshot procesow',
+    desc: 'Jednokrotny snapshot procesów',
     tags: ['monitoring', 'processes', 'top'],
     page: '/lessons/02',
   },
   {
     cmd: 'free -h',
-    desc: 'Uzycie pamieci (human-readable)',
+    desc: 'Użycie pamięci (human-readable)',
     tags: ['monitoring', 'memory', 'ram'],
     page: '/lessons/02',
   },
@@ -691,7 +691,7 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo nano /etc/update-motd.d/99-custom',
-    desc: 'Stworz dynamiczny skrypt powitalny',
+    desc: 'Stwórz dynamiczny skrypt powitalny',
     tags: ['ssh', 'motd', 'banner', 'dynamic', 'script'],
     page: '/cheatsheets/ssh-welcome',
   },
@@ -703,7 +703,7 @@ export const searchIndex = [
   },
   {
     cmd: 'sudo grep PrintMotd /etc/ssh/sshd_config',
-    desc: 'Sprawdz czy MOTD jest wlaczone w SSH',
+    desc: 'Sprawdź czy MOTD jest włączone w SSH',
     tags: ['ssh', 'config', 'motd'],
     page: '/cheatsheets/ssh-welcome',
   },
@@ -715,7 +715,7 @@ export const searchIndex = [
   },
   {
     cmd: 'lolcat',
-    desc: 'Dodaj teczowe kolory do tekstu',
+    desc: 'Dodaj tęczowe kolory do tekstu',
     tags: ['ssh', 'banner', 'colors', 'lolcat'],
     page: '/cheatsheets/ssh-welcome',
   },

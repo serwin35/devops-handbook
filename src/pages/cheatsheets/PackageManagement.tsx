@@ -21,14 +21,14 @@ export default function PackageManagement() {
     <div>
       <PageHeader
         title="Package Management"
-        subtitle="apt · yum · dnf · snap · flatpak — zarzadzanie pakietami"
+        subtitle="apt · yum · dnf · snap · flatpak — zarządzanie pakietami"
         color="var(--c-orange)"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         <Card title="APT — podstawy (Debian/Ubuntu)" color="var(--c-green)">
           <ExampleBlock variant="green">
-            <Comment># Aktualizuj liste pakietow z repozytoriow</Comment>
+            <Comment># Aktualizuj liste pakietów z repozytoriów</Comment>
             <Cmd>
               apt <H>update</H>
             </Cmd>
@@ -40,7 +40,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Aktualizuj + usun niepotrzebne zaleznosci</Comment>
+            <Comment># Aktualizuj + usuń niepotrzebne zależności</Comment>
             <Cmd>
               apt <H>full-upgrade</H>
             </Cmd>
@@ -60,19 +60,19 @@ export default function PackageManagement() {
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="orange">
-            <Comment># Usun pakiet (zachowaj konfiguracje)</Comment>
+            <Comment># Usuń pakiet (zachowaj konfigurację)</Comment>
             <Cmd>
               apt <H>remove</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun pakiet wraz z konfiguracja</Comment>
+            <Comment># Usuń pakiet wraz z konfiguracja</Comment>
             <Cmd>
               apt <H>purge</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun niepotrzebne zaleznosci</Comment>
+            <Comment># Usuń niepotrzebne zależności</Comment>
             <Cmd>
               apt <H>autoremove</H>
             </Cmd>
@@ -85,7 +85,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista zainstalowanych pakietow</Comment>
+            <Comment># Lista zainstalowanych pakietów</Comment>
             <Cmd>
               apt list <H>--installed</H>
             </Cmd>
@@ -98,19 +98,19 @@ export default function PackageManagement() {
           </ExampleBlock>
           <InfoBox>
             Zawsze wykonuj <code>apt update</code> przed{' '}
-            <code>apt install</code>, aby miec aktualna liste pakietow.
+            <code>apt install</code>, aby mieć aktualną liste pakietów.
           </InfoBox>
         </Card>
 
         <Card title="APT — zaawansowane" color="var(--c-purple)">
           <ExampleBlock variant="purple">
-            <Comment># Szczegolowe informacje o pakiecie (z cache)</Comment>
+            <Comment># Szczegółowe informacje o pakiecie (z cache)</Comment>
             <Cmd>
               apt-cache <H>show</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Sprawdz zaleznosci pakietu</Comment>
+            <Comment># Sprawdz zależności pakietu</Comment>
             <Cmd>
               apt-cache <H>depends</H> <V>nginx</V>
             </Cmd>
@@ -124,7 +124,7 @@ export default function PackageManagement() {
           <Divider />
           <SectionLabel>apt-mark — blokowanie wersji</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Zablokuj pakiet — nie bedzie aktualizowany</Comment>
+            <Comment># Zablokuj pakiet — nie będzie aktualizowany</Comment>
             <Cmd>
               apt-mark <H>hold</H> <V>nginx</V>
             </Cmd>
@@ -136,7 +136,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista zablokowanych pakietow</Comment>
+            <Comment># Lista zablokowanych pakietów</Comment>
             <Cmd>
               apt-mark <H>showhold</H>
             </Cmd>
@@ -150,7 +150,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Konfiguracja repozytoriow</Comment>
+            <Comment># Konfiguracja repozytoriów</Comment>
             <Cmd>
               <F>/etc/apt/sources.list</F>
             </Cmd>
@@ -166,7 +166,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Lista zainstalowanych pakietow (dpkg)</Comment>
+            <Comment># Lista zainstalowanych pakietów (dpkg)</Comment>
             <Cmd>
               dpkg <H>-l</H>
             </Cmd>
@@ -178,14 +178,14 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista plikow zainstalowanych przez pakiet</Comment>
+            <Comment># Lista plików zainstalowanych przez pakiet</Comment>
             <Cmd>
               dpkg <H>-L</H> <V>nginx</V>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
             Po <code>dpkg -i</code> uruchom <code>apt install -f</code>, aby
-            naprawic brakujace zaleznosci.
+            naprawić brakujace zależności.
           </InfoBox>
         </Card>
 
@@ -195,8 +195,8 @@ export default function PackageManagement() {
         >
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
             <code className="text-xs text-[var(--c-yellow)]">dnf</code> to
-            nastepca <code className="text-xs text-[var(--c-yellow)]">yum</code>{' '}
-            — w nowych systemach uzywaj{' '}
+            następca <code className="text-xs text-[var(--c-yellow)]">yum</code>{' '}
+            — w nowych systemach używaj{' '}
             <code className="text-xs text-[var(--c-yellow)]">dnf</code>.
           </p>
           <ExampleBlock variant="yellow">
@@ -206,7 +206,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Usun pakiet</Comment>
+            <Comment># Usuń pakiet</Comment>
             <Cmd>
               dnf <H>remove</H> <V>nginx</V>
             </Cmd>
@@ -237,7 +237,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista zainstalowanych pakietow</Comment>
+            <Comment># Lista zainstalowanych pakietów</Comment>
             <Cmd>
               dnf list <H>installed</H>
             </Cmd>
@@ -249,15 +249,15 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel>Grupy pakietow</SectionLabel>
+          <SectionLabel>Grupy pakietów</SectionLabel>
           <ExampleBlock variant="purple">
-            <Comment># Zainstaluj grupe pakietow</Comment>
+            <Comment># Zainstaluj grupe pakietów</Comment>
             <Cmd>
               dnf <H>group install</H> <V>"Development Tools"</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Lista dostepnych grup</Comment>
+            <Comment># Lista dostępnych grup</Comment>
             <Cmd>
               dnf <H>group list</H>
             </Cmd>
@@ -270,7 +270,7 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Cofnij poprzednia transakcje</Comment>
+            <Comment># Cofnij poprzednia transakcję</Comment>
             <Cmd>
               dnf history <H>undo</H> <V>last</V>
             </Cmd>
@@ -283,7 +283,7 @@ export default function PackageManagement() {
 
         <Card title="Snap" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Snap to format pakietow od Canonical — dziala na Debianie, Ubuntu i
+            Snap to format pakietów od Canonical — dziala na Debianie, Ubuntu i
             innych dystrybucjach.
           </p>
           <ExampleBlock variant="green">
@@ -294,7 +294,7 @@ export default function PackageManagement() {
           </ExampleBlock>
           <ExampleBlock variant="green">
             <Comment>
-              # Zainstaluj w trybie klasycznym (pelny dostep do FS)
+              # Zainstaluj w trybie klasycznym (pełny dostęp do FS)
             </Comment>
             <Cmd>
               snap install <V>code</V> <H>--classic</H>
@@ -308,7 +308,7 @@ export default function PackageManagement() {
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="orange">
-            <Comment># Usun pakiet snap</Comment>
+            <Comment># Usuń pakiet snap</Comment>
             <Cmd>
               snap <H>remove</H> <V>code</V>
             </Cmd>
@@ -352,27 +352,27 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wylacz snap (bez usuwania)</Comment>
+            <Comment># Wyłącz snap (bez usuwania)</Comment>
             <Cmd>
               snap <H>disable</H> <V>code</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Wlacz snap</Comment>
+            <Comment># Włącz snap</Comment>
             <Cmd>
               snap <H>enable</H> <V>code</V>
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Snappy automatycznie aktualizuje pakiety w tle. Uzywaj{' '}
+            Snappy automatycznie aktualizuje pakiety w tle. Używaj{' '}
             <code>--classic</code> tylko gdy pakiet tego wymaga.
           </InfoBox>
         </Card>
 
         <Card title="Flatpak" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Flatpak to format pakietow sandbox dla aplikacji desktopowych.
-            Glowne repozytorium:{' '}
+            Flatpak to format pakietów sandbox dla aplikacji desktopowych.
+            Główne repozytorium:{' '}
             <code className="text-xs text-[var(--c-purple)]">Flathub</code>.
           </p>
           <ExampleBlock variant="purple">
@@ -391,7 +391,7 @@ export default function PackageManagement() {
           </ExampleBlock>
           <ExampleBlock variant="purple">
             <Comment>
-              # Zainstaluj dla biezacego uzytkownika (nie systemowo)
+              # Zainstaluj dla bieżącego użytkownika (nie systemowo)
             </Comment>
             <Cmd>
               flatpak install <H>--user</H> flathub <V>org.gimp.GIMP</V>
@@ -431,31 +431,31 @@ export default function PackageManagement() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun aplikacje</Comment>
+            <Comment># Usuń aplikacje</Comment>
             <Cmd>
               flatpak <H>uninstall</H> <V>org.gimp.GIMP</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Usun nieuzywane dane runtime</Comment>
+            <Comment># Usuń nieużywane dane runtime</Comment>
             <Cmd>
               flatpak <H>uninstall --unused</H>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <SectionLabel>Repozytoria</SectionLabel>
-          <Row code="flatpak remotes">Lista skonfigurowanych repozytoriow</Row>
+          <Row code="flatpak remotes">Lista skonfigurowanych repozytoriów</Row>
           <Row code="flatpak remote-list">
-            Szczegolowa lista zdalnych repozytoriow
+            Szczegółowa lista zdalnych repozytoriów
           </Row>
           <InfoBox>
             Aplikacje Flatpak sa uruchamiane w izolowanym sandboxie —
-            ograniczony dostep do systemu zwiekszsa bezpieczenstwo.
+            ograniczony dostęp do systemu zwiększa bezpieczeństwo.
           </InfoBox>
         </Card>
 
         <Card
-          title="Porownanie menedzerow pakietow"
+          title="Porównanie menedżerów pakietów"
           color="var(--c-orange)"
           full
         >
@@ -466,14 +466,14 @@ export default function PackageManagement() {
               </p>
               <p className="text-[var(--c-muted)] text-xs leading-5">
                 Debian, Ubuntu i pochodne. Pakiety <code>.deb</code>. Systemowy
-                menedzer — instaluje natywnie, wspoldzieli biblioteki. Najlepsza
+                menedżer — instaluje natywnie, współdzieli biblioteki. Najlepsza
                 integracja z systemem.
               </p>
               <p className="text-[var(--c-fg)] text-xs mt-2 font-medium">
-                Kiedy uzywac:
+                Kiedy używać:
               </p>
               <p className="text-[var(--c-muted)] text-xs">
-                Oprogramowanie serwerowe, narzedzia systemowe, serwisy.
+                Oprogramowanie serwerowe, narzędzia systemowe, serwisy.
               </p>
             </div>
             <div className="bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3">
@@ -482,14 +482,14 @@ export default function PackageManagement() {
               </p>
               <p className="text-[var(--c-muted)] text-xs leading-5">
                 RHEL, CentOS, Fedora. Pakiety <code>.rpm</code>. Systemowy
-                menedzer z historią transakcji i rollback. Silny w srodowiskach
+                menedżer z historią transakcji i rollback. Silny w środowiskach
                 enterprise.
               </p>
               <p className="text-[var(--c-fg)] text-xs mt-2 font-medium">
-                Kiedy uzywac:
+                Kiedy używać:
               </p>
               <p className="text-[var(--c-muted)] text-xs">
-                Serwery RHEL/CentOS, srodowiska enterprise, automatyzacja.
+                Serwery RHEL/CentOS, środowiska enterprise, automatyzacja.
               </p>
             </div>
             <div className="bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-3">
@@ -497,15 +497,15 @@ export default function PackageManagement() {
                 Snap
               </p>
               <p className="text-[var(--c-muted)] text-xs leading-5">
-                Pakiety z bundlowanymi zaleznosci — dziala na wielu
+                Pakiety z bundlowanymi zależności — dziala na wielu
                 dystrybucjach. Auto-aktualizacje. Sandbox. Dedykowany dla
                 Ubuntu/Canonical.
               </p>
               <p className="text-[var(--c-fg)] text-xs mt-2 font-medium">
-                Kiedy uzywac:
+                Kiedy używać:
               </p>
               <p className="text-[var(--c-muted)] text-xs">
-                Nowe wersje narzedzi (kubectl, helm, code), multi-distro
+                Nowe wersje narzędzi (kubectl, helm, code), multi-distro
                 deployment.
               </p>
             </div>
@@ -514,11 +514,11 @@ export default function PackageManagement() {
                 Flatpak
               </p>
               <p className="text-[var(--c-muted)] text-xs leading-5">
-                Dedykowany aplikacjom desktopowym. Silny sandbox. Niezalezny od
-                dystrybucji. Glowne repozytorium: Flathub. Swietny dla GUI.
+                Dedykowany aplikacjom desktopowym. Silny sandbox. Niezależny od
+                dystrybucji. Główne repozytorium: Flathub. Świetny dla GUI.
               </p>
               <p className="text-[var(--c-fg)] text-xs mt-2 font-medium">
-                Kiedy uzywac:
+                Kiedy używać:
               </p>
               <p className="text-[var(--c-muted)] text-xs">
                 Aplikacje desktopowe (GIMP, LibreOffice, Inkscape) na dowolnej
@@ -528,7 +528,7 @@ export default function PackageManagement() {
           </div>
           <Divider />
           <SectionLabel className="mt-1.5">
-            Szybkie porownanie komend
+            Szybkie porównanie komend
           </SectionLabel>
           <div className="overflow-x-auto mt-2">
             <table className="w-full text-xs border-collapse">
@@ -658,9 +658,9 @@ export default function PackageManagement() {
             </table>
           </div>
           <InfoBox>
-            Na serwerach produkcyjnych uzywaj glownie <code>apt</code>{' '}
+            Na serwerach produkcyjnych używaj glownie <code>apt</code>{' '}
             (Debian/Ubuntu) lub <code>dnf</code> (RHEL/Fedora). Snap i Flatpak
-            sa lepsze do aplikacji desktopowych i narzedzi deweloperskich na
+            sa lepsze do aplikacji desktopowych i narzędzi deweloperskich na
             stacjach roboczych.
           </InfoBox>
         </Card>

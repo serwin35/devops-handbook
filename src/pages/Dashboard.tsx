@@ -30,7 +30,7 @@ export default function Dashboard() {
       <div className="mb-8 px-4 py-3 rounded-lg bg-[var(--c-surface)] border border-[var(--c-border)]">
         <div className="flex items-center justify-between mb-2">
           <span className="text-[var(--c-muted)] text-[11px] uppercase tracking-widest">
-            Postep nauki
+            Postęp nauki
           </span>
           <span className="text-xs">
             <span className="text-[var(--c-green)] font-bold">
@@ -46,7 +46,7 @@ export default function Dashboard() {
           aria-valuenow={percent}
           aria-valuemin={0}
           aria-valuemax={100}
-          aria-label={`Postep nauki: ${percent}%`}
+          aria-label={`Postęp nauki: ${percent}%`}
         >
           <div
             className="h-full rounded-full bg-[var(--c-green)] transition-all duration-500"
@@ -86,8 +86,8 @@ export default function Dashboard() {
                 className={`absolute top-3 right-3 w-5 h-5 rounded border text-[10px] flex items-center justify-center transition-colors ${isCompleted(id) ? 'bg-[var(--c-green)] border-[var(--c-green)] text-black' : 'border-[var(--c-border)] text-[var(--c-muted)] hover:border-[var(--c-accent)]'}`}
                 aria-label={
                   isCompleted(id)
-                    ? 'Oznacz jako nieukonczone'
-                    : 'Oznacz jako ukonczone'
+                    ? 'Oznacz jako nieukończone'
+                    : 'Oznacz jako ukończone'
                 }
               >
                 {isCompleted(id) ? '\u2713' : ''}
@@ -129,7 +129,7 @@ export default function Dashboard() {
           <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
             Kolejna lekcja...
           </div>
-          <div className="text-[var(--c-muted)] text-[11px]">Wkrotce</div>
+          <div className="text-[var(--c-muted)] text-[11px]">Wkrótce</div>
         </div>
       </div>
 
@@ -190,8 +190,8 @@ export default function Dashboard() {
                   className={`w-6 h-6 rounded flex items-center justify-center text-[11px] transition-colors ${isCompleted(`${id}:bulb`) ? 'bg-[rgba(255,107,53,0.15)] text-[var(--c-orange)]' : 'text-[var(--c-dim)] hover:text-[var(--c-muted)]'}`}
                   aria-label={
                     isCompleted(`${id}:bulb`)
-                      ? 'Do powtorzenia'
-                      : 'Oznacz do powtorzenia'
+                      ? 'Do powtórzenia'
+                      : 'Oznacz do powtórzenia'
                   }
                 >
                   {'\uD83D\uDCA1'}

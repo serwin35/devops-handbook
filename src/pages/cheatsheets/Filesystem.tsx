@@ -21,30 +21,30 @@ export default function Filesystem() {
     <div>
       <PageHeader
         title="Filesystem Hierarchy"
-        subtitle="Struktura katalogow Linux — FHS, operacje na plikach i katalogach"
+        subtitle="Struktura katalogów Linux — FHS, operację na plikach i katalogach"
         color="var(--c-yellow)"
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <Card title="Listowanie plikow (ls)" color="var(--c-accent)">
+        <Card title="Listowanie plików (ls)" color="var(--c-accent)">
           <ExampleBlock>
             <Comment># Podstawowe listowanie</Comment>
             <Cmd>ls</Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Szczegolowa lista z uprawnieniami</Comment>
+            <Comment># Szczegółowa lista z uprawnieniami</Comment>
             <Cmd>
               ls <H>-l</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Pokaz ukryte pliki</Comment>
+            <Comment># Pokaż ukryte pliki</Comment>
             <Cmd>
               ls <H>-a</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Szczegoly + ukryte + human-readable</Comment>
+            <Comment># Szczegóły + ukryte + human-readable</Comment>
             <Cmd>
               ls <H>-lah</H>
             </Cmd>
@@ -64,11 +64,11 @@ export default function Filesystem() {
         </Card>
 
         <Card
-          title="Czytanie plikow (cat / head / tail)"
+          title="Czytanie plików (cat / head / tail)"
           color="var(--c-purple)"
         >
           <ExampleBlock variant="purple">
-            <Comment># Wyswietl zawartosc pliku</Comment>
+            <Comment># Wyświetl zawartość pliku</Comment>
             <Cmd>
               cat <V>/etc/hostname</V>
             </Cmd>
@@ -80,7 +80,7 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Polacz kilka plikow</Comment>
+            <Comment># Połącz kilka plików</Comment>
             <Cmd>
               cat <V>plik1.txt plik2.txt</V> {'>'} <F>wynik.txt</F>
             </Cmd>
@@ -99,28 +99,28 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Sledz logi na zywo</Comment>
+            <Comment># Śledź logi na zywo</Comment>
             <Cmd>
               tail <H>-f</H> <V>/var/log/syslog</V>
             </Cmd>
           </ExampleBlock>
         </Card>
 
-        <Card title="Tworzenie katalogow (mkdir)" color="var(--c-yellow)">
+        <Card title="Tworzenie katalogów (mkdir)" color="var(--c-yellow)">
           <ExampleBlock variant="yellow">
-            <Comment># Utworz katalog</Comment>
+            <Comment># Utwórz katalog</Comment>
             <Cmd>
               mkdir <V>nowy_katalog</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz zagniezdzone katalogi</Comment>
+            <Comment># Utwórz zagnieżdżone katalogi</Comment>
             <Cmd>
               mkdir <H>-p</H> <V>projekt/src/components</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Utworz z konkretnymi uprawnieniami</Comment>
+            <Comment># Utwórz z konkretnymi uprawnieniami</Comment>
             <Cmd>
               mkdir <H>-m 755</H> <V>/var/www/app</V>
             </Cmd>
@@ -129,25 +129,25 @@ export default function Filesystem() {
 
         <Card title="Usuwanie (rm / rmdir)" color="var(--c-orange)">
           <ExampleBlock variant="orange">
-            <Comment># Usun plik</Comment>
+            <Comment># Usuń plik</Comment>
             <Cmd>
               rm <V>plik.txt</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun z potwierdzeniem</Comment>
+            <Comment># Usuń z potwierdzeniem</Comment>
             <Cmd>
               rm <H>-i</H> <V>wazny_plik.txt</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun pusty katalog</Comment>
+            <Comment># Usuń pusty katalog</Comment>
             <Cmd>
               rmdir <V>pusty_katalog</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun katalog z zawartoscia</Comment>
+            <Comment># Usuń katalog z zawartością</Comment>
             <Cmd>
               rm <H>-r</H> <V>katalog/</V>
             </Cmd>
@@ -159,8 +159,8 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <InfoBox warn>
-            <b>rm -rf</b> jest nieodwracalne! Zawsze sprawdz sciezke przed
-            wykonaniem. Nigdy nie uzywaj na <code>/</code>.
+            <b>rm -rf</b> jest nieodwracalne! Zawsze sprawdź ścieżkę przed
+            wykonaniem. Nigdy nie używaj na <code>/</code>.
           </InfoBox>
         </Card>
 
@@ -181,25 +181,25 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Przenies / zmien nazwe</Comment>
+            <Comment># Przenieś / zmień nazwe</Comment>
             <Cmd>
               mv <V>stary.txt</V> <F>nowy.txt</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Przenies do katalogu</Comment>
+            <Comment># Przenieś do katalogu</Comment>
             <Cmd>
               mv <V>plik.txt</V> <F>/home/serwin/backup/</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Przenies folder (z zawartoscia)</Comment>
+            <Comment># Przenieś folder (z zawartością)</Comment>
             <Cmd>
               mv <V>src/</V> <F>/home/serwin/backup/</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Zmien nazwe folderu</Comment>
+            <Comment># Zmień nazwe folderu</Comment>
             <Cmd>
               mv <V>old-dir/</V> <F>new-dir/</F>
             </Cmd>
@@ -208,24 +208,24 @@ export default function Filesystem() {
 
         <Card title="Kluczowe pliki w /etc">
           <Row code="/etc/passwd">
-            Lista uzytkownikow — login, UID, GID, shell
+            Lista użytkowników — login, UID, GID, shell
           </Row>
-          <Row code="/etc/shadow">Hashe hasel (tylko root)</Row>
-          <Row code="/etc/group">Definicje grup i ich czlonkowie</Row>
-          <Row code="/etc/fstab">Montowanie systemow plikow przy starcie</Row>
+          <Row code="/etc/shadow">Hashe haseł (tylko root)</Row>
+          <Row code="/etc/group">Definicje grup i ich członkowie</Row>
+          <Row code="/etc/fstab">Montowanie systemów plików przy starcie</Row>
           <Row code="/etc/hostname">Nazwa hosta</Row>
           <Row code="/etc/hosts">Lokalne mapowanie nazw DNS</Row>
           <Row code="/etc/resolv.conf">Konfiguracja DNS</Row>
           <Row code="/etc/sudoers">Konfiguracja sudo (edycja: visudo)</Row>
           <Row code="/etc/ssh/sshd_config">Konfiguracja serwera SSH</Row>
           <Row code="/etc/apt/sources.list">
-            Repozytoria pakietow (Debian/Ubuntu)
+            Repozytoria pakietów (Debian/Ubuntu)
           </Row>
         </Card>
 
-        <Card title="Wirtualne systemy plikow" color="var(--c-purple)">
+        <Card title="Wirtualne systemy plików" color="var(--c-purple)">
           <Concept title="/proc — procfs" color="var(--c-purple)">
-            Informacje o procesach i jadrze. Nie istnieje fizycznie na dysku.
+            Informacje o procesach i jądrze. Nie istnieje fizycznie na dysku.
           </Concept>
           <ExampleBlock variant="purple">
             <Cmd>
@@ -234,25 +234,25 @@ export default function Filesystem() {
             </Cmd>
             <Cmd>
               cat <H>/proc/meminfo</H>{' '}
-              <span className="text-[var(--c-muted)]"># pamiec</span>
+              <span className="text-[var(--c-muted)]"># pamięć</span>
             </Cmd>
             <Cmd>
               cat <H>/proc/version</H>{' '}
-              <span className="text-[var(--c-muted)]"># jadro</span>
+              <span className="text-[var(--c-muted)]"># jądro</span>
             </Cmd>
             <Cmd>
               ls <H>/proc/$$</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # info o biezacym procesie
+                # info o bieżącym procesie
               </span>
             </Cmd>
           </ExampleBlock>
           <Concept title="/sys — sysfs" color="var(--c-green)">
-            Urzadzenia, sterowniki, moduly jadra. Interfejs do konfiguracji
+            Urządzenia, sterowniki, moduły jądra. Interfejs do konfiguracji
             hardware.
           </Concept>
           <Concept title="/dev — devtmpfs" color="var(--c-yellow)">
-            Pliki urzadzen — "wszystko jest plikiem".
+            Pliki urządzeń — "wszystko jest plikiem".
           </Concept>
           <ExampleBlock variant="yellow">
             <Cmd>
@@ -267,7 +267,7 @@ export default function Filesystem() {
             </Cmd>
             <Cmd>
               <H>/dev/zero</H>{' '}
-              <span className="text-[var(--c-muted)]"># nieskonczone zera</span>
+              <span className="text-[var(--c-muted)]"># nieskończone zera</span>
             </Cmd>
             <Cmd>
               <H>/dev/urandom</H>{' '}
@@ -284,7 +284,7 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Rozmiar katalogow</Comment>
+            <Comment># Rozmiar katalogów</Comment>
             <Cmd>
               du <H>-sh</H> <F>/var/log/*</F>
             </Cmd>
@@ -361,7 +361,7 @@ export default function Filesystem() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">Zarzadzanie</SectionLabel>
+          <SectionLabel className="mt-1.5">Zarządzanie</SectionLabel>
           <ExampleBlock>
             <Cmd>
               lvextend <H>-L +50G</H> <F>/dev/data_vg/data_lv</F>
@@ -377,7 +377,7 @@ export default function Filesystem() {
               <F>/dev/data_vg/data_lv</F>
             </Cmd>
           </ExampleBlock>
-          <SectionLabel className="mt-1.5">Podglad</SectionLabel>
+          <SectionLabel className="mt-1.5">Podgląd</SectionLabel>
           <ExampleBlock>
             <Cmd>
               pvs <span className="text-[var(--c-muted)]"># lista PV</span>
@@ -391,11 +391,11 @@ export default function Filesystem() {
           </ExampleBlock>
         </Card>
 
-        <Card title="Pelna struktura" color="var(--c-yellow)" full>
+        <Card title="Pełna struktura" color="var(--c-yellow)" full>
           <pre className="text-[13px] leading-7 bg-[var(--c-code-bg)] border border-[var(--c-border)] rounded-md p-4 overflow-x-auto whitespace-pre">
             <span className="text-[var(--c-accent)] font-bold">/</span>{' '}
             <span className="text-[var(--c-muted)]">
-              Root — poczatek calego systemu plikow
+              Root — początek całego systemu plików
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -416,7 +416,7 @@ export default function Filesystem() {
               ├── /dev
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Pliki urzadzen (/dev/sda, /dev/null, /dev/tty)
+              Pliki urządzeń (/dev/sda, /dev/null, /dev/tty)
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -430,14 +430,14 @@ export default function Filesystem() {
               ├── /home
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Katalogi domowe uzytkownikow (/home/serwin)
+              Katalogi domowe użytkowników (/home/serwin)
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
               ├── /lib
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Biblioteki wspoldzielone (*.so) dla /bin i /sbin
+              Biblioteki współdzielone (*.so) dla /bin i /sbin
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -451,21 +451,21 @@ export default function Filesystem() {
               ├── /mnt
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Reczne montowanie systemow plikow
+              Ręczne montowanie systemów plików
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
               ├── /opt
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Opcjonalne oprogramowanie (zewnetrzne paczki)
+              Opcjonalne oprogramowanie (zewnętrzne paczki)
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
               ├── /proc
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Wirtualny FS — info o procesach i jadrze
+              Wirtualny FS — info o procesach i jądrze
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -491,7 +491,7 @@ export default function Filesystem() {
               ├── /srv
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Dane serwisow (www, ftp)
+              Dane serwisów (www, ftp)
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -512,13 +512,13 @@ export default function Filesystem() {
               ├── /usr
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Programy uzytkownika, man pages, biblioteki
+              Programy użytkownika, man pages, biblioteki
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
               │ ├── /usr/bin
             </span>{' '}
-            <span className="text-[var(--c-muted)]">Wiekszosc programow</span>
+            <span className="text-[var(--c-muted)]">Większość programow</span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
               │ ├── /usr/lib
@@ -538,7 +538,7 @@ export default function Filesystem() {
               │ └── /usr/share
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Dane niezalezne od architektury
+              Dane niezależne od architektury
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -561,7 +561,7 @@ export default function Filesystem() {
               ├── /var/cache
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Cache pakietow (apt, yum)
+              Cache pakietów (apt, yum)
             </span>
             {'\n'}
             <span className="text-[var(--c-accent)] font-bold">
@@ -577,7 +577,7 @@ export default function Filesystem() {
               └── /var/www
             </span>{' '}
             <span className="text-[var(--c-muted)]">
-              Domyslny root serwera www
+              Domyślny root serwera www
             </span>
           </pre>
         </Card>

@@ -20,7 +20,7 @@ export default function Editors() {
     <div>
       <PageHeader
         title="Edytory Tekstu"
-        subtitle="vim · nano · sed · awk — edycja plikow w terminalu"
+        subtitle="vim · nano · sed · awk — edycja plików w terminalu"
         color="var(--c-purple)"
       />
 
@@ -28,10 +28,10 @@ export default function Editors() {
         {/* CARD 1: Vim — tryby pracy */}
         <Card title="Vim — tryby pracy" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Vim jest modalny — kazdy tryb ma inne zachowanie klawiatury.
+            Vim jest modalny — każdy tryb ma inne zachowanie klawiatury.
           </p>
           <ExampleBlock variant="purple">
-            <Comment># Otworz plik w vim</Comment>
+            <Comment># Otwórz plik w vim</Comment>
             <Cmd>
               vim <F>plik.txt</F>
             </Cmd>
@@ -39,25 +39,25 @@ export default function Editors() {
           <Divider />
           <SectionLabel>Tryby</SectionLabel>
           <Row code="NORMAL" codeVariant="purple">
-            Tryb domyslny — nawigacja i komendy. Wejscie:{' '}
+            Tryb domyślny — nawigacja i komendy. Wejście:{' '}
             <code className="text-xs">Esc</code>
           </Row>
           <Row code="INSERT" codeVariant="green">
-            Tryb edycji tekstu. Wejscie: <code className="text-xs">i</code> lub{' '}
+            Tryb edycji tekstu. Wejście: <code className="text-xs">i</code> lub{' '}
             <code className="text-xs">a</code>
           </Row>
           <Row code="VISUAL" codeVariant="yellow">
-            Tryb zaznaczania tekstu. Wejscie: <code className="text-xs">v</code>{' '}
+            Tryb zaznaczania tekstu. Wejście: <code className="text-xs">v</code>{' '}
             / <code className="text-xs">V</code> /{' '}
             <code className="text-xs">Ctrl+v</code>
           </Row>
           <Row code="COMMAND" codeVariant="orange">
-            Tryb komend. Wejscie: <code className="text-xs">:</code> z trybu
+            Tryb komend. Wejście: <code className="text-xs">:</code> z trybu
             NORMAL
           </Row>
           <Divider />
           <ExampleBlock variant="purple">
-            <Comment># Przejscie miedzy trybami</Comment>
+            <Comment># Przejście między trybami</Comment>
             <Cmd>
               <H>Esc</H>{' '}
               <span className="text-[var(--c-muted)]">
@@ -82,8 +82,8 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <InfoBox>
-            Jesli utknales w vim, zawsze nacisni <b>Esc</b> kilka razy, a
-            nastepnie wpisz <code className="text-xs">:q!</code> aby wyjsc bez
+            Jeśli utknąłeś w vim, zawsze naciśnij <b>Esc</b> kilka razy, a
+            następnie wpisz <code className="text-xs">:q!</code> aby wyjsc bez
             zapisu.
           </InfoBox>
         </Card>
@@ -95,38 +95,38 @@ export default function Editors() {
             lewo / prawo (znak po znaku)
           </Row>
           <Row code="j / k" codeVariant="purple">
-            w dol / w gore (linia po linii)
+            w dół / w górę (linia po linii)
           </Row>
           <Row code="w / b" codeVariant="purple">
-            nastepne / poprzednie slowo (poczatek)
+            następne / poprzednie słowo (początek)
           </Row>
           <Row code="e" codeVariant="purple">
-            koniec biezacego / nastepnego slowa
+            koniec bieżącego / następnego słowa
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Skok do linii</SectionLabel>
           <Row code="0 / $" codeVariant="yellow">
-            poczatek / koniec linii
+            początek / koniec linii
           </Row>
           <Row code="gg / G" codeVariant="yellow">
-            poczatek / koniec pliku
+            początek / koniec pliku
           </Row>
           <Row code="42G" codeVariant="yellow">
-            przejdz do linii 42
+            przejdź do linii 42
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Przewijanie</SectionLabel>
           <Row code="Ctrl+u" codeVariant="green">
-            przewin pol ekranu w gore
+            przewiń pół ekranu w górę
           </Row>
           <Row code="Ctrl+d" codeVariant="green">
-            przewin pol ekranu w dol
+            przewiń pół ekranu w dół
           </Row>
           <Row code="Ctrl+b" codeVariant="green">
-            przewin caly ekran w gore
+            przewiń cały ekran w górę
           </Row>
           <Row code="Ctrl+f" codeVariant="green">
-            przewin caly ekran w dol
+            przewiń cały ekran w dół
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Wyszukiwanie</SectionLabel>
@@ -134,7 +134,7 @@ export default function Editors() {
             <Cmd>
               <H>/</H>
               <V>wzorzec</V>{' '}
-              <span className="text-[var(--c-muted)]"># szukaj w przod</span>
+              <span className="text-[var(--c-muted)]"># szukaj w przód</span>
             </Cmd>
             <Cmd>
               <H>?</H>
@@ -144,13 +144,13 @@ export default function Editors() {
             <Cmd>
               <H>n</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # nastepne wystapienie
+                # następne wystąpienie
               </span>
             </Cmd>
             <Cmd>
               <H>N</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # poprzednie wystapienie
+                # poprzednie wystąpienie
               </span>
             </Cmd>
           </ExampleBlock>
@@ -158,7 +158,7 @@ export default function Editors() {
 
         {/* CARD 3: Vim — edycja */}
         <Card title="Vim — edycja" color="var(--c-green)">
-          <SectionLabel>Wejscie w tryb INSERT</SectionLabel>
+          <SectionLabel>Wejście w tryb INSERT</SectionLabel>
           <Row code="i" codeVariant="green">
             INSERT przed kursorem
           </Row>
@@ -166,13 +166,13 @@ export default function Editors() {
             INSERT za kursorem (append)
           </Row>
           <Row code="o" codeVariant="green">
-            nowa linia ponizej, INSERT
+            nowa linia poniżej, INSERT
           </Row>
           <Row code="O" codeVariant="green">
-            nowa linia powyzej, INSERT
+            nowa linia powyżej, INSERT
           </Row>
           <Row code="I" codeVariant="green">
-            INSERT na poczatku linii
+            INSERT na początku linii
           </Row>
           <Row code="A" codeVariant="green">
             INSERT na koncu linii
@@ -180,19 +180,19 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Usuwanie i kopiowanie</SectionLabel>
           <Row code="x" codeVariant="orange">
-            usun znak pod kursorem
+            usuń znak pod kursorem
           </Row>
           <Row code="dd" codeVariant="orange">
-            usun (wytnij) cala linie
+            usuń (wytnij) cała linie
           </Row>
           <Row code="yy" codeVariant="yellow">
-            kopiuj (yank) cala linie
+            kopiuj (yank) cała linie
           </Row>
           <Row code="p" codeVariant="yellow">
-            wklej za kursorem / ponizej linii
+            wklej za kursorem / poniżej linii
           </Row>
           <Row code="P" codeVariant="yellow">
-            wklej przed kursorem / powyzej linii
+            wklej przed kursorem / powyżej linii
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Cofanie i zmiana</SectionLabel>
@@ -200,22 +200,22 @@ export default function Editors() {
             cofnij (undo)
           </Row>
           <Row code="Ctrl+r" codeVariant="purple">
-            ponow (redo)
+            ponów (redo)
           </Row>
           <Row code="cw" codeVariant="green">
-            zmien slowo (usun + INSERT)
+            zmień słowo (usuń + INSERT)
           </Row>
           <Row code={'ci"'} codeVariant="green">
-            zmien zawartosc cudzyslowow
+            zmień zawartość cudzysłowów
           </Row>
           <Row code="ca(" codeVariant="green">
-            zmien zawartosc nawiasow (wlacznie z nimi)
+            zmień zawartość nawiasów (włącznie z nimi)
           </Row>
           <Row code="." codeVariant="yellow">
-            powtorz ostatnia operacje
+            powtórz ostatnią operację
           </Row>
           <InfoBox>
-            <b>Operatory</b> w vim skladaja sie z: [ilosc][operator][obiekt].
+            <b>Operatory</b> w vim składają sie z: [ilość][operator][obiekt].
             Np. <code className="text-xs">3dd</code> usuwa 3 linie,{' '}
             <code className="text-xs">5yy</code> kopiuje 5 linii.
           </InfoBox>
@@ -223,7 +223,7 @@ export default function Editors() {
 
         {/* CARD 4: Vim — komendy */}
         <Card title="Vim — komendy" color="var(--c-orange)">
-          <SectionLabel>Zapis i wyjscie (tryb COMMAND)</SectionLabel>
+          <SectionLabel>Zapis i wyjście (tryb COMMAND)</SectionLabel>
           <ExampleBlock variant="orange">
             <Cmd>
               <H>:w</H>{' '}
@@ -232,34 +232,34 @@ export default function Editors() {
             <Cmd>
               <H>:q</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # wyjdz (gdy brak zmian)
+                # wyjdź (gdy brak zmian)
               </span>
             </Cmd>
             <Cmd>
               <H>:wq</H>{' '}
-              <span className="text-[var(--c-muted)]"># zapisz i wyjdz</span>
+              <span className="text-[var(--c-muted)]"># zapisz i wyjdź</span>
             </Cmd>
             <Cmd>
               <H>:x</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # zapisz (jesli zmiany) i wyjdz
+                # zapisz (jeśli zmiany) i wyjdź
               </span>
             </Cmd>
             <Cmd>
               <H>:q!</H>{' '}
-              <span className="text-[var(--c-muted)]"># wyjdz BEZ zapisu</span>
+              <span className="text-[var(--c-muted)]"># wyjdź BEZ zapisu</span>
             </Cmd>
             <Cmd>
               <H>ZZ</H>{' '}
               <span className="text-[var(--c-muted)]">
-                # skrot: zapisz i wyjdz
+                # skrot: zapisz i wyjdź
               </span>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <SectionLabel className="mt-1.5">Zamiana tekstu</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Zamien pierwsze wystapienie w linii</Comment>
+            <Comment># Zamien pierwsze wystąpienie w linii</Comment>
             <Cmd>
               <H>:s/</H>
               <V>stary</V>
@@ -289,7 +289,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Z potwierdzeniem przy kazdym</Comment>
+            <Comment># Z potwierdzeniem przy każdym</Comment>
             <Cmd>
               <H>:%s/</H>
               <V>stary</V>
@@ -301,7 +301,7 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Opcje i pomoc</SectionLabel>
           <Row code=":set number" codeVariant="orange">
-            pokaz numery linii
+            pokaż numery linii
           </Row>
           <Row code=":set nonumber" codeVariant="orange">
             ukryj numery linii
@@ -310,10 +310,10 @@ export default function Editors() {
             tryb wklejania (wylacza auto-indent)
           </Row>
           <Row code=":syntax on" codeVariant="orange">
-            podswietlanie skladni
+            podświetlanie składni
           </Row>
-          <Row code=":help slowo" codeVariant="purple">
-            wbudowana dokumentacja
+          <Row code=":help słowo" codeVariant="purple">
+            wbudowaną dokumentacja
           </Row>
         </Card>
 
@@ -324,35 +324,35 @@ export default function Editors() {
             ekranu.
           </p>
           <ExampleBlock variant="green">
-            <Comment># Otworz plik w nano</Comment>
+            <Comment># Otwórz plik w nano</Comment>
             <Cmd>
               nano <F>plik.txt</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Otworz z numerami linii</Comment>
+            <Comment># Otwórz z numerami linii</Comment>
             <Cmd>
               nano <H>-l</H> <F>plik.txt</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Otworz jako tylko do odczytu</Comment>
+            <Comment># Otwórz jako tylko do odczytu</Comment>
             <Cmd>
               nano <H>-v</H> <F>/etc/ssh/sshd_config</F>
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">Zapis i wyjscie</SectionLabel>
+          <SectionLabel className="mt-1.5">Zapis i wyjście</SectionLabel>
           <Row code="Ctrl+O" codeVariant="green">
             zapisz plik (Write Out) — zatwierdz Enter
           </Row>
           <Row code="Ctrl+X" codeVariant="green">
-            wyjdz z nano (pyta o zapis jesli zmiany)
+            wyjdź z nano (pyta o zapis jeśli zmiany)
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Edycja</SectionLabel>
           <Row code="Ctrl+K" codeVariant="orange">
-            wytnij (cut) cala linie do schowka
+            wytnij (cut) cała linie do schowka
           </Row>
           <Row code="Ctrl+U" codeVariant="orange">
             wklej (uncut) ze schowka
@@ -373,25 +373,25 @@ export default function Editors() {
         <Card title="Nano — nawigacja i wyszukiwanie" color="var(--c-yellow)">
           <SectionLabel>Ruch w pliku</SectionLabel>
           <Row code="Ctrl+A" codeVariant="yellow">
-            poczatek linii
+            początek linii
           </Row>
           <Row code="Ctrl+E" codeVariant="yellow">
             koniec linii
           </Row>
           <Row code="Ctrl+Y" codeVariant="yellow">
-            przewin strone w gore
+            przewiń strone w górę
           </Row>
           <Row code="Ctrl+V" codeVariant="yellow">
-            przewin strone w dol
+            przewiń strone w dół
           </Row>
           <Row code="Alt+\\" codeVariant="yellow">
-            poczatek pliku
+            początek pliku
           </Row>
           <Row code="Alt+/" codeVariant="yellow">
             koniec pliku
           </Row>
           <Row code="Ctrl+_" codeVariant="yellow">
-            przejdz do linii i kolumny (Go To Line)
+            przejdź do linii i kolumny (Go To Line)
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Wyszukiwanie i zamiana</SectionLabel>
@@ -406,7 +406,7 @@ export default function Editors() {
             <Cmd>
               <H>Alt+W</H>{' '}
               <span className="text-[var(--c-muted)]">
-                powtorz ostatnie wyszukiwanie
+                powtórz ostatnie wyszukiwanie
               </span>
             </Cmd>
           </ExampleBlock>
@@ -425,17 +425,17 @@ export default function Editors() {
             cofnij (undo) — nano 2.4+
           </Row>
           <Row code="Alt+E" codeVariant="purple">
-            ponow (redo) — nano 2.4+
+            ponów (redo) — nano 2.4+
           </Row>
           <Row code="Ctrl+G" codeVariant="green">
-            wyswietl wbudowana pomoc (Help)
+            wyświetl wbudowaną pomoc (Help)
           </Row>
           <Row code="Ctrl+C" codeVariant="green">
-            pokaz numer biezacej linii i kolumny
+            pokaż numer bieżącej linii i kolumny
           </Row>
           <InfoBox>
-            Nano nie ma trybob jak vim — piszesz od razu po otwarciu pliku.
-            Idealny dla szybkich edycji plikow konfiguracyjnych.
+            Nano nie ma trybów jak vim — piszesz od razu po otwarciu pliku.
+            Idealny dla szybkich edycji plików konfiguracyjnych.
           </InfoBox>
         </Card>
 
@@ -447,7 +447,7 @@ export default function Editors() {
           </p>
           <SectionLabel>Zamiana tekstu (s///)</SectionLabel>
           <ExampleBlock variant="orange">
-            <Comment># Zamien pierwsze wystapienie w linii</Comment>
+            <Comment># Zamien pierwsze wystąpienie w linii</Comment>
             <Cmd>
               sed <H>'s/</H>
               <V>stary</V>
@@ -457,7 +457,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zamien wszystkie wystapienia (/g)</Comment>
+            <Comment># Zamien wszystkie wystąpienia (/g)</Comment>
             <Cmd>
               sed <H>'s/</H>
               <V>stary</V>
@@ -481,20 +481,20 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Filtrowanie linii</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Drukuj tylko linie pasujace do wzorca</Comment>
+            <Comment># Drukuj tylko linie pasujące do wzorca</Comment>
             <Cmd>
               sed <H>-n</H> <V>'/error/p'</V> <F>/var/log/syslog</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Usun linie pasujace do wzorca</Comment>
+            <Comment># Usuń linie pasujące do wzorca</Comment>
             <Cmd>
               sed <V>'/^#/d'</V> <F>config.conf</F>{' '}
-              <span className="text-[var(--c-muted)]"># usun komentarze</span>
+              <span className="text-[var(--c-muted)]"># usuń komentarze</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Usun puste linie</Comment>
+            <Comment># Usuń puste linie</Comment>
             <Cmd>
               sed <V>'/^$/d'</V> <F>plik.txt</F>
             </Cmd>
@@ -515,31 +515,31 @@ export default function Editors() {
           </ExampleBlock>
           <InfoBox>
             <b>sed</b> nie zmienia oryginalnego pliku bez flagi <b>-i</b>. Wynik
-            idzie na stdout — mozna przekierowac do nowego pliku.
+            idzie na stdout — można przekierować do nowego pliku.
           </InfoBox>
         </Card>
 
         {/* CARD 8: awk — przetwarzanie tekstu */}
         <Card title="awk — przetwarzanie tekstu" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            awk przetwarza tekst strukturalny kolumna po kolumnie. Domyslny
+            awk przetwarza tekst strukturalny kolumna po kolumnie. Domyślny
             separator: spacja/tab.
           </p>
-          <SectionLabel>Podstawowe drukowanie pol</SectionLabel>
+          <SectionLabel>Podstawowe drukowanie pól</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># Drukuj pierwsza kolumne</Comment>
+            <Comment># Drukuj pierwszą kolumnę</Comment>
             <Cmd>
               awk <V>'{'{print $1}'}'</V> <F>plik.txt</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Drukuj 1. i 3. kolumne</Comment>
+            <Comment># Drukuj 1. i 3. kolumnę</Comment>
             <Cmd>
               awk <V>'{'{print $1, $3}'}'</V> <F>plik.txt</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Drukuj cala linie ($0) z numerem</Comment>
+            <Comment># Drukuj cała linie ($0) z numerem</Comment>
             <Cmd>
               awk <V>'{'{print NR, $0}'}'</V> <F>plik.txt</F>
             </Cmd>
@@ -563,7 +563,7 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Wzorce i warunki</SectionLabel>
           <ExampleBlock variant="green">
-            <Comment># Drukuj linie zawierajace "error"</Comment>
+            <Comment># Drukuj linie zawierające "error"</Comment>
             <Cmd>
               awk <V>'/error/ {'{print}'}'</V> <F>/var/log/syslog</F>
             </Cmd>
@@ -575,7 +575,7 @@ export default function Editors() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment>{'# Listuj uzytkownikow (UID 1000-65533)'}</Comment>
+            <Comment>{'# Listuj użytkowników (UID 1000-65533)'}</Comment>
             <Cmd>
               awk <H>-F</H>
               <V>:</V> <V>{"'$3 >= 1000 && $3 < 65534 {print $1, $3, $6}'"}</V>{' '}
@@ -585,7 +585,7 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">BEGIN i END</SectionLabel>
           <ExampleBlock variant="purple">
-            <Comment># Naglowek przed danymi</Comment>
+            <Comment># Nagłówek przed danymi</Comment>
             <Cmd>
               awk <V>{'\'BEGIN{print "USER UID"} -F: {print $1,$3}\''}</V>{' '}
               <F>/etc/passwd</F>
@@ -600,28 +600,28 @@ export default function Editors() {
           <Divider />
           <SectionLabel className="mt-1.5">Zmienne wbudowane</SectionLabel>
           <Row code="NR" codeVariant="yellow">
-            numer biezacej linii (Number of Records)
+            numer bieżącej linii (Number of Records)
           </Row>
           <Row code="NF" codeVariant="yellow">
-            liczba pol w linii (Number of Fields)
+            liczba pól w linii (Number of Fields)
           </Row>
           <Row code="FS" codeVariant="yellow">
-            separator wejsciowy (domyslnie spacja)
+            separator wejściowy (domyślnie spacja)
           </Row>
           <Row code="OFS" codeVariant="yellow">
-            separator wyjsciowy (Output Field Sep.)
+            separator wyjściowy (Output Field Sep.)
           </Row>
           <Row code="$0" codeVariant="yellow">
-            cala biezaca linia
+            cała bieżąca linia
           </Row>
           <InfoBox>
-            <b>awk</b> jest kompletnym jezykiem programowania. Obsluguje petley,
-            tablice asocjacyjne i funkcje. Swietny do przetwarzania logow i CSV.
+            <b>awk</b> jest kompletnym językiem programowania. Obsługuje pętle,
+            tablice asocjacyjne i funkcje. Świetny do przetwarzania logów i CSV.
           </InfoBox>
         </Card>
 
-        {/* CARD 9: Porownanie edytorow — full width */}
-        <Card title="Porownanie edytorow" color="var(--c-purple)" full>
+        {/* CARD 9: Porównanie edytorów — full width */}
+        <Card title="Porównanie edytorów" color="var(--c-purple)" full>
           <div className="overflow-x-auto">
             <table className="w-full text-xs border-collapse">
               <thead>
@@ -664,11 +664,11 @@ export default function Editors() {
                     'Strumieniowy (CLI)',
                     'Strumieniowy (CLI)',
                   ],
-                  ['Krzywa nauki', 'Stroma', 'Latwa', 'Srednia', 'Srednia'],
+                  ['Krzywa nauki', 'Stroma', 'Łatwa', 'Średnia', 'Średnia'],
                   [
-                    'Edycja plikow',
-                    'Tak — pelna',
-                    'Tak — pelna',
+                    'Edycja plików',
+                    'Tak — pełna',
+                    'Tak — pełna',
                     'Tak — in-place (-i)',
                     'Nie (tylko stdout)',
                   ],
@@ -691,25 +691,25 @@ export default function Editors() {
                     'Nie (natywnie)',
                     'Nie',
                     'Ograniczone',
-                    'Tak — pelna obsluga',
+                    'Tak — pełna obsługa',
                   ],
                   [
                     'Skrypty',
                     'Vimscript / Lua',
                     'Nie',
                     'Tak (-e skrypt)',
-                    'Tak (pelny jezyk)',
+                    'Tak (pełny język)',
                   ],
                   [
-                    'Dostepnosc',
-                    'Wszedzie',
+                    'Dostępność',
+                    'Wszędzie',
                     'Prawie wszedzie',
-                    'Wszedzie',
-                    'Wszedzie',
+                    'Wszędzie',
+                    'Wszędzie',
                   ],
                   [
                     'Najlepszy do',
-                    'Edycji plikow kodu',
+                    'Edycji plików kodu',
                     'Szybkich edycji',
                     'Automatyzacji / pipelines',
                     'Przetwarzania danych tekstowych',
@@ -752,17 +752,17 @@ export default function Editors() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 mt-2.5">
             <InfoBox>
               <b style={{ color: 'var(--c-purple)' }}>vim</b> — gdy chcesz
-              efektywnie edytowac pliki w terminalu. Warto sie nauczyc na
+              efektywnie edytować pliki w terminalu. Warto sie nauczyć na
               serwerach produkcyjnych.
             </InfoBox>
             <InfoBox>
               <b style={{ color: 'var(--c-green)' }}>nano</b> — gdy potrzebujesz
-              szybkiej edycji i nie chcesz myslec o trybach. Idealny dla
-              poczatkujacych.
+              szybkiej edycji i nie chcesz myśleć o trybach. Idealny dla
+              początkujących.
             </InfoBox>
             <InfoBox>
               <b style={{ color: 'var(--c-orange)' }}>sed</b> — gdy chcesz
-              automatycznie zamienic tekst w plikach lub strumieniu. Swietny w
+              automatycznie zamienić tekst w plikach lub strumieniu. Świetny w
               skryptach bash.
             </InfoBox>
             <InfoBox>

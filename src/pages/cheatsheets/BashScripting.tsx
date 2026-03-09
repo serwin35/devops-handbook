@@ -21,7 +21,7 @@ export default function BashScripting() {
     <div>
       <PageHeader
         title="Bash Scripting"
-        subtitle="shebang · zmienne · warunki · petle · funkcje · stringi · tablice · przekierowania"
+        subtitle="shebang · zmienne · warunki · pętle · funkcje · stringi · tablice · przekierowania"
         color="var(--c-green)"
       />
 
@@ -29,7 +29,7 @@ export default function BashScripting() {
         {/* Card 1 — Shebang i uruchamianie */}
         <Card title="Shebang i uruchamianie" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Kazdy skrypt zaczyna sie od shebang — okresla interpreter powloki
+            Każdy skrypt zaczyna sie od shebang — określa interpreter powłoki
           </p>
           <ExampleBlock variant="green">
             <Comment># zalecany shebang</Comment>
@@ -52,7 +52,7 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># uruchom bezposrednio</Comment>
+            <Comment># uruchom bezpośrednio</Comment>
             <Cmd>
               <F>./skrypt.sh</F>
             </Cmd>
@@ -65,16 +65,16 @@ export default function BashScripting() {
           </ExampleBlock>
           <Divider />
           <Row code="bash -x skrypt.sh">tryb debug (trace)</Row>
-          <Row code="bash -n skrypt.sh">sprawdz skladnie (dry-run)</Row>
-          <Row code="bash -e skrypt.sh">zatrzymaj na bledzie</Row>
+          <Row code="bash -n skrypt.sh">sprawdź składnię (dry-run)</Row>
+          <Row code="bash -e skrypt.sh">zatrzymaj na błędzie</Row>
           <InfoBox>
             <span className="text-[var(--c-green)] text-[11px]">
               Dobre praktyki
             </span>
             <br />
-            Dodaj na poczatku:{' '}
+            Dodaj na początku:{' '}
             <code className="text-xs">set -euo pipefail</code> — zatrzymuje
-            skrypt na bledzie, niezdefiniowanej zmiennej i bledzie w pipe.
+            skrypt na błędzie, niezdefiniowanej zmiennej i błędzie w pipe.
           </InfoBox>
         </Card>
 
@@ -118,13 +118,13 @@ export default function BashScripting() {
           <SectionLabel>Zmienne specjalne</SectionLabel>
           <Row code="$0">nazwa skryptu</Row>
           <Row code="$1 $2 ...">argumenty pozycyjne</Row>
-          <Row code="$#">liczba argumentow</Row>
+          <Row code="$#">liczba argumentów</Row>
           <Row code="$@">wszystkie argumenty (lista)</Row>
-          <Row code="$?">kod wyjscia poprzedniej komendy</Row>
-          <Row code="$$">PID biezacego procesu</Row>
+          <Row code="$?">kod wyjścia poprzedniej komendy</Row>
+          <Row code="$$">PID bieżącego procesu</Row>
           <Row code="$!">PID ostatniego procesu w tle</Row>
           <InfoBox>
-            Zawsze cudzyslow zmiennych: <code className="text-xs">"$VAR"</code>{' '}
+            Zawsze cudzysłów zmiennych: <code className="text-xs">"$VAR"</code>{' '}
             — chroni przed word splitting i globbingiem.
           </InfoBox>
         </Card>
@@ -137,13 +137,13 @@ export default function BashScripting() {
               <H>if</H> [[ <V>$WIEK</V> -ge 18 ]]; <H>then</H>
             </Cmd>
             <Cmd>
-              {'  '}echo <V>"pelnoletni"</V>
+              {'  '}echo <V>"pełnoletni"</V>
             </Cmd>
             <Cmd>
               <H>elif</H> [[ <V>$WIEK</V> -gt 0 ]]; <H>then</H>
             </Cmd>
             <Cmd>
-              {'  '}echo <V>"niepelnoletni"</V>
+              {'  '}echo <V>"niepełnoletni"</V>
             </Cmd>
             <Cmd>
               <H>else</H>
@@ -157,20 +157,20 @@ export default function BashScripting() {
           </ExampleBlock>
           <Divider />
           <SectionLabel>Operatory liczbowe (-eq, -gt itd.)</SectionLabel>
-          <Row code="-eq">rowne (equal)</Row>
-          <Row code="-ne">rozne (not equal)</Row>
-          <Row code="-gt">wieksze (greater than)</Row>
-          <Row code="-ge">wieksze lub rowne</Row>
+          <Row code="-eq">równe (equal)</Row>
+          <Row code="-ne">różne (not equal)</Row>
+          <Row code="-gt">większe (greater than)</Row>
+          <Row code="-ge">większe lub równe</Row>
           <Row code="-lt">mniejsze (less than)</Row>
-          <Row code="-le">mniejsze lub rowne</Row>
+          <Row code="-le">mniejsze lub równe</Row>
           <Divider />
-          <SectionLabel>Operatory plikow i stringow</SectionLabel>
-          <Row code="-f plik">plik istnieje i jest zwyklym plikiem</Row>
+          <SectionLabel>Operatory plików i stringow</SectionLabel>
+          <Row code="-f plik">plik istnieje i jest zwykłym plikiem</Row>
           <Row code="-d katalog">katalog istnieje</Row>
           <Row code="-z $str">string jest pusty</Row>
           <Row code="-n $str">string niepusty</Row>
-          <Row code="$a == $b">stringi sa rowne ([[ ]])</Row>
-          <Row code="$a != $b">stringi sa rozne</Row>
+          <Row code="$a == $b">stringi sa równe ([[ ]])</Row>
+          <Row code="$a != $b">stringi sa różne</Row>
           <ExampleBlock variant="purple">
             <Comment># [[ ]] wspiera regex i &&, ||</Comment>
             <Cmd>
@@ -184,8 +184,8 @@ export default function BashScripting() {
           </ExampleBlock>
         </Card>
 
-        {/* Card 4 — Petle */}
-        <Card title="Petle" color="var(--c-orange)">
+        {/* Card 4 — Pętle */}
+        <Card title="Pętle" color="var(--c-orange)">
           <SectionLabel>for — iteracja po liscie</SectionLabel>
           <ExampleBlock variant="orange">
             <Comment># iteracja po zakresie</Comment>
@@ -236,7 +236,7 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># until — dopoki warunek falszywy</Comment>
+            <Comment># until — dopoki warunek fałszywy</Comment>
             <Cmd>
               <H>until</H> [[ <V>$n</V> -ge 5 ]]; <H>do</H>
             </Cmd>
@@ -246,14 +246,14 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <Row code="break">wyjdz z petli</Row>
-          <Row code="continue">przejdz do nastepnej iteracji</Row>
+          <Row code="break">wyjdź z pętli</Row>
+          <Row code="continue">przejdź do następnej iteracji</Row>
         </Card>
 
         {/* Card 5 — Funkcje */}
         <Card title="Funkcje" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Funkcje mozna deklarowac dwoma sposobami — dzialaja tak samo
+            Funkcje można deklarować dwoma sposobami — działają tak samo
           </p>
           <ExampleBlock variant="purple">
             <Comment># deklaracja funkcji (styl 1)</Comment>
@@ -270,7 +270,7 @@ export default function BashScripting() {
             <Cmd>{'}'}</Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># deklaracja (styl 2 — bez slowa function)</Comment>
+            <Comment># deklaracja (styl 2 — bez słowa function)</Comment>
             <Cmd>
               <V>przywitaj</V>
               {'()'} {'{'}
@@ -306,9 +306,9 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <Row code="local var">zmienna widoczna tylko w funkcji</Row>
-          <Row code="return 0">kod wyjscia (0 = sukces)</Row>
+          <Row code="return 0">kod wyjścia (0 = sukces)</Row>
           <InfoBox>
-            <code className="text-xs">return</code> zwraca tylko kod wyjscia
+            <code className="text-xs">return</code> zwraca tylko kod wyjścia
             (0-255). Wartosci zwracaj przez{' '}
             <code className="text-xs">echo</code> i podstawianie komend.
           </InfoBox>
@@ -317,17 +317,17 @@ export default function BashScripting() {
         {/* Card 6 — Operacje na stringach */}
         <Card title="Operacje na stringach" color="var(--c-yellow)">
           <ExampleBlock variant="yellow">
-            <Comment># dlugosc stringa</Comment>
+            <Comment># długość stringa</Comment>
             <Cmd>
               echo <H>${'{#STR}'}</H>{' '}
-              <span className="text-[var(--c-muted)]"># liczba znakow</span>
+              <span className="text-[var(--c-muted)]"># liczba znaków</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
             <Comment># wycinek (substring)</Comment>
             <Cmd>
               echo <H>${'{STR:0:5}'}</H>{' '}
-              <span className="text-[var(--c-muted)]"># od 0, dlugosc 5</span>
+              <span className="text-[var(--c-muted)]"># od 0, długość 5</span>
             </Cmd>
             <Cmd>
               echo <H>${'{STR:(-3)'}</H>
@@ -336,10 +336,10 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># zamiana (pierwsza / wszystkie)</Comment>
+            <Comment># zamiana (pierwszą / wszystkie)</Comment>
             <Cmd>
               echo <H>${'{STR/stare/nowe}'}</H>{' '}
-              <span className="text-[var(--c-muted)]"># pierwsza</span>
+              <span className="text-[var(--c-muted)]"># pierwszą</span>
             </Cmd>
             <Cmd>
               echo <H>${'{STR//stare/nowe}'}</H>{' '}
@@ -359,12 +359,12 @@ export default function BashScripting() {
           </ExampleBlock>
           <Divider />
           <SectionLabel>Usuwanie przedrostka / przyrostka</SectionLabel>
-          <Row code="${'{STR#wzorzec}'}">usun najkrotszy przedrostek</Row>
-          <Row code="${'{STR##wzorzec}'}">usun najdluzszy przedrostek</Row>
-          <Row code="${'{STR%wzorzec}'}">usun najkrotszy przyrostek</Row>
-          <Row code="${'{STR%%wzorzec}'}">usun najdluzszy przyrostek</Row>
+          <Row code="${'{STR#wzorzec}'}">usuń najkrótszy przedrostek</Row>
+          <Row code="${'{STR##wzorzec}'}">usuń najdłuższy przedrostek</Row>
+          <Row code="${'{STR%wzorzec}'}">usuń najkrótszy przyrostek</Row>
+          <Row code="${'{STR%%wzorzec}'}">usuń najdłuższy przyrostek</Row>
           <ExampleBlock variant="green">
-            <Comment># przykladowy pattern: rozszerzenie pliku</Comment>
+            <Comment># przykładowy pattern: rozszerzenie pliku</Comment>
             <Cmd>
               PLIK=<V>"raport.txt"</V>
             </Cmd>
@@ -378,7 +378,7 @@ export default function BashScripting() {
         {/* Card 7 — Tablice */}
         <Card title="Tablice" color="var(--c-purple)">
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Bash obsluguje tablice indeksowane i asocjacyjne (bash 4+)
+            Bash obsługuje tablice indeksowane i asocjacyjne (bash 4+)
           </p>
           <ExampleBlock variant="purple">
             <Comment># deklaracja tablicy</Comment>
@@ -447,7 +447,7 @@ export default function BashScripting() {
           <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
             Standardowe strumienie: stdin (0), stdout (1), stderr (2)
           </p>
-          <SectionLabel>Przekierowanie wyjscia</SectionLabel>
+          <SectionLabel>Przekierowanie wyjścia</SectionLabel>
           <ExampleBlock variant="orange">
             <Comment># nadpisz plik</Comment>
             <Cmd>
@@ -463,7 +463,7 @@ export default function BashScripting() {
           <ExampleBlock variant="orange">
             <Comment># przekieruj stderr</Comment>
             <Cmd>
-              komenda <H>2&gt;</H> <F>bledy.log</F>
+              komenda <H>2&gt;</H> <F>błędy.log</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
@@ -473,7 +473,7 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># wycisz wyjscie (wyrzuc do /dev/null)</Comment>
+            <Comment># wycisz wyjście (wyrzuc do /dev/null)</Comment>
             <Cmd>
               komenda <H>&gt;</H> <F>/dev/null</F> 2&gt;&amp;1
             </Cmd>
@@ -481,13 +481,13 @@ export default function BashScripting() {
           <Divider />
           <SectionLabel>Pipe i tee</SectionLabel>
           <ExampleBlock variant="green">
-            <Comment># przekaz stdout do nastepnej komendy</Comment>
+            <Comment># przekaż stdout do następnej komendy</Comment>
             <Cmd>
               cat <F>plik.log</F> <H>|</H> grep <V>"ERROR"</V> <H>|</H> wc -l
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># tee — zapisz i pokaz jednoczesnie</Comment>
+            <Comment># tee — zapisz i pokaż jednocześnie</Comment>
             <Cmd>
               komenda <H>| tee</H> <F>wynik.log</F>
             </Cmd>
@@ -506,9 +506,9 @@ export default function BashScripting() {
         <Card title="Przydatne wzorce" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
             <div>
-              <SectionLabel>Parsowanie argumentow</SectionLabel>
+              <SectionLabel>Parsowanie argumentów</SectionLabel>
               <ExampleBlock variant="green">
-                <Comment># prosta petla po $@</Comment>
+                <Comment># prosta pętla po $@</Comment>
                 <Cmd>while [[ $# -gt 0 ]]; do</Cmd>
                 <Cmd>{'  '}case "$1" in</Cmd>
                 <Cmd>{'    '}-f|--file)</Cmd>
@@ -538,10 +538,10 @@ export default function BashScripting() {
             <div>
               <SectionLabel>trap — cleanup przy wyjsciu</SectionLabel>
               <ExampleBlock variant="purple">
-                <Comment># funkcja sprzatajaca</Comment>
+                <Comment># funkcja sprzątająca</Comment>
                 <Cmd>cleanup() {'{'}</Cmd>
                 <Cmd>{'  '}rm -f /tmp/tymczasowy.$$</Cmd>
-                <Cmd>{'  '}echo "Sprzatanie gotowe"</Cmd>
+                <Cmd>{'  '}echo "Sprzątanie gotowe"</Cmd>
                 <Cmd>{'}'}</Cmd>
                 <Comment># zarejestruj dla EXIT i SIGINT</Comment>
                 <Cmd>trap cleanup EXIT INT TERM</Cmd>
@@ -552,7 +552,7 @@ export default function BashScripting() {
             <div>
               <SectionLabel>Sprawdzanie czy root</SectionLabel>
               <ExampleBlock>
-                <Comment># metoda 1: sprawdz UID</Comment>
+                <Comment># metoda 1: sprawdź UID</Comment>
                 <Cmd>if [[ $EUID -ne 0 ]]; then</Cmd>
                 <Cmd>{'  '}echo "Wymagany root!" &gt;&amp;2</Cmd>
                 <Cmd>{'  '}exit 1</Cmd>

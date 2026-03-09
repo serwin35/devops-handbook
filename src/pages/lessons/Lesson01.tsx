@@ -27,22 +27,22 @@ export default function Lesson01() {
         <Card title="Czym jest DevOps?" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <Concept title="Development + Operations">
-              DevOps laczy zespoly programistyczne (Dev) i operacyjne (Ops) —
-              likwiduje bariery miedzy pisaniem kodu a jego wdrazaniem.
+              DevOps łączy zespoły programistyczne (Dev) i operacyjne (Ops) —
+              likwiduje bariery między pisaniem kodu a jego wdrażaniem.
             </Concept>
             <Concept
               title="Infrastructure as Code (IaC)"
               color="var(--c-green)"
             >
-              Cala infrastruktura zarzadzana kodem — mozna ja wersjonowac,
-              testowac i odtwarzac. Terraform, Ansible, Pulumi.
+              Cała infrastruktura zarządzana kodem — można ją wersjonować,
+              testować i odtwarzać. Terraform, Ansible, Pulumi.
             </Concept>
             <Concept title="CI/CD Pipeline" color="var(--c-yellow)">
               Continuous Integration / Continuous Delivery — automatyczne
-              budowanie, testowanie i wdrazanie kodu.
+              budowanie, testowanie i wdrażanie kodu.
             </Concept>
-            <Concept title="Mikrouslugi" color="var(--c-purple)">
-              Zamiast monolitu — wiele malych serwisow komunikujacych sie przez
+            <Concept title="Mikrousługi" color="var(--c-purple)">
+              Zamiast monolitu — wiele małych serwisów komunikujących się przez
               API.
             </Concept>
           </div>
@@ -50,11 +50,11 @@ export default function Lesson01() {
 
         <Card title="Wirtualizacja vs Konteneryzacja" color="var(--c-purple)">
           <Concept title="Maszyna wirtualna (VM)" color="var(--c-purple)">
-            Pelna kopia OS na hypervisorze. Ciezka (GB), wolny start. VMware,
+            Pełna kopia OS na hypervisorze. Ciężka (GB), wolny start. VMware,
             VirtualBox, Hyper-V.
           </Concept>
           <Concept title="Kontener (Docker)" color="var(--c-green)">
-            Wspoldzieli jadro hosta, izoluje procesy. Lekki (MB), start w
+            Współdzieli jądro hosta, izoluje procesy. Lekki (MB), start w
             sekundach. Docker, Podman.
           </Concept>
           <InfoBox>
@@ -65,20 +65,20 @@ export default function Lesson01() {
 
         <Card title="Kubernetes (K8s) — orkiestracja" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Zarzadza klastrem kontenerow — deployment, skalowanie, restart, load
+            Zarządza klastrem kontenerów — deployment, skalowanie, restart, load
             balancing.
           </p>
           <Row code="Pod" codeVariant="yellow">
-            Najmniejsza jednostka — jeden lub wiecej kontenerow
+            Najmniejsza jednostka — jeden lub więcej kontenerów
           </Row>
           <Row code="Service" codeVariant="yellow">
-            Stabilny endpoint sieciowy do grupy Podow
+            Stabilny endpoint sieciowy do grupy Podów
           </Row>
           <Row code="Deployment" codeVariant="yellow">
             Deklaratywny opis stanu — ile replik, jaki obraz
           </Row>
           <Row code="Namespace" codeVariant="yellow">
-            Logiczna separacja zasobow w klastrze
+            Logiczna separacja zasobów w klastrze
           </Row>
           <Divider />
           <p className="text-[var(--c-muted)] text-[11px]">
@@ -88,7 +88,7 @@ export default function Lesson01() {
 
         <Card title="Docker — podstawy">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Enkapsulacja aplikacji w kontenerze — izolacja procesow od systemu
+            Enkapsulacja aplikacji w kontenerze — izolacja procesów od systemu
             hosta.
           </p>
           <ExampleBlock>
@@ -104,14 +104,14 @@ export default function Lesson01() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Lista uruchomionych kontenerow</Comment>
+            <Comment># Lista uruchomionych kontenerów</Comment>
             <Cmd>
               docker <H>ps</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
             <Comment>
-              # Lista WSZYSTKICH kontenerow (takze zatrzymanych)
+              # Lista WSZYSTKICH kontenerów (także zatrzymanych)
             </Comment>
             <Cmd>
               docker ps <H>-a</H>
@@ -143,7 +143,7 @@ export default function Lesson01() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Stan repo (skrocony format)</Comment>
+            <Comment># Stan repo (skrócony format)</Comment>
             <Cmd>
               git <H>status</H> <V>-s</V>
             </Cmd>
@@ -162,18 +162,18 @@ export default function Lesson01() {
           </ExampleBlock>
         </Card>
 
-        <Card title="APT — menedzer pakietow" color="var(--c-orange)">
+        <Card title="APT — menedżer pakietów" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Menedzer pakietow Debian/Ubuntu. Wymaga sudo.
+            Menedżer pakietów Debian/Ubuntu. Wymaga sudo.
           </p>
           <ExampleBlock variant="orange">
-            <Comment># Pobierz najnowsze listy pakietow</Comment>
+            <Comment># Pobierz najnowsze listy pakietów</Comment>
             <Cmd>
               sudo apt <H>update</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Zainstaluj aktualizacje pakietow</Comment>
+            <Comment># Zainstaluj aktualizacje pakietów</Comment>
             <Cmd>
               sudo apt <H>upgrade</H>
             </Cmd>
@@ -185,13 +185,13 @@ export default function Lesson01() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Usun pakiet (zachowaj konfiguracje)</Comment>
+            <Comment># Usuń pakiet (zachowaj konfigurację)</Comment>
             <Cmd>
               sudo apt <H>remove</H> <V>nazwa_pakietu</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Usun pakiet + konfiguracje</Comment>
+            <Comment># Usuń pakiet + konfigurację</Comment>
             <Cmd>
               sudo apt <H>purge</H> <V>nazwa_pakietu</V>
             </Cmd>
@@ -199,12 +199,12 @@ export default function Lesson01() {
           <ExampleBlock variant="green">
             <Comment># Wyszukaj pakiet</Comment>
             <Cmd>
-              apt <H>search</H> <V>slowo_kluczowe</V>
+              apt <H>search</H> <V>słowo_kluczowe</V>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <Row code="--help" codeVariant="orange">
-            Pomoc — skladnia i opcje kazdej komendy
+            Pomoc — składnia i opcje każdej komendy
           </Row>
         </Card>
 
@@ -252,8 +252,8 @@ export default function Lesson01() {
           </Row>
           <Divider />
           <p className="text-[var(--c-muted)] text-[11px]">
-            Monitoring srodowisk produkcyjnych to kluczowy element pracy DevOps
-            — pozwala reagowac na problemy zanim zauwazyja je uzytkownicy.
+            Monitoring środowisk produkcyjnych to kluczowy element pracy DevOps
+            — pozwala reagować na problemy zanim zauważą je użytkownicy.
           </p>
         </Card>
       </div>

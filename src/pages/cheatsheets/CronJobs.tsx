@@ -27,12 +27,12 @@ export default function CronJobs() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {/* ── CARD 1 — Crontab syntax diagram ── */}
-        <Card title="Crontab — skladnia" color="var(--c-yellow)">
+        <Card title="Crontab — składnia" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Kazdy wpis w crontabie sklada sie z 5 pol czasowych i komendy.
+            Każdy wpis w crontabie sklada sie z 5 pól czasowych i komendy.
           </p>
           <ExampleBlock variant="yellow">
-            <Comment># minuta godzina dzien miesiac dzien-tyg komenda</Comment>
+            <Comment># minuta godzina dzien miesiąc dzien-tyg komenda</Comment>
             <Cmd>
               <H>*</H>
               {'       '}
@@ -43,7 +43,7 @@ export default function CronJobs() {
               <H>*</H>
               {'       '}
               <H>*</H>
-              {'         '}/sciezka/do/skryptu.sh
+              {'         '}/ścieżka/do/skryptu.sh
             </Cmd>
           </ExampleBlock>
           <Divider />
@@ -55,9 +55,9 @@ export default function CronJobs() {
             0–23 — godzina wykonania
           </Row>
           <Row code="dzien-m" codeVariant="yellow">
-            1–31 — dzien miesiaca
+            1–31 — dzien miesiąca
           </Row>
-          <Row code="miesiac" codeVariant="yellow">
+          <Row code="miesiąc" codeVariant="yellow">
             1–12 (lub jan–dec)
           </Row>
           <Row code="dzien-t" codeVariant="yellow">
@@ -65,17 +65,17 @@ export default function CronJobs() {
           </Row>
           <Divider />
           <SectionLabel className="mt-1.5">Operatory</SectionLabel>
-          <Row code="*">Kazda wartosc (wildcard)</Row>
+          <Row code="*">Każda wartość (wildcard)</Row>
           <Row code=",">
-            {'"'}Lub{"'"} — lista wartosci (1,3,5)
+            {'"'}Lub{"'"} — lista wartości (1,3,5)
           </Row>
-          <Row code="-">Zakres wartosci (1-5)</Row>
+          <Row code="-">Zakres wartości (1-5)</Row>
           <Row code="/">
             {'"'}Co{"'"} — krok (*/5 = co 5 minut)
           </Row>
           <Divider />
           <ExampleBlock variant="yellow">
-            <Comment># Przyklad: o 3:30 w kazdą srode</Comment>
+            <Comment># Przykład: o 3:30 w kazdą środę</Comment>
             <Cmd>
               <V>30</V> <V>3</V> <H>*</H> <H>*</H> <V>3</V>{' '}
               <F>/usr/local/bin/raport.sh</F>
@@ -88,41 +88,41 @@ export default function CronJobs() {
             </code>{' '}
             i{' '}
             <code className="text-xs text-[var(--c-yellow)]">
-              dzien-miesiaca
+              dzien-miesiąca
             </code>{' '}
-            sa laczone operatorem OR — wystarczy ze jedno pasuje.
+            sa łączone operatorem OR — wystarczy ze jedno pasuje.
           </InfoBox>
         </Card>
 
         {/* ── CARD 2 — Crontab management ── */}
-        <Card title="Crontab — zarzadzanie" color="var(--c-green)">
+        <Card title="Crontab — zarządzanie" color="var(--c-green)">
           <ExampleBlock variant="green">
-            <Comment># Edytuj crontab biezacego uzytkownika</Comment>
+            <Comment># Edytuj crontab bieżącego użytkownika</Comment>
             <Cmd>
               crontab <H>-e</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Wyswietl crontab biezacego uzytkownika</Comment>
+            <Comment># Wyświetl crontab bieżącego użytkownika</Comment>
             <Cmd>
               crontab <H>-l</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Usun crontab biezacego uzytkownika</Comment>
+            <Comment># Usuń crontab bieżącego użytkownika</Comment>
             <Cmd>
               crontab <H>-r</H>
             </Cmd>
           </ExampleBlock>
           <Divider />
           <ExampleBlock variant="orange">
-            <Comment># Edytuj crontab innego uzytkownika (root)</Comment>
+            <Comment># Edytuj crontab innego użytkownika (root)</Comment>
             <Cmd>
               crontab <H>-u</H> <V>www-data</V> <H>-e</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Wyswietl crontab innego uzytkownika</Comment>
+            <Comment># Wyświetl crontab innego użytkownika</Comment>
             <Cmd>
               crontab <H>-u</H> <V>www-data</V> <H>-l</H>
             </Cmd>
@@ -136,12 +136,12 @@ export default function CronJobs() {
             Katalog z dodatkowymi plikami crontab
           </Row>
           <Row code="/var/spool/cron/" codeVariant="green">
-            Crontaby uzytkownikow
+            Crontaby użytkowników
           </Row>
           <Divider />
           <ExampleBlock>
             <Comment>
-              # Format /etc/crontab — dodatkowe pole uzytkownika
+              # Format /etc/crontab — dodatkowe pole użytkownika
             </Comment>
             <Cmd>
               <H>*</H> <H>*</H> <H>*</H> <H>*</H> <H>*</H> <V>root</V>{' '}
@@ -151,7 +151,7 @@ export default function CronJobs() {
           <InfoBox>
             Wybrany edytor dla{' '}
             <code className="text-xs text-[var(--c-green)]">crontab -e</code>{' '}
-            mozna zmienic przez{' '}
+            można zmienic przez{' '}
             <code className="text-xs text-[var(--c-green)]">
               VISUAL=nano crontab -e
             </code>
@@ -160,7 +160,7 @@ export default function CronJobs() {
         </Card>
 
         {/* ── CARD 3 — Cron examples ── */}
-        <Card title="Przyklady crona" color="var(--c-purple)">
+        <Card title="Przykłady crona" color="var(--c-purple)">
           <ExampleBlock variant="purple">
             <Comment># Co minute</Comment>
             <Cmd>
@@ -168,7 +168,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Co godzine (na pelna godzine)</Comment>
+            <Comment># Co godzinę (na pełna godzinę)</Comment>
             <Cmd>
               <H>0</H> <V>*</V> <V>*</V> <V>*</V> <V>*</V> <F>/skrypt.sh</F>
             </Cmd>
@@ -180,7 +180,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Co poniedzialek o 8:00</Comment>
+            <Comment># Co poniedziałek o 8:00</Comment>
             <Cmd>
               <H>0</H> <H>8</H> <V>*</V> <V>*</V> <H>1</H> <F>/skrypt.sh</F>
             </Cmd>
@@ -192,7 +192,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Pierwszy dzien miesiaca o polnocy</Comment>
+            <Comment># Pierwszy dzien miesiąca o polnocy</Comment>
             <Cmd>
               <H>0</H> <H>0</H> <H>1</H> <V>*</V> <V>*</V> <F>/skrypt.sh</F>
             </Cmd>
@@ -221,35 +221,35 @@ export default function CronJobs() {
         {/* ── CARD 4 — Special strings ── */}
         <Card title="Specjalne ciagi" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Skrocone zapisy zamiast 5 pol — czytelniejsze i mniej podatne na
-            bledy.
+            Skrócone zapisy zamiast 5 pól — czytelniejsze i mniej podatne na
+            błędy.
           </p>
           <ExampleBlock variant="orange">
-            <Comment># Uruchom po kazdym restarcie systemu</Comment>
+            <Comment># Uruchom po każdym restarcie systemu</Comment>
             <Cmd>
               <H>@reboot</H> <F>/usr/local/bin/startup.sh</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Raz dziennie (rownowaznie: 0 0 * * *)</Comment>
+            <Comment># Raz dziennie (równoważnie: 0 0 * * *)</Comment>
             <Cmd>
               <H>@daily</H> <F>/skrypt.sh</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Co tydzien — niedziela o polnocy (0 0 * * 0)</Comment>
+            <Comment># Co tydzień — niedziela o polnocy (0 0 * * 0)</Comment>
             <Cmd>
               <H>@weekly</H> <F>/skrypt.sh</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Co miesiac — pierwszy dzien (0 0 1 * *)</Comment>
+            <Comment># Co miesiąc — pierwszy dzien (0 0 1 * *)</Comment>
             <Cmd>
               <H>@monthly</H> <F>/skrypt.sh</F>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
-            <Comment># Co godzine (0 * * * *)</Comment>
+            <Comment># Co godzinę (0 * * * *)</Comment>
             <Cmd>
               <H>@hourly</H> <F>/skrypt.sh</F>
             </Cmd>
@@ -263,19 +263,19 @@ export default function CronJobs() {
           <Divider />
           <SectionLabel className="mt-1.5">Podsumowanie</SectionLabel>
           <Row code="@reboot" codeVariant="orange">
-            Po kazdym restarcie systemu
+            Po każdym restarcie systemu
           </Row>
           <Row code="@hourly" codeVariant="orange">
-            Co godzine — 0 * * * *
+            Co godzinę — 0 * * * *
           </Row>
           <Row code="@daily / @midnight" codeVariant="orange">
             Codziennie — 0 0 * * *
           </Row>
           <Row code="@weekly" codeVariant="orange">
-            Co tydzien — 0 0 * * 0
+            Co tydzień — 0 0 * * 0
           </Row>
           <Row code="@monthly" codeVariant="orange">
-            Co miesiac — 0 0 1 * *
+            Co miesiąc — 0 0 1 * *
           </Row>
           <Row code="@annually / @yearly" codeVariant="orange">
             Co rok — 0 0 1 1 *
@@ -292,7 +292,7 @@ export default function CronJobs() {
         <Card title="Systemd Timers" color="var(--c-green)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Nowoczesna alternatywa dla cron — integracja z journald, zależnosci,
-            catch-up po wylaczeniu.
+            catch-up po wyłączeniu.
           </p>
           <SectionLabel>Plik timera (.timer)</SectionLabel>
           <ExampleBlock variant="green">
@@ -325,15 +325,15 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">OnCalendar — przyklady</SectionLabel>
+          <SectionLabel className="mt-1.5">OnCalendar — przykłady</SectionLabel>
           <Row code="daily">Codziennie o polnocy</Row>
-          <Row code="weekly">Co tydzien (poniedzialek 00:00)</Row>
-          <Row code="monthly">Co miesiac (1. dzien 00:00)</Row>
+          <Row code="weekly">Co tydzień (poniedziałek 00:00)</Row>
+          <Row code="monthly">Co miesiąc (1. dzien 00:00)</Row>
           <Row code="*-*-* 03:30:00">Codziennie o 3:30</Row>
-          <Row code="Mon *-*-* 09:00:00">Poniedzialki o 9:00</Row>
+          <Row code="Mon *-*-* 09:00:00">Poniedziałki o 9:00</Row>
           <Row code="*:0/15">Co 15 minut</Row>
           <Divider />
-          <SectionLabel className="mt-1.5">Zarzadzanie timerami</SectionLabel>
+          <SectionLabel className="mt-1.5">Zarządzanie timerami</SectionLabel>
           <ExampleBlock variant="green">
             <Comment># Lista wszystkich aktywnych timerow</Comment>
             <Cmd>
@@ -347,7 +347,7 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Przetestuj wyrazenie OnCalendar</Comment>
+            <Comment># Przetestuj wyrażenie OnCalendar</Comment>
             <Cmd>
               systemd-analyze <H>calendar</H> <V>"Mon *-*-* 09:00:00"</V>
             </Cmd>
@@ -356,8 +356,8 @@ export default function CronJobs() {
             <code className="text-xs text-[var(--c-green)]">
               Persistent=true
             </code>{' '}
-            — jesli system byl wylaczony w momencie planowanego uruchomienia,
-            zadanie wykona sie przy nastepnym starcie.
+            — jeśli system byl wyłączony w momencie planowanego uruchomienia,
+            zadanie wykona sie przy następnym starcie.
           </InfoBox>
         </Card>
 
@@ -395,28 +395,28 @@ export default function CronJobs() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
-            <Comment># Podaj komende inline przez echo</Comment>
+            <Comment># Podaj komendę inline przez echo</Comment>
             <Cmd>
               echo <V>"/skrypt.sh"</V> | at <H>now + 1 hour</H>
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <SectionLabel className="mt-1.5">Zarzadzanie kolejka at</SectionLabel>
+          <SectionLabel className="mt-1.5">Zarządzanie kolejka at</SectionLabel>
           <ExampleBlock variant="orange">
-            <Comment># Wyswietl kolejke zadan at</Comment>
+            <Comment># Wyświetl kolejke zadan at</Comment>
             <Cmd>
               <H>atq</H>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="orange">
-            <Comment># Usun zadanie o numerze 3</Comment>
+            <Comment># Usuń zadanie o numerze 3</Comment>
             <Cmd>
               atrm <V>3</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
             <Comment>
-              # batch — uruchom gdy obciazenie CPU spadnie ponizej 1.5
+              # batch — uruchom gdy obciążenie CPU spadnie poniżej 1.5
             </Comment>
             <Cmd>
               <H>batch</H>
@@ -433,8 +433,8 @@ export default function CronJobs() {
           <Row code="now + N days">Za N dni</Row>
           <Row code="now + N weeks">Za N tygodni</Row>
           <InfoBox>
-            Usluga <code className="text-xs text-[var(--c-purple)]">atd</code>{' '}
-            musi byc uruchomiona:{' '}
+            Usługa <code className="text-xs text-[var(--c-purple)]">atd</code>{' '}
+            musi być uruchomiona:{' '}
             <code className="text-xs text-[var(--c-purple)]">
               systemctl enable --now atd
             </code>
@@ -458,7 +458,7 @@ export default function CronJobs() {
                 </Cmd>
               </ExampleBlock>
               <ExampleBlock>
-                <Comment># Wycisz output — nie wysylaj maili</Comment>
+                <Comment># Wycisz output — nie wysyłaj maili</Comment>
                 <Cmd>
                   <H>0 3 * * *</H> <F>/skrypt.sh</F>{' '}
                   <H>&gt; /dev/null 2&gt;&1</H>
@@ -472,7 +472,7 @@ export default function CronJobs() {
                 </Cmd>
               </ExampleBlock>
               <InfoBox>
-                Domyslnie cron wysyla output mailem do uzytkownika. Zawsze
+                Domyślnie cron wysyla output mailem do użytkownika. Zawsze
                 przekierowuj output do pliku lub{' '}
                 <code className="text-xs text-[var(--c-yellow)]">
                   /dev/null
@@ -489,7 +489,7 @@ export default function CronJobs() {
                   <H>MAILTO</H>=<V>admin@example.com</V>
                 </Cmd>
                 <Cmd>
-                  <Comment># Wylacz powiadomienia email</Comment>
+                  <Comment># Wyłącz powiadomienia email</Comment>
                 </Cmd>
                 <Cmd>
                   <H>MAILTO</H>=<V>""</V>
@@ -505,15 +505,15 @@ export default function CronJobs() {
                 </Cmd>
               </ExampleBlock>
               <ExampleBlock>
-                <Comment># Lub uzywaj pelnych sciezek w skryptach</Comment>
+                <Comment># Lub używaj pełnych ścieżek w skryptach</Comment>
                 <Cmd>
                   <H>0 3 * * *</H> <F>/usr/bin/python3</F>{' '}
                   <F>/opt/app/skrypt.py</F>
                 </Cmd>
               </ExampleBlock>
               <InfoBox warn>
-                Cron uruchamia zadania z minimalnym srodowiskiem. Zawsze testuj
-                skrypty ze sciezkami bezwzglednymi.
+                Cron uruchamia zadania z minimalnym środowiskiem. Zawsze testuj
+                skrypty ze ścieżkami bezwzglednymi.
               </InfoBox>
             </div>
 
@@ -548,23 +548,23 @@ export default function CronJobs() {
                 /etc/cron.d/ vs crontab
               </SectionLabel>
               <Row code="/etc/cron.d/" codeVariant="purple">
-                Pliki pakietow — format jak /etc/crontab (z polem user)
+                Pliki pakietów — format jak /etc/crontab (z polem user)
               </Row>
               <Row code="crontab -e" codeVariant="purple">
-                Crontab uzytkownika — bez pola user
+                Crontab użytkownika — bez pola user
               </Row>
               <Row code="/etc/cron.daily/" codeVariant="purple">
                 Skrypty uruchamiane przez run-parts codziennie
               </Row>
               <Row code="/etc/cron.weekly/" codeVariant="purple">
-                Skrypty uruchamiane co tydzien
+                Skrypty uruchamiane co tydzień
               </Row>
               <InfoBox>
                 Preferuj{' '}
                 <code className="text-xs text-[var(--c-purple)]">
                   /etc/cron.d/
                 </code>{' '}
-                dla zadan systemowych — latwiej zarzadzac przez pakiety i
+                dla zadan systemowych — latwiej zarządzać przez pakiety i
                 kontrole wersji.
               </InfoBox>
             </div>
