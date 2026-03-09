@@ -219,7 +219,7 @@ export default function CronJobs() {
         </Card>
 
         {/* ── CARD 4 — Special strings ── */}
-        <Card title="Specjalne ciagi" color="var(--c-orange)">
+        <Card title="Specjalne ciągi" color="var(--c-orange)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
             Skrócone zapisy zamiast 5 pól — czytelniejsze i mniej podatne na
             błędy.
