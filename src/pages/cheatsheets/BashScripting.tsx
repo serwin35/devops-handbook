@@ -473,11 +473,24 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># wycisz wyjście (wyrzuc do /dev/null)</Comment>
+            <Comment># wycisz wyjście (wyrzuć do /dev/null)</Comment>
             <Cmd>
               komenda <H>&gt;</H> <F>/dev/null</F> 2&gt;&amp;1
             </Cmd>
           </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># loguj w tle (daemon pattern)</Comment>
+            <Cmd>
+              program <H>&gt;</H> <F>/var/log/test.log</F> <H>2&gt;&amp;1</H>{' '}
+              <V>&amp;</V>
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox>
+            <code className="text-xs">{'>'}</code> nadpisuje plik ·{' '}
+            <code className="text-xs">{'>>'}</code> dopisuje na koniec ·{' '}
+            <code className="text-xs">2{'>&'}1</code> łączy stderr ze stdout ·{' '}
+            <code className="text-xs">&amp;</code> uruchamia w tle
+          </InfoBox>
           <Divider />
           <SectionLabel>Pipe i tee</SectionLabel>
           <ExampleBlock variant="green">
