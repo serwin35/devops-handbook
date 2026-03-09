@@ -50,7 +50,7 @@ export default function Networking() {
 
         <Card title="Kluczowe porty" color="var(--c-yellow)">
           <p className="text-[var(--c-muted)] text-xs mb-2.5">
-            Porty 0-1023 = well-known (wymagaja root). 1024-65535 = dynamiczne.
+            Porty 0-1023 = well-known (wymagają root). 1024-65535 = dynamiczne.
           </p>
           <Row code="22" codeVariant="yellow">
             SSH — bezpieczny zdalny dostęp
