@@ -37,7 +37,7 @@ export default function Lesson02() {
               color="var(--c-green)"
             >
               Zainspirowany Minixem. Pierwsza wersja: ~10 239 linii kodu, tylko
-              i386. Dzis (6.x): <b>33+ mln linii</b>.
+              i386. Dziś (6.x): <b>33+ mln linii</b>.
             </Concept>
           </div>
         </Card>
