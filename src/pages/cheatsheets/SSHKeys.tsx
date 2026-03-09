@@ -103,7 +103,7 @@ export default function SSHKeys() {
           </p>
           <SectionLabel>Z lokalnej maszyny (pipe)</SectionLabel>
           <ExampleBlock variant="yellow">
-            <Comment># wyslij klucz przez SSH pipe</Comment>
+            <Comment># wyślij klucz przez SSH pipe</Comment>
             <Cmd>
               cat <F>~/.ssh/id_ed25519.pub</F> | ssh <H>user@serwer</H>{' '}
               <V>"mkdir -p ~/.ssh && cat &gt;&gt; ~/.ssh/authorized_keys"</V>
@@ -207,7 +207,7 @@ export default function SSHKeys() {
             </Cmd>
           </ExampleBlock>
           <Divider />
-          <Row code="ssh-add -l">lista zaladowanych kluczy</Row>
+          <Row code="ssh-add -l">lista załadowanych kluczy</Row>
           <Row code="ssh-add -D">usuń wszystkie klucze z agenta</Row>
           <Row code="ssh-add -d klucz">usuń konkretny klucz</Row>
           <InfoBox>
