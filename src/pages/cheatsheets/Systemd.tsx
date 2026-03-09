@@ -79,7 +79,7 @@ export default function Systemd() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock>
-            <Comment># Czy usługa dziala?</Comment>
+            <Comment># Czy usługa działa?</Comment>
             <Cmd>
               systemctl <H>is-active</H> <V>nginx</V>
             </Cmd>
