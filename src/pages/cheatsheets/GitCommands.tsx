@@ -151,7 +151,7 @@ export default function GitCommands() {
             </Cmd>
             <Cmd>
               git <H>switch</H> <V>feature/login</V>{' '}
-              <span className="text-[var(--c-muted)]"># nowszy sposob</span>
+              <span className="text-[var(--c-muted)]"># nowszy sposób</span>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="purple">
