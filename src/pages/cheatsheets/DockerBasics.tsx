@@ -25,7 +25,7 @@ export default function DockerBasics() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <Card title="Docker — jak to dziala?" full>
+        <Card title="Docker — jak to działa?" full>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             <Concept title="Image (Obraz)">
               Szablon tylko-do-odczytu. Zawiera OS, zależności, kod aplikacji.
