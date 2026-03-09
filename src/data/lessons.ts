@@ -5,6 +5,7 @@ export interface LessonItem {
   color: string;
   tags: string[];
   to: string;
+  disabled?: boolean;
 }
 
 export const lessons: LessonItem[] = [
@@ -39,5 +40,6 @@ export const lessons: LessonItem[] = [
     color: 'var(--c-yellow)',
     tags: [],
     to: '/lessons/04',
+    disabled: true,
   },
 ];
