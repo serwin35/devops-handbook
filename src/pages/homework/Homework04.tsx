@@ -157,7 +157,16 @@ export default function Homework04() {
               <Cmd>
                 <H>#!/bin/bash</H>
               </Cmd>
-              <Cmd>i=0; while true; do echo ((i+1)); sleep 1; done</Cmd>
+              <Cmd>i=0</Cmd>
+              <Cmd>while true; do</Cmd>
+              <Cmd>
+                {'  '}echo <V>$((i+1))</V>
+              </Cmd>
+              <Cmd>
+                {'  '}i=<V>$((i+1))</V>
+              </Cmd>
+              <Cmd>{'  '}sleep 1</Cmd>
+              <Cmd>done</Cmd>
             </ExampleBlock>
             <SectionLabel className="mt-2">Krok 2 — uruchom w tle</SectionLabel>
             <ExampleBlock variant="green">
