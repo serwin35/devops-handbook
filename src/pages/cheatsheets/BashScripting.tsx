@@ -500,6 +500,12 @@ export default function BashScripting() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="green">
+            <Comment># wylistuj tylko pliki .log (po jednym na linię)</Comment>
+            <Cmd>
+              ls <H>-w 1</H> <H>|</H> grep -E <V>"\.log$"</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
             <Comment># tee — zapisz i pokaż jednocześnie</Comment>
             <Cmd>
               komenda <H>| tee</H> <F>wynik.log</F>
