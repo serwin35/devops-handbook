@@ -358,7 +358,10 @@ export default function SSHWelcome() {
       </div>
 
       <LessonNav
-        prev={{ to: '/cheatsheets/systemd', label: 'Systemd' }}
+        prev={{
+          to: '/cheatsheets/processes-monitoring',
+          label: 'Procesy i Monitorowanie',
+        }}
         next={{ to: '/dashboard', label: 'Dashboard' }}
       />
     </div>

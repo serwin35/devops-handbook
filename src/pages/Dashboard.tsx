@@ -74,7 +74,7 @@ export default function Dashboard() {
       <div className="text-[var(--c-muted)] text-[11px] uppercase tracking-widest mb-3">
         Lekcje
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-10">
         {lessons.map((l) => {
           const id = toProgressId(l);
 
@@ -82,17 +82,19 @@ export default function Dashboard() {
             return (
               <div
                 key={l.num}
-                className="bg-[var(--c-surface)] border border-[var(--c-dim)] rounded-xl p-5 opacity-40 cursor-not-allowed"
+                className="bg-[var(--c-surface)] border border-[var(--c-dim)] rounded-xl px-4 py-3 opacity-40 cursor-not-allowed"
                 style={{
                   borderLeftWidth: '3px',
                   borderLeftColor: 'var(--c-dim)',
                 }}
               >
-                <div className="font-['Syne'] text-4xl font-extrabold leading-none mb-2 text-[var(--c-dim)]">
-                  {l.num}
-                </div>
-                <div className="font-['Syne'] text-[15px] font-bold mb-1.5 text-[var(--c-muted)]">
-                  {l.title}
+                <div className="flex items-baseline gap-2.5 mb-1">
+                  <div className="font-['Syne'] text-2xl font-extrabold leading-none text-[var(--c-dim)]">
+                    {l.num}
+                  </div>
+                  <div className="font-['Syne'] text-[13px] font-bold text-[var(--c-muted)]">
+                    {l.title}
+                  </div>
                 </div>
                 <div className="text-[var(--c-muted)] text-[11px]">
                   {l.desc}
@@ -104,12 +106,12 @@ export default function Dashboard() {
           return (
             <div
               key={l.num}
-              className="relative bg-[var(--c-surface)] border border-[var(--c-border)] rounded-xl p-5 hover:border-[var(--c-accent)] hover:-translate-y-0.5 transition-all"
+              className="relative bg-[var(--c-surface)] border border-[var(--c-border)] rounded-xl px-4 py-3 hover:border-[var(--c-accent)] hover:-translate-y-0.5 transition-all"
               style={{ borderLeftWidth: '3px', borderLeftColor: l.color }}
             >
               <button
                 onClick={() => toggle(id)}
-                className={`absolute top-3 right-3 w-5 h-5 rounded border text-[10px] flex items-center justify-center transition-colors ${isCompleted(id) ? 'bg-[var(--c-green)] border-[var(--c-green)] text-black' : 'border-[var(--c-border)] text-[var(--c-muted)] hover:border-[var(--c-accent)]'}`}
+                className={`absolute top-2.5 right-2.5 w-5 h-5 rounded border text-[10px] flex items-center justify-center transition-colors ${isCompleted(id) ? 'bg-[var(--c-green)] border-[var(--c-green)] text-black' : 'border-[var(--c-border)] text-[var(--c-muted)] hover:border-[var(--c-accent)]'}`}
                 aria-label={
                   isCompleted(id)
                     ? 'Oznacz jako nieukończone'
@@ -119,23 +121,25 @@ export default function Dashboard() {
                 {isCompleted(id) ? '\u2713' : ''}
               </button>
               <Link to={l.to} className="block">
-                <div
-                  className="font-['Syne'] text-4xl font-extrabold leading-none mb-2"
-                  style={{ color: l.color }}
-                >
-                  {l.num}
+                <div className="flex items-baseline gap-2.5 mb-1">
+                  <div
+                    className="font-['Syne'] text-2xl font-extrabold leading-none"
+                    style={{ color: l.color }}
+                  >
+                    {l.num}
+                  </div>
+                  <div className="font-['Syne'] text-[13px] font-bold">
+                    {l.title}
+                  </div>
                 </div>
-                <div className="font-['Syne'] text-[15px] font-bold mb-1.5">
-                  {l.title}
-                </div>
-                <div className="text-[var(--c-muted)] text-[11px] leading-relaxed mb-3">
+                <div className="text-[var(--c-muted)] text-[11px] leading-relaxed mb-2">
                   {l.desc}
                 </div>
                 <div className="flex flex-wrap gap-1">
                   {l.tags.map((t) => (
                     <span
                       key={t}
-                      className="text-[10px] px-2 py-0.5 rounded bg-[var(--c-surface2)] border border-[var(--c-border)] text-[var(--c-muted)]"
+                      className="text-[10px] px-1.5 py-0.5 rounded bg-[var(--c-surface2)] border border-[var(--c-border)] text-[var(--c-muted)]"
                     >
                       {t}
                     </span>

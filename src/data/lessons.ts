@@ -35,11 +35,27 @@ export const lessons: LessonItem[] = [
   },
   {
     num: '04',
+    title: 'Administracja systemem: Procesy i Usługi',
+    desc: 'init.d vs systemd, systemctl, procesy, PID, kill, monitorowanie zasobów, journalctl',
+    color: 'var(--c-green)',
+    tags: [
+      'systemd',
+      'systemctl',
+      'procesy',
+      'PID',
+      'kill',
+      'journalctl',
+      'monitoring',
+    ],
+    to: '/lessons/04',
+  },
+  {
+    num: '05',
     title: 'Wkrótce...',
     desc: 'Ta lekcja jest w trakcie przygotowania',
     color: 'var(--c-yellow)',
     tags: [],
-    to: '/lessons/04',
+    to: '/lessons/05',
     disabled: true,
   },
 ];

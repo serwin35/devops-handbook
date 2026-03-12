@@ -8,6 +8,7 @@ const Lesson01 = lazy(() => import('./pages/lessons/Lesson01'));
 const Lesson02 = lazy(() => import('./pages/lessons/Lesson02'));
 const Lesson03 = lazy(() => import('./pages/lessons/Lesson03'));
 const Lesson04 = lazy(() => import('./pages/lessons/Lesson04'));
+const Lesson05 = lazy(() => import('./pages/lessons/Lesson05'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -26,7 +27,13 @@ const CronJobs = lazy(() => import('./pages/cheatsheets/CronJobs'));
 const LessonsList = lazy(() => import('./pages/LessonsList'));
 const CheatsheetsList = lazy(() => import('./pages/CheatsheetsList'));
 const Search = lazy(() => import('./pages/Search'));
+const Homework01 = lazy(() => import('./pages/homework/Homework01'));
+const Homework02 = lazy(() => import('./pages/homework/Homework02'));
 const Homework03 = lazy(() => import('./pages/homework/Homework03'));
+const Homework04 = lazy(() => import('./pages/homework/Homework04'));
+const ProcessesMonitoring = lazy(
+  () => import('./pages/cheatsheets/ProcessesMonitoring'),
+);
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -52,6 +59,7 @@ export default function App() {
             <Route path="lessons/02" element={<Lesson02 />} />
             <Route path="lessons/03" element={<Lesson03 />} />
             <Route path="lessons/04" element={<Lesson04 />} />
+            <Route path="lessons/05" element={<Lesson05 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -72,7 +80,14 @@ export default function App() {
               element={<PackageManagement />}
             />
             <Route path="cheatsheets/cron-jobs" element={<CronJobs />} />
+            <Route
+              path="cheatsheets/processes-monitoring"
+              element={<ProcessesMonitoring />}
+            />
+            <Route path="homework/01" element={<Homework01 />} />
+            <Route path="homework/02" element={<Homework02 />} />
             <Route path="homework/03" element={<Homework03 />} />
+            <Route path="homework/04" element={<Homework04 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>

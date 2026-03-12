@@ -92,6 +92,13 @@ export const cheatsheets: CheatsheetItem[] = [
     to: '/cheatsheets/bash-scripting',
   },
   {
+    icon: '\uD83D\uDCCA',
+    title: 'Procesy i Monitorowanie',
+    desc: 'ps, kill, top, htop, free, df, uptime, ss',
+    color: 'var(--c-green)',
+    to: '/cheatsheets/processes-monitoring',
+  },
+  {
     icon: '\u23F0',
     title: 'Cron Jobs',
     desc: 'crontab, systemd timers, at, anacron',

@@ -582,7 +582,10 @@ export default function Systemd() {
 
       <LessonNav
         prev={{ to: '/cheatsheets/networking', label: 'Networking' }}
-        next={{ to: '/cheatsheets/ssh-welcome', label: 'SSH Welcome' }}
+        next={{
+          to: '/cheatsheets/processes-monitoring',
+          label: 'Procesy i Monitorowanie',
+        }}
       />
     </div>
   );

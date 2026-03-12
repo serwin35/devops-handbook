@@ -300,7 +300,7 @@ export default function Lesson03() {
 
       <LessonNav
         prev={{ to: '/lessons/02', label: '02 — Systemy operacyjne i Linux' }}
-        next={{ to: '/lessons/04', label: '04 — Wkrótce...' }}
+        next={{ to: '/lessons/04', label: '04 — Procesy i Usługi' }}
       />
     </div>
   );

@@ -682,6 +682,148 @@ export const searchIndex = [
     page: '/lessons/02',
   },
 
+  // Processes & Monitoring cheatsheet
+  {
+    cmd: 'killall nginx',
+    desc: 'Zakończ wszystkie procesy po nazwie',
+    tags: ['processes', 'kill', 'killall'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'pkill -f "python app.py"',
+    desc: 'Zakończ proces po wzorcu nazwy',
+    tags: ['processes', 'kill', 'pkill', 'pattern'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'ps aux --sort=-%mem | head -n 6',
+    desc: 'Top 5 procesów wg zużycia RAM',
+    tags: ['processes', 'ps', 'sort', 'memory'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'ps aux --sort=-%cpu | head -n 6',
+    desc: 'Top 5 procesów wg zużycia CPU',
+    tags: ['processes', 'ps', 'sort', 'cpu'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'nohup ./skrypt.sh &',
+    desc: 'Uruchom proces odporny na zamknięcie terminala',
+    tags: ['processes', 'nohup', 'background'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'du -sh /var/log',
+    desc: 'Rozmiar katalogu (summary, human-readable)',
+    tags: ['filesystem', 'disk', 'du', 'size'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'sudo lsof -i :80',
+    desc: 'Kto nasłuchuje na porcie 80?',
+    tags: ['monitoring', 'lsof', 'port', 'network'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+  {
+    cmd: 'nproc',
+    desc: 'Liczba rdzeni CPU',
+    tags: ['monitoring', 'cpu', 'cores'],
+    page: '/cheatsheets/processes-monitoring',
+  },
+
+  // Lesson 04 — Procesy i Usługi
+  {
+    cmd: 'sudo systemctl status sshd',
+    desc: 'Sprawdź status usługi systemd',
+    tags: ['systemd', 'systemctl', 'status', 'service'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo systemctl start/stop/restart sshd',
+    desc: 'Uruchom / zatrzymaj / restartuj usługę',
+    tags: ['systemd', 'systemctl', 'service'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo systemctl enable sshd',
+    desc: 'Włącz autostart usługi przy starcie systemu',
+    tags: ['systemd', 'systemctl', 'enable', 'autostart'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo systemctl disable sshd',
+    desc: 'Wyłącz autostart usługi',
+    tags: ['systemd', 'systemctl', 'disable'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo systemctl daemon-reload',
+    desc: 'Przeładuj konfigurację jednostek systemd',
+    tags: ['systemd', 'systemctl', 'reload', 'daemon'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo service nginx status',
+    desc: 'Status usługi (SysVinit / init.d)',
+    tags: ['service', 'init.d', 'sysvinit', 'status'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'ps aux',
+    desc: 'Wyświetl wszystkie procesy szczegółowo',
+    tags: ['processes', 'ps', 'list'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'ps aux | grep cron',
+    desc: 'Znajdź proces po nazwie',
+    tags: ['processes', 'ps', 'grep', 'filter'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'kill 1234',
+    desc: 'Zakończ proces (SIGTERM — grzecznie)',
+    tags: ['processes', 'kill', 'signal', 'sigterm'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'kill -9 1234',
+    desc: 'Brutalne zakończenie procesu (SIGKILL)',
+    tags: ['processes', 'kill', 'signal', 'sigkill', 'force'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'uptime',
+    desc: 'Czas pracy systemu i load average',
+    tags: ['monitoring', 'uptime', 'load'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo ss -tulpn',
+    desc: 'Otwarte porty TCP/UDP z procesami',
+    tags: ['monitoring', 'network', 'ports', 'ss'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo journalctl -u nginx.service -f',
+    desc: 'Logi usługi w czasie rzeczywistym',
+    tags: ['journalctl', 'logs', 'systemd', 'follow'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo journalctl --since "1 hour ago"',
+    desc: 'Logi z ostatniej godziny',
+    tags: ['journalctl', 'logs', 'filter', 'time'],
+    page: '/lessons/04',
+  },
+  {
+    cmd: 'sudo journalctl -p err',
+    desc: 'Tylko logi o priorytecie error lub wyższym',
+    tags: ['journalctl', 'logs', 'error', 'priority'],
+    page: '/lessons/04',
+  },
+
   // SSH Welcome
   {
     cmd: 'sudo nano /etc/motd',
