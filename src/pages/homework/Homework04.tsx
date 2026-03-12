@@ -410,7 +410,7 @@ export default function Homework04() {
                 {'    '}
                 <F>/var/log/nginx-watcher.log</F>
               </Cmd>
-              <Cmd>{'  '}systemctl start nginx</Cmd>
+              <Cmd>{'  '}sudo systemctl start nginx</Cmd>
               <Cmd>fi</Cmd>
             </ExampleBlock>
             <SectionLabel className="mt-2">Testowanie</SectionLabel>
