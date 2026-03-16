@@ -105,4 +105,18 @@ export const cheatsheets: CheatsheetItem[] = [
     color: 'var(--c-yellow)',
     to: '/cheatsheets/cron-jobs',
   },
+  {
+    icon: '🔌',
+    title: 'Networking Basics',
+    desc: 'Adresy IP, localhost, porty, NAT',
+    color: 'var(--c-blue)',
+    to: '/cheatsheets/networking-basics',
+  },
+  {
+    icon: '🛠️',
+    title: 'Network Tools',
+    desc: 'curl, ngrok, Postman, mitmproxy, Wireshark',
+    color: 'var(--c-purple)',
+    to: '/cheatsheets/network-tools',
+  },
 ];

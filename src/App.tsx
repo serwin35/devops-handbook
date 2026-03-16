@@ -9,11 +9,16 @@ const Lesson02 = lazy(() => import('./pages/lessons/Lesson02'));
 const Lesson03 = lazy(() => import('./pages/lessons/Lesson03'));
 const Lesson04 = lazy(() => import('./pages/lessons/Lesson04'));
 const Lesson05 = lazy(() => import('./pages/lessons/Lesson05'));
+const Lesson06 = lazy(() => import('./pages/lessons/Lesson06'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
 const GitCommands = lazy(() => import('./pages/cheatsheets/GitCommands'));
 const Networking = lazy(() => import('./pages/cheatsheets/Networking'));
+const NetworkingBasics = lazy(
+  () => import('./pages/cheatsheets/NetworkingBasics'),
+);
+const NetworkTools = lazy(() => import('./pages/cheatsheets/NetworkTools'));
 const Systemd = lazy(() => import('./pages/cheatsheets/Systemd'));
 const SSHWelcome = lazy(() => import('./pages/cheatsheets/SSHWelcome'));
 const SSHKeys = lazy(() => import('./pages/cheatsheets/SSHKeys'));
@@ -60,6 +65,7 @@ export default function App() {
             <Route path="lessons/03" element={<Lesson03 />} />
             <Route path="lessons/04" element={<Lesson04 />} />
             <Route path="lessons/05" element={<Lesson05 />} />
+            <Route path="lessons/06" element={<Lesson06 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -67,6 +73,14 @@ export default function App() {
             <Route path="cheatsheets/docker" element={<DockerBasics />} />
             <Route path="cheatsheets/git" element={<GitCommands />} />
             <Route path="cheatsheets/networking" element={<Networking />} />
+            <Route
+              path="cheatsheets/networking-basics"
+              element={<NetworkingBasics />}
+            />
+            <Route
+              path="cheatsheets/network-tools"
+              element={<NetworkTools />}
+            />
             <Route path="cheatsheets/systemd" element={<Systemd />} />
             <Route path="cheatsheets/ssh-welcome" element={<SSHWelcome />} />
             <Route path="cheatsheets/ssh-keys" element={<SSHKeys />} />

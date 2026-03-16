@@ -51,11 +51,19 @@ export const lessons: LessonItem[] = [
   },
   {
     num: '05',
+    title: 'Podstawy sieci',
+    desc: 'Adresy IP (localhost, prywatne, publiczne), porty, NAT, diagnostyka problemów sieciowych, narzędzia (curl, ngrok, Postman)',
+    color: 'var(--c-blue)',
+    tags: ['Networking', 'IP', 'Porty', 'curl', 'ngrok', 'Diagnostyka'],
+    to: '/lessons/05',
+  },
+  {
+    num: '06',
     title: 'Wkrótce...',
     desc: 'Ta lekcja jest w trakcie przygotowania',
     color: 'var(--c-yellow)',
     tags: [],
-    to: '/lessons/05',
+    to: '/lessons/06',
     disabled: true,
   },
 ];
