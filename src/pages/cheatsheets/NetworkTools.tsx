@@ -186,7 +186,7 @@ export default function NetworkTools() {
           </InfoBox>
           <Divider />
           <SectionLabel className="mt-1.5">Podstawowe użycie</SectionLabel>
-          <ExampleBlock variant="blue">
+          <ExampleBlock variant="default">
             <Comment># Udostępnij localhost:3000 w internecie</Comment>
             <Cmd>
               ngrok http <V>3000</V>
@@ -194,7 +194,7 @@ export default function NetworkTools() {
             <Comment># Otrzymasz URL:</Comment>
             <Comment># https://92832de0.ngrok.io -{'>'} localhost:3000</Comment>
           </ExampleBlock>
-          <ExampleBlock variant="blue">
+          <ExampleBlock variant="default">
             <Comment># Udostępnij inny port</Comment>
             <Cmd>
               ngrok http <V>8080</V>
@@ -255,7 +255,7 @@ export default function NetworkTools() {
             <Cmd>pm.test("Status code is 200", () =&gt; {'{'}</Cmd>
             <Cmd> pm.response.to.have.status(200);</Cmd>
             <Cmd>{'}'});</Cmd>
-            <Cmd></Cmd>
+            <Cmd>{' '}</Cmd>
             <Cmd>pm.test("Response has user", () =&gt; {'{'}</Cmd>
             <Cmd> const json = pm.response.json();</Cmd>
             <Cmd> pm.expect(json).to.have.property('user');</Cmd>
