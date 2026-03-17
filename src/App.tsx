@@ -39,6 +39,7 @@ const Homework04 = lazy(() => import('./pages/homework/Homework04'));
 const ProcessesMonitoring = lazy(
   () => import('./pages/cheatsheets/ProcessesMonitoring'),
 );
+const CiCd = lazy(() => import('./pages/cheatsheets/CiCd'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -98,6 +99,7 @@ export default function App() {
               path="cheatsheets/processes-monitoring"
               element={<ProcessesMonitoring />}
             />
+            <Route path="cheatsheets/ci-cd" element={<CiCd />} />
             <Route path="homework/01" element={<Homework01 />} />
             <Route path="homework/02" element={<Homework02 />} />
             <Route path="homework/03" element={<Homework03 />} />

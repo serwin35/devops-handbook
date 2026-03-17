@@ -119,4 +119,11 @@ export const cheatsheets: CheatsheetItem[] = [
     color: 'var(--c-purple)',
     to: '/cheatsheets/network-tools',
   },
+  {
+    icon: '🔄',
+    title: 'CI/CD Pipelines',
+    desc: 'GitHub Actions, pipeline stages, secrets, deploy strategies',
+    color: 'var(--c-orange)',
+    to: '/cheatsheets/ci-cd',
+  },
 ];
