@@ -27,7 +27,7 @@ The live demo requires no login, no setup — just open it in your browser and s
 ## Features
 
 - **Structured lessons** — step-by-step guided content across multiple lessons (Lesson 01–03+)
-- **15 quick-reference cheatsheets** — every major topic a DevOps practitioner needs
+- **16 quick-reference cheatsheets** — every major topic a DevOps practitioner needs
 - **Built-in search** — find commands and concepts instantly across the entire platform
 - **Responsive layout** — works on desktop, tablet, and mobile
 - **Zero-install access** — fully deployed on GitHub Pages, no local setup required to read
@@ -53,6 +53,7 @@ The live demo requires no login, no setup — just open it in your browser and s
 | Processes & Monitoring | `ps`, `top`, `htop`, `kill`, `strace`, and resource monitoring |
 | SSH Keys | Key generation, `ssh-agent`, `authorized_keys`, and config |
 | Systemd | Units, services, timers, `journalctl`, and `systemctl` |
+| **CI/CD Pipelines** | **GitHub Actions workflows, triggers, runners, secrets, artifacts, and deploy strategies** |
 
 ---
 
@@ -118,7 +119,7 @@ devops-handbook/
 │   ├── data/            # Search index and static content data
 │   ├── hooks/           # Custom React hooks (useProgress, usePageTitle)
 │   ├── pages/
-│   │   ├── cheatsheets/ # 15 cheatsheet pages (Docker, Git, SSH, etc.)
+│   │   ├── cheatsheets/ # 16 cheatsheet pages (Docker, Git, SSH, CI/CD, etc.)
 │   │   └── lessons/     # Structured lesson pages (Lesson 01–03+)
 │   ├── App.tsx          # Main application routing
 │   ├── main.tsx         # Application entry point
