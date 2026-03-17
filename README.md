@@ -1,100 +1,159 @@
-# DevOps Learning Hub
+# DevOps Handbook
 
-An interactive educational platform designed for learning DevOps concepts, featuring structured lessons, quick-reference cheatsheets, and a searchable knowledge base.
+<div align="center">
 
-## 🚀 Overview
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
+[![GitHub Pages](https://img.shields.io/badge/Deployed-GitHub_Pages-222222?logo=github&logoColor=white)](https://serwin35.github.io/devops-handbook/)
 
-The **DevOps Learning Hub** is a React-based web application providing a modern, interactive interface for technical documentation and educational content. It covers topics ranging from Linux permissions and filesystem structure to containerization with Docker and version control with Git.
+### [🌐 Live Demo → serwin35.github.io/devops-handbook](https://serwin35.github.io/devops-handbook/)
 
-### Key Features
-- **Structured Lessons:** Step-by-step guides (e.g., Lesson 01-03).
-- **Interactive Cheatsheets:** Quick reference for Git, Docker, Networking, Systemd, and more.
-- **Built-in Search:** Easily find commands and concepts across the platform.
-- **Responsive Layout:** Optimized for both desktop and mobile learning.
+**Your all-in-one interactive DevOps reference — cheatsheets, structured lessons, and built-in search, all in one fast React app.**
 
-## 🛠 Tech Stack
+</div>
 
-- **Framework:** [React 19](https://react.dev/)
-- **Build Tool:** [Vite 7](https://vitejs.dev/)
-- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
-- **Routing:** [React Router 7](https://reactrouter.com/)
-- **Language:** TypeScript
-- **Linting & Formatting:** ESLint, Prettier, Husky, lint-staged
+---
 
-## 📋 Requirements
+## About
 
-- **Node.js:** v18.0.0 or higher (recommended)
-- **Package Manager:** npm (standard) or yarn/pnpm
+**DevOps Handbook** is an interactive learning platform built with React 19 and deployed on GitHub Pages. It gives engineers and students a single place to look up commands, learn concepts, and work through structured lessons — covering everything from Linux fundamentals and filesystem navigation to Docker containers, Git workflows, SSH key management, and more.
 
-## ⚙️ Setup & Run
+The live demo requires no login, no setup — just open it in your browser and start learning.
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd devops-init
-   ```
+---
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Features
 
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-   The app will be available at `http://localhost:5173/devops-handbook` (note the `/devops-handbook` basename).
+- **Structured lessons** — step-by-step guided content across multiple lessons (Lesson 01–03+)
+- **15 quick-reference cheatsheets** — every major topic a DevOps practitioner needs
+- **Built-in search** — find commands and concepts instantly across the entire platform
+- **Responsive layout** — works on desktop, tablet, and mobile
+- **Zero-install access** — fully deployed on GitHub Pages, no local setup required to read
 
-4. **Build for production:**
-   ```bash
-   npm run build
-   ```
-   The production-ready files will be generated in the `dist/` directory.
+---
 
-## 📜 Available Scripts
+## Cheatsheets
+
+| Topic | Description |
+| :--- | :--- |
+| Bash Scripting | Variables, loops, conditionals, functions, and script patterns |
+| Cron Jobs | Crontab syntax, scheduling expressions, and job management |
+| Docker Basics | Images, containers, volumes, networks, and Compose |
+| Editors — Vim & Nano | Essential keybindings and editing workflows |
+| Filesystem | Linux directory hierarchy, navigation, and file operations |
+| Git Commands | Branching, merging, rebasing, remotes, and history |
+| Linux Basics | Core commands, users, groups, and system information |
+| Network Tools | `curl`, `wget`, `netstat`, `ss`, `tcpdump`, and friends |
+| Networking | IP addressing, subnets, DNS, ports, and protocols |
+| Networking Basics | Foundational networking concepts from the ground up |
+| Package Management | `apt`, `yum`/`dnf`, `snap`, and package lifecycle |
+| Permissions | `chmod`, `chown`, `umask`, ACLs, and special bits |
+| Processes & Monitoring | `ps`, `top`, `htop`, `kill`, `strace`, and resource monitoring |
+| SSH Keys | Key generation, `ssh-agent`, `authorized_keys`, and config |
+| Systemd | Units, services, timers, `journalctl`, and `systemctl` |
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| UI Framework | React 19 |
+| Language | TypeScript 5 |
+| Build Tool | Vite 7 |
+| Styling | Tailwind CSS 4 |
+| Routing | React Router 7 |
+| Linting | ESLint + Prettier |
+| Git Hooks | Husky + lint-staged |
+| Deployment | GitHub Pages |
+
+---
+
+## Prerequisites
+
+- **Node.js** v18.0.0 or higher
+- **npm** (bundled with Node.js)
+
+---
+
+## Quick Start
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/serwin35/devops-handbook.git
+cd devops-handbook
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
+```
+
+The app will be available at `http://localhost:5173/devops-handbook`.
+
+---
+
+## Available Scripts
 
 | Script | Description |
 | :--- | :--- |
-| `npm run dev` | Starts the Vite development server. |
-| `npm run build` | Compiles the application for production. |
-| `npm run lint` | Runs ESLint to check for code quality issues. |
-| `npm run preview` | Previews the production build locally. |
-| `npm run prepare` | Sets up Husky git hooks. |
-
-## 📂 Project Structure
-
-```text
-devops-init/
-├── public/          # Static assets
-├── src/
-│   ├── components/  # Reusable UI components (Layout, Card, etc.)
-│   ├── data/        # Search index and static content data
-│   ├── hooks/       # Custom React hooks (useProgress, usePageTitle)
-│   ├── pages/       # Application views
-│   │   ├── cheatsheets/ # Individual cheatsheet pages (Docker, Git, etc.)
-│   │   └── lessons/     # Structured lesson pages
-│   ├── App.tsx      # Main application routing and structure
-│   ├── main.tsx     # Application entry point
-│   └── index.css    # Global styles and Tailwind imports
-├── index.html       # HTML template
-├── vite.config.js   # Vite configuration
-└── tsconfig.json    # TypeScript configuration
-```
-
-## 🔐 Environment Variables
-
-Currently, no specific environment variables are required for this project.
-- **TODO:** Document any future API keys or configuration flags here.
-
-## 🧪 Tests
-
-Automated tests are not yet implemented for this project.
-- **TODO:** Add unit tests (e.g., Vitest) and E2E tests (e.g., Playwright).
-- **Running tests (Future):** Automated tests are not yet implemented. Once added, they can be run via `npm test`.
-
-## 📄 License
-
-**TODO:** No license file found. Please add a `LICENSE` file to the root directory (e.g., MIT, Apache 2.0).
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Compile the application for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint to check for code quality issues |
+| `npm run prepare` | Set up Husky git hooks |
 
 ---
-*Created by the DevOps Learning Hub Team.*
+
+## Project Structure
+
+```text
+devops-handbook/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # Reusable UI components (Layout, Card, etc.)
+│   ├── data/            # Search index and static content data
+│   ├── hooks/           # Custom React hooks (useProgress, usePageTitle)
+│   ├── pages/
+│   │   ├── cheatsheets/ # 15 cheatsheet pages (Docker, Git, SSH, etc.)
+│   │   └── lessons/     # Structured lesson pages (Lesson 01–03+)
+│   ├── App.tsx          # Main application routing
+│   ├── main.tsx         # Application entry point
+│   └── index.css        # Global styles and Tailwind imports
+├── index.html           # HTML template
+├── vite.config.js       # Vite configuration
+└── tsconfig.json        # TypeScript configuration
+```
+
+---
+
+## Contributing
+
+Contributions are welcome. To propose a new cheatsheet, fix a typo, or improve lesson content:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feat/your-topic`
+3. Commit your changes: `git commit -m "feat: add your-topic cheatsheet"`
+4. Push the branch: `git push origin feat/your-topic`
+5. Open a pull request
+
+Please keep content accurate, concise, and consistent with the existing style.
+
+---
+
+## License
+
+This project is open source. See the [LICENSE](./LICENSE) file for details.
+
+---
+
+<div align="center">
+
+Built with React + Vite · Deployed on GitHub Pages
+
+[Live Demo](https://serwin35.github.io/devops-handbook/) · [Report an Issue](https://github.com/serwin35/devops-handbook/issues)
+
+</div>
