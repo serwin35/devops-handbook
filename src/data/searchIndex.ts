@@ -861,4 +861,86 @@ export const searchIndex = [
     tags: ['ssh', 'banner', 'colors', 'lolcat'],
     page: '/cheatsheets/ssh-welcome',
   },
+
+  // DNS & Domains
+  {
+    cmd: 'dig google.com',
+    desc: 'Zapytanie DNS o rekord A domeny',
+    tags: ['dns', 'dig', 'domain', 'resolve'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'dig google.com MX',
+    desc: 'Zapytanie DNS o serwery pocztowe',
+    tags: ['dns', 'dig', 'mx', 'mail'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'dig +trace google.com',
+    desc: 'Sledzenie pelnej sciezki rozwiazywania DNS',
+    tags: ['dns', 'dig', 'trace', 'debug'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'dig +short google.com',
+    desc: 'Krotka odpowiedz DNS (sam IP)',
+    tags: ['dns', 'dig', 'short'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'nslookup google.com',
+    desc: 'Proste zapytanie DNS',
+    tags: ['dns', 'nslookup', 'resolve'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'nslookup google.com 8.8.8.8',
+    desc: 'Zapytanie DNS do konkretnego serwera',
+    tags: ['dns', 'nslookup', 'server'],
+    page: '/cheatsheets/dns-domains',
+  },
+  {
+    cmd: 'curl -X OPTIONS -I -H "Origin: http://localhost:3000" http://api.example.com',
+    desc: 'Debugowanie CORS — sprawdz naglowki preflight',
+    tags: ['cors', 'curl', 'debug', 'options', 'preflight'],
+    page: '/cheatsheets/dns-domains',
+  },
+
+  // Virtualization
+  {
+    cmd: 'VBoxManage createvm --name "Ubuntu" --ostype Ubuntu_64 --register',
+    desc: 'Utworz nowa VM w VirtualBox (CLI)',
+    tags: ['vm', 'virtualbox', 'vboxmanage', 'create'],
+    page: '/lessons/07',
+  },
+  {
+    cmd: 'VBoxManage snapshot "VM" take "Snapshot Name"',
+    desc: 'Utworz snapshot maszyny wirtualnej',
+    tags: ['vm', 'virtualbox', 'snapshot'],
+    page: '/lessons/07',
+  },
+  {
+    cmd: 'VBoxManage clonevm "VM" --name "Clone" --register',
+    desc: 'Klonuj maszyne wirtualna',
+    tags: ['vm', 'virtualbox', 'clone'],
+    page: '/lessons/07',
+  },
+  {
+    cmd: 'aws ec2 run-instances --image-id ami-xxx --instance-type t2.micro',
+    desc: 'Utworz instancje EC2 w AWS',
+    tags: ['aws', 'ec2', 'vm', 'cloud'],
+    page: '/lessons/07',
+  },
+  {
+    cmd: 'az vm create --resource-group myRG --name myVM --image UbuntuLTS',
+    desc: 'Utworz VM w Azure',
+    tags: ['azure', 'vm', 'cloud'],
+    page: '/lessons/07',
+  },
+  {
+    cmd: 'egrep -c "(vmx|svm)" /proc/cpuinfo',
+    desc: 'Sprawdz wsparcie CPU dla wirtualizacji',
+    tags: ['vm', 'cpu', 'virtualization', 'check'],
+    page: '/lessons/07',
+  },
 ];

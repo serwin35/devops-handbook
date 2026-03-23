@@ -311,7 +311,7 @@ mitmdump -w traffic.flows`}
 
       <LessonNav
         prev={{ to: '/lessons/04', label: '04 — Procesy i Usługi' }}
-        next={{ to: '/lessons/06', label: '06 — Wkrótce' }}
+        next={{ to: '/lessons/06', label: '06 — DNS i Domeny' }}
       />
     </div>
   );

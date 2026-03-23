@@ -126,4 +126,11 @@ export const cheatsheets: CheatsheetItem[] = [
     color: 'var(--c-orange)',
     to: '/cheatsheets/ci-cd',
   },
+  {
+    icon: '🌐',
+    title: 'DNS i Domeny',
+    desc: 'dig, nslookup, rekordy A/CNAME/MX/TXT, CORS',
+    color: 'var(--c-purple)',
+    to: '/cheatsheets/dns-domains',
+  },
 ];

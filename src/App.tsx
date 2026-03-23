@@ -10,6 +10,8 @@ const Lesson03 = lazy(() => import('./pages/lessons/Lesson03'));
 const Lesson04 = lazy(() => import('./pages/lessons/Lesson04'));
 const Lesson05 = lazy(() => import('./pages/lessons/Lesson05'));
 const Lesson06 = lazy(() => import('./pages/lessons/Lesson06'));
+const Lesson07 = lazy(() => import('./pages/lessons/Lesson07'));
+const Lesson08 = lazy(() => import('./pages/lessons/Lesson08'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -36,10 +38,14 @@ const Homework01 = lazy(() => import('./pages/homework/Homework01'));
 const Homework02 = lazy(() => import('./pages/homework/Homework02'));
 const Homework03 = lazy(() => import('./pages/homework/Homework03'));
 const Homework04 = lazy(() => import('./pages/homework/Homework04'));
+const Homework05 = lazy(() => import('./pages/homework/Homework05'));
+const Homework06 = lazy(() => import('./pages/homework/Homework06'));
+const Homework07 = lazy(() => import('./pages/homework/Homework07'));
 const ProcessesMonitoring = lazy(
   () => import('./pages/cheatsheets/ProcessesMonitoring'),
 );
 const CiCd = lazy(() => import('./pages/cheatsheets/CiCd'));
+const DnsDomains = lazy(() => import('./pages/cheatsheets/DnsDomains'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -67,6 +73,8 @@ export default function App() {
             <Route path="lessons/04" element={<Lesson04 />} />
             <Route path="lessons/05" element={<Lesson05 />} />
             <Route path="lessons/06" element={<Lesson06 />} />
+            <Route path="lessons/07" element={<Lesson07 />} />
+            <Route path="lessons/08" element={<Lesson08 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -100,10 +108,14 @@ export default function App() {
               element={<ProcessesMonitoring />}
             />
             <Route path="cheatsheets/ci-cd" element={<CiCd />} />
+            <Route path="cheatsheets/dns-domains" element={<DnsDomains />} />
             <Route path="homework/01" element={<Homework01 />} />
             <Route path="homework/02" element={<Homework02 />} />
             <Route path="homework/03" element={<Homework03 />} />
             <Route path="homework/04" element={<Homework04 />} />
+            <Route path="homework/05" element={<Homework05 />} />
+            <Route path="homework/06" element={<Homework06 />} />
+            <Route path="homework/07" element={<Homework07 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>
