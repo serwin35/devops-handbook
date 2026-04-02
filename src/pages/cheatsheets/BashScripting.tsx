@@ -569,6 +569,20 @@ export default function BashScripting() {
               </ExampleBlock>
             </div>
             <div>
+              <SectionLabel>Sprawdzanie dostepnosci komendy</SectionLabel>
+              <ExampleBlock variant="yellow">
+                <Comment># command -v — najlepsza metoda</Comment>
+                <Cmd>if command -v git &amp;&gt;/dev/null; then</Cmd>
+                <Cmd>{'  '}echo "git dostepny"</Cmd>
+                <Cmd>fi</Cmd>
+              </ExampleBlock>
+              <ExampleBlock>
+                <Comment># which / type</Comment>
+                <Cmd>which docker</Cmd>
+                <Cmd>type -t cd</Cmd>
+              </ExampleBlock>
+            </div>
+            <div>
               <SectionLabel>Sprawdzanie czy root</SectionLabel>
               <ExampleBlock>
                 <Comment># metoda 1: sprawdź UID</Comment>

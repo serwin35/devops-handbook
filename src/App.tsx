@@ -15,6 +15,7 @@ const Lesson08 = lazy(() => import('./pages/lessons/Lesson08'));
 const Lesson09 = lazy(() => import('./pages/lessons/Lesson09'));
 const Lesson10 = lazy(() => import('./pages/lessons/Lesson10'));
 const Lesson11 = lazy(() => import('./pages/lessons/Lesson11'));
+const Lesson12 = lazy(() => import('./pages/lessons/Lesson12'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -47,6 +48,7 @@ const Homework07 = lazy(() => import('./pages/homework/Homework07'));
 const Homework08 = lazy(() => import('./pages/homework/Homework08'));
 const Homework09 = lazy(() => import('./pages/homework/Homework09'));
 const Homework10 = lazy(() => import('./pages/homework/Homework10'));
+const Homework11 = lazy(() => import('./pages/homework/Homework11'));
 const ProcessesMonitoring = lazy(
   () => import('./pages/cheatsheets/ProcessesMonitoring'),
 );
@@ -86,6 +88,7 @@ export default function App() {
             <Route path="lessons/09" element={<Lesson09 />} />
             <Route path="lessons/10" element={<Lesson10 />} />
             <Route path="lessons/11" element={<Lesson11 />} />
+            <Route path="lessons/12" element={<Lesson12 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -132,6 +135,7 @@ export default function App() {
             <Route path="homework/08" element={<Homework08 />} />
             <Route path="homework/09" element={<Homework09 />} />
             <Route path="homework/10" element={<Homework10 />} />
+            <Route path="homework/11" element={<Homework11 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>
