@@ -1,7 +1,18 @@
+import { usePageTitle } from '../../hooks/usePageTitle';
 import PageHeader from '../../components/PageHeader';
 import Card from '../../components/Card';
+import Concept from '../../components/Concept';
+import ExampleBlock, {
+  Cmd,
+  Comment,
+  H,
+  V,
+  F,
+} from '../../components/ExampleBlock';
+import Divider from '../../components/Divider';
+import InfoBox from '../../components/InfoBox';
+import SectionLabel from '../../components/SectionLabel';
 import LessonNav from '../../components/LessonNav';
-import { usePageTitle } from '../../hooks/usePageTitle';
 
 export default function Lesson09() {
   usePageTitle('Lekcja 09 — Narzedzia Uniksa cz. 2');
@@ -16,242 +27,385 @@ export default function Lesson09() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {/* === SEKCJA 1: Praca z dyskami i partycjami === */}
-        <Card title="Struktura systemu plikow">
-          <p className="text-sm mb-3">
+        <Card title="Struktura systemu plikow" color="var(--c-green)">
+          <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
             Linux organizuje dane w hierarchiczna strukture katalogow
             zaczynajaca sie od korzenia (root){' '}
             <code className="text-xs">/</code>. Kazdy katalog ma scisle
             okreslona role.
           </p>
-          <p className="text-sm font-semibold mb-1">
-            Glowne punkty montowania:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`/        # korzen systemu plikow
-/boot    # jadro i bootloader
-/home    # katalogi domowe uzytkownikow
-swap     # partycja wymiany (RAM)
-/var     # dane zmienne (logi, bazy)
-/opt     # oprogramowanie dodatkowe
-/usr     # programy i biblioteki
-/tmp     # pliki tymczasowe`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">
-            Wazne katalogi systemowe:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`/etc     # konfiguracja systemu
-/bin     # podstawowe programy
-/sbin    # programy administracyjne
-/lib     # biblioteki systemowe
-/proc    # wirtualny system plikow (procesy)
-/dev     # pliki urzadzen
-/mnt     # tymczasowe punkty montowania
-/media   # montowanie nosnikow zewn.
-/srv     # dane uslug (np. WWW, FTP)`}
-          </pre>
+          <SectionLabel>Glowne punkty montowania</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>/</H> <V># korzen systemu plikow</V>
+            </Cmd>
+            <Cmd>
+              <H>/boot</H> <V># jadro i bootloader</V>
+            </Cmd>
+            <Cmd>
+              <H>/home</H> <V># katalogi domowe uzytkownikow</V>
+            </Cmd>
+            <Cmd>
+              <H>swap</H> <V># partycja wymiany (RAM)</V>
+            </Cmd>
+            <Cmd>
+              <H>/var</H> <V># dane zmienne (logi, bazy)</V>
+            </Cmd>
+            <Cmd>
+              <H>/opt</H> <V># oprogramowanie dodatkowe</V>
+            </Cmd>
+            <Cmd>
+              <H>/usr</H> <V># programy i biblioteki</V>
+            </Cmd>
+            <Cmd>
+              <H>/tmp</H> <V># pliki tymczasowe</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Wazne katalogi systemowe</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>/etc</H> <V># konfiguracja systemu</V>
+            </Cmd>
+            <Cmd>
+              <H>/bin</H> <V># podstawowe programy</V>
+            </Cmd>
+            <Cmd>
+              <H>/sbin</H> <V># programy administracyjne</V>
+            </Cmd>
+            <Cmd>
+              <H>/lib</H> <V># biblioteki systemowe</V>
+            </Cmd>
+            <Cmd>
+              <H>/proc</H> <V># wirtualny system plikow (procesy)</V>
+            </Cmd>
+            <Cmd>
+              <H>/dev</H> <V># pliki urzadzen</V>
+            </Cmd>
+            <Cmd>
+              <H>/mnt</H> <V># tymczasowe punkty montowania</V>
+            </Cmd>
+            <Cmd>
+              <H>/media</H> <V># montowanie nosnikow zewn.</V>
+            </Cmd>
+            <Cmd>
+              <H>/srv</H> <V># dane uslug (np. WWW, FTP)</V>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Zarzadzanie partycjami">
-          <p className="text-sm mb-2">Dwa schematy partycjonowania:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-3">
-            <li>
-              <strong>MBR</strong> — do 2 TB, max 4 partycje podstawowe
-            </li>
-            <li>
-              <strong>GPT</strong> — do 9.4 ZB, max 128 partycji
-            </li>
-          </ul>
-          <p className="text-sm font-semibold mb-1">Narzedzia:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-3">
-            <li>
-              <strong>fdisk</strong> — partycje MBR
-            </li>
-            <li>
-              <strong>gdisk</strong> — partycje GPT
-            </li>
-            <li>
-              <strong>parted</strong> — obsluguje oba schematy
-            </li>
-          </ul>
-          <p className="text-sm font-semibold mb-1">Diagnostyka:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`# Lista partycji
-sudo fdisk -l
-
-# Uzycie systemu plikow
-df -h
-
-# Rozmiar katalogu
-du -sh /var/log
-
-# Struktura blokow i systemy plikow
-lsblk -f`}
-          </pre>
+        <Card title="Zarzadzanie partycjami" color="var(--c-yellow)">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+            <Concept title="MBR" color="var(--c-yellow)">
+              Starszy schemat partycjonowania — obsluguje dyski do <b>2 TB</b>,
+              maksymalnie <b>4 partycje</b> podstawowe.
+            </Concept>
+            <Concept title="GPT" color="var(--c-green)">
+              Nowoczesny schemat — obsluguje dyski do <b>9.4 ZB</b>, maksymalnie{' '}
+              <b>128 partycji</b>.
+            </Concept>
+          </div>
+          <Divider />
+          <SectionLabel>Narzedzia</SectionLabel>
+          <Concept title="fdisk / gdisk / parted" color="var(--c-purple)">
+            <b>fdisk</b> — partycje MBR. <b>gdisk</b> — partycje GPT.{' '}
+            <b>parted</b> — obsluguje oba schematy.
+          </Concept>
+          <Divider />
+          <SectionLabel>Diagnostyka</SectionLabel>
+          <ExampleBlock variant="yellow">
+            <Comment># Lista partycji</Comment>
+            <Cmd>
+              sudo <H>fdisk</H> <V>-l</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Uzycie systemu plikow</Comment>
+            <Cmd>
+              <H>df</H> <V>-h</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Rozmiar katalogu</Comment>
+            <Cmd>
+              <H>du</H> <V>-sh</V> <F>/var/log</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Struktura blokow i systemy plikow</Comment>
+            <Cmd>
+              <H>lsblk</H> <V>-f</V>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="LVM (Logical Volume Manager)">
-          <p className="text-sm mb-2">
+        <Card title="LVM (Logical Volume Manager)" color="var(--c-purple)">
+          <Concept title="Czym jest LVM?" color="var(--c-purple)">
             LVM pozwala elastycznie zarzadzac przestrzenia dyskowa — mozna
             powiekszac i zmniejszac woluminy bez restartowania systemu.
-          </p>
-          <p className="text-sm font-semibold mb-1">Architektura:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`Dysk fizyczny (/dev/sdb)
-  -> PV (Physical Volume)
-    -> VG (Volume Group)
-      -> LV (Logical Volume)
-        -> system plikow (ext4/xfs)
-          -> punkt montowania (/mnt/data)`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Informacje:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`pvdisplay   # pokaz woluminy fizyczne
-vgdisplay   # pokaz grupy woluminow
-lvdisplay   # pokaz woluminy logiczne`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">
-            Tworzenie i rozszerzanie:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`# Tworzenie
-pvcreate /dev/sdb
-vgcreate myvg /dev/sdb
-lvcreate -L 10G -n mydata myvg
-
-# Rozszerzanie woluminu
-lvextend -L +5G /dev/myvg/mydata
-resize2fs /dev/myvg/mydata`}
-          </pre>
+          </Concept>
+          <Divider />
+          <SectionLabel>Architektura</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Cmd>
+              <V>Dysk fizyczny</V> (<F>/dev/sdb</F>)
+            </Cmd>
+            <Cmd>
+              {'  '}-&gt; <H>PV</H> (Physical Volume)
+            </Cmd>
+            <Cmd>
+              {'    '}-&gt; <H>VG</H> (Volume Group)
+            </Cmd>
+            <Cmd>
+              {'      '}-&gt; <H>LV</H> (Logical Volume)
+            </Cmd>
+            <Cmd>
+              {'        '}-&gt; <V>system plikow</V> (ext4/xfs)
+            </Cmd>
+            <Cmd>
+              {'          '}-&gt; <F>punkt montowania</F> (/mnt/data)
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Informacje</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Cmd>
+              <H>pvdisplay</H> <V># pokaz woluminy fizyczne</V>
+            </Cmd>
+            <Cmd>
+              <H>vgdisplay</H> <V># pokaz grupy woluminow</V>
+            </Cmd>
+            <Cmd>
+              <H>lvdisplay</H> <V># pokaz woluminy logiczne</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Tworzenie i rozszerzanie</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Tworzenie</Comment>
+            <Cmd>
+              <H>pvcreate</H> <F>/dev/sdb</F>
+            </Cmd>
+            <Cmd>
+              <H>vgcreate</H> <V>myvg</V> <F>/dev/sdb</F>
+            </Cmd>
+            <Cmd>
+              <H>lvcreate</H> -L <V>10G</V> -n <V>mydata</V> <V>myvg</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Rozszerzanie woluminu</Comment>
+            <Cmd>
+              <H>lvextend</H> -L <V>+5G</V> <F>/dev/myvg/mydata</F>
+            </Cmd>
+            <Cmd>
+              <H>resize2fs</H> <F>/dev/myvg/mydata</F>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Systemy plikow i montowanie">
-          <p className="text-sm mb-2">Popularne systemy plikow:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-3">
-            <li>
-              <strong>ext4</strong> — domyslny w wiekszosci dystrybucji
-            </li>
-            <li>
-              <strong>XFS</strong> — wydajny przy duzych plikach (RHEL)
-            </li>
-            <li>
-              <strong>Btrfs</strong> — snapshoty, kompresja (SUSE)
-            </li>
-            <li>
-              <strong>ZFS</strong> — zaawansowane zarzadzanie danymi
-            </li>
-          </ul>
-          <p className="text-sm font-semibold mb-1">
-            Formatowanie i montowanie:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Utworzenie systemu plikow
-sudo mkfs.ext4 /dev/sdb1
-
-# Montowanie reczne
-sudo mount /dev/sdb1 /mnt/data`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">/etc/fstab — 6 pol:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# urzadzenie  punkt_mont  fs    opcje     dump fsck
-UUID=abc123  /mnt/data   ext4  defaults  0    2`}
-          </pre>
-          <p className="text-xs text-[var(--c-warning)] font-semibold">
-            Uwaga: Przed restartem przetestuj z <code>mount -a</code>. Uzywaj
-            UUID (z <code>blkid</code>) zamiast /dev/sdX — nazwy urzadzen moga
-            sie zmienic!
-          </p>
+        <Card title="Systemy plikow i montowanie" color="var(--c-orange)">
+          <SectionLabel>Popularne systemy plikow</SectionLabel>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+            <Concept title="ext4" color="var(--c-green)">
+              Domyslny w wiekszosci dystrybucji Linuksa.
+            </Concept>
+            <Concept title="XFS" color="var(--c-orange)">
+              Wydajny przy duzych plikach (RHEL).
+            </Concept>
+            <Concept title="Btrfs" color="var(--c-purple)">
+              Snapshoty, kompresja (SUSE).
+            </Concept>
+            <Concept title="ZFS" color="var(--c-yellow)">
+              Zaawansowane zarzadzanie danymi.
+            </Concept>
+          </div>
+          <Divider />
+          <SectionLabel>Formatowanie i montowanie</SectionLabel>
+          <ExampleBlock variant="orange">
+            <Comment># Utworzenie systemu plikow</Comment>
+            <Cmd>
+              sudo <H>mkfs.ext4</H> <F>/dev/sdb1</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Montowanie reczne</Comment>
+            <Cmd>
+              sudo <H>mount</H> <F>/dev/sdb1</F> <F>/mnt/data</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>/etc/fstab — 6 pol</SectionLabel>
+          <ExampleBlock>
+            <Comment># urzadzenie punkt_mont fs opcje dump fsck</Comment>
+            <Cmd>
+              <V>UUID=abc123</V> <F>/mnt/data</F> <H>ext4</H> defaults 0 2
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox warn>
+            Przed restartem przetestuj z{' '}
+            <code className="text-xs">mount -a</code>. Uzywaj UUID (z{' '}
+            <code className="text-xs">blkid</code>) zamiast /dev/sdX — nazwy
+            urzadzen moga sie zmienic!
+          </InfoBox>
         </Card>
 
         {/* === SEKCJA 2: Praca z plikami i folderami === */}
-        <Card title="Operacje na plikach">
-          <p className="text-sm font-semibold mb-1">Nawigacja:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`pwd       # aktualny katalog
-ls        # lista plikow
-ls -la    # lista z detalami i ukrytymi
-cd /path  # zmien katalog`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Tworzenie i kopiowanie:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`mkdir katalog         # utworz katalog
-mkdir -p a/b/c        # utworz z podkatalogami
-cp plik kopia         # kopiuj plik
-cp -r katalog/ kopia/ # kopiuj katalog rekurencyjnie
-mv stary nowy         # przenies / zmien nazwe`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Usuwanie:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`rm plik       # usun plik
-rm -r katalog # usun katalog rekurencyjnie
-rmdir katalog # usun pusty katalog`}
-          </pre>
-          <p className="text-xs text-[var(--c-warning)] font-semibold">
-            Uwaga: <code>rm -rf /</code> moze zniszczyc caly system! Nigdy nie
-            uruchamiaj jako root bez przemyslenia.
-          </p>
+        <Card title="Operacje na plikach" color="var(--c-green)">
+          <SectionLabel>Nawigacja</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>pwd</H> <V># aktualny katalog</V>
+            </Cmd>
+            <Cmd>
+              <H>ls</H> <V># lista plikow</V>
+            </Cmd>
+            <Cmd>
+              <H>ls</H> <V>-la</V> <V># lista z detalami i ukrytymi</V>
+            </Cmd>
+            <Cmd>
+              <H>cd</H> <F>/path</F> <V># zmien katalog</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Tworzenie i kopiowanie</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>mkdir</H> <V>katalog</V> <V># utworz katalog</V>
+            </Cmd>
+            <Cmd>
+              <H>mkdir</H> <V>-p</V> <F>a/b/c</F>{' '}
+              <V># utworz z podkatalogami</V>
+            </Cmd>
+            <Cmd>
+              <H>cp</H> <V>plik</V> <V>kopia</V> <V># kopiuj plik</V>
+            </Cmd>
+            <Cmd>
+              <H>cp</H> <V>-r</V> <F>katalog/</F> <F>kopia/</F>{' '}
+              <V># kopiuj katalog rekurencyjnie</V>
+            </Cmd>
+            <Cmd>
+              <H>mv</H> <V>stary</V> <V>nowy</V> <V># przenies / zmien nazwe</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Usuwanie</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>rm</H> <V>plik</V> <V># usun plik</V>
+            </Cmd>
+            <Cmd>
+              <H>rm</H> <V>-r</V> <F>katalog</F>{' '}
+              <V># usun katalog rekurencyjnie</V>
+            </Cmd>
+            <Cmd>
+              <H>rmdir</H> <V>katalog</V> <V># usun pusty katalog</V>
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox warn>
+            <code className="text-xs">rm -rf /</code> moze zniszczyc caly
+            system! Nigdy nie uruchamiaj jako root bez przemyslenia.
+          </InfoBox>
         </Card>
 
-        <Card title="Wyszukiwanie i dowiazania">
-          <p className="text-sm font-semibold mb-1">Wyszukiwanie plikow:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Po nazwie
-find /var -name "*.log"
-
-# Po typie (f=plik, d=katalog)
-find /etc -type f -name "*.conf"
-
-# Po czasie modyfikacji (ostatnie 7 dni)
-find /home -mtime -7
-
-# Z wykonaniem komendy
-find /tmp -name "*.tmp" -exec rm {} \\;`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Laczenie i dzielenie:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`cat plik1 plik2 > polaczony
-split -b 100M duzy.tar.gz czesc_`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Dowiazania:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-2">
-            <li>
-              <strong>Hard link</strong> (<code className="text-xs">ln</code>) —
-              wskazuje na te same dane (inode)
-            </li>
-            <li>
-              <strong>Symbolic link</strong> (
-              <code className="text-xs">ln -s</code>) — wskazuje na sciezke
-            </li>
-          </ul>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`# Przyklady w DevOps:
-ln -s /usr/bin/python3.11 /usr/bin/python3
-ln -s /etc/nginx/sites-available/app \\
-  /etc/nginx/sites-enabled/app`}
-          </pre>
+        <Card title="Wyszukiwanie i dowiazania" color="var(--c-accent)">
+          <SectionLabel>Wyszukiwanie plikow</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Po nazwie</Comment>
+            <Cmd>
+              <H>find</H> <F>/var</F> -name <V>"*.log"</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Po typie (f=plik, d=katalog)</Comment>
+            <Cmd>
+              <H>find</H> <F>/etc</F> -type <V>f</V> -name <V>"*.conf"</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Po czasie modyfikacji (ostatnie 7 dni)</Comment>
+            <Cmd>
+              <H>find</H> <F>/home</F> -mtime <V>-7</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Z wykonaniem komendy</Comment>
+            <Cmd>
+              <H>find</H> <F>/tmp</F> -name <V>"*.tmp"</V> -exec rm {'{}'} \;
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Laczenie i dzielenie</SectionLabel>
+          <ExampleBlock>
+            <Cmd>
+              <H>cat</H> <V>plik1</V> <V>plik2</V> &gt; <F>polaczony</F>
+            </Cmd>
+            <Cmd>
+              <H>split</H> -b <V>100M</V> <F>duzy.tar.gz</F> <V>czesc_</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Dowiazania</SectionLabel>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+            <Concept title="Hard link (ln)" color="var(--c-orange)">
+              Wskazuje na te same dane (inode). Plik istnieje dopoki jest choc
+              jeden hard link.
+            </Concept>
+            <Concept title="Symbolic link (ln -s)" color="var(--c-purple)">
+              Wskazuje na sciezke. Moze wskazywac na katalogi i pliki na innych
+              partycjach.
+            </Concept>
+          </div>
+          <ExampleBlock>
+            <Comment># Przyklady w DevOps:</Comment>
+            <Cmd>
+              <H>ln -s</H> <F>/usr/bin/python3.11</F> <F>/usr/bin/python3</F>
+            </Cmd>
+            <Cmd>
+              <H>ln -s</H> <F>/etc/nginx/sites-available/app</F> \
+            </Cmd>
+            <Cmd>
+              {'  '}
+              <F>/etc/nginx/sites-enabled/app</F>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Kompresja i archiwizacja">
-          <p className="text-sm font-semibold mb-1">
-            tar — tworzenie archiwow:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Samo archiwum (bez kompresji)
-tar -cvf archiwum.tar katalog/
-
-# Z kompresja gzip (.tar.gz)
-tar -czvf archiwum.tar.gz katalog/
-
-# Z kompresja bzip2 (.tar.bz2)
-tar -cjvf archiwum.tar.bz2 katalog/`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">tar — rozpakowywanie:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`tar -xvf archiwum.tar
-tar -xzvf archiwum.tar.gz
-tar -xjvf archiwum.tar.bz2`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Porownanie algorytmow:</p>
+        <Card title="Kompresja i archiwizacja" color="var(--c-yellow)">
+          <SectionLabel>tar — tworzenie archiwow</SectionLabel>
+          <ExampleBlock variant="yellow">
+            <Comment># Samo archiwum (bez kompresji)</Comment>
+            <Cmd>
+              <H>tar</H> <V>-cvf</V> <F>archiwum.tar</F> <F>katalog/</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Z kompresja gzip (.tar.gz)</Comment>
+            <Cmd>
+              <H>tar</H> <V>-czvf</V> <F>archiwum.tar.gz</F> <F>katalog/</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Z kompresja bzip2 (.tar.bz2)</Comment>
+            <Cmd>
+              <H>tar</H> <V>-cjvf</V> <F>archiwum.tar.bz2</F> <F>katalog/</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>tar — rozpakowywanie</SectionLabel>
+          <ExampleBlock variant="yellow">
+            <Cmd>
+              <H>tar</H> <V>-xvf</V> <F>archiwum.tar</F>
+            </Cmd>
+            <Cmd>
+              <H>tar</H> <V>-xzvf</V> <F>archiwum.tar.gz</F>
+            </Cmd>
+            <Cmd>
+              <H>tar</H> <V>-xjvf</V> <F>archiwum.tar.bz2</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Porownanie algorytmow</SectionLabel>
           <div className="overflow-x-auto">
             <table className="text-xs w-full">
               <thead>
@@ -283,231 +437,368 @@ tar -xjvf archiwum.tar.bz2`}
         </Card>
 
         {/* === SEKCJA 3: Praca z siecia === */}
-        <Card title="Diagnostyka sieci">
-          <p className="text-sm mb-2">
+        <Card title="Diagnostyka sieci" color="var(--c-accent)">
+          <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
             Podstawowe narzedzia do sprawdzania polaczenia sieciowego i
             rozwiazywania problemow z dostepnoscia uslug.
           </p>
-          <p className="text-sm font-semibold mb-1">Testowanie polaczenia:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Sprawdzenie dostepnosci hosta
-ping -c 4 google.com
-
-# Trasa pakietow do celu
-traceroute google.com
-
-# Rozwiazywanie nazw DNS
-host google.com`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">
-            Informacje o interfejsach:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`ip addr show    # adresy IP (nowoczesne)
-ifconfig        # adresy IP (starsza wersja)
-ip route show   # tablica routingu
-route           # tablica routingu (starsza)`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Otwarte porty:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`# Nowoczesne (ss)
-ss -tulnp
-
-# Starsza wersja (netstat)
-netstat -tulnp`}
-          </pre>
+          <SectionLabel>Testowanie polaczenia</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Sprawdzenie dostepnosci hosta</Comment>
+            <Cmd>
+              <H>ping</H> -c <V>4</V> <F>google.com</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Trasa pakietow do celu</Comment>
+            <Cmd>
+              <H>traceroute</H> <F>google.com</F>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Rozwiazywanie nazw DNS</Comment>
+            <Cmd>
+              <H>host</H> <F>google.com</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Informacje o interfejsach</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <H>ip addr show</H> <V># adresy IP (nowoczesne)</V>
+            </Cmd>
+            <Cmd>
+              <H>ifconfig</H> <V># adresy IP (starsza wersja)</V>
+            </Cmd>
+            <Cmd>
+              <H>ip route show</H> <V># tablica routingu</V>
+            </Cmd>
+            <Cmd>
+              <H>route</H> <V># tablica routingu (starsza)</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Otwarte porty</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Nowoczesne (ss)</Comment>
+            <Cmd>
+              <H>ss</H> <V>-tulnp</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Starsza wersja (netstat)</Comment>
+            <Cmd>
+              <H>netstat</H> <V>-tulnp</V>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Konfiguracja sieci">
-          <p className="text-sm font-semibold mb-1">
-            Wlaczanie/wylaczanie interfejsu:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Nowoczesne
-sudo ip link set eth0 up
-sudo ip link set eth0 down
-
-# Starsza wersja
-sudo ifconfig eth0 up
-sudo ifconfig eth0 down`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Adresy i trasy:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Dodanie adresu IP
-sudo ip addr add 192.168.1.10/24 dev eth0
-
-# Dodanie trasy
-sudo ip route add 10.0.0.0/8 via 192.168.1.1`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">DNS:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`cat /etc/resolv.conf   # serwery DNS
-dig example.com        # szczegolowe info DNS
-nslookup example.com   # proste zapytanie DNS`}
-          </pre>
-          <p className="text-xs text-[var(--c-warning)] font-semibold">
-            Uwaga: Polecenia ip/ifconfig dzialaja tymczasowo! Trwala
-            konfiguracja: /etc/netplan/*.yaml (Ubuntu) lub
-            /etc/network/interfaces (Debian).
-          </p>
+        <Card title="Konfiguracja sieci" color="var(--c-purple)">
+          <SectionLabel>Wlaczanie/wylaczanie interfejsu</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Comment># Nowoczesne</Comment>
+            <Cmd>
+              sudo <H>ip link set</H> <V>eth0</V> <H>up</H>
+            </Cmd>
+            <Cmd>
+              sudo <H>ip link set</H> <V>eth0</V> <H>down</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Starsza wersja</Comment>
+            <Cmd>
+              sudo <H>ifconfig</H> <V>eth0</V> <H>up</H>
+            </Cmd>
+            <Cmd>
+              sudo <H>ifconfig</H> <V>eth0</V> <H>down</H>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Adresy i trasy</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Comment># Dodanie adresu IP</Comment>
+            <Cmd>
+              sudo <H>ip addr add</H> <V>192.168.1.10/24</V> dev <V>eth0</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Dodanie trasy</Comment>
+            <Cmd>
+              sudo <H>ip route add</H> <V>10.0.0.0/8</V> via <V>192.168.1.1</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>DNS</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Cmd>
+              <H>cat</H> <F>/etc/resolv.conf</F> <V># serwery DNS</V>
+            </Cmd>
+            <Cmd>
+              <H>dig</H> <F>example.com</F> <V># szczegolowe info DNS</V>
+            </Cmd>
+            <Cmd>
+              <H>nslookup</H> <F>example.com</F> <V># proste zapytanie DNS</V>
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox warn>
+            Polecenia ip/ifconfig dzialaja tymczasowo! Trwala konfiguracja:{' '}
+            <code className="text-xs">/etc/netplan/*.yaml</code> (Ubuntu) lub{' '}
+            <code className="text-xs">/etc/network/interfaces</code> (Debian).
+          </InfoBox>
         </Card>
 
-        <Card title="Monitorowanie i SSH">
-          <p className="text-sm font-semibold mb-1">Monitorowanie sieci:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Przechwytywanie pakietow
-sudo tcpdump -i eth0 port 80
-
-# Monitor przepustowosci
-sudo iftop
-
-# Ruch sieciowy per proces
-sudo nethogs
-
-# Skanowanie portow
-nmap -sV 192.168.1.0/24`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">SSH — polaczenia zdalne:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Polaczenie
-ssh user@host
-ssh -p 2222 user@host
-
-# Kopiowanie plikow
-scp plik.txt user@host:/tmp/
-rsync -avz -e ssh src/ user@host:/dst/`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Serwer SSH:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`sudo apt install openssh-server
-sudo systemctl start sshd
-sudo systemctl enable sshd`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">
-            Kluczowe parametry /etc/ssh/sshd_config:
-          </p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`PermitRootLogin no
-PasswordAuthentication no
-Port 2222
-MaxAuthTries 3`}
-          </pre>
+        <Card title="Monitorowanie i SSH" color="var(--c-orange)">
+          <SectionLabel>Monitorowanie sieci</SectionLabel>
+          <ExampleBlock variant="orange">
+            <Comment># Przechwytywanie pakietow</Comment>
+            <Cmd>
+              sudo <H>tcpdump</H> -i <V>eth0</V> port <V>80</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Monitor przepustowosci</Comment>
+            <Cmd>
+              sudo <H>iftop</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="orange">
+            <Comment># Ruch sieciowy per proces</Comment>
+            <Cmd>
+              sudo <H>nethogs</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Skanowanie portow</Comment>
+            <Cmd>
+              <H>nmap</H> <V>-sV</V> <F>192.168.1.0/24</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>SSH — polaczenia zdalne</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Polaczenie</Comment>
+            <Cmd>
+              <H>ssh</H> <V>user@host</V>
+            </Cmd>
+            <Cmd>
+              <H>ssh</H> -p <V>2222</V> <V>user@host</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Kopiowanie plikow</Comment>
+            <Cmd>
+              <H>scp</H> <F>plik.txt</F> <V>user@host</V>:<F>/tmp/</F>
+            </Cmd>
+            <Cmd>
+              <H>rsync</H> -avz -e ssh <F>src/</F> <V>user@host</V>:<F>/dst/</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Serwer SSH</SectionLabel>
+          <ExampleBlock variant="orange">
+            <Cmd>
+              sudo apt install <H>openssh-server</H>
+            </Cmd>
+            <Cmd>
+              sudo systemctl <H>start</H> <V>sshd</V>
+            </Cmd>
+            <Cmd>
+              sudo systemctl <H>enable</H> <V>sshd</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Kluczowe parametry /etc/ssh/sshd_config</SectionLabel>
+          <ExampleBlock>
+            <Cmd>
+              <H>PermitRootLogin</H> <V>no</V>
+            </Cmd>
+            <Cmd>
+              <H>PasswordAuthentication</H> <V>no</V>
+            </Cmd>
+            <Cmd>
+              <H>Port</H> <V>2222</V>
+            </Cmd>
+            <Cmd>
+              <H>MaxAuthTries</H> <V>3</V>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
         {/* === SEKCJA 4: Praca z kontami uzytkownikow === */}
-        <Card title="Zarzadzanie uzytkownikami">
-          <p className="text-sm mb-2">
+        <Card title="Zarzadzanie uzytkownikami" color="var(--c-green)">
+          <Concept title="Pliki konfiguracyjne" color="var(--c-green)">
             Informacje o uzytkownikach i grupach sa przechowywane w trzech
-            kluczowych plikach systemowych.
-          </p>
-          <p className="text-sm font-semibold mb-1">Pliki konfiguracyjne:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`/etc/passwd  # dane uzytkownikow (UID, shell)
-/etc/shadow  # zaszyfrowane hasla
-/etc/group   # definicje grup (GID)`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Uzytkownicy:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Utworzenie uzytkownika
-sudo useradd -m -s /bin/bash jan
-
-# Usuniecie uzytkownika z katalogiem domowym
-sudo userdel -r jan
-
-# Ustawienie / zmiana hasla
-sudo passwd jan
-
-# Zablokowanie / odblokowanie konta
-sudo passwd -l jan
-sudo passwd -u jan`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Grupy:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`sudo groupadd devops
-sudo groupdel devops
-sudo usermod -aG devops jan
-sudo gpasswd -d jan devops`}
-          </pre>
+            kluczowych plikach systemowych:{' '}
+            <code className="text-xs">/etc/passwd</code>,{' '}
+            <code className="text-xs">/etc/shadow</code>,{' '}
+            <code className="text-xs">/etc/group</code>.
+          </Concept>
+          <ExampleBlock variant="green">
+            <Cmd>
+              <F>/etc/passwd</F> <V># dane uzytkownikow (UID, shell)</V>
+            </Cmd>
+            <Cmd>
+              <F>/etc/shadow</F> <V># zaszyfrowane hasla</V>
+            </Cmd>
+            <Cmd>
+              <F>/etc/group</F> <V># definicje grup (GID)</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Uzytkownicy</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Utworzenie uzytkownika</Comment>
+            <Cmd>
+              sudo <H>useradd</H> -m -s /bin/bash <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Usuniecie uzytkownika z katalogiem domowym</Comment>
+            <Cmd>
+              sudo <H>userdel</H> -r <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="green">
+            <Comment># Ustawienie / zmiana hasla</Comment>
+            <Cmd>
+              sudo <H>passwd</H> <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Zablokowanie / odblokowanie konta</Comment>
+            <Cmd>
+              sudo <H>passwd</H> <V>-l</V> <V>jan</V>
+            </Cmd>
+            <Cmd>
+              sudo <H>passwd</H> <V>-u</V> <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Grupy</SectionLabel>
+          <ExampleBlock variant="green">
+            <Cmd>
+              sudo <H>groupadd</H> <V>devops</V>
+            </Cmd>
+            <Cmd>
+              sudo <H>groupdel</H> <V>devops</V>
+            </Cmd>
+            <Cmd>
+              sudo <H>usermod</H> -aG <V>devops</V> <V>jan</V>
+            </Cmd>
+            <Cmd>
+              sudo <H>gpasswd</H> -d <V>jan</V> <V>devops</V>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Model uprawnien">
-          <p className="text-sm mb-2">
+        <Card title="Model uprawnien" color="var(--c-yellow)">
+          <Concept title="Uprawnienia plikow" color="var(--c-yellow)">
             Kazdy plik ma trzy zestawy uprawnien: wlasciciel (u), grupa (g),
-            pozostali (o). Kazdy zestaw to kombinacja r, w, x.
-          </p>
-          <p className="text-sm font-semibold mb-1">Wartosci numeryczne:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-3">
-            <li>
-              <strong>r</strong> (read) = 4
-            </li>
-            <li>
-              <strong>w</strong> (write) = 2
-            </li>
-            <li>
-              <strong>x</strong> (execute) = 1
-            </li>
-          </ul>
-          <p className="text-sm font-semibold mb-1">Przyklady:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`755 = rwxr-xr-x  # wlasciciel: all, reszta: r+x
-770 = rwxrwx---  # wlasciciel+grupa: all, inni: nic
-644 = rw-r--r--  # plik: wlasciciel rw, reszta r`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Bity specjalne:</p>
-          <ul className="list-disc list-inside text-sm space-y-1 text-[var(--c-muted)] mb-3">
-            <li>
-              <strong>SUID</strong> (4xxx) — uruchamia z prawami wlasciciela
-            </li>
-            <li>
-              <strong>SGID</strong> (2xxx) — uruchamia z prawami grupy
-            </li>
-            <li>
-              <strong>Sticky bit</strong> (1xxx) — tylko wlasciciel moze usunac
-              plik
-            </li>
-          </ul>
-          <p className="text-sm font-semibold mb-1">Zmiana uprawnien:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`chmod 755 skrypt.sh
-chmod u+x skrypt.sh
-chown jan:devops plik.txt
-chown -R jan:devops /opt/app/`}
-          </pre>
+            pozostali (o). Kazdy zestaw to kombinacja <b>r</b> (read = 4),{' '}
+            <b>w</b> (write = 2), <b>x</b> (execute = 1).
+          </Concept>
+          <Divider />
+          <SectionLabel>Przyklady</SectionLabel>
+          <ExampleBlock variant="yellow">
+            <Cmd>
+              <H>755</H> = <V>rwxr-xr-x</V>{' '}
+              <V># wlasciciel: all, reszta: r+x</V>
+            </Cmd>
+            <Cmd>
+              <H>770</H> = <V>rwxrwx---</V>{' '}
+              <V># wlasciciel+grupa: all, inni: nic</V>
+            </Cmd>
+            <Cmd>
+              <H>644</H> = <V>rw-r--r--</V>{' '}
+              <V># plik: wlasciciel rw, reszta r</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Bity specjalne</SectionLabel>
+          <Concept title="SUID / SGID / Sticky bit" color="var(--c-purple)">
+            <b>SUID</b> (4xxx) — uruchamia z prawami wlasciciela. <b>SGID</b>{' '}
+            (2xxx) — uruchamia z prawami grupy. <b>Sticky bit</b> (1xxx) — tylko
+            wlasciciel moze usunac plik.
+          </Concept>
+          <Divider />
+          <SectionLabel>Zmiana uprawnien</SectionLabel>
+          <ExampleBlock variant="yellow">
+            <Cmd>
+              <H>chmod</H> <V>755</V> <F>skrypt.sh</F>
+            </Cmd>
+            <Cmd>
+              <H>chmod</H> <V>u+x</V> <F>skrypt.sh</F>
+            </Cmd>
+            <Cmd>
+              <H>chown</H> <V>jan:devops</V> <F>plik.txt</F>
+            </Cmd>
+            <Cmd>
+              <H>chown</H> -R <V>jan:devops</V> <F>/opt/app/</F>
+            </Cmd>
+          </ExampleBlock>
         </Card>
 
-        <Card title="Sudo i monitorowanie">
-          <p className="text-sm font-semibold mb-1">Konfiguracja sudo:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Edycja konfiguracji (bezpieczna)
-sudo visudo
-
-# Pliki konfiguracyjne
-/etc/sudoers
-/etc/sudoers.d/`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Dodawanie do grupy sudo:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`# Debian / Ubuntu
-sudo usermod -aG sudo jan
-
-# RHEL / CentOS
-sudo usermod -aG wheel jan`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Monitorowanie sesji:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs mb-3">
-            {`who       # zalogowani uzytkownicy
-w         # zalogowani + co robia
-last      # historia logowan
-lastb     # nieudane logowania`}
-          </pre>
-          <p className="text-sm font-semibold mb-1">Limity zasobow:</p>
-          <pre className="bg-[var(--c-bg-secondary)] p-2 rounded text-xs">
-            {`# Pokaz aktualne limity
-ulimit -a
-
-# Trwala konfiguracja
-/etc/security/limits.conf`}
-          </pre>
+        <Card title="Sudo i monitorowanie" color="var(--c-purple)">
+          <SectionLabel>Konfiguracja sudo</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Comment># Edycja konfiguracji (bezpieczna)</Comment>
+            <Cmd>
+              sudo <H>visudo</H>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="purple">
+            <Comment># Pliki konfiguracyjne</Comment>
+            <Cmd>
+              <F>/etc/sudoers</F>
+            </Cmd>
+            <Cmd>
+              <F>/etc/sudoers.d/</F>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Dodawanie do grupy sudo</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Comment># Debian / Ubuntu</Comment>
+            <Cmd>
+              sudo <H>usermod</H> -aG <V>sudo</V> <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># RHEL / CentOS</Comment>
+            <Cmd>
+              sudo <H>usermod</H> -aG <V>wheel</V> <V>jan</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Monitorowanie sesji</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Cmd>
+              <H>who</H> <V># zalogowani uzytkownicy</V>
+            </Cmd>
+            <Cmd>
+              <H>w</H> <V># zalogowani + co robia</V>
+            </Cmd>
+            <Cmd>
+              <H>last</H> <V># historia logowan</V>
+            </Cmd>
+            <Cmd>
+              <H>lastb</H> <V># nieudane logowania</V>
+            </Cmd>
+          </ExampleBlock>
+          <Divider />
+          <SectionLabel>Limity zasobow</SectionLabel>
+          <ExampleBlock variant="purple">
+            <Comment># Pokaz aktualne limity</Comment>
+            <Cmd>
+              <H>ulimit</H> <V>-a</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock>
+            <Comment># Trwala konfiguracja</Comment>
+            <Cmd>
+              <F>/etc/security/limits.conf</F>
+            </Cmd>
+          </ExampleBlock>
         </Card>
       </div>
 
