@@ -405,7 +405,10 @@ export default function Homework07() {
         </Card>
       </div>
 
-      <LessonNav prev={{ to: '/lessons/07', label: '07 — Wirtualizacja' }} />
+      <LessonNav
+        prev={{ to: '/lessons/07', label: '07 — Wirtualizacja' }}
+        next={{ to: '/homework/08', label: 'Homework 08' }}
+      />
     </div>
   );
 }

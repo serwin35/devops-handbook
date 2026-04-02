@@ -12,6 +12,9 @@ const Lesson05 = lazy(() => import('./pages/lessons/Lesson05'));
 const Lesson06 = lazy(() => import('./pages/lessons/Lesson06'));
 const Lesson07 = lazy(() => import('./pages/lessons/Lesson07'));
 const Lesson08 = lazy(() => import('./pages/lessons/Lesson08'));
+const Lesson09 = lazy(() => import('./pages/lessons/Lesson09'));
+const Lesson10 = lazy(() => import('./pages/lessons/Lesson10'));
+const Lesson11 = lazy(() => import('./pages/lessons/Lesson11'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -41,11 +44,16 @@ const Homework04 = lazy(() => import('./pages/homework/Homework04'));
 const Homework05 = lazy(() => import('./pages/homework/Homework05'));
 const Homework06 = lazy(() => import('./pages/homework/Homework06'));
 const Homework07 = lazy(() => import('./pages/homework/Homework07'));
+const Homework08 = lazy(() => import('./pages/homework/Homework08'));
+const Homework09 = lazy(() => import('./pages/homework/Homework09'));
+const Homework10 = lazy(() => import('./pages/homework/Homework10'));
 const ProcessesMonitoring = lazy(
   () => import('./pages/cheatsheets/ProcessesMonitoring'),
 );
 const CiCd = lazy(() => import('./pages/cheatsheets/CiCd'));
 const DnsDomains = lazy(() => import('./pages/cheatsheets/DnsDomains'));
+const Rsync = lazy(() => import('./pages/cheatsheets/Rsync'));
+const LogAnalysis = lazy(() => import('./pages/cheatsheets/LogAnalysis'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -75,6 +83,9 @@ export default function App() {
             <Route path="lessons/06" element={<Lesson06 />} />
             <Route path="lessons/07" element={<Lesson07 />} />
             <Route path="lessons/08" element={<Lesson08 />} />
+            <Route path="lessons/09" element={<Lesson09 />} />
+            <Route path="lessons/10" element={<Lesson10 />} />
+            <Route path="lessons/11" element={<Lesson11 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -109,6 +120,8 @@ export default function App() {
             />
             <Route path="cheatsheets/ci-cd" element={<CiCd />} />
             <Route path="cheatsheets/dns-domains" element={<DnsDomains />} />
+            <Route path="cheatsheets/rsync" element={<Rsync />} />
+            <Route path="cheatsheets/log-analysis" element={<LogAnalysis />} />
             <Route path="homework/01" element={<Homework01 />} />
             <Route path="homework/02" element={<Homework02 />} />
             <Route path="homework/03" element={<Homework03 />} />
@@ -116,6 +129,9 @@ export default function App() {
             <Route path="homework/05" element={<Homework05 />} />
             <Route path="homework/06" element={<Homework06 />} />
             <Route path="homework/07" element={<Homework07 />} />
+            <Route path="homework/08" element={<Homework08 />} />
+            <Route path="homework/09" element={<Homework09 />} />
+            <Route path="homework/10" element={<Homework10 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>

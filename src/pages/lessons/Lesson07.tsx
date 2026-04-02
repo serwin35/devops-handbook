@@ -188,7 +188,7 @@ virsh vcpupin myVM 0 2`}
 
       <LessonNav
         prev={{ to: '/lessons/06', label: '06 — DNS i Domeny' }}
-        next={{ to: '/lessons/08', label: '08 — Wkrotce' }}
+        next={{ to: '/lessons/08', label: '08 — Narzędzia Uniksa cz. 1' }}
       />
     </div>
   );

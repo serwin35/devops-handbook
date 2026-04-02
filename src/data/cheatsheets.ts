@@ -133,4 +133,18 @@ export const cheatsheets: CheatsheetItem[] = [
     color: 'var(--c-purple)',
     to: '/cheatsheets/dns-domains',
   },
+  {
+    icon: '🔁',
+    title: 'rsync',
+    desc: 'synchronizacja, kopie zapasowe, SSH, --delete, --exclude',
+    color: 'var(--c-yellow)',
+    to: '/cheatsheets/rsync',
+  },
+  {
+    icon: '📋',
+    title: 'Analiza logów',
+    desc: 'syslog, journalctl, grep, tail, logwatch, GoAccess',
+    color: 'var(--c-green)',
+    to: '/cheatsheets/log-analysis',
+  },
 ];
