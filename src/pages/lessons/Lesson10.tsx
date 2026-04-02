@@ -190,6 +190,26 @@ export default function Lesson10() {
               <H>git rm</H> --cached <V>somefile.js</V>
             </Cmd>
           </ExampleBlock>
+
+          <Divider />
+          <SectionLabel>Cofanie zmian (Git 2.23+)</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Cofnij zmiany w pliku (working directory)</Comment>
+            <Cmd>
+              <H>git restore</H> <V>somefile.js</V>
+            </Cmd>
+            <Comment># Cofnij plik ze staging area</Comment>
+            <Cmd>
+              <H>git restore</H> --staged <V>somefile.js</V>
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox>
+            <code className="text-xs">git switch</code> i{' '}
+            <code className="text-xs">git restore</code> zostaly wprowadzone w
+            Git 2.23 jako czytelniejsze zamienniki{' '}
+            <code className="text-xs">git checkout</code>, ktory robil zbyt
+            wiele rzeczy naraz (przelaczal galaz i cofal pliki).
+          </InfoBox>
         </Card>
 
         {/* === SEKCJA 2: Galezienie i scalanie === */}
@@ -205,15 +225,25 @@ export default function Lesson10() {
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
-            <Comment># Przelaczenie na galaz</Comment>
+            <Comment># Przelaczenie na galaz (klasyczne)</Comment>
             <Cmd>
               <H>git checkout</H> <V>nazwa</V>
+            </Cmd>
+          </ExampleBlock>
+          <ExampleBlock variant="yellow">
+            <Comment># Przelaczenie — nowsze polecenie (Git 2.23+)</Comment>
+            <Cmd>
+              <H>git switch</H> <V>nazwa</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
             <Comment># Utworzenie i przelaczenie jednoczesnie</Comment>
             <Cmd>
               <H>git checkout</H> -b <V>nazwa</V>
+            </Cmd>
+            <Comment># lub (Git 2.23+)</Comment>
+            <Cmd>
+              <H>git switch</H> -c <V>nazwa</V>
             </Cmd>
           </ExampleBlock>
           <ExampleBlock variant="yellow">
@@ -289,6 +319,47 @@ export default function Lesson10() {
               <H>git commit</H> -m <F>"Resolve merge conflict"</F>
             </Cmd>
           </ExampleBlock>
+        </Card>
+
+        {/* === Diff i Stash === */}
+        <Card title="Diff, Stash i inne" color="var(--c-orange)">
+          <SectionLabel>Porownywanie zmian</SectionLabel>
+          <ExampleBlock variant="orange">
+            <Comment># Zmiany w working directory</Comment>
+            <Cmd>
+              <H>git diff</H>
+            </Cmd>
+            <Comment># Zmiany w staging area</Comment>
+            <Cmd>
+              <H>git diff</H> --staged
+            </Cmd>
+            <Comment># Porownanie dwoch galezi</Comment>
+            <Cmd>
+              <H>git diff</H> <V>main</V>..<V>feature/login</V>
+            </Cmd>
+          </ExampleBlock>
+
+          <Divider />
+          <SectionLabel>Odkladanie zmian (Stash)</SectionLabel>
+          <ExampleBlock variant="green">
+            <Comment># Odloz biezace zmiany na polke</Comment>
+            <Cmd>
+              <H>git stash</H>
+            </Cmd>
+            <Comment># Przywroc odlozone zmiany</Comment>
+            <Cmd>
+              <H>git stash</H> pop
+            </Cmd>
+            <Comment># Lista odlozonych zmian</Comment>
+            <Cmd>
+              <H>git stash</H> list
+            </Cmd>
+          </ExampleBlock>
+          <InfoBox>
+            <code className="text-xs">git stash</code> jest nieoceniony gdy
+            musisz szybko przelaczac galaz, a masz niezacommitowane zmiany.
+            Unika bledu "Your local changes would be overwritten".
+          </InfoBox>
         </Card>
 
         {/* === Git Flow === */}
