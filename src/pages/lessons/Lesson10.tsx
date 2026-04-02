@@ -73,12 +73,31 @@ export default function Lesson10() {
           </ExampleBlock>
         </Card>
 
+        {/* === Przepływ pracy z Git === */}
+        <Card title="Przepływ pracy z Git" color="var(--c-yellow)">
+          <Row code="1">
+            <b>Working directory</b> — edytujesz pliki w katalogu projektu
+          </Row>
+          <Row code="2">
+            <code>git add</code> — przenosisz zmiany do <b>Staging area</b>
+          </Row>
+          <Row code="3">
+            <code>git commit</code> — zapisujesz migawke w <b>Repository</b>
+          </Row>
+          <Row code="4">
+            <code>git push</code> — wysylasz commity do <b>zdalnego repo</b>
+          </Row>
+          <Row code="5">
+            <code>git pull</code> — pobierasz zmiany zespolu do siebie
+          </Row>
+          <InfoBox>
+            Kluczowe: <code className="text-xs">git status</code> pokazuje w
+            ktorym etapie sa Twoje pliki. Uzywaj go czesto — to Twoj kompas.
+          </InfoBox>
+        </Card>
+
         {/* === Inicjalizacja i commity === */}
         <Card title="Inicjalizacja i commity" color="var(--c-green)">
-          <p className="text-[var(--c-muted)] text-[11px] mb-2.5">
-            Podstawowy cykl pracy z Gitem — od utworzenia repozytorium do
-            zapisania zmian.
-          </p>
           <ExampleBlock variant="green">
             <Comment># Inicjalizacja nowego repozytorium</Comment>
             <Cmd>
