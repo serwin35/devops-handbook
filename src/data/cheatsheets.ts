@@ -147,4 +147,11 @@ export const cheatsheets: CheatsheetItem[] = [
     color: 'var(--c-green)',
     to: '/cheatsheets/log-analysis',
   },
+  {
+    icon: '🌍',
+    title: 'Nginx & Apache',
+    desc: 'vhost, reverse proxy, upstream, proxy_pass, gzip, HTTPS',
+    color: 'var(--c-blue)',
+    to: '/cheatsheets/nginx-apache',
+  },
 ];
