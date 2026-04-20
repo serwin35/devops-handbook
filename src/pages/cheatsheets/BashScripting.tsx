@@ -601,6 +601,163 @@ export default function BashScripting() {
             </div>
           </div>
         </Card>
+
+        {/* Card — Zaawansowane (lekcja 12) */}
+        <Card
+          title="Zaawansowane: getopts · trap · logowanie (lekcja 12)"
+          color="var(--c-green)"
+          full
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <SectionLabel>getopts — krotkie opcje</SectionLabel>
+              <ExampleBlock variant="orange">
+                <Cmd>
+                  <H>while</H> getopts <V>"vo:h"</V> opt; <H>do</H>
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>case</H> <V>$opt</V> <H>in</H>
+                </Cmd>
+                <Cmd>
+                  {'    '}v) verbose=<V>1</V> ;;
+                </Cmd>
+                <Cmd>
+                  {'    '}o) out=<V>"$OPTARG"</V> ;;
+                </Cmd>
+                <Cmd>
+                  {'    '}h|*) usage; exit ;;
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>esac</H>
+                </Cmd>
+                <Cmd>
+                  <H>done</H>
+                </Cmd>
+              </ExampleBlock>
+              <Row code='"vo:h"'>o: = opcja z argumentem</Row>
+              <Row code="$OPTARG">wartosc opcji</Row>
+            </div>
+
+            <div>
+              <SectionLabel>case/shift — dlugie opcje</SectionLabel>
+              <ExampleBlock variant="purple">
+                <Cmd>
+                  <H>while</H> [[ <V>$#</V> -gt 0 ]]; <H>do</H>
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>case</H> <V>"$1"</V> <H>in</H>
+                </Cmd>
+                <Cmd>
+                  {'    '}--verbose) v=<V>1</V>; shift ;;
+                </Cmd>
+                <Cmd>
+                  {'    '}--out) out=<V>"$2"</V>; shift 2 ;;
+                </Cmd>
+                <Cmd>
+                  {'    '}*) shift ;;
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>esac</H>
+                </Cmd>
+                <Cmd>
+                  <H>done</H>
+                </Cmd>
+              </ExampleBlock>
+            </div>
+
+            <div>
+              <SectionLabel>Logowanie z poziomami</SectionLabel>
+              <ExampleBlock variant="yellow">
+                <Cmd>log() {'{'}</Cmd>
+                <Cmd>
+                  {'  '}local level=<V>"$1"</V>; shift
+                </Cmd>
+                <Cmd>
+                  {'  '}local ts=<H>$(</H>date +%H:%M:%S<H>)</H>
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>case</H> <V>$level</V> <H>in</H>
+                </Cmd>
+                <Cmd>
+                  {'    '}INFO) echo <V>"[$ts] [INFO]  $*"</V> ;;
+                </Cmd>
+                <Cmd>
+                  {'    '}ERROR) echo <V>"[$ts] [ERROR] $*"</V> &gt;&amp;2 ;;
+                </Cmd>
+                <Cmd>
+                  {'  '}
+                  <H>esac</H>
+                </Cmd>
+                <Cmd>{'}'}</Cmd>
+              </ExampleBlock>
+              <InfoBox>
+                ERROR idzie na <code className="text-xs">&gt;&amp;2</code>{' '}
+                (stderr) — pozwala na rozdzielenie:{' '}
+                <code className="text-xs">./x.sh &gt; info.log 2&gt; err.log</code>
+              </InfoBox>
+            </div>
+
+            <div>
+              <SectionLabel>trap + cleanup</SectionLabel>
+              <ExampleBlock variant="green">
+                <Cmd>
+                  temp=<H>$(</H>mktemp<H>)</H>
+                </Cmd>
+                <Cmd>cleanup() {'{'} rm -f <V>"$temp"</V>; {'}'}</Cmd>
+                <Cmd>
+                  <H>trap</H> cleanup EXIT
+                </Cmd>
+              </ExampleBlock>
+              <Row code="EXIT">normalny lub bledny koniec</Row>
+              <Row code="INT">Ctrl+C</Row>
+              <Row code="TERM">kill</Row>
+            </div>
+
+            <div>
+              <SectionLabel>set -euo pipefail</SectionLabel>
+              <ExampleBlock variant="default">
+                <Cmd>
+                  <H>set -euo pipefail</H>
+                </Cmd>
+              </ExampleBlock>
+              <Row code="-e">stop na pierwszym bledzie</Row>
+              <Row code="-u">blad jesli zmienna niezdef.</Row>
+              <Row code="-o pipefail">blad w pipe zatrzymuje potok</Row>
+            </div>
+
+            <div>
+              <SectionLabel>PID files i kill -0</SectionLabel>
+              <ExampleBlock variant="default">
+                <Cmd>
+                  sleep 1000 &amp;
+                </Cmd>
+                <Cmd>
+                  echo <V>$!</V> &gt; app.pid
+                </Cmd>
+                <Cmd>
+                  <H>if</H> kill -0 <H>$(</H>cat app.pid<H>)</H> 2&gt;/dev/null;{' '}
+                  <H>then</H>
+                </Cmd>
+                <Cmd>
+                  {'  '}echo <V>"dziala"</V>
+                </Cmd>
+                <Cmd>
+                  <H>fi</H>
+                </Cmd>
+              </ExampleBlock>
+              <InfoBox>
+                <code className="text-xs">$!</code> — PID ostatniego procesu w
+                tle. <code className="text-xs">kill -0</code> — test bez
+                zabijania.
+              </InfoBox>
+            </div>
+          </div>
+        </Card>
       </div>
 
       <LessonNav
