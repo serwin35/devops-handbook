@@ -781,7 +781,7 @@ export default function Lesson11() {
 
       <LessonNav
         prev={{ to: '/lessons/10', label: '10 — Repozytoria' }}
-        next={{ to: '/lessons/12', label: '12 — Wkrotce' }}
+        next={{ to: '/lessons/12', label: '12 — Bash w praktyce' }}
       />
     </div>
   );
