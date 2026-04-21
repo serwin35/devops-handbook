@@ -6,3 +6,6 @@
 node_modules/
 dist/
 /materials
+
+# Graphify knowledge graph output
+graphify-out/
