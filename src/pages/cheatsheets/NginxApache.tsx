@@ -327,10 +327,10 @@ export default function NginxApache() {
             </Cmd>
             <Cmd> </Cmd>
             <Comment># Top kody statusu</Comment>
-            <Cmd>awk <V>'{'{'}'}print $9{'}'}'</V> access.log <V>|</V> sort <V>|</V> uniq -c</Cmd>
+            <Cmd>awk <V>{"'{print $9}'"}</V> access.log <V>|</V> sort <V>|</V> uniq -c</Cmd>
             <Cmd> </Cmd>
             <Comment># Top IP</Comment>
-            <Cmd>awk <V>'{'{'}'}print $1{'}'}'</V> access.log <V>|</V> sort <V>|</V> uniq -c <V>|</V> sort -rn</Cmd>
+            <Cmd>awk <V>{"'{print $1}'"}</V> access.log <V>|</V> sort <V>|</V> uniq -c <V>|</V> sort -rn</Cmd>
           </ExampleBlock>
           <Divider />
           <SectionLabel>Format Nginx access.log</SectionLabel>
