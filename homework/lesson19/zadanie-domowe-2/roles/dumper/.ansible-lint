@@ -1,0 +1,4 @@
+---
+skip_list:
+  - role-name  # underscore w nazwie nie jest blokujace
+  - yaml[line-length]

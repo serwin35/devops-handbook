@@ -1,0 +1,14 @@
+---
+- name: Test dumper role
+  hosts: localhost
+  connection: local
+  become: true
+
+  vars:
+    dumper_password: "TestPass!2026"
+    dumper_databases:
+      - sklep_internetowy
+    dumper_retention_days: 3
+
+  roles:
+    - dumper

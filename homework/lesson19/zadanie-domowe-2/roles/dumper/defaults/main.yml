@@ -1,0 +1,32 @@
+---
+# Uzytkownik MySQL ktory bedzie robil dumpy
+dumper_user: dumper
+dumper_password: "ZmienToHaslo!2026"
+
+# Lista baz do backupu (puste = wszystkie z wyjatkiem systemowych)
+dumper_databases: []
+
+# Bazy systemowe pomijane przy auto-discovery
+dumper_excluded_databases:
+  - information_schema
+  - performance_schema
+  - mysql
+  - sys
+
+# Lokalizacja backupow
+dumper_backup_dir: /var/backups/mysql
+
+# Retention (dni)
+dumper_retention_days: 7
+
+# Cron schedule (codziennie 2:00)
+dumper_cron_hour: "2"
+dumper_cron_minute: "0"
+dumper_cron_user: root
+
+# Logowanie
+dumper_log_file: /var/log/dumper.log
+
+# Czy zainstalowac skrypty (false = tylko user + cron)
+dumper_install_scripts: true
+dumper_scripts_dir: /usr/local/sbin

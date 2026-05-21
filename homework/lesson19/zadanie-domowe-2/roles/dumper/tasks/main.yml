@@ -1,0 +1,61 @@
+---
+- name: Ensure required packages are installed
+  ansible.builtin.package:
+    name:
+      - mysql-client
+      - python3-pymysql
+      - gzip
+    state: present
+
+- name: Ensure backup directory exists
+  ansible.builtin.file:
+    path: "{{ dumper_backup_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0750'
+
+- name: Create dumper MySQL user
+  community.mysql.mysql_user:
+    name: "{{ dumper_user }}"
+    password: "{{ dumper_password }}"
+    host: localhost
+    priv: "*.*:SELECT,LOCK TABLES,SHOW VIEW,EVENT,TRIGGER,RELOAD,PROCESS,REPLICATION CLIENT"
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+
+- name: Deploy MySQL credentials file for dumper
+  ansible.builtin.template:
+    src: my.cnf.dumper.j2
+    dest: /root/.my.cnf.dumper
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: Deploy dump script
+  ansible.builtin.template:
+    src: dump.sh.j2
+    dest: "{{ dumper_scripts_dir }}/dumper-backup"
+    owner: root
+    group: root
+    mode: '0755'
+  when: dumper_install_scripts
+
+- name: Deploy restore script
+  ansible.builtin.template:
+    src: restore.sh.j2
+    dest: "{{ dumper_scripts_dir }}/dumper-restore"
+    owner: root
+    group: root
+    mode: '0755'
+  when: dumper_install_scripts
+
+- name: Schedule daily backup via cron
+  ansible.builtin.cron:
+    name: "dumper-backup"
+    user: "{{ dumper_cron_user }}"
+    hour: "{{ dumper_cron_hour }}"
+    minute: "{{ dumper_cron_minute }}"
+    job: "{{ dumper_scripts_dir }}/dumper-backup >> {{ dumper_log_file }} 2>&1"
+    state: present
+  when: dumper_install_scripts

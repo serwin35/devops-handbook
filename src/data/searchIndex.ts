@@ -943,4 +943,624 @@ export const searchIndex = [
     tags: ['vm', 'cpu', 'virtualization', 'check'],
     page: '/lessons/07',
   },
+
+  // SSL/TLS
+  {
+    cmd: 'openssl genrsa -out key.pem 4096',
+    desc: 'Wygeneruj klucz prywatny RSA 4096 bit',
+    tags: ['ssl', 'tls', 'openssl', 'rsa', 'key'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'openssl req -new -key key.pem -out cert.csr',
+    desc: 'Utworz CSR (Certificate Signing Request)',
+    tags: ['ssl', 'tls', 'openssl', 'csr'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'openssl req -x509 -newkey rsa:4096 -nodes -keyout key.pem -out cert.pem -days 365',
+    desc: 'Self-signed certyfikat (do testow)',
+    tags: ['ssl', 'tls', 'self-signed', 'openssl'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'openssl x509 -in cert.pem -text -noout',
+    desc: 'Inspekcja certyfikatu X.509',
+    tags: ['ssl', 'tls', 'cert', 'inspect'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'openssl s_client -connect example.com:443 -servername example.com',
+    desc: 'Test TLS connection do hosta',
+    tags: ['ssl', 'tls', 'debug', 's_client'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'sudo certbot --nginx -d example.com',
+    desc: 'Lets Encrypt cert z auto-config Nginx',
+    tags: ['ssl', 'tls', 'certbot', 'letsencrypt', 'nginx'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'sudo certbot renew --dry-run',
+    desc: 'Test odnowienia certyfikatu Lets Encrypt',
+    tags: ['ssl', 'tls', 'certbot', 'renew'],
+    page: '/cheatsheets/ssl-tls',
+  },
+  {
+    cmd: 'nmap --script ssl-enum-ciphers -p 443 example.com',
+    desc: 'Pokaz wszystkie ciphery TLS serwera',
+    tags: ['ssl', 'tls', 'nmap', 'cipher', 'audit'],
+    page: '/cheatsheets/ssl-tls',
+  },
+
+  // SQL
+  {
+    cmd: 'mysql -u app -p sklep',
+    desc: 'Logowanie do MySQL z baza domyslna',
+    tags: ['sql', 'mysql', 'login'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'sudo -u postgres psql',
+    desc: 'Logowanie do PostgreSQL jako postgres',
+    tags: ['sql', 'postgresql', 'psql', 'login'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: "CREATE USER 'app'@'localhost' IDENTIFIED BY 'haslo'",
+    desc: 'Utworz uzytkownika MySQL',
+    tags: ['sql', 'mysql', 'user', 'create'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: "GRANT ALL PRIVILEGES ON sklep.* TO 'app'@'localhost'",
+    desc: 'Nadaj uprawnienia do bazy w MySQL',
+    tags: ['sql', 'mysql', 'grant', 'permissions'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'mysqldump -u root -p sklep > sklep.sql',
+    desc: 'Backup bazy MySQL do pliku SQL',
+    tags: ['sql', 'mysql', 'backup', 'mysqldump'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'pg_dump -F c -U postgres sklep -f sklep.dump',
+    desc: 'Backup PostgreSQL w formacie custom (kompresja)',
+    tags: ['sql', 'postgresql', 'backup', 'pg_dump'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'SELECT k.imie, z.kwota FROM klienci k INNER JOIN zamowienia z ON k.id = z.klient_id',
+    desc: 'INNER JOIN — laczenie tabel po kluczu',
+    tags: ['sql', 'join', 'select', 'inner join'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'SELECT kategoria, COUNT(*) FROM produkty GROUP BY kategoria HAVING COUNT(*) > 5',
+    desc: 'GROUP BY + HAVING — agregacja z filtrowaniem grup',
+    tags: ['sql', 'group by', 'having', 'aggregate'],
+    page: '/cheatsheets/sql',
+  },
+  {
+    cmd: 'EXPLAIN ANALYZE SELECT * FROM klienci WHERE email = ...',
+    desc: 'Plan wykonania zapytania PostgreSQL',
+    tags: ['sql', 'postgresql', 'explain', 'performance'],
+    page: '/cheatsheets/sql',
+  },
+
+  // Ansible
+  {
+    cmd: 'ansible all -m ping',
+    desc: 'Test polaczenia ze wszystkimi hostami',
+    tags: ['ansible', 'ad-hoc', 'ping'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible all -m setup',
+    desc: 'Pobierz fakty (info o systemach) z hostow',
+    tags: ['ansible', 'facts', 'setup', 'ad-hoc'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible all --become -m apt -a "name=htop state=present"',
+    desc: 'Zainstaluj pakiet na wszystkich hostach (sudo)',
+    tags: ['ansible', 'apt', 'install', 'ad-hoc'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-playbook -i inventory.ini site.yml',
+    desc: 'Uruchom playbook z konkretnym inventory',
+    tags: ['ansible', 'playbook', 'run'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-playbook site.yml --check --diff',
+    desc: 'Dry-run playbooka z roznicami (bez zmian)',
+    tags: ['ansible', 'check', 'diff', 'dry-run'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-playbook site.yml --tags "deploy" --limit web1',
+    desc: 'Uruchom tylko wybrane tagi na wybranym hoscie',
+    tags: ['ansible', 'tags', 'limit'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-galaxy init roles/apache',
+    desc: 'Utworz szablon roli z pelna struktura katalogow',
+    tags: ['ansible', 'galaxy', 'role', 'init'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-vault create secrets.yml',
+    desc: 'Utworz zaszyfrowany plik z sekretami',
+    tags: ['ansible', 'vault', 'secrets'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-vault encrypt_string "tajne" --name db_password',
+    desc: 'Zaszyfruj pojedyncza wartosc do uzycia in-line',
+    tags: ['ansible', 'vault', 'encrypt'],
+    page: '/cheatsheets/ansible',
+  },
+  {
+    cmd: 'ansible-playbook site.yml --vault-password-file ~/.vault',
+    desc: 'Uruchom playbook z plikiem hasla vault',
+    tags: ['ansible', 'vault', 'playbook'],
+    page: '/cheatsheets/ansible',
+  },
+
+  // JMeter / Load testing
+  {
+    cmd: './jmeter -n -t plan.jmx -l result.jtl -e -o report/',
+    desc: 'JMeter non-GUI run + raport HTML',
+    tags: ['jmeter', 'load testing', 'performance'],
+    page: '/lessons/14',
+  },
+  {
+    cmd: 'siege -c 100 -t 60s http://localhost/',
+    desc: 'Test obciazeniowy z Siege (100 userow, 60s)',
+    tags: ['siege', 'load testing', 'performance'],
+    page: '/lessons/14',
+  },
+  {
+    cmd: 'wrk -t10 -c200 -d30s http://localhost/',
+    desc: 'wrk benchmark — 10 watkow, 200 conn, 30s',
+    tags: ['wrk', 'load testing', 'benchmark'],
+    page: '/lessons/14',
+  },
+  {
+    cmd: 'pgbench -h 127.0.0.1 -p 5432 -U app -c 200 -j 10 -T 60 app',
+    desc: 'Benchmark PostgreSQL (pgbench)',
+    tags: ['postgresql', 'pgbench', 'benchmark', 'performance'],
+    page: '/lessons/17',
+  },
+
+  // Replication
+  {
+    cmd: 'pg_basebackup -h master_ip -U replicator -D /var/lib/postgresql/15/main -P --wal-method=stream',
+    desc: 'Bootstrap slave z mastera (streaming replication)',
+    tags: ['postgresql', 'replication', 'pg_basebackup', 'ha'],
+    page: '/lessons/17',
+  },
+  {
+    cmd: 'SELECT * FROM pg_stat_replication',
+    desc: 'Status replikacji na master PostgreSQL',
+    tags: ['postgresql', 'replication', 'pg_stat'],
+    page: '/lessons/17',
+  },
+  {
+    cmd: 'SELECT pg_is_in_recovery()',
+    desc: 'Sprawdz czy host jest standby (t) czy primary (f)',
+    tags: ['postgresql', 'replication', 'standby'],
+    page: '/lessons/17',
+  },
+  {
+    cmd: 'pg_ctl promote -D /var/lib/postgresql/15/main',
+    desc: 'Promuj standby do primary (manualny failover)',
+    tags: ['postgresql', 'failover', 'promote'],
+    page: '/lessons/17',
+  },
+
+  // Docker — Images & Dockerfile (lesson 20 + cheatsheet)
+  {
+    cmd: 'docker build -t user/myapp:1.0 .',
+    desc: 'Zbuduj obraz z Dockerfile w biezacym katalogu',
+    tags: ['docker', 'build', 'image', 'dockerfile'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker buildx build --platform linux/amd64,linux/arm64 -t user/app:1.0 --push .',
+    desc: 'Multi-arch build + push w jednym kroku',
+    tags: ['docker', 'buildx', 'multi-arch', 'push'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker tag myapp:1.0 user/myapp:latest',
+    desc: 'Tag obrazu (alias pod inna nazwa)',
+    tags: ['docker', 'tag', 'image'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker login -u user',
+    desc: 'Logowanie do Docker Hub (PAT jako haslo)',
+    tags: ['docker', 'login', 'hub', 'registry'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker push user/myapp:1.0',
+    desc: 'Wypchnij obraz do Docker Hub',
+    tags: ['docker', 'push', 'hub', 'registry'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: "docker inspect --format '{{json .Config.Labels}}' myapp:1.0 | jq",
+    desc: 'Wyswietl etykiety OCI obrazu',
+    tags: ['docker', 'inspect', 'oci', 'labels'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker image history nginx',
+    desc: 'Historia warstw obrazu z rozmiarami',
+    tags: ['docker', 'image', 'history', 'layers'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'docker save myapp:1.0 | gzip > myapp.tar.gz',
+    desc: 'Zapisz obraz do tarball (offline transport)',
+    tags: ['docker', 'save', 'export', 'image'],
+    page: '/cheatsheets/docker-images',
+  },
+
+  // Dockerfile keywords (lesson 20/21 + cheatsheet)
+  {
+    cmd: 'FROM python:3.12-slim',
+    desc: 'Obraz bazowy z pinem wersji',
+    tags: ['dockerfile', 'from', 'python', 'base'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'USER appuser',
+    desc: 'Uzytkownik nie-root dla CMD i exec',
+    tags: ['dockerfile', 'user', 'security', 'non-root'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'WORKDIR /app',
+    desc: 'Katalog roboczy dla kolejnych instrukcji',
+    tags: ['dockerfile', 'workdir'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'ENV GREETING_NAME=Student',
+    desc: 'Zmienna srodowiskowa widoczna w runtime',
+    tags: ['dockerfile', 'env', 'environment'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'LABEL org.opencontainers.image.title="myapp"',
+    desc: 'OCI label — tytul obrazu',
+    tags: ['dockerfile', 'label', 'oci', 'metadata'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'LABEL org.opencontainers.image.source="https://github.com/..."',
+    desc: 'OCI label — link do repo zrodlowego',
+    tags: ['dockerfile', 'label', 'oci', 'source'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'COPY --chown=appuser:appuser app.py /app/',
+    desc: 'Kopiuj pliki z ustalonym wlascicielem',
+    tags: ['dockerfile', 'copy', 'chown'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'CMD ["python", "app.py"]',
+    desc: 'Domyslna komenda (exec form, PID 1)',
+    tags: ['dockerfile', 'cmd', 'exec form'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'ENTRYPOINT ["python", "-m", "myapp"]',
+    desc: 'Niezmienny punkt wejscia (CMD jako argumenty)',
+    tags: ['dockerfile', 'entrypoint'],
+    page: '/cheatsheets/docker-images',
+  },
+  {
+    cmd: 'HEALTHCHECK --interval=30s CMD curl -fsS http://localhost/health || exit 1',
+    desc: 'Test zywotnosci kontenera dla orkiestratora',
+    tags: ['dockerfile', 'healthcheck', 'liveness'],
+    page: '/cheatsheets/docker-images',
+  },
+
+  // Docker Compose (cheatsheet)
+  {
+    cmd: 'docker compose up -d --build',
+    desc: 'Start serwisow w tle + przebuduj zmienione obrazy',
+    tags: ['docker', 'compose', 'up', 'build'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'docker compose down -v',
+    desc: 'Stop + usun kontenery, sieci, WOLUMINY (uwaga!)',
+    tags: ['docker', 'compose', 'down', 'volumes'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'docker compose logs -f web',
+    desc: 'Logi konkretnego serwisu na zywo',
+    tags: ['docker', 'compose', 'logs'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'docker compose exec web bash',
+    desc: 'Shell w dzialajacym serwisie',
+    tags: ['docker', 'compose', 'exec', 'shell'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'docker compose run --rm app rake db:migrate',
+    desc: 'Jednorazowy run zadania (np. migracje)',
+    tags: ['docker', 'compose', 'run', 'job'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'docker compose --profile monitoring up -d',
+    desc: 'Wlacz serwisy z profilu (Prometheus, Grafana)',
+    tags: ['docker', 'compose', 'profile'],
+    page: '/cheatsheets/docker-compose',
+  },
+  {
+    cmd: 'depends_on: { db: { condition: service_healthy } }',
+    desc: 'Czekaj na healthcheck zaleznego serwisu',
+    tags: ['compose', 'depends_on', 'healthcheck'],
+    page: '/cheatsheets/docker-compose',
+  },
+
+  // Docker Volumes & Networks (cheatsheet)
+  {
+    cmd: 'docker volume create pg-data',
+    desc: 'Utworz nazwany wolumin',
+    tags: ['docker', 'volume', 'create'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run -v pg-data:/var/lib/postgresql/data postgres',
+    desc: 'Podlacz named volume do kontenera',
+    tags: ['docker', 'volume', 'run', 'postgres'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run -v $(pwd)/src:/app/src myapp',
+    desc: 'Bind mount katalogu hosta (dev / hot reload)',
+    tags: ['docker', 'bind mount', 'volume', 'dev'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run --mount type=volume,src=pg,dst=/var/lib/postgresql/data postgres',
+    desc: 'Eksplicytna skladnia --mount dla woluminu',
+    tags: ['docker', 'mount', 'volume'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run --read-only --tmpfs /tmp myapp',
+    desc: 'Kontener z read-only FS + tmpfs (hardening)',
+    tags: ['docker', 'read-only', 'tmpfs', 'security'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker network create moja-siec',
+    desc: 'Wlasna siec bridge (z DNS po nazwie kontenera)',
+    tags: ['docker', 'network', 'create', 'bridge'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker network connect moja-siec web',
+    desc: 'Podlacz dzialajacy kontener do sieci',
+    tags: ['docker', 'network', 'connect'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run -p 127.0.0.1:8080:80 nginx',
+    desc: 'Bind portu tylko na localhost hosta',
+    tags: ['docker', 'port', 'localhost', 'security'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: "docker inspect -f '{{.NetworkSettings.IPAddress}}' web",
+    desc: 'Wyciagnij IP kontenera przez --format',
+    tags: ['docker', 'inspect', 'ip', 'network'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+  {
+    cmd: 'docker run --rm -v pg-data:/data -v $(pwd):/backup ubuntu tar czf /backup/pg-data.tar.gz -C /data .',
+    desc: 'Backup wolumenu do tar.gz na host',
+    tags: ['docker', 'backup', 'volume', 'tar'],
+    page: '/cheatsheets/docker-volumes-networks',
+  },
+
+  // Docker Hub homework (lesson 21)
+  {
+    cmd: 'docker run --rm -e GREETING_NAME=Mateusz user/devops-handbook-hello:1.0.0',
+    desc: 'Uruchom obraz Pythona z nadpisana ENV (homework 21)',
+    tags: ['docker', 'run', 'env', 'homework'],
+    page: '/homework/21',
+  },
+
+  // Python Basics (lesson 22)
+  {
+    cmd: 'python3 --version',
+    desc: 'Sprawdz zainstalowana wersje Pythona',
+    tags: ['python', 'version', 'install'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'python3 hello.py',
+    desc: 'Uruchom skrypt Pythona (Linux/macOS)',
+    tags: ['python', 'run', 'script'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'python3',
+    desc: 'Uruchom REPL Pythona (tryb interaktywny)',
+    tags: ['python', 'repl', 'interactive'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'print("Witaj, swiecie!")',
+    desc: 'Wypisz tekst na ekran',
+    tags: ['python', 'print', 'hello world'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'x = int(input("Wiek: "))',
+    desc: 'Wczytaj liczbe od uzytkownika (input zawsze zwraca str)',
+    tags: ['python', 'input', 'int'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'print(f"Witaj, {name}!")',
+    desc: 'f-string — interpolacja zmiennych (Python 3.6+)',
+    tags: ['python', 'fstring', 'format', 'string'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'for i in range(5):',
+    desc: 'Petla for od 0 do 4',
+    tags: ['python', 'for', 'range', 'loop'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'for i in range(1, 11):',
+    desc: 'Petla for od 1 do 10 (od inclusive, do exclusive)',
+    tags: ['python', 'for', 'range', 'loop'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'if x < 10:\\n    print("mniej")\\nelif x == 10:\\n    print("rowno")',
+    desc: 'Instrukcja warunkowa if/elif/else',
+    tags: ['python', 'if', 'elif', 'else', 'warunki'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'def add(x, y):\\n    return x + y',
+    desc: 'Definicja funkcji',
+    tags: ['python', 'def', 'function', 'return'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'fruits = ["a", "b", "c"]',
+    desc: 'Lista — kolekcja uporzadkowana',
+    tags: ['python', 'list', 'lista'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'fruits.append("d")',
+    desc: 'Dodaj element na koniec listy',
+    tags: ['python', 'list', 'append'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'user = {"name": "Mateusz", "age": 30}',
+    desc: 'Slownik (dict) — pary klucz-wartosc',
+    tags: ['python', 'dict', 'slownik'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'try: ... except ValueError as e:',
+    desc: 'Obsluga bledow (try/except)',
+    tags: ['python', 'try', 'except', 'error', 'exception'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'with open("data.txt") as f: content = f.read()',
+    desc: 'Czytanie pliku z auto-close (context manager)',
+    tags: ['python', 'open', 'file', 'read', 'with'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'import os; os.environ.get("HOME")',
+    desc: 'Odczyt zmiennej srodowiskowej',
+    tags: ['python', 'os', 'env', 'environment'],
+    page: '/cheatsheets/python-basics',
+  },
+  {
+    cmd: 'if __name__ == "__main__":',
+    desc: 'Punkt wejscia CLI (uruchamiane bezposrednio vs importowane)',
+    tags: ['python', 'main', 'cli', 'entrypoint'],
+    page: '/cheatsheets/python-basics',
+  },
+
+  // pip & venv (lesson 22)
+  {
+    cmd: 'python3 -m venv .venv',
+    desc: 'Utworz wirtualne srodowisko w folderze .venv',
+    tags: ['python', 'venv', 'virtual', 'environment'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'source .venv/bin/activate',
+    desc: 'Aktywuj venv (Linux/macOS)',
+    tags: ['python', 'venv', 'activate', 'linux', 'macos'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: '.\\\\.venv\\\\Scripts\\\\Activate.ps1',
+    desc: 'Aktywuj venv (Windows PowerShell)',
+    tags: ['python', 'venv', 'activate', 'windows'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'deactivate',
+    desc: 'Wyjdz z venv',
+    tags: ['python', 'venv', 'deactivate'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pip install requests',
+    desc: 'Zainstaluj pakiet z PyPI',
+    tags: ['python', 'pip', 'install', 'package'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pip install -r requirements.txt',
+    desc: 'Zainstaluj wszystkie zaleznosci z pliku',
+    tags: ['python', 'pip', 'install', 'requirements'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pip freeze > requirements.txt',
+    desc: 'Zapisz biezace wersje pakietow do pliku',
+    tags: ['python', 'pip', 'freeze', 'requirements'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pip list --outdated',
+    desc: 'Pokaz pakiety ze starszymi wersjami niz dostepne',
+    tags: ['python', 'pip', 'list', 'outdated'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pip install --upgrade pip',
+    desc: 'Zaktualizuj sam pip',
+    tags: ['python', 'pip', 'upgrade'],
+    page: '/cheatsheets/pip-venv',
+  },
+  {
+    cmd: 'pipx install ansible',
+    desc: 'Globalne narzedzie CLI w izolowanym venv',
+    tags: ['python', 'pipx', 'cli', 'ansible'],
+    page: '/cheatsheets/pip-venv',
+  },
+
+  // Homework 22 (BMI + tablica mnozenia)
+  {
+    cmd: 'bmi = waga / (wzrost / 100) ** 2',
+    desc: 'Wzor na BMI w Pythonie (homework 22)',
+    tags: ['python', 'bmi', 'homework'],
+    page: '/homework/22',
+  },
 ];

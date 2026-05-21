@@ -1,0 +1,10 @@
+---
+- name: reload apache
+  ansible.builtin.service:
+    name: apache2
+    state: reloaded
+
+- name: restart apache
+  ansible.builtin.service:
+    name: apache2
+    state: restarted

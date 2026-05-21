@@ -1,0 +1,39 @@
+#!/bin/bash
+# {{ ansible_managed }}
+# Restore bazy z pliku .sql.gz wygenerowanego przez dumper-backup.
+# Uzycie: dumper-restore <plik.sql.gz> [nazwa_bazy_docelowej]
+
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+  echo "Uzycie: $0 <plik.sql.gz> [baza_docelowa]"
+  exit 1
+fi
+
+file="$1"
+target_db="${2:-}"
+
+if [[ ! -f "$file" ]]; then
+  echo "ERROR plik nie istnieje: $file"
+  exit 2
+fi
+
+# Jesli nie podano bazy - wyciagamy z nazwy pliku
+if [[ -z "$target_db" ]]; then
+  base=$(basename "$file" .sql.gz)
+  target_db="${base%_[0-9]*_[0-9]*}"
+fi
+
+echo "Plik:  $file"
+echo "Baza:  $target_db"
+read -r -p "Restore? [y/N]: " ans
+case "$ans" in
+  [yY]|[yY][eE][sS]) ;;
+  *) echo "anulowano"; exit 0 ;;
+esac
+
+mysql -e "CREATE DATABASE IF NOT EXISTS \`$target_db\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+
+gunzip -c "$file" | mysql "$target_db"
+
+echo "OK $target_db przywrocona z $file"

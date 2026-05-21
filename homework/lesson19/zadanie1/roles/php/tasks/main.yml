@@ -1,0 +1,16 @@
+---
+- name: Install PHP and modules
+  ansible.builtin.apt:
+    name: "{{ php_packages }}"
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+  notify: restart apache
+
+- name: Deploy phpinfo test file
+  ansible.builtin.template:
+    src: info.php.j2
+    dest: "{{ php_test_file_path }}"
+    owner: www-data
+    group: www-data
+    mode: '0644'

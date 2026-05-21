@@ -1,0 +1,5 @@
+---
+mysql_db_name: example_db
+mysql_user: example_user
+mysql_password: change_me
+mysql_host: localhost

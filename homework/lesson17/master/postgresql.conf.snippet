@@ -1,0 +1,21 @@
+# Fragmenty do dopisania w /etc/postgresql/15/main/postgresql.conf
+# (nadpisz istniejace linie lub dopisz na koncu)
+
+listen_addresses = '*'
+port = 5432
+
+# WAL i replikacja
+wal_level = replica
+max_wal_senders = 10
+max_replication_slots = 10
+wal_keep_size = 512MB
+
+# Hot standby
+hot_standby = on
+hot_standby_feedback = on
+
+# Logi
+logging_collector = on
+log_directory = 'log'
+log_filename = 'postgresql-%Y-%m-%d.log'
+log_replication_commands = on

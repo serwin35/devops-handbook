@@ -1,0 +1,6 @@
+# Fragment do dopisania w /etc/postgresql/15/main/pg_hba.conf
+# Pozwala uzytkownikowi 'replicator' laczyc sie z sieci 10.0.0.0/24
+# (zastap zakresem swojej sieci wewnetrznej)
+
+# TYPE    DATABASE        USER            ADDRESS           METHOD
+host      replication     replicator      10.0.0.0/24       scram-sha-256

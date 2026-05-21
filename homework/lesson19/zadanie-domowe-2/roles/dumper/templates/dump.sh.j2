@@ -1,0 +1,53 @@
+#!/bin/bash
+# {{ ansible_managed }}
+# Codzienny backup baz MySQL/MariaDB.
+
+set -euo pipefail
+
+BACKUP_DIR="{{ dumper_backup_dir }}"
+RETENTION="{{ dumper_retention_days }}"
+MYSQL_CNF="/root/.my.cnf.dumper"
+
+DATABASES="{{ dumper_databases | join(' ') }}"
+EXCLUDED="{{ dumper_excluded_databases | join('|') }}"
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+}
+
+mkdir -p "$BACKUP_DIR"
+
+# Auto-discovery jesli lista pusta
+if [[ -z "$DATABASES" ]]; then
+  DATABASES=$(mysql --defaults-extra-file="$MYSQL_CNF" \
+              -Nse "SHOW DATABASES" | grep -Ev "^($EXCLUDED)\$" || true)
+fi
+
+if [[ -z "$DATABASES" ]]; then
+  log "WARN brak baz do backupu"
+  exit 0
+fi
+
+for db in $DATABASES; do
+  ts=$(date +%Y%m%d_%H%M%S)
+  file="$BACKUP_DIR/${db}_${ts}.sql.gz"
+
+  log "INFO dump $db -> $file"
+
+  if mysqldump --defaults-extra-file="$MYSQL_CNF" \
+       --single-transaction --routines --triggers --events \
+       --quick --databases "$db" 2>&1 | gzip > "$file"; then
+    size=$(du -h "$file" | cut -f1)
+    log "INFO OK $db ($size)"
+  else
+    log "ERROR blad dumpu $db"
+    rm -f "$file"
+    continue
+  fi
+done
+
+# Retention
+log "INFO sprzatanie plikow starszych niz $RETENTION dni"
+find "$BACKUP_DIR" -name "*.sql.gz" -type f -mtime "+$RETENTION" -delete
+
+log "INFO gotowe"

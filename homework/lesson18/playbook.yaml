@@ -1,0 +1,45 @@
+---
+- name: Basic system configuration
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Install common packages
+      ansible.builtin.package:
+        name:
+          - htop
+          - vim
+          - curl
+          - git
+        state: present
+
+    - name: Create test directory
+      ansible.builtin.file:
+        path: /tmp/ansible_test
+        state: directory
+        mode: '0755'
+
+    - name: Deploy test file
+      ansible.builtin.copy:
+        content: |
+          This file was created by Ansible
+          Host: {{ ansible_hostname }}
+          OS:   {{ ansible_distribution }} {{ ansible_distribution_version }}
+          Date: {{ ansible_date_time.iso8601 }}
+        dest: /tmp/ansible_test/test.txt
+        mode: '0644'
+
+    - name: Show test file
+      ansible.builtin.command: cat /tmp/ansible_test/test.txt
+      register: file_content
+      changed_when: false
+
+    - name: Display file content
+      ansible.builtin.debug:
+        var: file_content.stdout_lines

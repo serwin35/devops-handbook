@@ -18,6 +18,14 @@ const Lesson11 = lazy(() => import('./pages/lessons/Lesson11'));
 const Lesson12 = lazy(() => import('./pages/lessons/Lesson12'));
 const Lesson13 = lazy(() => import('./pages/lessons/Lesson13'));
 const Lesson14 = lazy(() => import('./pages/lessons/Lesson14'));
+const Lesson15 = lazy(() => import('./pages/lessons/Lesson15'));
+const Lesson16 = lazy(() => import('./pages/lessons/Lesson16'));
+const Lesson17 = lazy(() => import('./pages/lessons/Lesson17'));
+const Lesson18 = lazy(() => import('./pages/lessons/Lesson18'));
+const Lesson19 = lazy(() => import('./pages/lessons/Lesson19'));
+const Lesson20 = lazy(() => import('./pages/lessons/Lesson20'));
+const Lesson21 = lazy(() => import('./pages/lessons/Lesson21'));
+const Lesson22 = lazy(() => import('./pages/lessons/Lesson22'));
 const Permissions = lazy(() => import('./pages/cheatsheets/Permissions'));
 const Filesystem = lazy(() => import('./pages/cheatsheets/Filesystem'));
 const DockerBasics = lazy(() => import('./pages/cheatsheets/DockerBasics'));
@@ -53,6 +61,15 @@ const Homework10 = lazy(() => import('./pages/homework/Homework10'));
 const Homework11 = lazy(() => import('./pages/homework/Homework11'));
 const Homework12 = lazy(() => import('./pages/homework/Homework12'));
 const Homework13 = lazy(() => import('./pages/homework/Homework13'));
+const Homework14 = lazy(() => import('./pages/homework/Homework14'));
+const Homework15 = lazy(() => import('./pages/homework/Homework15'));
+const Homework16 = lazy(() => import('./pages/homework/Homework16'));
+const Homework17 = lazy(() => import('./pages/homework/Homework17'));
+const Homework18 = lazy(() => import('./pages/homework/Homework18'));
+const Homework19 = lazy(() => import('./pages/homework/Homework19'));
+const Homework20 = lazy(() => import('./pages/homework/Homework20'));
+const Homework21 = lazy(() => import('./pages/homework/Homework21'));
+const Homework22 = lazy(() => import('./pages/homework/Homework22'));
 const ProcessesMonitoring = lazy(
   () => import('./pages/cheatsheets/ProcessesMonitoring'),
 );
@@ -61,6 +78,16 @@ const DnsDomains = lazy(() => import('./pages/cheatsheets/DnsDomains'));
 const Rsync = lazy(() => import('./pages/cheatsheets/Rsync'));
 const LogAnalysis = lazy(() => import('./pages/cheatsheets/LogAnalysis'));
 const NginxApache = lazy(() => import('./pages/cheatsheets/NginxApache'));
+const SslTls = lazy(() => import('./pages/cheatsheets/SslTls'));
+const Sql = lazy(() => import('./pages/cheatsheets/Sql'));
+const Ansible = lazy(() => import('./pages/cheatsheets/Ansible'));
+const DockerCompose = lazy(() => import('./pages/cheatsheets/DockerCompose'));
+const DockerVolumesNetworks = lazy(
+  () => import('./pages/cheatsheets/DockerVolumesNetworks'),
+);
+const DockerImages = lazy(() => import('./pages/cheatsheets/DockerImages'));
+const PythonBasics = lazy(() => import('./pages/cheatsheets/PythonBasics'));
+const PipVenv = lazy(() => import('./pages/cheatsheets/PipVenv'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function Loading() {
@@ -96,6 +123,14 @@ export default function App() {
             <Route path="lessons/12" element={<Lesson12 />} />
             <Route path="lessons/13" element={<Lesson13 />} />
             <Route path="lessons/14" element={<Lesson14 />} />
+            <Route path="lessons/15" element={<Lesson15 />} />
+            <Route path="lessons/16" element={<Lesson16 />} />
+            <Route path="lessons/17" element={<Lesson17 />} />
+            <Route path="lessons/18" element={<Lesson18 />} />
+            <Route path="lessons/19" element={<Lesson19 />} />
+            <Route path="lessons/20" element={<Lesson20 />} />
+            <Route path="lessons/21" element={<Lesson21 />} />
+            <Route path="lessons/22" element={<Lesson22 />} />
             <Route path="cheatsheets" element={<CheatsheetsList />} />
             <Route path="cheatsheets/linux-basics" element={<LinuxBasics />} />
             <Route path="cheatsheets/permissions" element={<Permissions />} />
@@ -133,6 +168,26 @@ export default function App() {
             <Route path="cheatsheets/rsync" element={<Rsync />} />
             <Route path="cheatsheets/log-analysis" element={<LogAnalysis />} />
             <Route path="cheatsheets/nginx-apache" element={<NginxApache />} />
+            <Route path="cheatsheets/ssl-tls" element={<SslTls />} />
+            <Route path="cheatsheets/sql" element={<Sql />} />
+            <Route path="cheatsheets/ansible" element={<Ansible />} />
+            <Route
+              path="cheatsheets/docker-compose"
+              element={<DockerCompose />}
+            />
+            <Route
+              path="cheatsheets/docker-volumes-networks"
+              element={<DockerVolumesNetworks />}
+            />
+            <Route
+              path="cheatsheets/docker-images"
+              element={<DockerImages />}
+            />
+            <Route
+              path="cheatsheets/python-basics"
+              element={<PythonBasics />}
+            />
+            <Route path="cheatsheets/pip-venv" element={<PipVenv />} />
             <Route path="homework/01" element={<Homework01 />} />
             <Route path="homework/02" element={<Homework02 />} />
             <Route path="homework/03" element={<Homework03 />} />
@@ -146,6 +201,15 @@ export default function App() {
             <Route path="homework/11" element={<Homework11 />} />
             <Route path="homework/12" element={<Homework12 />} />
             <Route path="homework/13" element={<Homework13 />} />
+            <Route path="homework/14" element={<Homework14 />} />
+            <Route path="homework/15" element={<Homework15 />} />
+            <Route path="homework/16" element={<Homework16 />} />
+            <Route path="homework/17" element={<Homework17 />} />
+            <Route path="homework/18" element={<Homework18 />} />
+            <Route path="homework/19" element={<Homework19 />} />
+            <Route path="homework/20" element={<Homework20 />} />
+            <Route path="homework/21" element={<Homework21 />} />
+            <Route path="homework/22" element={<Homework22 />} />
             <Route path="search" element={<Search />} />
             <Route path="*" element={<NotFound />} />
           </Route>

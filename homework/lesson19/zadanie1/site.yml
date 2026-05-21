@@ -1,0 +1,57 @@
+---
+- name: Configure LAMP server
+  hosts: local
+  become: true
+
+  vars:
+    apache_domain: lamp.local
+    apache_document_root: "/var/www/{{ apache_domain }}"
+    mysql_db_name: lamp_db
+    mysql_user: lamp_user
+    mysql_password: lamp_password
+    php_test_file_path: "{{ apache_document_root }}/info.php"
+
+  pre_tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+  roles:
+    - apache
+    - mysql
+    - php
+
+  post_tasks:
+    - name: Deploy index.html
+      ansible.builtin.copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head><title>LAMP Stack Test</title></head>
+          <body>
+            <h1>LAMP Stack is working</h1>
+            <p>Configured by Ansible roles.</p>
+            <p><a href="info.php">PHP Info</a></p>
+          </body>
+          </html>
+        dest: "{{ apache_document_root }}/index.html"
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Map domain to localhost
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        line: "127.0.0.1 {{ apache_domain }}"
+        state: present
+
+    - name: Smoke test
+      ansible.builtin.uri:
+        url: "http://{{ apache_domain }}/"
+        status_code: 200
+      register: smoke
+      retries: 3
+      delay: 2
+      until: smoke.status == 200

@@ -1,0 +1,30 @@
+---
+galaxy_info:
+  role_name: dumper
+  namespace: mateusz_serwinowski
+  author: Mateusz Serwinowski
+  description: Automated MySQL/MariaDB backup with retention and dedicated backup user
+  license: MIT
+  min_ansible_version: "2.12"
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - noble
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+
+  galaxy_tags:
+    - mysql
+    - mariadb
+    - backup
+    - database
+    - cron
+    - dump
+    - devops
+
+dependencies: []

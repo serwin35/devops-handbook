@@ -1,0 +1,5 @@
+---
+apache_domain: example.com
+apache_document_root: "/var/www/{{ apache_domain }}"
+apache_admin_email: "webmaster@{{ apache_domain }}"
+apache_port: 80

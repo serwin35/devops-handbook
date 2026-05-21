@@ -1,0 +1,10 @@
+---
+php_packages:
+  - php
+  - php-mysql
+  - php-cli
+  - php-common
+  - php-opcache
+  - libapache2-mod-php
+
+php_test_file_path: /var/www/html/info.php
