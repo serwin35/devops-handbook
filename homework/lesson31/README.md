@@ -10,26 +10,35 @@ Zakres zadania:
 
 Cały scenariusz (poza instalacją i `aws configure`) automatyzuje skrypt [`sns-demo.sh`](sns-demo.sh).
 
-## Krok 1 — instalacja AWS CLI v2
+Zadanie wykonujemy na **VM z Linuksem** (poniżej Ubuntu/Debian).
 
-**macOS:**
+## Krok 0 — przygotowanie VM
+
+Skopiuj katalog zadania na maszynę (albo sklonuj repo):
 
 ```bash
-brew install awscli
-# lub oficjalny instalator:
-curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o AWSCLIV2.pkg
-sudo installer -pkg AWSCLIV2.pkg -target /
+scp -r homework/lesson31 user@adres-vm:~/lesson31
+ssh user@adres-vm
+cd ~/lesson31
 ```
 
-**Linux (x86_64):**
+Narzędzia potrzebne do instalacji AWS CLI:
 
 ```bash
+sudo apt update
+sudo apt install -y curl unzip
+```
+
+## Krok 1 — instalacja AWS CLI v2
+
+```bash
+# x86_64:
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip
+# (dla VM ARM64 użyj: https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip)
+
 unzip awscliv2.zip
 sudo ./aws/install
 ```
-
-**Windows:** instalator MSI z https://awscli.amazonaws.com/AWSCLIV2.msi
 
 Weryfikacja:
 

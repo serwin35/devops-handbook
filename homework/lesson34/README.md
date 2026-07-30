@@ -43,13 +43,38 @@ lesson34/
 
 ## Wymagania wstępne
 
-- Docker uruchomiony lokalnie
-- Terraform >= 1.0 (`terraform version`)
+Zadanie wykonujemy na **VM z Linuksem** (poniżej Ubuntu/Debian). Skopiuj katalog na maszynę:
+
+```bash
+scp -r homework/lesson34 user@adres-vm:~/lesson34
+ssh user@adres-vm
+```
+
+**Docker:**
+
+```bash
+sudo apt update
+sudo apt install -y ca-certificates curl gnupg
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker "$USER"
+newgrp docker            # albo przeloguj się
+docker ps                # weryfikacja: działa bez sudo
+```
+
+**Terraform (oficjalne repo HashiCorp):**
+
+```bash
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt install -y terraform
+terraform version        # >= 1.0
+```
 
 ## Krok 1 — ręczne utworzenie infrastruktury
 
 ```bash
-cd homework/lesson34
+cd ~/lesson34
 chmod +x setup-infra.sh cleanup-docker.sh terraform/import.sh
 ./setup-infra.sh
 ```
@@ -82,7 +107,8 @@ docker ps --filter "network=app-net"
 curl -I http://localhost:8080
 ```
 
-Otwórz http://localhost:8080 — przez Nginx zobaczysz Adminera. Zaloguj się do bazy:
+Otwórz http://localhost:8080 (z VM; z Twojego komputera: `http://<ip-vm>:8080`) —
+przez Nginx zobaczysz Adminera. Zaloguj się do bazy:
 system `PostgreSQL`, server `app-db`, user `app`, hasło `secret123`, baza `appdb`.
 To potwierdza, że aplikacja web faktycznie łączy się z bazą przez sieć `app-net`.
 

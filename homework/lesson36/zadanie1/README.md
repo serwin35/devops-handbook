@@ -8,13 +8,35 @@ poprzez wyświetlenie strony powitalnej Apache.
 > [`../README.md`](../README.md). Zasoby w tym zadaniu nazwane są `apache-cli`,
 > żeby oba zadania mogły działać w klastrze równolegle bez konfliktu selektorów.
 
-Polecenia wykonujemy tam, gdzie skonfigurowany jest `kubectl` (przy minikube — lokalnie;
-przy klastrze z VM — na maszynie głównej `kubernetes-1`).
+Zadanie wykonujemy na **VM z Linuksem** z minikube (opcjonalnie: na maszynie głównej
+`kubernetes-1` klastra z wirtualnych maszyn — wtedy pomiń krok 0).
 
-## Krok 0 — start klastra (wariant minikube)
+## Krok 0 — instalacja i start minikube na VM (Ubuntu/Debian)
+
+Minikube z driverem docker potrzebuje Dockera:
 
 ```bash
-minikube start
+sudo apt update
+sudo apt install -y curl
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker "$USER"
+newgrp docker            # albo przeloguj się
+```
+
+Instalacja minikube i kubectl (x86_64):
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+```
+
+Start klastra:
+
+```bash
+minikube start --driver=docker
 kubectl get nodes
 ```
 
@@ -104,8 +126,13 @@ Oczekiwany wynik:
 <html><body><h1>It works!</h1></body></html>
 ```
 
-Uwaga przy minikube z driverem docker na macOS: sieć node'a nie jest dostępna
-bezpośrednio z hosta — użyj tunelu:
+Na Linuksie z driverem docker IP node'a (`minikube ip`) jest osiągalne bezpośrednio z VM:
+
+```bash
+curl "http://$(minikube ip):30081"
+```
+
+Gdyby jednak nie było (inny driver/konfiguracja sieci), użyj tunelu:
 
 ```bash
 minikube service apache-cli --url

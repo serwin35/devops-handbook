@@ -7,10 +7,23 @@ Zakres zadania:
    (dodawanie, usuwanie, przypisywanie i odpisywanie)
 3. Plik ([`iam_manager.py`](iam_manager.py)) podesłać prowadzącemu na Slacku
 
+Zadanie wykonujemy na **VM z Linuksem** (poniżej Ubuntu/Debian).
+Skrypt wymaga Pythona >= 3.10 (Ubuntu 22.04+ ma go w standardzie).
+
+## Krok 0 — przygotowanie VM
+
+```bash
+scp -r homework/lesson32 user@adres-vm:~/lesson32
+ssh user@adres-vm
+
+sudo apt update
+sudo apt install -y python3 python3-venv python3-pip
+```
+
 ## Krok 1 — instalacja Boto3
 
 ```bash
-cd homework/lesson32
+cd ~/lesson32
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
